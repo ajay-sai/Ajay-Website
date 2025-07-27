@@ -1,0 +1,77 @@
+Create a visually stunning, fully responsive, and professional portfolio website for a Lead Data Scientist named Ajay Miryala. The website should serve as a comprehensive showcase of his skills, projects, and professional background.
+
+Key Sections and Features:
+
+Hero Section:
+
+A large, high-quality professional headshot of Ajay Miryala.
+
+His name "Ajay Miryala" in a bold, modern font.
+
+His title: "Lead Data Scientist".
+
+A brief, impactful bio that highlights his expertise in data science, machine learning, and AI.
+
+Prominently displayed icons linking to his LinkedIn (https://www.linkedin.com/in/ajay-sai/) and GitHub (https://github.com/ajay-sai) profiles.
+
+About Me Section:
+
+A more detailed section about his passion for data science, his professional journey, and his key skills.
+
+Use a two-column layout: one for the text and one for another professional image or a relevant graphic.
+
+Skills Section:
+
+A visually engaging way to display his technical skills. Use icons for each skill.
+
+Categorize skills into groups like "Programming Languages" (Python, R, SQL), "Frameworks & Libraries" (TensorFlow, PyTorch, Scikit-learn, Pandas), "Cloud Platforms" (AWS, GCP, Azure), and "Tools" (Docker, Git, Jupyter).
+
+Projects Section:
+
+A grid or card-based layout to showcase his top GitHub projects.
+
+Each project card should include:
+
+Project Title
+
+A concise description of the project.
+
+A list of technologies used.
+
+A direct link to the GitHub repository.
+
+An optional link to a live demo if available.
+
+Demos & Media Section:
+
+A dedicated section to embed videos from YouTube or Vimeo showcasing project demos or presentations.
+
+An image gallery for project screenshots or other relevant visuals.
+
+Contact Section:
+
+A simple and elegant contact form with fields for Name, Email, and Message.
+
+Include his professional email address and a call-to-action to connect.
+
+Design and Technology:
+
+Framework: Use React with functional components and hooks.
+
+Styling: Use Tailwind CSS for a utility-first approach to create a clean, modern, and responsive design.
+
+Icons: Use a popular icon library like Lucide React or Font Awesome for consistency.
+
+Responsiveness: The website must be fully responsive and look great on all devices, including desktops, tablets, and smartphones.
+
+Animations: Use subtle animations and transitions to enhance the user experience.
+
+Instructions for the AI:
+
+Generate the complete, self-contained React code in a single file.
+
+Use placeholder content for project details, images, and video URLs that I can easily replace.
+
+The code should be well-commented to explain the structure and logic.
+
+The final output should be a professional and polished portfolio website that is ready to be deployed.
