@@ -108,12 +108,11 @@ export default function DemosSection() {
                 <img
                   src={item.image}
                   alt={item.alt}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110 reality-bend"
+                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                <div className="absolute inset-0 holographic-shimmer opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                  <h4 className="font-semibold quantum-glow">{item.title}</h4>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <h4 className="font-semibold">{item.title}</h4>
                 </div>
               </div>
             ))}
