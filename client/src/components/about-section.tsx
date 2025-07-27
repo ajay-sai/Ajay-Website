@@ -9,8 +9,6 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-20 bg-secondary/30 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 data-stream opacity-20"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
