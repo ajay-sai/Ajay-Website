@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(15, 8%, 5%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(207, 90%, 54%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  
+  /* Custom quantum colors */
+  --quantum-blue: hsl(207, 90%, 54%);
+  --quantum-green: hsl(142, 71%, 45%);
+  --quantum-purple: hsl(271, 81%, 56%);
+  --quantum-cyan: hsl(180, 100%, 70%);
+  --quantum-pink: hsl(322, 100%, 75%);
+  
+  /* Neural network colors */
+  --neural-primary: hsl(15, 8%, 5%);
+  --neural-secondary: hsl(222, 47%, 11%);
+  --neural-accent: hsl(207, 90%, 54%);
+  --neural-glow: hsl(142, 71%, 45%);
+}
+
+.dark {
+  --background: hsl(15, 8%, 5%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(207, 90%, 54%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Quantum animations */
+  @keyframes quantumFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(2deg); }
+    50% { transform: translateY(-10px) rotate(-1deg); }
+    75% { transform: translateY(-15px) rotate(1deg); }
+  }
+
+  @keyframes quantumPulse {
+    0% { box-shadow: 0 0 0 0 hsla(207, 90%, 54%, 0.7); }
+    70% { box-shadow: 0 0 0 30px hsla(207, 90%, 54%, 0); }
+    100% { box-shadow: 0 0 0 0 hsla(207, 90%, 54%, 0); }
+  }
+
+  @keyframes neuralFlow {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100vw); opacity: 0; }
+  }
+
+  @keyframes holographicShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes matrixRain {
+    0% { transform: translateY(-100vh); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  @keyframes quantumGlow {
+    0%, 100% { 
+      text-shadow: 0 0 5px var(--quantum-blue), 0 0 10px var(--quantum-blue), 0 0 15px var(--quantum-blue);
+    }
+    25% { 
+      text-shadow: 0 0 5px var(--quantum-green), 0 0 10px var(--quantum-green), 0 0 15px var(--quantum-green);
+    }
+    50% { 
+      text-shadow: 0 0 5px var(--quantum-purple), 0 0 10px var(--quantum-purple), 0 0 15px var(--quantum-purple);
+    }
+    75% { 
+      text-shadow: 0 0 5px var(--quantum-cyan), 0 0 10px var(--quantum-cyan), 0 0 15px var(--quantum-cyan);
+    }
+  }
+
+  @keyframes dataStream {
+    0% { 
+      background-position: 0 0;
+      opacity: 0.3;
+    }
+    50% { 
+      opacity: 0.8;
+    }
+    100% { 
+      background-position: 100px 100px;
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes consciousnessExpand {
+    0% { 
+      transform: scale(1) rotate(0deg);
+      filter: hue-rotate(0deg);
+    }
+    50% { 
+      transform: scale(1.05) rotate(180deg);
+      filter: hue-rotate(180deg);
+    }
+    100% { 
+      transform: scale(1) rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes realityBend {
+    0%, 100% { 
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      filter: brightness(1);
+    }
+    25% { 
+      transform: perspective(1000px) rotateX(5deg) rotateY(-2deg);
+      filter: brightness(1.1);
+    }
+    50% { 
+      transform: perspective(1000px) rotateX(-2deg) rotateY(5deg);
+      filter: brightness(0.9);
+    }
+    75% { 
+      transform: perspective(1000px) rotateX(3deg) rotateY(-3deg);
+      filter: brightness(1.05);
+    }
+  }
+
+  .quantum-float {
+    animation: quantumFloat 6s ease-in-out infinite;
+  }
+
+  .quantum-pulse {
+    animation: quantumPulse 2s infinite;
+  }
+
+  .neural-flow {
+    animation: neuralFlow 3s linear infinite;
+  }
+
+  .holographic-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--quantum-blue),
+      var(--quantum-green),
+      var(--quantum-purple),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: holographicShimmer 3s ease-in-out infinite;
+  }
+
+  .quantum-glow {
+    animation: quantumGlow 4s ease-in-out infinite;
+  }
+
+  .data-stream {
+    background-image: 
+      linear-gradient(45deg, transparent 25%, var(--quantum-blue) 25%, var(--quantum-blue) 50%, transparent 50%),
+      linear-gradient(-45deg, transparent 25%, var(--quantum-green) 25%, var(--quantum-green) 50%, transparent 50%);
+    background-size: 30px 30px;
+    animation: dataStream 4s linear infinite;
+  }
+
+  .consciousness-expand {
+    animation: consciousnessExpand 8s ease-in-out infinite;
+  }
+
+  .reality-bend {
+    animation: realityBend 6s ease-in-out infinite;
+  }
+
+  /* Gradient text effects */
+  .gradient-text {
+    background: linear-gradient(
+      45deg,
+      var(--quantum-blue),
+      var(--quantum-green),
+      var(--quantum-purple),
+      var(--quantum-cyan)
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographicShimmer 4s ease-in-out infinite;
+  }
+
+  /* Card hover effects */
+  .quantum-card {
+    background: linear-gradient(145deg, 
+      hsla(240, 10%, 3.9%, 0.8), 
+      hsla(240, 3.7%, 15.9%, 0.6)
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(207, 90%, 54%, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .quantum-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+      0 25px 50px -12px hsla(0, 0%, 0%, 0.5),
+      0 0 50px hsla(207, 90%, 54%, 0.3),
+      inset 0 1px 0 hsla(255, 255%, 255%, 0.1);
+    border-color: var(--quantum-blue);
+  }
+
+  /* Particle system */
+  .particle {
+    position: absolute;
+    background: var(--quantum-blue);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFloat 6s linear infinite;
+  }
+
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1);
+      opacity: 0;
+    }
+  }
+
+  /* Neural network connections */
+  .neural-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--quantum-blue), 
+      transparent
+    );
+    animation: neuralFlow 4s linear infinite;
+  }
+
+  /* Quantum background dots */
+  .quantum-dots {
+    background-image: radial-gradient(
+      circle,
+      hsla(207, 90%, 54%, 0.3) 1px,
+      transparent 1px
+    );
+    background-size: 50px 50px;
+    animation: dataStream 20s linear infinite;
+  }
+
+  /* Holographic glass effect */
+  .holo-glass {
+    background: linear-gradient(145deg,
+      hsla(207, 90%, 54%, 0.1),
+      hsla(142, 71%, 45%, 0.1)
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(255, 255%, 255%, 0.1);
+  }
+
+  /* Skill progress animation */
+  .skill-progress {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      hsla(255, 255%, 255%, 0.3),
+      transparent
+    );
+    animation: skillShimmer 2s ease-in-out infinite;
+  }
+
+  @keyframes skillShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Cursor effects */
+  .quantum-cursor {
+    pointer-events: none;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--quantum-blue);
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+  }
+
+  /* Responsive quantum effects */
+  @media (max-width: 768px) {
+    .quantum-float {
+      animation-duration: 4s;
+    }
+    
+    .consciousness-expand {
+      animation-duration: 6s;
+    }
+    
+    .reality-bend {
+      animation: none;
+    }
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+}
