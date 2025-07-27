@@ -76,7 +76,7 @@ export default function ProjectsSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text reality-bend">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
             Featured Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
@@ -93,14 +93,13 @@ export default function ProjectsSection() {
             >
               {/* Project Icon */}
               <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-                <div className="text-6xl quantum-float consciousness-expand">
+                <div className="text-6xl">
                   {project.icon}
                 </div>
-                <div className="absolute inset-0 holographic-shimmer opacity-30"></div>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 quantum-glow">{project.title}</h3>
+                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
