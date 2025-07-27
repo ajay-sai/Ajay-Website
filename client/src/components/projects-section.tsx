@@ -167,7 +167,7 @@ export default function ProjectsSection() {
           <Button
             asChild
             size="lg"
-            className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 quantum-pulse"
+            className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
             <a
               href="https://github.com/ajay-sai"
