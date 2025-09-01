@@ -22,7 +22,6 @@ export default function Navigation() {
     { href: "#showcase", label: "Showcase" },
     { href: "#timeline", label: "Journey" },
     { href: "#projects", label: "Projects" },
-    { href: "#demos", label: "Demos" },
     { href: "#contact", label: "Contact" },
   ];
 
