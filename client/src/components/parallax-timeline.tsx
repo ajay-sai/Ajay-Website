@@ -10,6 +10,7 @@ interface TimelineEvent {
   color: string;
   achievements: string[];
   companyImage?: string;
+  companyImages?: string[];
   companyLogo?: string;
   companyColor?: string;
 }
@@ -64,6 +65,7 @@ const timelineEvents: TimelineEvent[] = [
     icon: Calendar,
     color: "from-orange-500 to-red-500",
     companyImage: harleyDavidsonImage,
+    companyImages: [harleyDavidsonImage, harleyDavidsonImage, harleyDavidsonImage],
     achievements: [
       "Built optimized data models and ETL pipelines reducing data processing time by 80%",
       "Decreased open purchase orders by 55% and inventory mismatches by 30%",
@@ -247,59 +249,108 @@ export default function ParallaxTimeline() {
                   </div>
                 </div>
 
-                {/* Floating Company Logo */}
-                {(event.companyLogo || event.companyImage) && (
+                {/* Massive Scrolling Image Stack */}
+                {(event.companyImages || event.companyImage || event.companyLogo) && (
                   <div 
                     className={`absolute top-0 ${
-                      index % 2 === 0 ? 'left-1/2 ml-32' : 'right-1/2 mr-32'
-                    } transform ${
-                      index % 2 === 0 ? 'translate-x-0' : '-translate-x-0'
-                    } transition-all duration-1000 z-20`}
+                      index % 2 === 0 ? 'left-1/2 ml-40' : 'right-1/2 mr-40'
+                    } transform transition-all duration-1000 z-20`}
                     style={{
-                      transform: `translateY(${scrollProgress * -50 + (index * 20)}px) ${
-                        index % 2 === 0 ? 'translateX(40px)' : 'translateX(-40px)'
-                      } scale(${isActive ? 1 : 0.8})`,
-                      opacity: isActive ? 1 : 0.6
+                      transform: `translateY(${scrollProgress * -80 + (index * 30)}px) ${
+                        index % 2 === 0 ? 'translateX(60px)' : 'translateX(-60px)'
+                      } scale(${isActive ? 1 : 0.7})`,
+                      opacity: isActive ? 1 : 0.5
                     }}
                   >
-                    <div className="relative w-40 h-40 rounded-2xl bg-white shadow-2xl border-2 border-gray-100 flex items-center justify-center overflow-hidden backdrop-blur-sm hover:shadow-3xl transition-all duration-500">
-                      {/* Animated border effect */}
-                      <div 
-                        className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-primary/20 to-accent/20 animate-pulse"
-                        style={{ animationDuration: '3s' }}
-                      />
-                      
-                      {event.companyImage ? (
-                        <img 
-                          src={event.companyImage} 
-                          alt={`${event.title} company`}
-                          className="relative z-10 w-full h-full object-cover transform hover:scale-110 transition-transform duration-500 filter hover:brightness-110"
-                        />
+                    {/* Large Image Stack Container */}
+                    <div className="relative w-80 h-96 perspective-1000">
+                      {/* Multiple Image Layers for Stack Effect */}
+                      {event.companyImages ? (
+                        event.companyImages.map((image, imageIndex) => {
+                          const stackOffset = (scrollProgress * 3 + imageIndex) % event.companyImages!.length;
+                          const isVisible = Math.abs(stackOffset - 1) < 1;
+                          
+                          return (
+                            <div
+                              key={imageIndex}
+                              className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm transition-all duration-1000"
+                              style={{
+                                transform: `
+                                  translateZ(${(imageIndex - stackOffset) * 50}px)
+                                  translateY(${(imageIndex - stackOffset) * 20}px)
+                                  rotateX(${(imageIndex - stackOffset) * 5}deg)
+                                  scale(${1 - Math.abs(imageIndex - stackOffset) * 0.1})
+                                `,
+                                opacity: isVisible ? 1 : 0.6,
+                                zIndex: 10 - Math.abs(imageIndex - stackOffset)
+                              }}
+                            >
+                              <img 
+                                src={image} 
+                                alt={`${event.title} company ${imageIndex + 1}`}
+                                className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
+                              />
+                              
+                              {/* Image Overlay with Company Info */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                              <div className="absolute bottom-6 left-6 right-6">
+                                <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg mb-2`}>
+                                  {event.year}
+                                </div>
+                                <h4 className="text-white font-bold text-xl mb-1">{event.title}</h4>
+                                <p className="text-white/80 text-sm">{event.description.split(' (')[0]}</p>
+                              </div>
+                            </div>
+                          );
+                        })
+                      ) : event.companyImage ? (
+                        <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm">
+                          <img 
+                            src={event.companyImage} 
+                            alt={`${event.title} company`}
+                            className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
+                          />
+                          
+                          {/* Image Overlay with Company Info */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                          <div className="absolute bottom-6 left-6 right-6">
+                            <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg mb-2`}>
+                              {event.year}
+                            </div>
+                            <h4 className="text-white font-bold text-xl mb-1">{event.title}</h4>
+                            <p className="text-white/80 text-sm">{event.description.split(' (')[0]}</p>
+                          </div>
+                        </div>
                       ) : (
-                        <div 
-                          className="relative z-10 text-5xl font-bold animate-bounce"
-                          style={{ 
-                            color: event.companyColor,
-                            animationDuration: '2s',
-                            animationDelay: `${index * 0.2}s`
-                          }}
-                        >
-                          {event.companyLogo}
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white to-gray-100 shadow-2xl border-4 border-white/20 flex items-center justify-center">
+                          <div 
+                            className="text-8xl font-bold animate-pulse"
+                            style={{ 
+                              color: event.companyColor,
+                              animationDuration: '3s'
+                            }}
+                          >
+                            {event.companyLogo}
+                          </div>
                         </div>
                       )}
                       
-                      {/* Floating particles effect */}
-                      <div className="absolute inset-0 pointer-events-none">
-                        {[...Array(3)].map((_, particleIndex) => (
+                      {/* Floating Elements Around the Stack */}
+                      <div className="absolute -inset-10 pointer-events-none">
+                        {[...Array(6)].map((_, particleIndex) => (
                           <div
                             key={particleIndex}
-                            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+                            className="absolute w-3 h-3 bg-primary/40 rounded-full blur-sm"
                             style={{
-                              left: `${20 + particleIndex * 30}%`,
-                              top: `${20 + particleIndex * 20}%`,
-                              transform: `translateY(${Math.sin(scrollProgress * Math.PI * 2 + particleIndex) * 10}px)`,
-                              opacity: 0.6,
-                              animationDelay: `${particleIndex * 0.5}s`
+                              left: `${10 + (particleIndex * 20) % 80}%`,
+                              top: `${10 + (particleIndex * 30) % 80}%`,
+                              transform: `
+                                translateY(${Math.sin(scrollProgress * Math.PI * 2 + particleIndex) * 30}px)
+                                translateX(${Math.cos(scrollProgress * Math.PI * 2 + particleIndex) * 20}px)
+                                scale(${0.5 + Math.sin(scrollProgress * Math.PI + particleIndex) * 0.5})
+                              `,
+                              opacity: 0.7,
+                              animationDelay: `${particleIndex * 0.3}s`
                             }}
                           />
                         ))}
