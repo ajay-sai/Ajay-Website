@@ -216,307 +216,196 @@ export default function ParallaxTimeline() {
       </div>
 
       {/* Timeline Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
             Professional Journey
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Discover the evolution of expertise through immersive storytelling and dynamic visual experiences
-          </p>
-          <div className="w-32 h-1 bg-gradient-to-r from-primary via-accent to-primary mx-auto animate-pulse"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
 
-        {/* Enhanced Timeline Container */}
+        {/* Timeline Line */}
         <div className="relative">
-          {/* Central Neural Network Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-primary to-transparent opacity-30" />
-          
-          {/* Quantum Field Lines */}
-          {Array.from({ length: 3 }, (_, i) => (
-            <div
-              key={i}
-              className={`absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-accent to-transparent opacity-20`}
-              style={{
-                left: `calc(50% + ${(i - 1) * 2}px)`,
-                animationDelay: `${i * 0.5}s`
-              }}
-            />
-          ))}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-transparent via-primary to-transparent opacity-50" />
           
           {timelineEvents.map((event, index) => {
             const Icon = event.icon;
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
-            const isEven = index % 2 === 0;
-            const slideOffset = isActive ? 0 : (isEven ? -100 : 100);
             
             return (
               <div
                 key={event.year}
-                className={`relative mb-32 transition-all duration-1000 ease-out`}
+                className={`relative mb-16 transition-all duration-1000`}
                 style={{
-                  transform: `translateY(${isActive ? 0 : 80}px)`,
-                  opacity: isActive ? 1 : 0.2
+                  transform: `translateY(${isActive ? 0 : 50}px)`,
+                  opacity: isActive ? 1 : 0.3
                 }}
               >
-                {/* Floating Timeline Node with Quantum Ring */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 top-20 z-30">
-                  <div className={`relative w-20 h-20 transition-all duration-700 ${
-                    isActive ? 'scale-110' : 'scale-100'
+                {/* Timeline Node */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 z-20">
+                  <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
+                    isActive ? 'scale-110 shadow-lg shadow-primary/30' : 'scale-100'
                   }`}>
-                    {/* Quantum Ring Animation */}
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${event.color} animate-pulse opacity-20`} />
-                    <div className={`absolute inset-2 rounded-full bg-gradient-to-r ${event.color} opacity-40 animate-spin`} style={{animationDuration: '8s'}} />
-                    
-                    {/* Central Node */}
-                    <div className={`absolute inset-3 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center shadow-2xl border-2 border-background`}>
-                      <Icon className="w-8 h-8 text-white drop-shadow-lg" />
-                    </div>
-                    
-                    {/* Neural Connections */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      {Array.from({ length: 6 }, (_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-1 h-8 bg-gradient-to-t from-primary/20 to-transparent"
-                          style={{
-                            transform: `rotate(${i * 60}deg) translateY(-20px)`,
-                            opacity: isActive ? 0.6 : 0.2,
-                            transition: 'opacity 0.5s ease'
-                          }}
-                        />
-                      ))}
-                    </div>
+                    <Icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
 
-                {/* Immersive Full-Width Layout */}
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${
-                  isEven ? 'lg:grid-flow-row' : 'lg:grid-flow-row-dense'
-                }`}>
+                {/* Container for both Content Card and Workplace Gallery */}
+                <div className={`flex items-start gap-8 ${
+                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                } max-w-6xl mx-auto px-4`}>
                   
-                  {/* Visual Gallery Section */}
-                  <div 
-                    className={`${isEven ? 'lg:order-1' : 'lg:order-2'} relative`}
-                    style={{
-                      transform: `translateX(${slideOffset}px) scale(${isActive ? 1 : 0.9})`,
-                      opacity: isActive ? 1 : 0.3,
-                      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
-                    {/* Primary Company Visual */}
-                    {event.companyImage && (
-                      <div className="relative mb-6 group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
-                        <div 
-                          className="relative h-80 rounded-3xl overflow-hidden shadow-2xl border border-border/50 group-hover:scale-105 transition-all duration-700"
-                          style={{
-                            backgroundImage: `url(${event.companyImage})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
-                          }}
-                        >
-                          {/* Dynamic Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/60" />
-                          
-                          {/* Floating Year Badge */}
-                          <div className="absolute top-6 left-6">
-                            <div className={`px-6 py-3 rounded-2xl bg-gradient-to-r ${event.color} text-white font-bold text-xl shadow-2xl backdrop-blur-sm border border-white/20`}>
-                              {event.year}
-                            </div>
-                          </div>
-                          
-                          {/* Parallax Orbs */}
+                  {/* Content Card */}
+                  <div className="flex-1 max-w-md">
+                    <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
+                      {/* Company Logo Header */}
+                      {event.companyImage && (
+                        <div className="relative -m-6 mb-6">
                           <div 
-                            className="absolute top-6 right-6 w-20 h-20 rounded-full bg-gradient-to-br from-white/20 to-transparent backdrop-blur-sm border border-white/30"
+                            className="h-48 bg-cover bg-center relative overflow-hidden"
                             style={{
-                              transform: `translateY(${scrollProgress * -40}px) rotate(${scrollProgress * 360}deg)`,
-                              transition: 'transform 0.1s ease-out'
-                            }}
-                          />
-                          <div 
-                            className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 backdrop-blur-sm"
-                            style={{
-                              transform: `translateY(${scrollProgress * 20}px) rotate(${scrollProgress * -180}deg)`,
-                              transition: 'transform 0.1s ease-out'
-                            }}
-                          />
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* Workplace Gallery Masonry */}
-                    {event.workplaceImages && (
-                      <div className="grid grid-cols-2 gap-4">
-                        {event.workplaceImages.slice(0, 4).map((image, imageIndex) => (
-                          <div
-                            key={imageIndex}
-                            className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${
-                              imageIndex === 0 ? 'col-span-2 h-32' : 'h-24'
-                            }`}
-                            style={{
-                              transform: `translateY(${isActive ? 0 : 20}px)`,
-                              opacity: isActive ? 1 : 0,
-                              transitionDelay: `${imageIndex * 150}ms`
+                              backgroundImage: `url(${event.companyImage})`,
+                              transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
+                              opacity: isActive ? 1 : 0.7,
+                              transition: 'all 0.8s ease-out'
                             }}
                           >
-                            <img 
-                              src={image} 
-                              alt={`${event.title} workspace ${imageIndex + 1}`}
-                              className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                            <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded-full">
-                              {imageIndex + 1}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content Narrative Section */}
-                  <div 
-                    className={`${isEven ? 'lg:order-2' : 'lg:order-1'} relative`}
-                    style={{
-                      transform: `translateX(${-slideOffset}px) scale(${isActive ? 1 : 0.9})`,
-                      opacity: isActive ? 1 : 0.3,
-                      transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
-                    <div className="quantum-card p-8 rounded-3xl shadow-2xl border border-border/50 backdrop-blur-sm relative overflow-hidden">
-                      {/* Background Pattern */}
-                      <div className="absolute inset-0 opacity-5">
-                        <div className={`w-full h-full bg-gradient-to-br ${event.color} opacity-10`} />
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="relative z-10">
-                        {/* Role Header */}
-                        <div className="mb-6">
-                          <h3 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                            {event.title}
-                          </h3>
-                          <p className="text-lg text-muted-foreground leading-relaxed">
-                            {event.description}
-                          </p>
-                        </div>
-
-                        {/* Impact Highlights */}
-                        <div className="space-y-4 mb-6">
-                          {event.achievements.map((achievement, achievementIndex) => {
-                            const getIcon = () => {
-                              if (achievementIndex === 0) return Target;
-                              if (achievementIndex === 1) return Zap;
-                              return Settings;
-                            };
+                            {/* Overlay for text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                             
-                            const IconComponent = getIcon();
-                            const isTechStack = achievementIndex === 2;
-                            
-                            return (
-                              <div
-                                key={achievementIndex}
-                                className="flex items-start space-x-4 group"
-                                style={{
-                                  transform: `translateX(${isActive ? 0 : (isEven ? -30 : 30)}px)`,
-                                  opacity: isActive ? 1 : 0,
-                                  transition: 'all 0.6s ease-out',
-                                  transitionDelay: `${achievementIndex * 200}ms`
-                                }}
-                              >
-                                <div className={`flex-shrink-0 w-8 h-8 rounded-xl bg-gradient-to-r ${event.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                  <IconComponent className="w-4 h-4 text-white" />
-                                </div>
-                                <div className="flex-1">
-                                  <p className={`${
-                                    isTechStack 
-                                      ? 'text-sm text-muted-foreground leading-relaxed' 
-                                      : 'text-base text-foreground leading-relaxed font-medium'
-                                  }`}>
-                                    {isTechStack && (
-                                      <span className="inline-flex items-center px-3 py-1 bg-primary/15 text-primary text-xs font-semibold rounded-full mr-3 mb-2">
-                                        <Settings className="w-3 h-3 mr-1" />
-                                        Tech Stack
-                                      </span>
-                                    )}
-                                    {achievement}
-                                  </p>
-                                </div>
+                            {/* Year Badge Overlay */}
+                            <div className="absolute bottom-4 left-4">
+                              <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
+                                {event.year}
                               </div>
-                            );
-                          })}
-                        </div>
-
-                        {/* Progress Visualization */}
-                        <div className="relative">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-medium text-muted-foreground">Career Impact</span>
-                            <span className="text-sm font-bold text-primary">{Math.round(itemProgress * 100)}%</span>
-                          </div>
-                          <div className="h-2 bg-secondary/50 rounded-full overflow-hidden">
+                            </div>
+                            
+                            {/* Parallax Effect Elements */}
                             <div 
-                              className={`h-full bg-gradient-to-r ${event.color} transition-all duration-1500 ease-out`}
-                              style={{ 
-                                width: `${itemProgress * 100}%`,
-                                boxShadow: `0 0 10px rgba(59, 130, 246, 0.5)`
+                              className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                              style={{
+                                transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
+                                opacity: 0.6
                               }}
                             />
                           </div>
                         </div>
+                      )}
+                      
+                      {/* Year Badge for entries without images */}
+                      {!event.companyImage && (
+                        <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
+                          {event.year}
+                        </div>
+                      )}
+                      
+                      <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {event.description}
+                      </p>
+
+                      {/* Achievements with Clean Icons */}
+                      <div className="space-y-3">
+                        {event.achievements.map((achievement, achievementIndex) => {
+                          const getIcon = () => {
+                            if (achievementIndex === 0) return Target;
+                            if (achievementIndex === 1) return Zap;
+                            return Settings;
+                          };
+                          
+                          const IconComponent = getIcon();
+                          const isTechStack = achievementIndex === 2;
+                          
+                          return (
+                            <div
+                              key={achievementIndex}
+                              className="flex items-start space-x-3 transform transition-all duration-500"
+                              style={{
+                                transform: `translateX(${isActive ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
+                                opacity: isActive ? 1 : 0,
+                                transitionDelay: `${achievementIndex * 200}ms`
+                              }}
+                            >
+                              <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5 shadow-sm`}>
+                                <IconComponent className="w-3 h-3 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <p className={`${
+                                  isTechStack 
+                                    ? 'text-xs text-muted-foreground leading-relaxed' 
+                                    : 'text-sm text-foreground leading-relaxed'
+                                }`}>
+                                  {isTechStack && (
+                                    <span className="inline-flex items-center px-2 py-1 bg-primary/15 text-primary text-xs font-medium rounded mr-2 mb-1">
+                                      <Settings className="w-3 h-3 mr-1" />
+                                      Tech Stack
+                                    </span>
+                                  )}
+                                  {achievement}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                        <div 
+                          className={`h-full bg-gradient-to-r ${event.color} transition-all duration-1000`}
+                          style={{ width: `${itemProgress * 100}%` }}
+                        />
                       </div>
                     </div>
                   </div>
+
+                  {/* Workplace Gallery - Separate Container */}
+                  {event.workplaceImages && (
+                    <div className="flex-1 max-w-sm">
+                      <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
+                        <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
+                          <Target className="w-4 h-4 mr-2" />
+                          Workplace Gallery
+                        </h4>
+                        <div className="space-y-3 max-h-80 overflow-y-auto">
+                          {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
+                            <div
+                              key={imageIndex}
+                              className="relative rounded-lg overflow-hidden shadow-md border border-border"
+                            >
+                              <img 
+                                src={image} 
+                                alt={`${event.title} workplace ${imageIndex + 1}`}
+                                className="w-full h-24 object-cover hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                                {imageIndex + 1} of {event.workplaceImages.length}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Enhanced Progress Indicator */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-30">
-          <div className="flex items-center space-x-4 bg-black/30 backdrop-blur-2xl rounded-2xl px-6 py-4 border border-white/10 shadow-2xl">
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-white/80 text-sm font-medium">Journey Progress</span>
-            </div>
-            
-            <div className="relative w-32 h-3 bg-white/10 rounded-full overflow-hidden">
+        {/* Progress Indicator */}
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+            <span className="text-white/70 text-sm">Timeline Progress</span>
+            <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
               <div 
-                className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary transition-all duration-500 rounded-full"
-                style={{ 
-                  width: `${scrollProgress * 100}%`,
-                  boxShadow: `0 0 20px rgba(59, 130, 246, 0.5)`
-                }}
+                className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+                style={{ width: `${scrollProgress * 100}%` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/20 rounded-full" />
             </div>
-            
-            <div className="flex items-center space-x-2">
-              <span className="text-white/90 text-sm font-bold">{Math.round(scrollProgress * 100)}%</span>
-              <div className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-white" />
-              </div>
-            </div>
+            <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
           </div>
-        </div>
-
-        {/* Floating Action Elements */}
-        <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-30 space-y-4">
-          {timelineEvents.map((event, index) => (
-            <div
-              key={index}
-              className={`w-3 h-3 rounded-full transition-all duration-500 cursor-pointer ${
-                activeEvent >= index 
-                  ? `bg-gradient-to-r ${event.color} shadow-lg scale-125` 
-                  : 'bg-white/20 hover:bg-white/40'
-              }`}
-              style={{
-                boxShadow: activeEvent >= index ? `0 0 15px rgba(59, 130, 246, 0.6)` : 'none'
-              }}
-            />
-          ))}
         </div>
       </div>
     </section>
