@@ -14,7 +14,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
     title: "Gen AI/ML Engineer",
-    description: "The Home Depot (Jan 2025 - Present) - Leading generative AI systems",
+    description: "The Home Depot Management Company (Jan 2025 - Present)",
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
     achievements: [
@@ -26,7 +26,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2023",
     title: "Senior Data Scientist - Decision Analytics",
-    description: "The Home Depot (Jun 2023 - Jan 2025) - AI pipelines & image generation",
+    description: "The Home Depot Management Company (Jun 2023 - Jan 2025)",
     icon: Code,
     color: "from-green-500 to-emerald-500",
     achievements: [
@@ -38,7 +38,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2022",
     title: "Senior Data Analyst",
-    description: "The Home Depot (Mar 2022 - Jun 2023) - Customer experience analytics",
+    description: "The Home Depot Management Company (Mar 2022 - Jun 2023)",
     icon: Award,
     color: "from-purple-500 to-violet-500",
     achievements: [
@@ -49,8 +49,8 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2020",
-    title: "Data Analyst & Engineer",
-    description: "Harley Davidson (Feb 2020 - Mar 2022) - BI solutions & data engineering",
+    title: "Data Analyst and Engineer",
+    description: "Harley Davidson Motor Company (Feb 2020 - Mar 2022)",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
     achievements: [
@@ -60,27 +60,51 @@ const timelineEvents: TimelineEvent[] = [
     ]
   },
   {
-    year: "2019",
-    title: "Multiple Analytics Roles",
-    description: "Marketing Analyst, Data Scientist, Graduate Assistant (May 2019 - Dec 2019)",
-    icon: Calendar,
+    year: "2019a",
+    title: "Marketing Analyst",
+    description: "Anahata Art and Design Pvt (May 2019 - Dec 2019)",
+    icon: TrendingUp,
+    color: "from-pink-500 to-rose-500",
+    achievements: [
+      "Google Ads campaign: 200% traffic increase with $300 budget",
+      "Generated $3100 revenue with 113 product sales",
+      "Optimized cost-per-click to $0.11 with 6,000 keywords"
+    ]
+  },
+  {
+    year: "2019b",
+    title: "Data Scientist",
+    description: "Principal Financial Group (Aug 2019 - Dec 2019)",
+    icon: Code,
     color: "from-indigo-500 to-purple-500",
     achievements: [
-      "Google Ads campaign: 200% traffic increase, $3100 revenue from $300 budget",
-      "Principal Financial: 78% accuracy in market regime prediction",
-      "University of Maryland: Graduate Assistant managing 4000+ student records"
+      "Predicted market regime for Russell 1000 companies",
+      "78% accuracy in investment prediction models",
+      "5% improvement in client investment confidence"
+    ]
+  },
+  {
+    year: "2019c",
+    title: "Graduate Assistant",
+    description: "University of Maryland (May 2019 - Dec 2019)",
+    icon: Award,
+    color: "from-emerald-500 to-teal-500",
+    achievements: [
+      "Managed student records for 4000+ students",
+      "Led team of 10 undergraduate students",
+      "10% improvement in student satisfaction rate"
     ]
   },
   {
     year: "2017",
     title: "Data Analyst",
-    description: "Bridge Solutions (May 2017 - May 2018) - Foundation in data analytics",
+    description: "Bridge Solutions (May 2017 - May 2018)",
     icon: Calendar,
     color: "from-teal-500 to-cyan-500",
     achievements: [
-      "Created interactive dashboards in Tableau and Excel for multiple clients",
+      "Created interactive dashboards in Tableau and Excel",
       "Cost reduction of $1M through analytical inventory targeting",
-      "Developed Docker application for IBM OMS/WMS used by 75% of workforce"
+      "Developed Docker application for IBM OMS/WMS used by 75% workforce"
     ]
   }
 ];
