@@ -27,6 +27,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-blue-500 to-cyan-500",
     companyLogo: "🏠",
     companyColor: "#f96302",
+    workplaceImages: [harleyDavidsonImage1, harleyDavidsonImage2],
     achievements: [
       "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
       "55% reduction in analytics turnaround time through custom prompt optimization frameworks",
@@ -254,6 +255,64 @@ export default function ParallaxTimeline() {
 
 
 
+                {/* Workplace Gallery - Opposite Side */}
+                {event.workplaceImages && (
+                  <div className={`absolute top-0 ${
+                    index % 2 === 0 ? 'left-0 ml-16' : 'right-0 mr-16'
+                  } max-w-sm`}
+                  style={{
+                    transform: `translateY(${isActive ? 0 : 30}px)`,
+                    opacity: isActive ? 1 : 0.4,
+                    transition: 'all 0.8s ease-out'
+                  }}>
+                    <div className="quantum-card p-4 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-sm">
+                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
+                        <Target className="w-4 h-4 mr-2" />
+                        Workplace Gallery
+                      </h4>
+                      <div className="grid grid-cols-2 gap-2">
+                        {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
+                          <div
+                            key={imageIndex}
+                            className="relative group rounded-lg overflow-hidden shadow-md"
+                            style={{
+                              transform: `translateY(${isActive ? 0 : 15}px)`,
+                              opacity: isActive ? 1 : 0,
+                              transitionDelay: `${imageIndex * 150}ms`,
+                              transition: 'all 0.6s ease-out'
+                            }}
+                          >
+                            <img 
+                              src={image} 
+                              alt={`${event.title} workplace ${imageIndex + 1}`}
+                              className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded">
+                              {imageIndex + 1}
+                            </div>
+                          </div>
+                        ))}
+                        {event.workplaceImages.length === 1 && (
+                          <div className="col-span-2">
+                            <div className="relative group rounded-lg overflow-hidden shadow-md">
+                              <img 
+                                src={event.workplaceImages[0]} 
+                                alt={`${event.title} workplace`}
+                                className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-2 text-center">
+                        {event.workplaceImages.length} image{event.workplaceImages.length !== 1 ? 's' : ''}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {/* Content Card */}
                 <div className={`relative ${
                   index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'
@@ -304,40 +363,6 @@ export default function ParallaxTimeline() {
                     <p className="text-muted-foreground mb-4 leading-relaxed">
                       {event.description}
                     </p>
-
-                    {/* Workplace Images Gallery */}
-                    {event.workplaceImages && (
-                      <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
-                          <Target className="w-4 h-4 mr-2" />
-                          Workplace Gallery
-                        </h4>
-                        <div className="grid grid-cols-2 gap-3">
-                          {event.workplaceImages.map((image, imageIndex) => (
-                            <div
-                              key={imageIndex}
-                              className="relative group rounded-lg overflow-hidden shadow-lg"
-                              style={{
-                                transform: `translateY(${isActive ? 0 : 10}px)`,
-                                opacity: isActive ? 1 : 0,
-                                transitionDelay: `${imageIndex * 200}ms`,
-                                transition: 'all 0.6s ease-out'
-                              }}
-                            >
-                              <img 
-                                src={image} 
-                                alt={`${event.title} workplace ${imageIndex + 1}`}
-                                className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                              <div className="absolute bottom-1 right-1 bg-black/60 text-white text-xs px-2 py-1 rounded">
-                                {imageIndex + 1}/{event.workplaceImages.length}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
 
                     {/* Achievements with Clean Icons */}
                     <div className="space-y-3">
