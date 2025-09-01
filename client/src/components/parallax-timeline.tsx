@@ -252,12 +252,12 @@ export default function ParallaxTimeline() {
                 </div>
 
                 {/* Container for both Content Card and Workplace Gallery */}
-                <div className={`flex items-start gap-8 ${
-                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                <div className={`flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8 ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 } max-w-6xl mx-auto px-4`}>
                   
                   {/* Content Card */}
-                  <div className="flex-1 max-w-md">
+                  <div className="w-full lg:flex-1 lg:max-w-md">
                     <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
                       {/* Company Logo Header */}
                       {event.companyImage && (
@@ -362,7 +362,7 @@ export default function ParallaxTimeline() {
 
                   {/* Workplace Gallery - Separate Container */}
                   {event.workplaceImages && (
-                    <div className="flex-1 max-w-sm">
+                    <div className="w-full lg:flex-1 lg:max-w-sm">
                       <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
                         <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
                           <Target className="w-4 h-4 mr-2" />
