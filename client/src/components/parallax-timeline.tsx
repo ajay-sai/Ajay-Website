@@ -363,27 +363,74 @@ export default function ParallaxTimeline() {
                   {/* Workplace Gallery - Separate Container */}
                   {event.workplaceImages && (
                     <div className="w-full lg:flex-1 lg:max-w-sm">
-                      <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
-                        <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
-                          <Target className="w-4 h-4 mr-2" />
-                          Workplace Gallery
-                        </h4>
-                        <div className="space-y-3 max-h-80 overflow-y-auto">
-                          {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
-                            <div
-                              key={imageIndex}
-                              className="relative rounded-lg overflow-hidden shadow-md border border-border"
-                            >
-                              <img 
-                                src={image} 
-                                alt={`${event.title} workplace ${imageIndex + 1}`}
-                                className="w-full h-24 object-cover hover:scale-105 transition-transform duration-300"
-                              />
-                              <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
-                                {imageIndex + 1} of {event.workplaceImages.length}
+                      <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
+                        <div className="p-4 pb-2">
+                          <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
+                            <Target className="w-4 h-4 mr-2" />
+                            Workplace Gallery
+                          </h4>
+                        </div>
+                        
+                        {/* Main Image Display */}
+                        <div className="relative h-64 overflow-hidden">
+                          {event.workplaceImages.slice(0, 5).map((image, imageIndex) => {
+                            // Calculate which image should be visible based on scroll progress
+                            const imageProgress = (scrollProgress * 10 + index * 2) % event.workplaceImages.length;
+                            const currentImageIndex = Math.floor(imageProgress);
+                            const isCurrentImage = imageIndex === currentImageIndex;
+                            
+                            return (
+                              <div
+                                key={imageIndex}
+                                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                                  isCurrentImage ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                                }`}
+                                style={{
+                                  transform: `translateX(${isCurrentImage ? 0 : (imageIndex < currentImageIndex ? -100 : 100)}px) scale(${isCurrentImage ? 1 : 0.95})`,
+                                  zIndex: isCurrentImage ? 10 : 1
+                                }}
+                              >
+                                <img 
+                                  src={image} 
+                                  alt={`${event.title} workplace ${imageIndex + 1}`}
+                                  className="w-full h-full object-cover"
+                                />
+                                
+                                {/* Image overlay with parallax effect */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                                
+                                {/* Image counter */}
+                                <div className="absolute bottom-4 right-4 bg-black/80 text-white text-sm px-3 py-1 rounded-full backdrop-blur-sm">
+                                  {imageIndex + 1} of {event.workplaceImages.length}
+                                </div>
+                                
+                                {/* Progress indicator for current image */}
+                                {isCurrentImage && (
+                                  <div className="absolute bottom-4 left-4">
+                                    <div className="flex space-x-1">
+                                      {event.workplaceImages.slice(0, 5).map((_, dotIndex) => (
+                                        <div
+                                          key={dotIndex}
+                                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                            dotIndex === currentImageIndex 
+                                              ? 'bg-white shadow-lg' 
+                                              : 'bg-white/40'
+                                          }`}
+                                        />
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
                               </div>
-                            </div>
-                          ))}
+                            );
+                          })}
+                        </div>
+                        
+                        {/* Gallery Info */}
+                        <div className="p-4 pt-2">
+                          <p className="text-xs text-muted-foreground">
+                            Images change as you scroll through the timeline
+                          </p>
                         </div>
                       </div>
                     </div>
