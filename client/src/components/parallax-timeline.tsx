@@ -250,18 +250,20 @@ export default function ParallaxTimeline() {
                   </div>
                 </div>
 
-                {/* Centered Scrolling Image Flipper */}
+                {/* Positioned Scrolling Image Flipper */}
                 {(event.companyImages || event.companyImage || event.companyLogo) && (
                   <div 
-                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
+                    className={`absolute top-0 ${
+                      index % 2 === 0 ? 'right-0 mr-8' : 'left-0 ml-8'
+                    } z-20`}
                     style={{
-                      transform: `translate(-50%, -50%) scale(${isActive ? 1 : 0.8})`,
-                      opacity: isActive ? 1 : 0.4,
+                      transform: `translateY(${scrollProgress * -30 + (index * 15)}px) scale(${isActive ? 1 : 0.7})`,
+                      opacity: isActive ? 1 : 0.3,
                       transition: 'all 0.8s ease-out'
                     }}
                   >
-                    {/* Large Centered Image Container */}
-                    <div className="relative w-[500px] h-[600px]">
+                    {/* Company Image Container */}
+                    <div className="relative w-[280px] h-[320px]">
                       {event.companyImages ? (
                         (() => {
                           // Calculate which image to show based on scroll progress
@@ -406,7 +408,7 @@ export default function ParallaxTimeline() {
 
                 {/* Content Card */}
                 <div className={`relative ${
-                  index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'
+                  index % 2 === 0 ? 'mr-auto pr-80' : 'ml-auto pl-80'
                 } max-w-md`}>
                   <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
                     {/* Company Image Header */}
