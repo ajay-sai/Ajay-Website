@@ -300,8 +300,10 @@ export default function ParallaxTimeline() {
                         </div>
                       )}
                       
-                      <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
-                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                      <h3 className={`text-2xl font-bold mb-2 ${isActive ? 'animate-highlight-title' : ''}`}>
+                        {event.title}
+                      </h3>
+                      <p className={`text-muted-foreground mb-4 leading-relaxed ${isActive ? 'animate-highlight-text' : ''}`}>
                         {event.description}
                       </p>
 
@@ -342,7 +344,14 @@ export default function ParallaxTimeline() {
                                       Tech Stack
                                     </span>
                                   )}
-                                  {achievement}
+                                  <span 
+                                    className={`${isActive ? 'animate-highlight' : ''}`}
+                                    style={{
+                                      animationDelay: `${achievementIndex * 300}ms`
+                                    }}
+                                  >
+                                    {isTechStack ? achievement.replace('Technologies: ', '') : achievement}
+                                  </span>
                                 </p>
                               </div>
                             </div>
@@ -361,8 +370,8 @@ export default function ParallaxTimeline() {
                   </div>
 
                   {/* Workplace Gallery - Separate Container */}
-                  {event.workplaceImages && (
-                    <div className="w-full lg:flex-1 lg:max-w-sm">
+                  <div className="w-full lg:flex-1 lg:max-w-sm">
+                    {event.workplaceImages ? (
                       <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
                         <div className="p-4 pb-2">
                           <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
@@ -373,9 +382,9 @@ export default function ParallaxTimeline() {
                         
                         {/* Main Image Display */}
                         <div className="relative h-64 overflow-hidden">
-                          {event.workplaceImages.slice(0, 5).map((image, imageIndex) => {
+                          {event.workplaceImages?.slice(0, 5).map((image, imageIndex) => {
                             // Calculate which image should be visible based on scroll progress
-                            const imageProgress = (scrollProgress * 10 + index * 2) % event.workplaceImages.length;
+                            const imageProgress = (scrollProgress * 10 + index * 2) % (event.workplaceImages?.length || 1);
                             const currentImageIndex = Math.floor(imageProgress);
                             const isCurrentImage = imageIndex === currentImageIndex;
                             
@@ -401,14 +410,14 @@ export default function ParallaxTimeline() {
                                 
                                 {/* Image counter */}
                                 <div className="absolute bottom-4 right-4 bg-black/80 text-white text-sm px-3 py-1 rounded-full backdrop-blur-sm">
-                                  {imageIndex + 1} of {event.workplaceImages.length}
+                                  {imageIndex + 1} of {event.workplaceImages?.length || 0}
                                 </div>
                                 
                                 {/* Progress indicator for current image */}
                                 {isCurrentImage && (
                                   <div className="absolute bottom-4 left-4">
                                     <div className="flex space-x-1">
-                                      {event.workplaceImages.slice(0, 5).map((_, dotIndex) => (
+                                      {event.workplaceImages?.slice(0, 5).map((_, dotIndex) => (
                                         <div
                                           key={dotIndex}
                                           className={`w-2 h-2 rounded-full transition-all duration-300 ${
@@ -425,16 +434,30 @@ export default function ParallaxTimeline() {
                             );
                           })}
                         </div>
+                      </div>
+                    ) : (
+                      /* Placeholder Gallery */
+                      <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl opacity-60">
+                        <div className="p-4 pb-2">
+                          <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
+                            <Target className="w-4 h-4 mr-2" />
+                            Workplace Gallery
+                          </h4>
+                        </div>
                         
-                        {/* Gallery Info */}
-                        <div className="p-4 pt-2">
-                          <p className="text-xs text-muted-foreground">
-                            Images change as you scroll through the timeline
-                          </p>
+                        <div className="relative h-64 bg-gradient-to-br from-secondary/20 to-muted/30 flex items-center justify-center">
+                          <div className="text-center space-y-2">
+                            <div className="w-16 h-16 rounded-full bg-muted/50 flex items-center justify-center mx-auto">
+                              <Target className="w-8 h-8 text-muted-foreground/50" />
+                            </div>
+                            <p className="text-sm text-muted-foreground/70">
+                              Workplace photos coming soon
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             );
