@@ -236,16 +236,14 @@ export default function ParallaxTimeline() {
             return (
               <div
                 key={event.year}
-                className={`relative mb-16 transition-all duration-1000 ${
-                  index % 2 === 0 ? 'text-left' : 'text-right'
-                }`}
+                className={`relative mb-16 transition-all duration-1000`}
                 style={{
                   transform: `translateY(${isActive ? 0 : 50}px)`,
                   opacity: isActive ? 1 : 0.3
                 }}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8">
+                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 z-20">
                   <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
                     isActive ? 'scale-110 shadow-lg shadow-primary/30' : 'scale-100'
                   }`}>
@@ -253,143 +251,143 @@ export default function ParallaxTimeline() {
                   </div>
                 </div>
 
-
-
-                {/* Workplace Gallery - Opposite Side */}
-                {event.workplaceImages && (
-                  <div className={`absolute top-0 ${
-                    index % 2 === 0 ? 'left-0 ml-8' : 'right-0 mr-8'
-                  } w-64 z-10`}>
-                    <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
-                      <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
-                        <Target className="w-4 h-4 mr-2" />
-                        Workplace Gallery
-                      </h4>
-                      <div className="space-y-3">
-                        {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
-                          <div
-                            key={imageIndex}
-                            className="relative rounded-lg overflow-hidden shadow-md border border-border"
+                {/* Container for both Content Card and Workplace Gallery */}
+                <div className={`flex items-start gap-8 ${
+                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                } max-w-6xl mx-auto px-4`}>
+                  
+                  {/* Content Card */}
+                  <div className="flex-1 max-w-md">
+                    <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
+                      {/* Company Logo Header */}
+                      {event.companyImage && (
+                        <div className="relative -m-6 mb-6">
+                          <div 
+                            className="h-48 bg-cover bg-center relative overflow-hidden"
+                            style={{
+                              backgroundImage: `url(${event.companyImage})`,
+                              transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
+                              opacity: isActive ? 1 : 0.7,
+                              transition: 'all 0.8s ease-out'
+                            }}
                           >
-                            <img 
-                              src={image} 
-                              alt={`${event.title} workplace ${imageIndex + 1}`}
-                              className="w-full h-24 object-cover hover:scale-105 transition-transform duration-300"
-                            />
-                            <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
-                              {imageIndex + 1} of {event.workplaceImages.length}
+                            {/* Overlay for text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                            
+                            {/* Year Badge Overlay */}
+                            <div className="absolute bottom-4 left-4">
+                              <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
+                                {event.year}
+                              </div>
                             </div>
+                            
+                            {/* Parallax Effect Elements */}
+                            <div 
+                              className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                              style={{
+                                transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
+                                opacity: 0.6
+                              }}
+                            />
                           </div>
-                        ))}
+                        </div>
+                      )}
+                      
+                      {/* Year Badge for entries without images */}
+                      {!event.companyImage && (
+                        <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
+                          {event.year}
+                        </div>
+                      )}
+                      
+                      <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {event.description}
+                      </p>
+
+                      {/* Achievements with Clean Icons */}
+                      <div className="space-y-3">
+                        {event.achievements.map((achievement, achievementIndex) => {
+                          const getIcon = () => {
+                            if (achievementIndex === 0) return Target;
+                            if (achievementIndex === 1) return Zap;
+                            return Settings;
+                          };
+                          
+                          const IconComponent = getIcon();
+                          const isTechStack = achievementIndex === 2;
+                          
+                          return (
+                            <div
+                              key={achievementIndex}
+                              className="flex items-start space-x-3 transform transition-all duration-500"
+                              style={{
+                                transform: `translateX(${isActive ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
+                                opacity: isActive ? 1 : 0,
+                                transitionDelay: `${achievementIndex * 200}ms`
+                              }}
+                            >
+                              <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5 shadow-sm`}>
+                                <IconComponent className="w-3 h-3 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <p className={`${
+                                  isTechStack 
+                                    ? 'text-xs text-muted-foreground leading-relaxed' 
+                                    : 'text-sm text-foreground leading-relaxed'
+                                }`}>
+                                  {isTechStack && (
+                                    <span className="inline-flex items-center px-2 py-1 bg-primary/15 text-primary text-xs font-medium rounded mr-2 mb-1">
+                                      <Settings className="w-3 h-3 mr-1" />
+                                      Tech Stack
+                                    </span>
+                                  )}
+                                  {achievement}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                        <div 
+                          className={`h-full bg-gradient-to-r ${event.color} transition-all duration-1000`}
+                          style={{ width: `${itemProgress * 100}%` }}
+                        />
                       </div>
                     </div>
                   </div>
-                )}
 
-                {/* Content Card */}
-                <div className={`relative ${
-                  index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'
-                } max-w-md`}>
-                  <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
-                    {/* Company Logo Header */}
-                    {event.companyImage && (
-                      <div className="relative -m-6 mb-6">
-                        <div 
-                          className="h-48 bg-cover bg-center relative overflow-hidden"
-                          style={{
-                            backgroundImage: `url(${event.companyImage})`,
-                            transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
-                            opacity: isActive ? 1 : 0.7,
-                            transition: 'all 0.8s ease-out'
-                          }}
-                        >
-                          {/* Overlay for text readability */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                          
-                          {/* Year Badge Overlay */}
-                          <div className="absolute bottom-4 left-4">
-                            <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
-                              {event.year}
+                  {/* Workplace Gallery - Separate Container */}
+                  {event.workplaceImages && (
+                    <div className="flex-1 max-w-sm">
+                      <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
+                        <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
+                          <Target className="w-4 h-4 mr-2" />
+                          Workplace Gallery
+                        </h4>
+                        <div className="space-y-3 max-h-80 overflow-y-auto">
+                          {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
+                            <div
+                              key={imageIndex}
+                              className="relative rounded-lg overflow-hidden shadow-md border border-border"
+                            >
+                              <img 
+                                src={image} 
+                                alt={`${event.title} workplace ${imageIndex + 1}`}
+                                className="w-full h-24 object-cover hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                                {imageIndex + 1} of {event.workplaceImages.length}
+                              </div>
                             </div>
-                          </div>
-                          
-                          {/* Parallax Effect Elements */}
-                          <div 
-                            className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
-                            style={{
-                              transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
-                              opacity: 0.6
-                            }}
-                          />
+                          ))}
                         </div>
                       </div>
-                    )}
-                    
-                    {/* Year Badge for entries without images */}
-                    {!event.companyImage && (
-                      <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
-                        {event.year}
-                      </div>
-                    )}
-                    
-                    <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {event.description}
-                    </p>
-
-                    {/* Achievements with Clean Icons */}
-                    <div className="space-y-3">
-                      {event.achievements.map((achievement, achievementIndex) => {
-                        const getIcon = () => {
-                          if (achievementIndex === 0) return Target;
-                          if (achievementIndex === 1) return Zap;
-                          return Settings;
-                        };
-                        
-                        const IconComponent = getIcon();
-                        const isTechStack = achievementIndex === 2;
-                        
-                        return (
-                          <div
-                            key={achievementIndex}
-                            className="flex items-start space-x-3 transform transition-all duration-500"
-                            style={{
-                              transform: `translateX(${isActive ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
-                              opacity: isActive ? 1 : 0,
-                              transitionDelay: `${achievementIndex * 200}ms`
-                            }}
-                          >
-                            <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5 shadow-sm`}>
-                              <IconComponent className="w-3 h-3 text-white" />
-                            </div>
-                            <div className="flex-1">
-                              <p className={`${
-                                isTechStack 
-                                  ? 'text-xs text-muted-foreground leading-relaxed' 
-                                  : 'text-sm text-foreground leading-relaxed'
-                              }`}>
-                                {isTechStack && (
-                                  <span className="inline-flex items-center px-2 py-1 bg-primary/15 text-primary text-xs font-medium rounded mr-2 mb-1">
-                                    <Settings className="w-3 h-3 mr-1" />
-                                    Tech Stack
-                                  </span>
-                                )}
-                                {achievement}
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })}
                     </div>
-
-                    {/* Progress Bar */}
-                    <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full bg-gradient-to-r ${event.color} transition-all duration-1000`}
-                        style={{ width: `${itemProgress * 100}%` }}
-                      />
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             );
