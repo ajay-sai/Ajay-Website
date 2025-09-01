@@ -18,9 +18,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
     achievements: [
-      "Designed scalable GenAI systems using GPT-4, BERT, Gemini, Longformer",
-      "Fine-tuned LLMs with LoRA/QLoRA methods using HuggingFace Transformers",
-      "55% reduction in analytics turnaround time through automation"
+      "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
+      "55% reduction in analytics turnaround time through custom prompt optimization frameworks",
+      "Technologies: GPT-4, BERT, Gemini, Longformer, LoRA/QLoRA, HuggingFace, TFX, Vertex AI, MLflow"
     ]
   },
   {
@@ -30,9 +30,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: Code,
     color: "from-green-500 to-emerald-500",
     achievements: [
-      "Built dynamic image generation with Google Image Gen-3 & Stable Diffusion",
-      "87% accuracy in house renovation prediction targeting $20M savings",
-      "40% increase in data processing efficiency with 50TB integration"
+      "Architected dynamic image generation pipeline transforming Home Depot's guided search",
+      "87% accuracy in house renovation prediction targeting $20M marketing budget savings",
+      "Technologies: Google Image Gen-3, Stable Diffusion, Gemini-1.5 Pro, ResNet, Vision Transformers, BigQuery"
     ]
   },
   {
@@ -42,9 +42,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: Award,
     color: "from-purple-500 to-violet-500",
     achievements: [
-      "Analyzed customer behavior across platforms for 300+ associates",
-      "Led Voice of Associates initiative reducing onboarding time by 20%",
-      "Adobe Analytics SME leading weekly training sessions"
+      "Analyzed customer behavior across platforms providing insights to 300+ associates",
+      "Led Voice of Associates initiative reducing onboarding time by 20% and satisfaction by 10%",
+      "Technologies: Adobe Analytics, Tableau, Google Data Studio, BigQuery, Python, Liftoff platform"
     ]
   },
   {
@@ -54,9 +54,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: Calendar,
     color: "from-orange-500 to-red-500",
     achievements: [
-      "80% reduction in data processing time with optimized ETL pipelines",
-      "55% decrease in open purchase orders through process optimization",
-      "Built dashboards in Tableau, Power BI, and SAP Analytics Cloud"
+      "Built optimized data models and ETL pipelines reducing data processing time by 80%",
+      "Decreased open purchase orders by 55% and inventory mismatches by 30%",
+      "Technologies: Tableau, Power BI, SAP Analytics Cloud, SQL, Alteryx, FLEX PLM, EDI transactions"
     ]
   },
   {
@@ -66,9 +66,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: TrendingUp,
     color: "from-pink-500 to-rose-500",
     achievements: [
-      "Google Ads campaign: 200% traffic increase with $300 budget",
-      "Generated $3100 revenue with 113 product sales",
-      "Optimized cost-per-click to $0.11 with 6,000 keywords"
+      "Managed Google Ads campaign achieving 200% website traffic increase (92% new users/week)",
+      "Generated $3100 revenue with 113 product sales from $300 budget",
+      "Technologies: Google Ads, 110 ad copies, 6,000 keywords, web analytics, cost-per-click optimization"
     ]
   },
   {
@@ -78,9 +78,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: Code,
     color: "from-indigo-500 to-purple-500",
     achievements: [
-      "Predicted market regime for Russell 1000 companies",
-      "78% accuracy in investment prediction models",
-      "5% improvement in client investment confidence"
+      "Predicted market regime of Russell 1000 companies for investment evaluation",
+      "Achieved 78% accuracy in ML models and 5% improvement in client investment confidence",
+      "Technologies: Python, R, SQL Server, Logistic Regression, Random Forest, XGBoost, keras, sklearn"
     ]
   },
   {
@@ -90,9 +90,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: Award,
     color: "from-emerald-500 to-teal-500",
     achievements: [
-      "Managed student records for 4000+ students",
-      "Led team of 10 undergraduate students",
-      "10% improvement in student satisfaction rate"
+      "Assessed and maintained student records for 4000+ students to improve academic standing",
+      "Led team of 10 undergraduate students improving satisfaction rate by 10%",
+      "Technologies: SQL data extraction, academic advisory programs, student performance analytics"
     ]
   },
   {
@@ -102,9 +102,9 @@ const timelineEvents: TimelineEvent[] = [
     icon: Calendar,
     color: "from-teal-500 to-cyan-500",
     achievements: [
-      "Created interactive dashboards in Tableau and Excel",
-      "Cost reduction of $1M through analytical inventory targeting",
-      "Developed Docker application for IBM OMS/WMS used by 75% workforce"
+      "Created visually impactful interactive dashboards reporting key KPIs for multiple clients",
+      "Achieved $1M cost reduction through analytical inventory targeting and optimization",
+      "Technologies: Tableau, Excel, Microsoft SQL Server, Python, Docker, IBM OMS 9.5, WMS 9.5"
     ]
   }
 ];
