@@ -408,7 +408,7 @@ export default function ParallaxTimeline() {
 
                 {/* Content Card */}
                 <div className={`relative ${
-                  index % 2 === 0 ? 'mr-auto pr-80' : 'ml-auto pl-80'
+                  index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'
                 } max-w-md`}>
                   <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
                     {/* Company Image Header */}
