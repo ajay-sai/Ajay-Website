@@ -443,6 +443,65 @@
     }
   }
 
+  /* Text Highlighting Animations */
+  @keyframes highlight {
+    0% {
+      background: transparent;
+      color: inherit;
+    }
+    50% {
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+      color: rgb(59, 130, 246);
+      transform: scale(1.02);
+    }
+    100% {
+      background: transparent;
+      color: inherit;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes highlightTitle {
+    0% {
+      transform: translateY(10px);
+      opacity: 0.7;
+      text-shadow: none;
+    }
+    50% {
+      transform: translateY(0);
+      opacity: 1;
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+      text-shadow: none;
+    }
+  }
+
+  @keyframes highlightText {
+    0% {
+      opacity: 0.7;
+      transform: translateX(-5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-highlight {
+    animation: highlight 2s ease-in-out;
+  }
+
+  .animate-highlight-title {
+    animation: highlightTitle 1.5s ease-out;
+  }
+
+  .animate-highlight-text {
+    animation: highlightText 1s ease-out;
+  }
+
   .cascade-in {
     animation: cascadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
