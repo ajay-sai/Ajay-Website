@@ -22,16 +22,17 @@ export default function AboutSection() {
             mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              With over 8 years of experience in data science and machine learning, I specialize in building 
-              scalable AI solutions that drive business value. My journey began with a fascination for uncovering 
-              patterns in complex datasets, which has evolved into leading cross-functional teams to implement 
-              enterprise-level data strategies.
+              Lead AI Data Scientist with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
+              I specialize in building the full-stack infrastructure that powers modern AI, from architecting scalable ETL and 
+              analytics platforms (BigQuery, GCP) to operationalizing the complete lifecycle of Generative AI models, including 
+              RAG and multi-modal systems.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I have successfully deployed predictive models that increased revenue by 40%, developed recommendation 
-              systems serving millions of users, and led the digital transformation initiatives at Fortune 500 companies. 
-              My expertise spans the entire data science lifecycle, from problem formulation to model deployment and monitoring.
+              My focus is on creating resilient, efficient, and scalable solutions that serve as the backbone for enterprise-level 
+              AI applications. At The Home Depot, I've architected LLM evaluation pipelines, engineered Neo4j Knowledge-Graph RAG 
+              assistants for 200+ analysts, and deployed multi-LLM orchestration systems with structured outputs and safety filters, 
+              delivering measurable impact including 60% reduction in manual reporting and $20M potential marketing savings.
             </p>
 
 
