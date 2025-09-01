@@ -262,7 +262,7 @@ export default function ParallaxTimeline() {
                   } max-w-sm`}
                   style={{
                     transform: `translateY(${isActive ? 0 : 30}px)`,
-                    opacity: isActive ? 1 : 0.4,
+                    opacity: isActive ? 1 : 0.8,
                     transition: 'all 0.8s ease-out'
                   }}>
                     <div className="quantum-card p-4 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-sm">
@@ -274,18 +274,17 @@ export default function ParallaxTimeline() {
                         {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
                           <div
                             key={imageIndex}
-                            className="relative group rounded-lg overflow-hidden shadow-md"
-                            style={{
-                              transform: `translateY(${isActive ? 0 : 15}px)`,
-                              opacity: isActive ? 1 : 0,
-                              transitionDelay: `${imageIndex * 150}ms`,
-                              transition: 'all 0.6s ease-out'
-                            }}
+                            className="relative group rounded-lg overflow-hidden shadow-md bg-gray-200"
                           >
                             <img 
                               src={image} 
                               alt={`${event.title} workplace ${imageIndex + 1}`}
                               className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-300"
+                              onError={(e) => {
+                                console.error('Image failed to load:', image);
+                                e.currentTarget.style.background = 'linear-gradient(45deg, #f3f4f6, #e5e7eb)';
+                              }}
+                              onLoad={() => console.log('Image loaded successfully:', image)}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded">
@@ -293,18 +292,6 @@ export default function ParallaxTimeline() {
                             </div>
                           </div>
                         ))}
-                        {event.workplaceImages.length === 1 && (
-                          <div className="col-span-2">
-                            <div className="relative group rounded-lg overflow-hidden shadow-md">
-                              <img 
-                                src={event.workplaceImages[0]} 
-                                alt={`${event.title} workplace`}
-                                className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            </div>
-                          </div>
-                        )}
                       </div>
                       <div className="text-xs text-muted-foreground mt-2 text-center">
                         {event.workplaceImages.length} image{event.workplaceImages.length !== 1 ? 's' : ''}
