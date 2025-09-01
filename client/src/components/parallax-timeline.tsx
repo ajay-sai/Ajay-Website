@@ -243,22 +243,56 @@ export default function ParallaxTimeline() {
                       {event.description}
                     </p>
 
-                    {/* Achievements with Progress Animation */}
-                    <div className="space-y-2">
-                      {event.achievements.map((achievement, achievementIndex) => (
-                        <div
-                          key={achievementIndex}
-                          className="flex items-center space-x-2 transform transition-all duration-500"
-                          style={{
-                            transform: `translateX(${isActive ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
-                            opacity: isActive ? 1 : 0,
-                            transitionDelay: `${achievementIndex * 200}ms`
-                          }}
-                        >
-                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${event.color}`} />
-                          <span className="text-sm text-muted-foreground">{achievement}</span>
-                        </div>
-                      ))}
+                    {/* Achievements with Enhanced Design */}
+                    <div className="space-y-4">
+                      {event.achievements.map((achievement, achievementIndex) => {
+                        const isFirstTwo = achievementIndex < 2;
+                        const isTechStack = achievementIndex === 2;
+                        
+                        return (
+                          <div
+                            key={achievementIndex}
+                            className={`transform transition-all duration-500 ${
+                              isFirstTwo 
+                                ? 'p-3 rounded-lg bg-gradient-to-r from-secondary/50 to-secondary/30 border border-border/30' 
+                                : 'p-3 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20'
+                            }`}
+                            style={{
+                              transform: `translateX(${isActive ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
+                              opacity: isActive ? 1 : 0,
+                              transitionDelay: `${achievementIndex * 200}ms`
+                            }}
+                          >
+                            <div className="flex items-start space-x-3">
+                              {isFirstTwo ? (
+                                <div className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5`}>
+                                  <span className="text-white text-xs font-bold">{achievementIndex + 1}</span>
+                                </div>
+                              ) : (
+                                <div className="flex-shrink-0 w-6 h-6 rounded-md bg-gradient-to-r from-primary to-accent flex items-center justify-center mt-0.5">
+                                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                                  </svg>
+                                </div>
+                              )}
+                              <div className="flex-1">
+                                <p className={`${
+                                  isFirstTwo 
+                                    ? 'text-sm font-medium text-foreground leading-relaxed' 
+                                    : 'text-xs text-muted-foreground leading-relaxed'
+                                }`}>
+                                  {isTechStack && (
+                                    <span className="inline-block px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded mb-2">
+                                      Tech Stack
+                                    </span>
+                                  )}
+                                  {achievement}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
 
                     {/* Progress Bar */}
