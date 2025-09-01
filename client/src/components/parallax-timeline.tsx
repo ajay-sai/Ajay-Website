@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings } from "lucide-react";
+import harleyDavidsonImage from "@assets/image_1756765291859.png";
 
 interface TimelineEvent {
   year: string;
@@ -8,6 +9,9 @@ interface TimelineEvent {
   icon: React.ElementType;
   color: string;
   achievements: string[];
+  companyImage?: string;
+  companyLogo?: string;
+  companyColor?: string;
 }
 
 const timelineEvents: TimelineEvent[] = [
@@ -17,6 +21,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "The Home Depot Management Company (Jan 2025 - Present)",
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
+    companyLogo: "🏠",
+    companyColor: "#f96302",
     achievements: [
       "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
       "55% reduction in analytics turnaround time through custom prompt optimization frameworks",
@@ -29,6 +35,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "The Home Depot Management Company (Jun 2023 - Jan 2025)",
     icon: Code,
     color: "from-green-500 to-emerald-500",
+    companyLogo: "🏠",
+    companyColor: "#f96302",
     achievements: [
       "Architected dynamic image generation pipeline transforming Home Depot's guided search",
       "87% accuracy in house renovation prediction targeting $20M marketing budget savings",
@@ -41,6 +49,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "The Home Depot Management Company (Mar 2022 - Jun 2023)",
     icon: Award,
     color: "from-purple-500 to-violet-500",
+    companyLogo: "🏠",
+    companyColor: "#f96302",
     achievements: [
       "Analyzed customer behavior across platforms providing insights to 300+ associates",
       "Led Voice of Associates initiative reducing onboarding time by 20% and satisfaction by 10%",
@@ -53,6 +63,7 @@ const timelineEvents: TimelineEvent[] = [
     description: "Harley Davidson Motor Company (Feb 2020 - Mar 2022)",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
+    companyImage: harleyDavidsonImage,
     achievements: [
       "Built optimized data models and ETL pipelines reducing data processing time by 80%",
       "Decreased open purchase orders by 55% and inventory mismatches by 30%",
@@ -65,6 +76,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "Anahata Art and Design Pvt (May 2019 - Dec 2019)",
     icon: TrendingUp,
     color: "from-pink-500 to-rose-500",
+    companyLogo: "🎨",
+    companyColor: "#e91e63",
     achievements: [
       "Managed Google Ads campaign achieving 200% website traffic increase (92% new users/week)",
       "Generated $3100 revenue with 113 product sales from $300 budget",
@@ -77,6 +90,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "Principal Financial Group (Aug 2019 - Dec 2019)",
     icon: Code,
     color: "from-indigo-500 to-purple-500",
+    companyLogo: "💼",
+    companyColor: "#1976d2",
     achievements: [
       "Predicted market regime of Russell 1000 companies for investment evaluation",
       "Achieved 78% accuracy in ML models and 5% improvement in client investment confidence",
@@ -89,6 +104,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "University of Maryland (May 2019 - Dec 2019)",
     icon: Award,
     color: "from-emerald-500 to-teal-500",
+    companyLogo: "🎓",
+    companyColor: "#d32f2f",
     achievements: [
       "Assessed and maintained student records for 4000+ students to improve academic standing",
       "Led team of 10 undergraduate students improving satisfaction rate by 10%",
@@ -101,6 +118,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "Bridge Solutions (May 2017 - May 2018)",
     icon: Calendar,
     color: "from-teal-500 to-cyan-500",
+    companyLogo: "🌉",
+    companyColor: "#00796b",
     achievements: [
       "Created visually impactful interactive dashboards reporting key KPIs for multiple clients",
       "Achieved $1M cost reduction through analytical inventory targeting and optimization",
@@ -228,15 +247,85 @@ export default function ParallaxTimeline() {
                   </div>
                 </div>
 
+                {/* Floating Company Logo */}
+                {(event.companyLogo || event.companyImage) && (
+                  <div 
+                    className={`absolute top-0 ${
+                      index % 2 === 0 ? 'left-1/2 ml-20' : 'right-1/2 mr-20'
+                    } transform ${
+                      index % 2 === 0 ? 'translate-x-0' : '-translate-x-0'
+                    } transition-all duration-1000`}
+                    style={{
+                      transform: `translateY(${scrollProgress * -50 + (index * 20)}px) ${
+                        index % 2 === 0 ? 'translateX(20px)' : 'translateX(-20px)'
+                      } scale(${isActive ? 1 : 0.8})`,
+                      opacity: isActive ? 0.9 : 0.4
+                    }}
+                  >
+                    <div className="w-24 h-24 rounded-xl bg-white shadow-lg border border-gray-200 flex items-center justify-center overflow-hidden">
+                      {event.companyImage ? (
+                        <img 
+                          src={event.companyImage} 
+                          alt={`${event.title} company`}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div 
+                          className="text-3xl font-bold"
+                          style={{ color: event.companyColor }}
+                        >
+                          {event.companyLogo}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 {/* Content Card */}
                 <div className={`relative ${
                   index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'
                 } max-w-md`}>
-                  <div className="quantum-card p-6 rounded-xl shadow-lg">
-                    {/* Year Badge */}
-                    <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
-                      {event.year}
-                    </div>
+                  <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
+                    {/* Company Image Header */}
+                    {event.companyImage && (
+                      <div className="relative -m-6 mb-6">
+                        <div 
+                          className="h-32 bg-cover bg-center relative overflow-hidden"
+                          style={{
+                            backgroundImage: `url(${event.companyImage})`,
+                            transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
+                            opacity: isActive ? 1 : 0.7,
+                            transition: 'all 0.8s ease-out'
+                          }}
+                        >
+                          {/* Overlay for text readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                          
+                          {/* Year Badge Overlay */}
+                          <div className="absolute bottom-4 left-4">
+                            <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
+                              {event.year}
+                            </div>
+                          </div>
+                          
+                          {/* Parallax Effect Elements */}
+                          <div 
+                            className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                            style={{
+                              transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
+                              opacity: 0.6
+                            }}
+                          />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Year Badge for entries without images */}
+                    {!event.companyImage && (
+                      <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
+                        {event.year}
+                      </div>
+                    )}
                     
                     <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
                     <p className="text-muted-foreground mb-4 leading-relaxed">
