@@ -14,7 +14,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
     title: "Gen AI/ML Engineer",
-    description: "The Home Depot - Leading generative AI systems and transformer architectures",
+    description: "The Home Depot (Jan 2025 - Present) - Leading generative AI systems",
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
     achievements: [
@@ -26,7 +26,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2023",
     title: "Senior Data Scientist - Decision Analytics",
-    description: "The Home Depot - Architected AI pipelines and dynamic image generation systems",
+    description: "The Home Depot (Jun 2023 - Jan 2025) - AI pipelines & image generation",
     icon: Code,
     color: "from-green-500 to-emerald-500",
     achievements: [
@@ -38,7 +38,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2022",
     title: "Senior Data Analyst",
-    description: "The Home Depot - Enhanced customer experience analytics and insights",
+    description: "The Home Depot (Mar 2022 - Jun 2023) - Customer experience analytics",
     icon: Award,
     color: "from-purple-500 to-violet-500",
     achievements: [
@@ -50,7 +50,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2020",
     title: "Data Analyst & Engineer",
-    description: "Harley Davidson - Advanced BI solutions and data engineering",
+    description: "Harley Davidson (Feb 2020 - Mar 2022) - BI solutions & data engineering",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
     achievements: [
@@ -61,14 +61,26 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    title: "Marketing Analyst & Data Scientist",
-    description: "Multiple roles - Foundation in analytics and machine learning",
+    title: "Multiple Analytics Roles",
+    description: "Marketing Analyst, Data Scientist, Graduate Assistant (May 2019 - Dec 2019)",
     icon: Calendar,
     color: "from-indigo-500 to-purple-500",
     achievements: [
       "Google Ads campaign: 200% traffic increase, $3100 revenue from $300 budget",
       "Principal Financial: 78% accuracy in market regime prediction",
       "University of Maryland: Graduate Assistant managing 4000+ student records"
+    ]
+  },
+  {
+    year: "2017",
+    title: "Data Analyst",
+    description: "Bridge Solutions (May 2017 - May 2018) - Foundation in data analytics",
+    icon: Calendar,
+    color: "from-teal-500 to-cyan-500",
+    achievements: [
+      "Created interactive dashboards in Tableau and Excel for multiple clients",
+      "Cost reduction of $1M through analytical inventory targeting",
+      "Developed Docker application for IBM OMS/WMS used by 75% of workforce"
     ]
   }
 ];
