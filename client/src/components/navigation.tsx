@@ -19,9 +19,10 @@ export default function Navigation() {
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
-    { href: "#showcase", label: "Portfolio" },
-    { href: "#data-insights", label: "Insights" },
+    { href: "#showcase", label: "Showcase" },
     { href: "#timeline", label: "Journey" },
+    { href: "#projects", label: "Projects" },
+    { href: "#demos", label: "Demos" },
     { href: "#contact", label: "Contact" },
   ];
 
