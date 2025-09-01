@@ -258,43 +258,29 @@ export default function ParallaxTimeline() {
                 {/* Workplace Gallery - Opposite Side */}
                 {event.workplaceImages && (
                   <div className={`absolute top-0 ${
-                    index % 2 === 0 ? 'left-0 ml-16' : 'right-0 mr-16'
-                  } max-w-sm`}
-                  style={{
-                    transform: `translateY(${isActive ? 0 : 30}px)`,
-                    opacity: isActive ? 1 : 0.8,
-                    transition: 'all 0.8s ease-out'
-                  }}>
-                    <div className="quantum-card p-4 rounded-xl shadow-lg overflow-hidden bg-gradient-to-br from-background/95 to-background/80 backdrop-blur-sm">
+                    index % 2 === 0 ? 'left-0 ml-8' : 'right-0 mr-8'
+                  } w-64 z-10`}>
+                    <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl">
                       <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
                         <Target className="w-4 h-4 mr-2" />
                         Workplace Gallery
                       </h4>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="space-y-3">
                         {event.workplaceImages.slice(0, 5).map((image, imageIndex) => (
                           <div
                             key={imageIndex}
-                            className="relative group rounded-lg overflow-hidden shadow-md bg-gray-200"
+                            className="relative rounded-lg overflow-hidden shadow-md border border-border"
                           >
                             <img 
                               src={image} 
                               alt={`${event.title} workplace ${imageIndex + 1}`}
-                              className="w-full h-20 object-cover group-hover:scale-105 transition-transform duration-300"
-                              onError={(e) => {
-                                console.error('Image failed to load:', image);
-                                e.currentTarget.style.background = 'linear-gradient(45deg, #f3f4f6, #e5e7eb)';
-                              }}
-                              onLoad={() => console.log('Image loaded successfully:', image)}
+                              className="w-full h-24 object-cover hover:scale-105 transition-transform duration-300"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded">
-                              {imageIndex + 1}
+                            <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                              {imageIndex + 1} of {event.workplaceImages.length}
                             </div>
                           </div>
                         ))}
-                      </div>
-                      <div className="text-xs text-muted-foreground mt-2 text-center">
-                        {event.workplaceImages.length} image{event.workplaceImages.length !== 1 ? 's' : ''}
                       </div>
                     </div>
                   </div>
