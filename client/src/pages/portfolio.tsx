@@ -44,11 +44,9 @@ export default function Portfolio() {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
-        <ScrollVideoSection />
         <MasonryShowcase />
+        <ScrollVideoSection />
         <ParallaxTimeline />
-        <ProjectsSection />
-        <DemosSection />
         <ContactSection />
       </main>
       
