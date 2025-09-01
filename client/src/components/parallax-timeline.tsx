@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings } from "lucide-react";
 import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
 import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
+import harleyDavidsonLogo from "@assets/image_1756766997358.png";
 
 interface TimelineEvent {
   year: string;
@@ -14,6 +15,7 @@ interface TimelineEvent {
   companyImages?: string[];
   companyLogo?: string;
   companyColor?: string;
+  workplaceImages?: string[];
 }
 
 const timelineEvents: TimelineEvent[] = [
@@ -65,8 +67,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "Harley Davidson Motor Company (Feb 2020 - Mar 2022)",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
-    companyImage: harleyDavidsonImage1,
-    companyImages: [harleyDavidsonImage1, harleyDavidsonImage2],
+    companyImage: harleyDavidsonLogo,
+    workplaceImages: [harleyDavidsonImage1, harleyDavidsonImage2],
     achievements: [
       "Built optimized data models and ETL pipelines reducing data processing time by 80%",
       "Decreased open purchase orders by 55% and inventory mismatches by 30%",
@@ -257,93 +259,42 @@ export default function ParallaxTimeline() {
                   index % 2 === 0 ? 'mr-auto pr-16' : 'ml-auto pl-16'
                 } max-w-md`}>
                   <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
-                    {/* Company Image Header with Scroll-changing functionality */}
-                    {(event.companyImages || event.companyImage) && (
+                    {/* Company Logo Header */}
+                    {event.companyImage && (
                       <div className="relative -m-6 mb-6">
-                        {event.companyImages ? (
-                          (() => {
-                            // Simplified scroll logic: based on overall timeline progress
-                            const eventProgress = Math.max(0, Math.min(1, 
-                              (scrollProgress - (index * 0.125)) / 0.125
-                            ));
-                            
-                            // Current image index based on scroll within this event
-                            const imageCount = event.companyImages.length;
-                            const currentImageIndex = Math.floor(eventProgress * imageCount);
-                            const clampedIndex = Math.min(currentImageIndex, imageCount - 1);
-                            const currentImage = event.companyImages[clampedIndex];
-                            
-                            return (
-                              <div 
-                                className="h-48 bg-cover bg-center relative overflow-hidden"
-                                style={{
-                                  backgroundImage: `url(${currentImage})`,
-                                  transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
-                                  opacity: isActive ? 1 : 0.7,
-                                  transition: 'all 0.8s ease-out'
-                                }}
-                              >
-                                {/* Overlay for text readability */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                                
-                                {/* Image indicator */}
-                                <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
-                                  {clampedIndex + 1} / {imageCount}
-                                </div>
-                                
-                                {/* Year Badge Overlay */}
-                                <div className="absolute bottom-4 left-4">
-                                  <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
-                                    {event.year}
-                                  </div>
-                                </div>
-                                
-                                {/* Parallax Effect Elements */}
-                                <div 
-                                  className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
-                                  style={{
-                                    transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
-                                    opacity: 0.6
-                                  }}
-                                />
-                              </div>
-                            );
-                          })()
-                        ) : (
-                          <div 
-                            className="h-48 bg-cover bg-center relative overflow-hidden"
-                            style={{
-                              backgroundImage: `url(${event.companyImage})`,
-                              transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
-                              opacity: isActive ? 1 : 0.7,
-                              transition: 'all 0.8s ease-out'
-                            }}
-                          >
-                            {/* Overlay for text readability */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                            
-                            {/* Year Badge Overlay */}
-                            <div className="absolute bottom-4 left-4">
-                              <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
-                                {event.year}
-                              </div>
+                        <div 
+                          className="h-48 bg-cover bg-center relative overflow-hidden"
+                          style={{
+                            backgroundImage: `url(${event.companyImage})`,
+                            transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
+                            opacity: isActive ? 1 : 0.7,
+                            transition: 'all 0.8s ease-out'
+                          }}
+                        >
+                          {/* Overlay for text readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                          
+                          {/* Year Badge Overlay */}
+                          <div className="absolute bottom-4 left-4">
+                            <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
+                              {event.year}
                             </div>
-                            
-                            {/* Parallax Effect Elements */}
-                            <div 
-                              className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
-                              style={{
-                                transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
-                                opacity: 0.6
-                              }}
-                            />
                           </div>
-                        )}
+                          
+                          {/* Parallax Effect Elements */}
+                          <div 
+                            className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+                            style={{
+                              transform: `translateY(${scrollProgress * -30}px) rotate(${scrollProgress * 180}deg)`,
+                              opacity: 0.6
+                            }}
+                          />
+                        </div>
                       </div>
                     )}
                     
                     {/* Year Badge for entries without images */}
-                    {!event.companyImages && !event.companyImage && (
+                    {!event.companyImage && (
                       <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
                         {event.year}
                       </div>
@@ -353,6 +304,40 @@ export default function ParallaxTimeline() {
                     <p className="text-muted-foreground mb-4 leading-relaxed">
                       {event.description}
                     </p>
+
+                    {/* Workplace Images Gallery */}
+                    {event.workplaceImages && (
+                      <div className="mb-6">
+                        <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
+                          <Target className="w-4 h-4 mr-2" />
+                          Workplace Gallery
+                        </h4>
+                        <div className="grid grid-cols-2 gap-3">
+                          {event.workplaceImages.map((image, imageIndex) => (
+                            <div
+                              key={imageIndex}
+                              className="relative group rounded-lg overflow-hidden shadow-lg"
+                              style={{
+                                transform: `translateY(${isActive ? 0 : 10}px)`,
+                                opacity: isActive ? 1 : 0,
+                                transitionDelay: `${imageIndex * 200}ms`,
+                                transition: 'all 0.6s ease-out'
+                              }}
+                            >
+                              <img 
+                                src={image} 
+                                alt={`${event.title} workplace ${imageIndex + 1}`}
+                                className="w-full h-24 object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              <div className="absolute bottom-1 right-1 bg-black/60 text-white text-xs px-2 py-1 rounded">
+                                {imageIndex + 1}/{event.workplaceImages.length}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Achievements with Clean Icons */}
                     <div className="space-y-3">
