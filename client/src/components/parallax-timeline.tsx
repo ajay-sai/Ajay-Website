@@ -251,32 +251,59 @@ export default function ParallaxTimeline() {
                 {(event.companyLogo || event.companyImage) && (
                   <div 
                     className={`absolute top-0 ${
-                      index % 2 === 0 ? 'left-1/2 ml-20' : 'right-1/2 mr-20'
+                      index % 2 === 0 ? 'left-1/2 ml-32' : 'right-1/2 mr-32'
                     } transform ${
                       index % 2 === 0 ? 'translate-x-0' : '-translate-x-0'
-                    } transition-all duration-1000`}
+                    } transition-all duration-1000 z-20`}
                     style={{
                       transform: `translateY(${scrollProgress * -50 + (index * 20)}px) ${
-                        index % 2 === 0 ? 'translateX(20px)' : 'translateX(-20px)'
+                        index % 2 === 0 ? 'translateX(40px)' : 'translateX(-40px)'
                       } scale(${isActive ? 1 : 0.8})`,
-                      opacity: isActive ? 0.9 : 0.4
+                      opacity: isActive ? 1 : 0.6
                     }}
                   >
-                    <div className="w-24 h-24 rounded-xl bg-white shadow-lg border border-gray-200 flex items-center justify-center overflow-hidden">
+                    <div className="relative w-40 h-40 rounded-2xl bg-white shadow-2xl border-2 border-gray-100 flex items-center justify-center overflow-hidden backdrop-blur-sm hover:shadow-3xl transition-all duration-500">
+                      {/* Animated border effect */}
+                      <div 
+                        className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-primary/20 to-accent/20 animate-pulse"
+                        style={{ animationDuration: '3s' }}
+                      />
+                      
                       {event.companyImage ? (
                         <img 
                           src={event.companyImage} 
                           alt={`${event.title} company`}
-                          className="w-full h-full object-cover"
+                          className="relative z-10 w-full h-full object-cover transform hover:scale-110 transition-transform duration-500 filter hover:brightness-110"
                         />
                       ) : (
                         <div 
-                          className="text-3xl font-bold"
-                          style={{ color: event.companyColor }}
+                          className="relative z-10 text-5xl font-bold animate-bounce"
+                          style={{ 
+                            color: event.companyColor,
+                            animationDuration: '2s',
+                            animationDelay: `${index * 0.2}s`
+                          }}
                         >
                           {event.companyLogo}
                         </div>
                       )}
+                      
+                      {/* Floating particles effect */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        {[...Array(3)].map((_, particleIndex) => (
+                          <div
+                            key={particleIndex}
+                            className="absolute w-1 h-1 bg-primary/30 rounded-full"
+                            style={{
+                              left: `${20 + particleIndex * 30}%`,
+                              top: `${20 + particleIndex * 20}%`,
+                              transform: `translateY(${Math.sin(scrollProgress * Math.PI * 2 + particleIndex) * 10}px)`,
+                              opacity: 0.6,
+                              animationDelay: `${particleIndex * 0.5}s`
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -290,7 +317,7 @@ export default function ParallaxTimeline() {
                     {event.companyImage && (
                       <div className="relative -m-6 mb-6">
                         <div 
-                          className="h-32 bg-cover bg-center relative overflow-hidden"
+                          className="h-48 bg-cover bg-center relative overflow-hidden"
                           style={{
                             backgroundImage: `url(${event.companyImage})`,
                             transform: `translateY(${isActive ? 0 : 20}px) scale(${isActive ? 1 : 0.95})`,
