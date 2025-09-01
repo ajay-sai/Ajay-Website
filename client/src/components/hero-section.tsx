@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Linkedin, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ajayPhoto from "@assets/image_1756764365127.png";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -46,7 +47,7 @@ export default function HeroSection() {
           }`}>
             <div className="relative inline-block">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
+                src={ajayPhoto}
                 alt="Ajay Miryala - Lead Data Scientist"
                 className="w-48 h-48 rounded-full mx-auto object-cover border-4 border-primary shadow-2xl quantum-float quantum-pulse"
               />

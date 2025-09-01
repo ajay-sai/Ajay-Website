@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ajayPhoto from "@assets/image_1756764365127.png";
 
 export default function AboutSection() {
   const [mounted, setMounted] = useState(false);
@@ -44,8 +45,8 @@ export default function AboutSection() {
           }`}>
             <div className="relative group">
               <img
-                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
-                alt="Advanced data visualization and quantum computing concepts"
+                src={ajayPhoto}
+                alt="Ajay Miryala - Lead Data Scientist"
                 className="rounded-2xl shadow-2xl w-full h-auto reality-bend"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl holographic-shimmer"></div>
