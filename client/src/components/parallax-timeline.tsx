@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings } from "lucide-react";
-import harleyDavidsonImage from "@assets/image_1756765291859.png";
+import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
+import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
 
 interface TimelineEvent {
   year: string;
@@ -64,8 +65,8 @@ const timelineEvents: TimelineEvent[] = [
     description: "Harley Davidson Motor Company (Feb 2020 - Mar 2022)",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
-    companyImage: harleyDavidsonImage,
-    companyImages: [harleyDavidsonImage, harleyDavidsonImage, harleyDavidsonImage],
+    companyImage: harleyDavidsonImage1,
+    companyImages: [harleyDavidsonImage1, harleyDavidsonImage2],
     achievements: [
       "Built optimized data models and ETL pipelines reducing data processing time by 80%",
       "Decreased open purchase orders by 55% and inventory mismatches by 30%",
@@ -249,82 +250,126 @@ export default function ParallaxTimeline() {
                   </div>
                 </div>
 
-                {/* Massive Scrolling Image Stack */}
+                {/* Centered Scrolling Image Flipper */}
                 {(event.companyImages || event.companyImage || event.companyLogo) && (
                   <div 
-                    className={`absolute top-0 ${
-                      index % 2 === 0 ? 'left-1/2 ml-40' : 'right-1/2 mr-40'
-                    } transform transition-all duration-1000 z-20`}
+                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
                     style={{
-                      transform: `translateY(${scrollProgress * -80 + (index * 30)}px) ${
-                        index % 2 === 0 ? 'translateX(60px)' : 'translateX(-60px)'
-                      } scale(${isActive ? 1 : 0.7})`,
-                      opacity: isActive ? 1 : 0.5
+                      transform: `translate(-50%, -50%) scale(${isActive ? 1 : 0.8})`,
+                      opacity: isActive ? 1 : 0.4,
+                      transition: 'all 0.8s ease-out'
                     }}
                   >
-                    {/* Large Image Stack Container */}
-                    <div className="relative w-80 h-96 perspective-1000">
-                      {/* Multiple Image Layers for Stack Effect */}
+                    {/* Large Centered Image Container */}
+                    <div className="relative w-[500px] h-[600px]">
                       {event.companyImages ? (
-                        event.companyImages.map((image, imageIndex) => {
-                          const stackOffset = (scrollProgress * 3 + imageIndex) % event.companyImages!.length;
-                          const isVisible = Math.abs(stackOffset - 1) < 1;
+                        (() => {
+                          // Calculate which image to show based on scroll progress
+                          // Each timeline event gets 1/8 of total scroll (8 events)
+                          const eventScrollStart = index / timelineEvents.length;
+                          const eventScrollEnd = (index + 1) / timelineEvents.length;
+                          const eventScrollProgress = Math.max(0, Math.min(1, 
+                            (scrollProgress - eventScrollStart) / (eventScrollEnd - eventScrollStart)
+                          ));
                           
-                          return (
-                            <div
-                              key={imageIndex}
-                              className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm transition-all duration-1000"
-                              style={{
-                                transform: `
-                                  translateZ(${(imageIndex - stackOffset) * 50}px)
-                                  translateY(${(imageIndex - stackOffset) * 20}px)
-                                  rotateX(${(imageIndex - stackOffset) * 5}deg)
-                                  scale(${1 - Math.abs(imageIndex - stackOffset) * 0.1})
-                                `,
-                                opacity: isVisible ? 1 : 0.6,
-                                zIndex: 10 - Math.abs(imageIndex - stackOffset)
-                              }}
-                            >
-                              <img 
-                                src={image} 
-                                alt={`${event.title} company ${imageIndex + 1}`}
-                                className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
-                              />
-                              
-                              {/* Image Overlay with Company Info */}
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                              <div className="absolute bottom-6 left-6 right-6">
-                                <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg mb-2`}>
-                                  {event.year}
+                          // Within each event, divide scroll into image segments
+                          // 3 scrolls = next job, so each image gets 1/3 of event scroll
+                          const imageCount = event.companyImages.length;
+                          const currentImageIndex = Math.floor(eventScrollProgress * imageCount);
+                          const clampedIndex = Math.min(currentImageIndex, imageCount - 1);
+                          
+                          // Calculate flip progress for smooth transitions
+                          const imageProgress = (eventScrollProgress * imageCount) % 1;
+                          const isFlipping = imageProgress > 0.8; // Start flip at 80% through scroll
+                          
+                          return event.companyImages.map((image, imageIndex) => {
+                            const isCurrentImage = imageIndex === clampedIndex;
+                            const isNextImage = imageIndex === clampedIndex + 1;
+                            
+                            // Calculate flip rotation
+                            let rotateY = 0;
+                            if (isCurrentImage && isFlipping && isNextImage) {
+                              rotateY = (imageProgress - 0.8) / 0.2 * -90; // Flip out
+                            } else if (isNextImage && isFlipping) {
+                              rotateY = ((imageProgress - 0.8) / 0.2 * 90) - 90; // Flip in
+                            } else if (!isCurrentImage) {
+                              rotateY = imageIndex < clampedIndex ? -90 : 90; // Hidden positions
+                            }
+                            
+                            return (
+                              <div
+                                key={imageIndex}
+                                className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30 backdrop-blur-sm"
+                                style={{
+                                  transform: `rotateY(${rotateY}deg)`,
+                                  opacity: (isCurrentImage || (isNextImage && isFlipping)) ? 1 : 0,
+                                  zIndex: isCurrentImage ? 10 : (isNextImage ? 9 : 1),
+                                  transition: 'transform 0.6s ease-out, opacity 0.3s ease-out',
+                                  transformStyle: 'preserve-3d',
+                                  backfaceVisibility: 'hidden'
+                                }}
+                              >
+                                <img 
+                                  src={image} 
+                                  alt={`${event.title} company ${imageIndex + 1}`}
+                                  className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition-all duration-500"
+                                />
+                                
+                                {/* Image Overlay with Company Info */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                <div className="absolute bottom-8 left-8 right-8">
+                                  <div className={`inline-block px-6 py-3 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-xl shadow-lg mb-3`}>
+                                    {event.year}
+                                  </div>
+                                  <h4 className="text-white font-bold text-2xl mb-2">{event.title}</h4>
+                                  <p className="text-white/90 text-base">{event.description.split(' (')[0]}</p>
+                                  <div className="mt-4 flex items-center space-x-2">
+                                    <div className="w-2 h-2 rounded-full bg-white/60" />
+                                    <span className="text-white/80 text-sm">Image {imageIndex + 1} of {imageCount}</span>
+                                  </div>
                                 </div>
-                                <h4 className="text-white font-bold text-xl mb-1">{event.title}</h4>
-                                <p className="text-white/80 text-sm">{event.description.split(' (')[0]}</p>
+                                
+                                {/* Scroll indicator */}
+                                <div className="absolute top-8 right-8">
+                                  <div className="flex flex-col items-center space-y-1">
+                                    {event.companyImages.map((_, dotIndex) => (
+                                      <div 
+                                        key={dotIndex}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                          dotIndex === clampedIndex 
+                                            ? 'bg-white shadow-lg scale-125' 
+                                            : 'bg-white/40'
+                                        }`}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                          );
-                        })
+                            );
+                          });
+                        })()
                       ) : event.companyImage ? (
-                        <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm">
+                        <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30 backdrop-blur-sm">
                           <img 
                             src={event.companyImage} 
                             alt={`${event.title} company`}
-                            className="w-full h-full object-cover filter brightness-90 hover:brightness-100 transition-all duration-500"
+                            className="w-full h-full object-cover filter brightness-95 hover:brightness-100 transition-all duration-500"
                           />
                           
                           {/* Image Overlay with Company Info */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                          <div className="absolute bottom-6 left-6 right-6">
-                            <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg mb-2`}>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                          <div className="absolute bottom-8 left-8 right-8">
+                            <div className={`inline-block px-6 py-3 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-xl shadow-lg mb-3`}>
                               {event.year}
                             </div>
-                            <h4 className="text-white font-bold text-xl mb-1">{event.title}</h4>
-                            <p className="text-white/80 text-sm">{event.description.split(' (')[0]}</p>
+                            <h4 className="text-white font-bold text-2xl mb-2">{event.title}</h4>
+                            <p className="text-white/90 text-base">{event.description.split(' (')[0]}</p>
                           </div>
                         </div>
                       ) : (
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white to-gray-100 shadow-2xl border-4 border-white/20 flex items-center justify-center">
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white to-gray-100 shadow-2xl border-4 border-white/30 flex items-center justify-center">
                           <div 
-                            className="text-8xl font-bold animate-pulse"
+                            className="text-9xl font-bold animate-pulse"
                             style={{ 
                               color: event.companyColor,
                               animationDuration: '3s'
@@ -335,22 +380,22 @@ export default function ParallaxTimeline() {
                         </div>
                       )}
                       
-                      {/* Floating Elements Around the Stack */}
-                      <div className="absolute -inset-10 pointer-events-none">
-                        {[...Array(6)].map((_, particleIndex) => (
+                      {/* Floating Accent Elements */}
+                      <div className="absolute -inset-16 pointer-events-none">
+                        {[...Array(8)].map((_, particleIndex) => (
                           <div
                             key={particleIndex}
-                            className="absolute w-3 h-3 bg-primary/40 rounded-full blur-sm"
+                            className="absolute w-4 h-4 bg-primary/30 rounded-full blur-sm"
                             style={{
-                              left: `${10 + (particleIndex * 20) % 80}%`,
-                              top: `${10 + (particleIndex * 30) % 80}%`,
+                              left: `${15 + (particleIndex * 25) % 70}%`,
+                              top: `${15 + (particleIndex * 35) % 70}%`,
                               transform: `
-                                translateY(${Math.sin(scrollProgress * Math.PI * 2 + particleIndex) * 30}px)
-                                translateX(${Math.cos(scrollProgress * Math.PI * 2 + particleIndex) * 20}px)
-                                scale(${0.5 + Math.sin(scrollProgress * Math.PI + particleIndex) * 0.5})
+                                translateY(${Math.sin(scrollProgress * Math.PI * 3 + particleIndex) * 40}px)
+                                translateX(${Math.cos(scrollProgress * Math.PI * 2 + particleIndex) * 30}px)
+                                scale(${0.6 + Math.sin(scrollProgress * Math.PI + particleIndex) * 0.4})
                               `,
-                              opacity: 0.7,
-                              animationDelay: `${particleIndex * 0.3}s`
+                              opacity: 0.8,
+                              animationDelay: `${particleIndex * 0.4}s`
                             }}
                           />
                         ))}
