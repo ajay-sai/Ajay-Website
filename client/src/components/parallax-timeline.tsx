@@ -94,6 +94,7 @@ export default function ParallaxTimeline() {
 
   return (
     <section 
+      id="timeline"
       ref={containerRef}
       className="min-h-[200vh] py-20 relative overflow-hidden"
     >
