@@ -108,6 +108,7 @@ export default function ScrollVideoSection() {
 
   return (
     <section 
+      id="data-insights"
       ref={containerRef}
       className="min-h-screen py-20 relative overflow-hidden sticky top-0"
       style={{ zIndex: 1 }}

@@ -4,6 +4,9 @@ import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
 import SkillsSection from "@/components/skills-section";
 import ProjectsSection from "@/components/projects-section";
+import ScrollVideoSection from "@/components/scroll-video-section";
+import MasonryShowcase from "@/components/masonry-showcase";
+import ParallaxTimeline from "@/components/parallax-timeline";
 import DemosSection from "@/components/demos-section";
 import ContactSection from "@/components/contact-section";
 import ParticleSystem from "@/components/particle-system";
@@ -41,6 +44,9 @@ export default function Portfolio() {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
+        <ScrollVideoSection />
+        <MasonryShowcase />
+        <ParallaxTimeline />
         <ProjectsSection />
         <DemosSection />
         <ContactSection />
