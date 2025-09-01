@@ -3,44 +3,51 @@ import { Code, Layers, Cloud, Wrench } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Programming",
+    title: "Programming Languages",
     icon: Code,
     color: "text-primary",
     skills: [
       { name: "Python", level: 95, icon: "🐍" },
       { name: "R", level: 85, icon: "📊" },
-      { name: "SQL", level: 90, icon: "🗄️" },
+      { name: "SQL", level: 95, icon: "🗄️" },
+      { name: "Spark", level: 85, icon: "⚡" },
+      { name: "MATLAB", level: 80, icon: "📐" },
     ]
   },
   {
-    title: "Frameworks",
+    title: "AI/ML Frameworks",
     icon: Layers,
     color: "text-accent",
     skills: [
-      { name: "TensorFlow", level: 90, icon: "🧠" },
-      { name: "PyTorch", level: 85, icon: "🔥" },
+      { name: "TensorFlow/TFX", level: 95, icon: "🧠" },
+      { name: "HuggingFace", level: 90, icon: "🤗" },
       { name: "Scikit-learn", level: 95, icon: "⚛️" },
-      { name: "Pandas", level: 95, icon: "📋" },
+      { name: "Pandas/NumPy", level: 95, icon: "📋" },
+      { name: "MLflow", level: 85, icon: "🔄" },
     ]
   },
   {
-    title: "Cloud",
+    title: "Cloud & Big Data",
     icon: Cloud,
     color: "text-primary",
     skills: [
-      { name: "AWS", level: 90, icon: "☁️" },
-      { name: "GCP", level: 80, icon: "🌐" },
-      { name: "Azure", level: 75, icon: "🔷" },
+      { name: "GCP/BigQuery", level: 95, icon: "🌐" },
+      { name: "Vertex AI", level: 90, icon: "🔮" },
+      { name: "AWS/Redshift", level: 85, icon: "☁️" },
+      { name: "Dataflow", level: 85, icon: "🌊" },
+      { name: "Neo4j", level: 80, icon: "🔗" },
     ]
   },
   {
-    title: "Tools",
+    title: "Analytics & BI",
     icon: Wrench,
     color: "text-accent",
     skills: [
-      { name: "Docker", level: 85, icon: "🐳" },
-      { name: "Git", level: 95, icon: "📚" },
-      { name: "Jupyter", level: 90, icon: "📔" },
+      { name: "Tableau", level: 90, icon: "📊" },
+      { name: "Power BI", level: 85, icon: "📈" },
+      { name: "Adobe Analytics", level: 85, icon: "📊" },
+      { name: "Alteryx", level: 80, icon: "🛠️" },
+      { name: "SAP Analytics", level: 75, icon: "📋" },
     ]
   },
 ];

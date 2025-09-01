@@ -74,8 +74,9 @@ export default function HeroSection() {
           <p className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed transition-all duration-1000 delay-600 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            Transforming complex data into actionable insights through advanced machine learning, AI, and statistical modeling. 
-            Passionate about leveraging cutting-edge technologies to solve real-world problems and drive innovation across industries.
+            Lead AI Data Scientist with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
+            Specializing in the full-stack infrastructure that powers modern AI, from scalable analytics platforms to operationalizing 
+            complete lifecycle management of Generative AI models including RAG and multi-modal systems.
           </p>
 
           {/* Social Links */}

@@ -12,51 +12,63 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    year: "2024",
-    title: "Lead Data Scientist",
-    description: "Spearheading AI transformation initiatives across Fortune 500 companies",
+    year: "2025",
+    title: "Gen AI/ML Engineer",
+    description: "The Home Depot - Leading generative AI systems and transformer architectures",
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
     achievements: [
-      "40% revenue increase through predictive analytics",
-      "1M+ users served by recommendation systems",
-      "Led team of 15+ data scientists"
+      "Designed scalable GenAI systems using GPT-4, BERT, Gemini, Longformer",
+      "Fine-tuned LLMs with LoRA/QLoRA methods using HuggingFace Transformers",
+      "55% reduction in analytics turnaround time through automation"
+    ]
+  },
+  {
+    year: "2023",
+    title: "Senior Data Scientist - Decision Analytics",
+    description: "The Home Depot - Architected AI pipelines and dynamic image generation systems",
+    icon: Code,
+    color: "from-green-500 to-emerald-500",
+    achievements: [
+      "Built dynamic image generation with Google Image Gen-3 & Stable Diffusion",
+      "87% accuracy in house renovation prediction targeting $20M savings",
+      "40% increase in data processing efficiency with 50TB integration"
     ]
   },
   {
     year: "2022",
-    title: "Senior ML Engineer",
-    description: "Architected scalable machine learning pipelines and MLOps infrastructure",
-    icon: Code,
-    color: "from-green-500 to-emerald-500",
+    title: "Senior Data Analyst",
+    description: "The Home Depot - Enhanced customer experience analytics and insights",
+    icon: Award,
+    color: "from-purple-500 to-violet-500",
     achievements: [
-      "99.9% model accuracy in production",
-      "50+ ML models deployed",
-      "Built automated training pipelines"
+      "Analyzed customer behavior across platforms for 300+ associates",
+      "Led Voice of Associates initiative reducing onboarding time by 20%",
+      "Adobe Analytics SME leading weekly training sessions"
     ]
   },
   {
     year: "2020",
-    title: "Data Science Innovator",
-    description: "Pioneered computer vision solutions for manufacturing quality control",
-    icon: Award,
-    color: "from-purple-500 to-violet-500",
-    achievements: [
-      "60% reduction in false positives",
-      "Real-time fraud detection system",
-      "12 patents filed in AI/ML"
-    ]
-  },
-  {
-    year: "2018",
-    title: "Career Foundation",
-    description: "Started journey in data science with focus on statistical modeling",
+    title: "Data Analyst & Engineer",
+    description: "Harley Davidson - Advanced BI solutions and data engineering",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
     achievements: [
-      "Master's in Data Science",
-      "First ML model in production",
-      "Published 5 research papers"
+      "80% reduction in data processing time with optimized ETL pipelines",
+      "55% decrease in open purchase orders through process optimization",
+      "Built dashboards in Tableau, Power BI, and SAP Analytics Cloud"
+    ]
+  },
+  {
+    year: "2019",
+    title: "Marketing Analyst & Data Scientist",
+    description: "Multiple roles - Foundation in analytics and machine learning",
+    icon: Calendar,
+    color: "from-indigo-500 to-purple-500",
+    achievements: [
+      "Google Ads campaign: 200% traffic increase, $3100 revenue from $300 budget",
+      "Principal Financial: 78% accuracy in market regime prediction",
+      "University of Maryland: Graduate Assistant managing 4000+ student records"
     ]
   }
 ];
