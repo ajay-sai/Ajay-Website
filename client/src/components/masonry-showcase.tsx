@@ -1,233 +1,149 @@
 import { useEffect, useRef, useState } from "react";
-import { ExternalLink, Github, Play, BarChart3, Brain, Database, Zap, Award, TrendingUp, Users, Clock } from "lucide-react";
+import { ExternalLink, Github, Play, BarChart3, Brain, Database, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface MasonryItem {
   id: string;
   title: string;
   description: string;
-  category: 'ml-project' | 'data-pipeline' | 'ai-research' | 'case-study' | 'achievement' | 'demo';
-  size: 'small' | 'medium' | 'large' | 'wide';
+  type: 'project' | 'skill' | 'achievement' | 'demo';
+  size: 'small' | 'medium' | 'large';
   media: {
-    type: 'video' | 'image' | 'interactive' | 'visualization';
-    url: string;
-    thumbnail?: string;
-    aspectRatio?: string;
+    type: 'video' | 'image' | 'chart';
+    url?: string;
+    gradient: string;
   };
   icon: React.ElementType;
   tags: string[];
-  metrics: {
+  metrics?: {
     label: string;
     value: string;
-    trend?: 'up' | 'down' | 'stable';
   }[];
-  links?: {
-    github?: string;
-    demo?: string;
-    paper?: string;
-    dataset?: string;
-  };
-  impact: string;
-  year: string;
 }
 
 const masonryItems: MasonryItem[] = [
   {
     id: '1',
-    title: 'Neural Network Architecture Visualization',
-    description: 'Interactive deep learning model achieving 99.7% accuracy in medical image classification with real-time inference',
-    category: 'ml-project',
+    title: 'Neural Network Architecture',
+    description: 'Deep learning model achieving 99.7% accuracy in image classification',
+    type: 'project',
     size: 'large',
     media: {
-      type: 'video',
-      url: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300',
-      aspectRatio: '16:9'
+      type: 'chart',
+      gradient: 'from-blue-500 via-purple-500 to-pink-500'
     },
     icon: Brain,
-    tags: ['TensorFlow', 'Python', 'Medical AI', 'CNN', 'GPU Computing'],
+    tags: ['TensorFlow', 'Python', 'CNN'],
     metrics: [
-      { label: 'Accuracy', value: '99.7%', trend: 'up' },
-      { label: 'Inference Time', value: '12ms', trend: 'down' },
-      { label: 'Model Size', value: '84MB', trend: 'stable' }
-    ],
-    links: {
-      github: 'https://github.com/ajay-sai/neural-architecture',
-      demo: 'https://neural-demo.vercel.app',
-      paper: 'https://arxiv.org/abs/medical-ai-2024'
-    },
-    impact: 'Reduced diagnostic time by 75% in clinical trials',
-    year: '2024'
+      { label: 'Accuracy', value: '99.7%' },
+      { label: 'Speed', value: '50ms' }
+    ]
   },
   {
     id: '2',
-    title: 'Real-time Data Processing Pipeline',
-    description: 'Scalable streaming analytics processing 2M+ events per second with sub-millisecond latency',
-    category: 'data-pipeline',
-    size: 'wide',
+    title: 'Real-time Analytics',
+    description: 'Processing 1M+ events per second',
+    type: 'achievement',
+    size: 'medium',
     media: {
-      type: 'visualization',
-      url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400',
-      aspectRatio: '3:1'
+      type: 'chart',
+      gradient: 'from-green-400 to-emerald-600'
     },
-    icon: Database,
-    tags: ['Apache Kafka', 'Spark Streaming', 'AWS Kinesis', 'Redis', 'Elasticsearch'],
+    icon: BarChart3,
+    tags: ['Kafka', 'Spark', 'AWS'],
     metrics: [
-      { label: 'Events/sec', value: '2.1M', trend: 'up' },
-      { label: 'Latency', value: '0.8ms', trend: 'down' },
-      { label: 'Uptime', value: '99.99%', trend: 'stable' }
-    ],
-    links: {
-      github: 'https://github.com/ajay-sai/real-time-pipeline',
-      demo: 'https://pipeline-dashboard.vercel.app'
-    },
-    impact: '$2.5M saved in infrastructure costs annually',
-    year: '2024'
+      { label: 'Events/sec', value: '1M+' }
+    ]
   },
   {
     id: '3',
-    title: 'Quantum ML Research',
-    description: 'Breakthrough quantum machine learning algorithm for optimization problems',
-    category: 'ai-research',
-    size: 'medium',
+    title: 'Quantum Computing',
+    description: 'Research in quantum machine learning algorithms',
+    type: 'skill',
+    size: 'small',
     media: {
       type: 'image',
-      url: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800',
-      aspectRatio: '3:4'
+      gradient: 'from-cyan-400 to-blue-600'
     },
     icon: Zap,
-    tags: ['Quantum Computing', 'Qiskit', 'Research', 'Nature Publication'],
-    metrics: [
-      { label: 'Speedup', value: '1000x', trend: 'up' },
-      { label: 'Accuracy', value: '94.2%', trend: 'up' },
-      { label: 'Citations', value: '47', trend: 'up' }
-    ],
-    links: {
-      paper: 'https://nature.com/quantum-ml-2024',
-      dataset: 'https://quantum-datasets.org/optimization'
-    },
-    impact: 'Published in Nature Quantum Information',
-    year: '2024'
+    tags: ['Qiskit', 'Research']
   },
   {
     id: '4',
-    title: 'AI Recommendation Engine',
-    description: 'Collaborative filtering system serving 5M+ users with personalized recommendations',
-    category: 'ml-project',
-    size: 'large',
+    title: 'Data Pipeline Architecture',
+    description: 'Scalable ETL processing 500TB+ daily',
+    type: 'project',
+    size: 'medium',
     media: {
-      type: 'interactive',
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600',
-      aspectRatio: '4:3'
+      type: 'chart',
+      gradient: 'from-orange-400 to-red-600'
     },
-    icon: Users,
-    tags: ['PyTorch', 'Redis', 'FastAPI', 'A/B Testing', 'MLOps'],
+    icon: Database,
+    tags: ['Apache Airflow', 'Docker', 'Kubernetes'],
     metrics: [
-      { label: 'Active Users', value: '5.2M', trend: 'up' },
-      { label: 'CTR Increase', value: '47%', trend: 'up' },
-      { label: 'Revenue Impact', value: '$12M', trend: 'up' }
-    ],
-    links: {
-      github: 'https://github.com/ajay-sai/recommendation-engine',
-      demo: 'https://rec-engine-demo.vercel.app'
-    },
-    impact: 'Generated $12M additional revenue in 6 months',
-    year: '2024'
+      { label: 'Data Volume', value: '500TB' },
+      { label: 'Uptime', value: '99.9%' }
+    ]
   },
   {
     id: '5',
-    title: 'Computer Vision Quality Control',
-    description: 'Automated defect detection in manufacturing with 99.8% precision',
-    category: 'case-study',
-    size: 'medium',
+    title: 'AI Recommendation Engine',
+    description: 'Collaborative filtering serving millions of users',
+    type: 'demo',
+    size: 'large',
     media: {
       type: 'video',
-      url: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-      aspectRatio: '3:2'
+      gradient: 'from-purple-400 via-pink-500 to-red-500'
     },
     icon: Brain,
-    tags: ['Computer Vision', 'YOLO v8', 'Edge Computing', 'OpenCV'],
+    tags: ['PyTorch', 'Redis', 'FastAPI'],
     metrics: [
-      { label: 'Precision', value: '99.8%', trend: 'up' },
-      { label: 'Cost Savings', value: '$3.2M', trend: 'up' },
-      { label: 'Processing Speed', value: '150 FPS', trend: 'stable' }
-    ],
-    links: {
-      github: 'https://github.com/ajay-sai/cv-quality-control',
-      demo: 'https://cv-qc-demo.vercel.app'
-    },
-    impact: 'Reduced quality control costs by 65%',
-    year: '2023'
+      { label: 'Users', value: '2M+' },
+      { label: 'CTR Increase', value: '40%' }
+    ]
   },
   {
     id: '6',
-    title: 'Fraud Detection Excellence',
-    description: 'Real-time anomaly detection reducing false positives by 72%',
-    category: 'achievement',
-    size: 'small',
+    title: 'Computer Vision Pipeline',
+    description: 'Quality control automation in manufacturing',
+    type: 'project',
+    size: 'medium',
     media: {
-      type: 'visualization',
-      url: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600',
-      aspectRatio: '1:1'
+      type: 'image',
+      gradient: 'from-teal-400 to-cyan-600'
     },
-    icon: Award,
-    tags: ['Isolation Forest', 'Real-time Analytics', 'AWS Lambda'],
-    metrics: [
-      { label: 'False Positives', value: '-72%', trend: 'down' },
-      { label: 'Detection Speed', value: '45ms', trend: 'down' },
-      { label: 'Fraud Caught', value: '98.5%', trend: 'up' }
-    ],
-    impact: 'Prevented $8.5M in fraudulent transactions',
-    year: '2023'
+    icon: Brain,
+    tags: ['OpenCV', 'YOLO', 'Edge Computing']
   },
   {
     id: '7',
-    title: 'MLOps Platform Architecture',
-    description: 'End-to-end ML platform with automated CI/CD and model monitoring',
-    category: 'data-pipeline',
-    size: 'wide',
+    title: 'MLOps Excellence',
+    description: 'Automated model training and deployment',
+    type: 'skill',
+    size: 'small',
     media: {
-      type: 'visualization',
-      url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400',
-      aspectRatio: '3:1'
+      type: 'chart',
+      gradient: 'from-indigo-400 to-purple-600'
     },
-    icon: TrendingUp,
-    tags: ['MLflow', 'Kubeflow', 'Docker', 'Kubernetes', 'GitOps'],
-    metrics: [
-      { label: 'Models Deployed', value: '250+', trend: 'up' },
-      { label: 'Deployment Time', value: '15min', trend: 'down' },
-      { label: 'System Uptime', value: '99.97%', trend: 'stable' }
-    ],
-    links: {
-      github: 'https://github.com/ajay-sai/mlops-platform'
-    },
-    impact: 'Accelerated model deployment by 85%',
-    year: '2023'
+    icon: Zap,
+    tags: ['MLflow', 'Kubeflow']
   },
   {
     id: '8',
-    title: 'Natural Language Processing Suite',
-    description: 'Multi-language sentiment analysis and text classification platform',
-    category: 'demo',
-    size: 'medium',
+    title: 'Fraud Detection System',
+    description: 'Real-time anomaly detection with 60% false positive reduction',
+    type: 'achievement',
+    size: 'large',
     media: {
-      type: 'interactive',
-      url: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
-      aspectRatio: '3:2'
+      type: 'chart',
+      gradient: 'from-red-400 via-orange-500 to-yellow-500'
     },
-    icon: Brain,
-    tags: ['BERT', 'Transformers', 'Multi-language', 'Sentiment Analysis'],
+    icon: BarChart3,
+    tags: ['Isolation Forest', 'Real-time', 'Kafka'],
     metrics: [
-      { label: 'Languages', value: '15', trend: 'up' },
-      { label: 'Accuracy', value: '96.8%', trend: 'up' },
-      { label: 'Processing Speed', value: '2000/sec', trend: 'stable' }
-    ],
-    links: {
-      demo: 'https://nlp-suite-demo.vercel.app',
-      github: 'https://github.com/ajay-sai/nlp-suite'
-    },
-    impact: 'Analyzing 500K+ customer reviews daily',
-    year: '2023'
+      { label: 'False Positives', value: '-60%' },
+      { label: 'Detection Speed', value: '<100ms' }
+    ]
   }
 ];
 
@@ -270,47 +186,13 @@ export default function MasonryShowcase() {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case 'small':
-        return 'col-span-1 row-span-2 h-80';
+        return 'col-span-1 row-span-1 h-64';
       case 'medium':
-        return 'col-span-1 row-span-3 h-96';
-      case 'large':
-        return 'col-span-2 row-span-3 h-96';
-      case 'wide':
-        return 'col-span-2 row-span-2 h-64';
-      default:
         return 'col-span-1 row-span-2 h-80';
-    }
-  };
-
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'ml-project':
-        return 'from-blue-500 to-purple-600';
-      case 'data-pipeline':
-        return 'from-green-500 to-teal-600';
-      case 'ai-research':
-        return 'from-purple-500 to-pink-600';
-      case 'case-study':
-        return 'from-orange-500 to-red-600';
-      case 'achievement':
-        return 'from-yellow-500 to-orange-600';
-      case 'demo':
-        return 'from-cyan-500 to-blue-600';
+      case 'large':
+        return 'col-span-2 row-span-2 h-96';
       default:
-        return 'from-gray-500 to-gray-600';
-    }
-  };
-
-  const getTrendIcon = (trend: string) => {
-    switch (trend) {
-      case 'up':
-        return '↗';
-      case 'down':
-        return '↘';
-      case 'stable':
-        return '→';
-      default:
-        return '';
+        return 'col-span-1 row-span-1 h-64';
     }
   };
 
@@ -320,93 +202,59 @@ export default function MasonryShowcase() {
     switch (item.media.type) {
       case 'video':
         return (
-          <div className="relative w-full h-full overflow-hidden group">
-            <img
-              src={item.media.url}
-              alt={item.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+          <div className="relative w-full h-full flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
             <Button
               variant="ghost"
               size="icon"
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm transition-all duration-300 scale-90 group-hover:scale-100"
+              className="relative z-10 w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 transition-all duration-300"
             >
               <Play className="w-8 h-8 text-white" />
             </Button>
           </div>
         );
       
-      case 'visualization':
+      case 'chart':
         return (
-          <div className="relative w-full h-full overflow-hidden">
-            <img
-              src={item.media.url}
-              alt={item.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-            {/* Animated data overlay */}
+          <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+            {/* Animated chart visualization */}
             <div className="absolute inset-0">
-              {[...Array(12)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute bottom-4 bg-primary/40 rounded-t backdrop-blur-sm"
-                  style={{
-                    left: `${5 + i * 7}%`,
-                    width: '5%',
-                    height: `${15 + Math.sin(scrollProgress * Math.PI * 2 + i) * 25}%`,
-                    transition: 'height 0.4s ease-out',
-                    animationDelay: `${i * 50}ms`
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        );
-
-      case 'interactive':
-        return (
-          <div className="relative w-full h-full overflow-hidden group">
-            <img
-              src={item.media.url}
-              alt={item.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
-            <div className="absolute top-4 right-4">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            </div>
-            {/* Interactive overlay effect */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-1 h-1 bg-white/60 rounded-full"
+                  className="absolute bottom-4 bg-white/30 rounded-t"
                   style={{
                     left: `${10 + i * 10}%`,
-                    top: `${20 + Math.sin(i) * 30}%`,
-                    animationDelay: `${i * 200}ms`
+                    width: '8%',
+                    height: `${20 + Math.sin(scrollProgress * Math.PI * 2 + i) * 30}%`,
+                    transition: 'height 0.3s ease-out',
+                    animationDelay: `${i * 100}ms`
                   }}
                 />
               ))}
             </div>
+            <Icon className="w-16 h-16 text-white/80 relative z-10" />
           </div>
         );
       
       default:
         return (
-          <div className="relative w-full h-full overflow-hidden">
-            <img
-              src={item.media.url}
-              alt={item.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <Icon className="w-12 h-12 text-white/90 drop-shadow-lg" />
+          <div className="relative w-full h-full flex items-center justify-center">
+            <Icon className="w-16 h-16 text-white/80" />
+            {/* Floating particles */}
+            <div className="absolute inset-0">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-2 h-2 bg-white/40 rounded-full"
+                  style={{
+                    left: `${20 + i * 15}%`,
+                    top: `${30 + Math.sin(scrollProgress * Math.PI + i) * 20}%`,
+                    transform: `scale(${0.5 + Math.sin(scrollProgress * Math.PI * 2 + i) * 0.5})`,
+                    transition: 'all 0.3s ease-out'
+                  }}
+                />
+              ))}
             </div>
           </div>
         );
