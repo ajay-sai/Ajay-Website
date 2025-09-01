@@ -75,7 +75,7 @@ export default function HeroSection() {
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             Transforming complex data into actionable insights through advanced machine learning, AI, and statistical modeling. 
-            Passionate about leveraging cutting-edge technologies to solve real-world problems and drive data-driven decision making.
+            Passionate about leveraging cutting-edge technologies to solve real-world problems and drive innovation across industries.
           </p>
 
           {/* Social Links */}

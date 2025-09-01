@@ -34,16 +34,7 @@ export default function AboutSection() {
               My expertise spans the entire data science lifecycle, from problem formulation to model deployment and monitoring.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 mt-8">
-              <div className="text-center p-4 quantum-card rounded-lg consciousness-expand">
-                <div className="text-3xl font-bold text-primary quantum-glow">150+</div>
-                <div className="text-muted-foreground">Projects Completed</div>
-              </div>
-              <div className="text-center p-4 quantum-card rounded-lg consciousness-expand">
-                <div className="text-3xl font-bold text-accent quantum-glow">8+</div>
-                <div className="text-muted-foreground">Years Experience</div>
-              </div>
-            </div>
+
           </div>
 
           {/* Image */}

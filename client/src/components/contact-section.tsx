@@ -58,7 +58,7 @@ export default function ContactSection() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to collaborate on your next data science project? Let's discuss how we can turn your data into actionable insights.
+            Ready to collaborate on innovative data science projects? Let's discuss how advanced analytics and machine learning can transform your business.
           </p>
         </div>
 
