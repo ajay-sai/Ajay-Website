@@ -432,21 +432,24 @@ export default function ParallaxTimeline() {
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
             
-            // Mobile-optimized active state calculation
+            // Smoother mobile active state calculation with larger activation zones
             const eventThreshold = index / timelineEvents.length;
             const nextEventThreshold = (index + 1) / timelineEvents.length;
-            const isInActiveZone = scrollProgress >= eventThreshold - 0.1 && scrollProgress <= nextEventThreshold + 0.1;
+            const eventCenter = (eventThreshold + nextEventThreshold) / 2;
+            const distanceFromCenter = Math.abs(scrollProgress - eventCenter);
+            const activationRadius = 0.2; // Larger radius for smoother transitions
             
-            // Use CSS transforms for better mobile performance
+            const isInActiveZone = distanceFromCenter < activationRadius;
             const shouldAnimate = isActive || isInActiveZone;
             
             return (
               <div
                 key={event.sortOrder}
-                className={`relative mb-16 transition-all duration-1000`}
+                className={`relative mb-16`}
                 style={{
                   transform: `translate3d(0, ${shouldAnimate ? 0 : 50}px, 0)`,
                   opacity: shouldAnimate ? 1 : 0.3,
+                  transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                 }}
               >
@@ -476,7 +479,7 @@ export default function ParallaxTimeline() {
                               backgroundImage: `url(${event.companyImage})`,
                               transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0) scale(${shouldAnimate ? 1 : 0.95})`,
                               opacity: shouldAnimate ? 1 : 0.7,
-                              transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+                              transition: 'all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                               willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                             }}
                           >
@@ -505,11 +508,11 @@ export default function ParallaxTimeline() {
 
                       
                       <h3 
-                        className="text-2xl font-bold mb-3 transition-all duration-700"
+                        className="text-2xl font-bold mb-3"
                         style={{
                           transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
                           opacity: shouldAnimate ? 1 : 0,
-                          transitionDelay: shouldAnimate ? '100ms' : '0ms',
+                          transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '150ms' : '0ms'}`,
                           willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
@@ -522,8 +525,7 @@ export default function ParallaxTimeline() {
                         style={{
                           transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
                           opacity: shouldAnimate ? 1 : 0,
-                          transitionDelay: shouldAnimate ? '150ms' : '0ms',
-                          transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                          transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '250ms' : '0ms'}`,
                           willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
@@ -536,11 +538,11 @@ export default function ParallaxTimeline() {
                       </div>
                       
                       <p 
-                        className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500"
+                        className="text-muted-foreground mb-4 leading-relaxed"
                         style={{
                           transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
                           opacity: shouldAnimate ? 1 : 0,
-                          transitionDelay: shouldAnimate ? '200ms' : '0ms',
+                          transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '350ms' : '0ms'}`,
                           willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
@@ -553,8 +555,7 @@ export default function ParallaxTimeline() {
                         style={{
                           transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
                           opacity: shouldAnimate ? 1 : 0,
-                          transitionDelay: shouldAnimate ? '250ms' : '0ms',
-                          transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+                          transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '450ms' : '0ms'}`,
                           willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
@@ -571,11 +572,11 @@ export default function ParallaxTimeline() {
                           return (
                             <div
                               key={achievementIndex}
-                              className="flex items-start space-x-3 transform transition-all duration-500"
+                              className="flex items-start space-x-3"
                               style={{
                                 transform: `translate3d(${shouldAnimate ? 0 : (index % 2 === 0 ? -20 : 20)}px, 0, 0)`,
                                 opacity: shouldAnimate ? 1 : 0,
-                                transitionDelay: shouldAnimate ? `${achievementIndex * 100 + 300}ms` : '0ms',
+                                transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? `${achievementIndex * 100 + 500}ms` : '0ms'}`,
                                 willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                               }}
                             >
@@ -613,8 +614,7 @@ export default function ParallaxTimeline() {
                         style={{
                           transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
                           opacity: shouldAnimate ? 1 : 0,
-                          transitionDelay: shouldAnimate ? '400ms' : '0ms',
-                          transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                          transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '700ms' : '0ms'}`,
                           willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
