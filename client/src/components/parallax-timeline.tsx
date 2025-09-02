@@ -27,6 +27,9 @@ const bachelorImage3 = "/attached_assets/Screenshot_20181124-163448__01_17567893
 // High school education image
 const highSchoolImage1 = "/attached_assets/IMG_20160620_123802_1756789570118.jpg";
 
+// Gen AI/ML Engineer workplace image
+const genAIEngineerImage1 = "/attached_assets/IMG_2331_1756789866665.JPG";
+
 // Senior Data Scientist workplace images (swapped order of first two, removed third)
 const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
 const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
@@ -81,7 +84,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-blue-500 to-cyan-500",
     companyLogo: "🏠",
     companyColor: "#f96302",
-    workplaceImages: [homeDepotImage1, homeDepotImage2, homeDepotImage3],
+    workplaceImages: [homeDepotImage1, homeDepotImage2, homeDepotImage3, genAIEngineerImage1],
     achievements: [
       "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
       "<strong class='text-blue-400'>55% reduction</strong> in analytics turnaround time through custom prompt optimization frameworks",
