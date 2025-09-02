@@ -307,88 +307,43 @@ export default function ParallaxTimeline() {
 
 
   useEffect(() => {
-    let ticking = false;
-    
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          if (!containerRef.current) {
-            ticking = false;
-            return;
-          }
+      if (!containerRef.current) return;
 
-          const rect = containerRef.current.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          const containerHeight = rect.height;
-          const isMobile = window.innerWidth < 768;
-          
-          // Calculate scroll progress with mobile-optimized calculations
-          const sectionTop = rect.top;
-          const sectionBottom = rect.bottom;
-          
-          // More generous mobile viewport calculations
-          const mobileOffset = isMobile ? windowHeight * 0.3 : 0;
-          const startProgress = windowHeight + mobileOffset;
-          const endProgress = -containerHeight - mobileOffset;
-          
-          const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
-          const progress = Math.max(0, Math.min(1, rawProgress));
-          
-          setScrollProgress(progress);
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const containerHeight = rect.height;
+      
+      // Simplified scroll progress calculation
+      const sectionTop = rect.top;
+      const sectionBottom = rect.bottom;
+      
+      // Clean viewport-based progress calculation
+      const startProgress = windowHeight;
+      const endProgress = -containerHeight;
+      
+      const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
+      const progress = Math.max(0, Math.min(1, rawProgress));
+      
+      setScrollProgress(progress);
 
-          // Smoother active event calculation for mobile
-          const totalEvents = timelineEvents.length;
-          const eventHeight = containerHeight / totalEvents;
-          
-          // Calculate which event should be active based on viewport center
-          const viewportCenter = windowHeight / 2;
-          const relativeCenter = viewportCenter - sectionTop;
-          const eventFromCenter = Math.floor(relativeCenter / eventHeight);
-          
-          // Apply mobile-specific smoothing
-          let activeIndex;
-          if (isMobile) {
-            // Much more aggressive smoothing for mobile
-            const smoothProgress = progress * totalEvents;
-            const baseIndex = Math.floor(smoothProgress);
-            const fraction = smoothProgress - baseIndex;
-            
-            if (fraction < 0.3) {
-              activeIndex = baseIndex;
-            } else if (fraction > 0.7) {
-              activeIndex = Math.min(baseIndex + 1, totalEvents - 1);
-            } else {
-              // Gradual transition zone
-              activeIndex = fraction < 0.5 ? baseIndex : Math.min(baseIndex + 1, totalEvents - 1);
-            }
-          } else {
-            // Desktop logic
-            const eventProgress = progress * totalEvents;
-            activeIndex = Math.round(eventProgress);
-          }
-          
-          const clampedEvent = Math.max(0, Math.min(totalEvents - 1, activeIndex));
-          setActiveEvent(clampedEvent);
-          
-          ticking = false;
-        });
-        ticking = true;
-      }
+      // Simple, predictable active event calculation
+      const totalEvents = timelineEvents.length;
+      const eventProgress = progress * totalEvents;
+      const activeIndex = Math.floor(eventProgress);
+      
+      const clampedEvent = Math.max(0, Math.min(totalEvents - 1, activeIndex));
+      setActiveEvent(clampedEvent);
     };
 
-    // Use passive scrolling for mobile performance
-    const isMobile = window.innerWidth < 768;
-    const scrollOptions = isMobile ? { passive: true } : undefined;
-    
-    window.addEventListener('scroll', handleScroll, scrollOptions);
+    // Simple event listeners without complexity
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll);
-    window.addEventListener('orientationchange', handleScroll);
     handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
-      window.removeEventListener('orientationchange', handleScroll);
     };
   }, []);
 
@@ -460,26 +415,19 @@ export default function ParallaxTimeline() {
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
             
-            // Mobile-optimized transition zones
-            const isMobileDevice = window.innerWidth < 768;
-            const eventCenter = (index + 0.5) / timelineEvents.length;
-            const distanceFromCenter = Math.abs(scrollProgress - eventCenter);
-            
-            // Much wider and more forgiving zones for mobile
-            const activationZone = isMobileDevice ? 0.35 : 0.18;
-            const isInTransitionZone = distanceFromCenter < activationZone;
-            
-            // Additional mobile-specific active state
-            const mobileActiveRange = isMobileDevice ? 0.4 : 0.2;
-            const isMobileActive = isMobileDevice && distanceFromCenter < mobileActiveRange;
+            // Simplified transition zone calculation
+            const eventStart = index / timelineEvents.length;
+            const eventEnd = (index + 1) / timelineEvents.length;
+            const isInViewRange = scrollProgress >= eventStart - 0.15 && scrollProgress <= eventEnd + 0.15;
             
             return (
               <div
                 key={event.sortOrder}
                 className={`relative mb-16 transition-all duration-1000`}
                 style={{
-                  transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 50}px)`,
-                  opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0.3
+                  transform: `translateY(${(isActive || isInViewRange) ? 0 : 50}px)`,
+                  opacity: (isActive || isInViewRange) ? 1 : 0.3,
+                  transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
                 }}
               >
                 {/* Timeline Node - Adjusted for mobile */}
@@ -506,8 +454,8 @@ export default function ParallaxTimeline() {
                             className="h-48 bg-cover bg-center relative overflow-hidden"
                             style={{
                               backgroundImage: `url(${event.companyImage})`,
-                              transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px) scale(${(isActive || isInTransitionZone) ? 1 : 0.95})`,
-                              opacity: (isActive || isInTransitionZone) ? 1 : 0.7,
+                              transform: `translateY(${(isActive || isInViewRange) ? 0 : 20}px) scale(${(isActive || isInViewRange) ? 1 : 0.95})`,
+                              opacity: (isActive || isInViewRange) ? 1 : 0.7,
                               transition: 'all 0.8s ease-out'
                             }}
                           >
@@ -536,12 +484,12 @@ export default function ParallaxTimeline() {
 
                       
                       <h3 
-                        className="text-2xl font-bold mb-3 transition-all duration-700"
+                        className="text-2xl font-bold mb-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 30}px)`,
-                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
-                          transitionDelay: isMobileDevice ? '50ms' : '100ms',
-                          transition: `all ${isMobileDevice ? '0.4s' : '0.7s'} cubic-bezier(0.4, 0, 0.2, 1)`
+                          transform: `translateY(${(isActive || isInViewRange) ? 0 : 30}px)`,
+                          opacity: (isActive || isInViewRange) ? 1 : 0,
+                          transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          transitionDelay: '100ms'
                         }}
                       >
                         {event.title}
@@ -551,10 +499,10 @@ export default function ParallaxTimeline() {
                       <div 
                         className="flex flex-wrap gap-2 mb-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
-                          transitionDelay: isMobileDevice ? '100ms' : '200ms',
-                          transition: `all ${isMobileDevice ? '0.3s' : '0.6s'} cubic-bezier(0.4, 0, 0.2, 1)`
+                          transform: `translateY(${(isActive || isInViewRange) ? 0 : 20}px)`,
+                          opacity: (isActive || isInViewRange) ? 1 : 0,
+                          transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          transitionDelay: '200ms'
                         }}
                       >
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
@@ -566,12 +514,12 @@ export default function ParallaxTimeline() {
                       </div>
                       
                       <p 
-                        className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500"
+                        className="text-muted-foreground mb-4 leading-relaxed"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
-                          transitionDelay: isMobileDevice ? '150ms' : '300ms',
-                          transition: `all ${isMobileDevice ? '0.3s' : '0.5s'} cubic-bezier(0.4, 0, 0.2, 1)`
+                          transform: `translateY(${(isActive || isInViewRange) ? 0 : 20}px)`,
+                          opacity: (isActive || isInViewRange) ? 1 : 0,
+                          transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          transitionDelay: '300ms'
                         }}
                       >
                         {event.description}
@@ -581,10 +529,10 @@ export default function ParallaxTimeline() {
                       <div 
                         className="space-y-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 30}px)`,
-                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
-                          transitionDelay: isMobileDevice ? '200ms' : '400ms',
-                          transition: `all ${isMobileDevice ? '0.4s' : '0.7s'} cubic-bezier(0.4, 0, 0.2, 1)`
+                          transform: `translateY(${(isActive || isInViewRange) ? 0 : 30}px)`,
+                          opacity: (isActive || isInViewRange) ? 1 : 0,
+                          transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          transitionDelay: '400ms'
                         }}
                       >
                         {event.achievements.map((achievement, achievementIndex) => {
@@ -602,9 +550,10 @@ export default function ParallaxTimeline() {
                               key={achievementIndex}
                               className="flex items-start space-x-3 transform transition-all duration-500"
                               style={{
-                                transform: `translateX(${(isActive || isInTransitionZone) ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
-                                opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                                transitionDelay: `${achievementIndex * 200 + 400}ms`
+                                transform: `translateX(${(isActive || isInViewRange) ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
+                                opacity: (isActive || isInViewRange) ? 1 : 0,
+                                transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                                transitionDelay: `${achievementIndex * 150 + 500}ms`
                               }}
                             >
                               <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5 shadow-sm`}>
@@ -639,10 +588,10 @@ export default function ParallaxTimeline() {
                       <div 
                         className="mt-4 h-1 bg-secondary rounded-full overflow-hidden"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '600ms',
-                          transition: 'all 0.6s ease-out'
+                          transform: `translateY(${(isActive || isInViewRange) ? 0 : 20}px)`,
+                          opacity: (isActive || isInViewRange) ? 1 : 0,
+                          transition: 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                          transitionDelay: '600ms'
                         }}
                       >
                         <div 
