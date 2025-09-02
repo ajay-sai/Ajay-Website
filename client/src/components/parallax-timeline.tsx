@@ -502,13 +502,6 @@ export default function ParallaxTimeline() {
                             {/* Overlay for text readability */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                             
-                            {/* Year Badge Overlay */}
-                            <div className="absolute bottom-4 left-4">
-                              <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg shadow-lg`}>
-                                {event.year}
-                              </div>
-                            </div>
-                            
                             {/* Parallax Effect Elements */}
                             <div 
                               className="absolute top-4 right-4 w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
