@@ -495,7 +495,16 @@ export default function ParallaxTimeline() {
                   <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
                     isActive ? 'scale-110 shadow-lg shadow-primary/30' : 'scale-100'
                   }`}>
-                    <Icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    {/* Show company logo for Harley Davidson, otherwise show icon */}
+                    {event.description.includes("Harley Davidson") ? (
+                      <img 
+                        src={harleyDavidsonLogo} 
+                        alt="Harley Davidson Logo" 
+                        className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                      />
+                    ) : (
+                      <Icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    )}
                   </div>
                 </div>
 
@@ -555,16 +564,7 @@ export default function ParallaxTimeline() {
                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${isActive ? 'border-primary/50 bg-primary/10 text-primary' : 'border-border bg-secondary/50 text-muted-foreground'} transition-all duration-300`}>
                           📅 {event.dateRange}
                         </span>
-                        {/* Company Logo for Harley Davidson */}
-                        {event.description.includes("Harley Davidson") && (
-                          <div className="inline-flex items-center px-2 py-1 rounded-full bg-background/80 border border-border">
-                            <img 
-                              src={harleyDavidsonLogo} 
-                              alt="Harley Davidson Logo" 
-                              className="w-5 h-5 object-contain"
-                            />
-                          </div>
-                        )}
+
                       </div>
                       
                       <p className="text-muted-foreground mb-4 leading-relaxed">
