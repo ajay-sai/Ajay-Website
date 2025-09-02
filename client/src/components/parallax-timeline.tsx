@@ -248,8 +248,10 @@ export default function ParallaxTimeline() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeEvent, setActiveEvent] = useState(0);
   
-  // State for manual image navigation
+  // State for manual image navigation and touch handling
   const [manualImageIndices, setManualImageIndices] = useState<{[key: number]: number}>({});
+  const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
+  const [touchEnd, setTouchEnd] = useState<{x: number, y: number} | null>(null);
   
   // Function to handle manual image navigation
   const handleImageClick = (eventIndex: number, imageIndex: number) => {
@@ -257,6 +259,49 @@ export default function ParallaxTimeline() {
       ...prev,
       [eventIndex]: imageIndex
     }));
+  };
+
+  // Touch handlers for swipe navigation
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY
+    });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY
+    });
+  };
+
+  const handleTouchEnd = (eventIndex: number, imageCount: number) => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distanceX = touchStart.x - touchEnd.x;
+    const distanceY = touchStart.y - touchEnd.y;
+    const isLeftSwipe = distanceX > 50;
+    const isRightSwipe = distanceX < -50;
+    const isVerticalSwipe = Math.abs(distanceY) > Math.abs(distanceX);
+
+    // Only handle horizontal swipes, ignore vertical scrolling
+    if (isVerticalSwipe) return;
+
+    const currentIndex = manualImageIndices[eventIndex] || 0;
+    
+    if (isLeftSwipe && currentIndex < imageCount - 1) {
+      handleImageClick(eventIndex, currentIndex + 1);
+    } else if (isRightSwipe && currentIndex > 0) {
+      handleImageClick(eventIndex, currentIndex - 1);
+    } else if (isLeftSwipe && currentIndex === imageCount - 1) {
+      // Loop to first image
+      handleImageClick(eventIndex, 0);
+    } else if (isRightSwipe && currentIndex === 0) {
+      // Loop to last image
+      handleImageClick(eventIndex, imageCount - 1);
+    }
   };
 
 
@@ -364,19 +409,19 @@ export default function ParallaxTimeline() {
                   opacity: isActive ? 1 : 0.3
                 }}
               >
-                {/* Timeline Node */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 z-20">
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
+                {/* Timeline Node - Adjusted for mobile */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 md:top-8 sm:top-12 z-20">
+                  <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
                     isActive ? 'scale-110 shadow-lg shadow-primary/30' : 'scale-100'
                   }`}>
-                    <Icon className="w-8 h-8 text-white" />
+                    <Icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
                   </div>
                 </div>
 
                 {/* Container for both Content Card and Workplace Gallery */}
                 <div className={`flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-8 ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } max-w-6xl mx-auto px-4`}>
+                } max-w-6xl mx-auto px-4 pt-8 md:pt-4`}>
                   
                   {/* Content Card */}
                   <div className="w-full lg:flex-1 lg:max-w-2xl">
@@ -509,8 +554,13 @@ export default function ParallaxTimeline() {
                           </h4>
                         </div>
                         
-                        {/* Main Image Display */}
-                        <div className="relative h-64 overflow-hidden">
+                        {/* Main Image Display with Touch Support */}
+                        <div 
+                          className="relative h-64 overflow-hidden"
+                          onTouchStart={handleTouchStart}
+                          onTouchMove={handleTouchMove}
+                          onTouchEnd={() => handleTouchEnd(index, event.workplaceImages?.length || 0)}
+                        >
                           {event.workplaceImages?.slice(0, 5).map((image, imageIndex) => {
                             // Use manual selection if available, otherwise use scroll-based selection
                             const manualIndex = manualImageIndices[index];
