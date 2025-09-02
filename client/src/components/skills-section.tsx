@@ -62,7 +62,7 @@ const isMobile = () => {
 export default function SkillsSection() {
 
   return (
-    <section id="skills" className="py-16 relative overflow-hidden">
+    <section id="skills" className="py-10 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-10 w-1 h-1 bg-primary/50 rounded-full"></div>

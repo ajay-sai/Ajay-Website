@@ -110,7 +110,7 @@ export default function ScrollVideoSection() {
     <section 
       id="data-insights"
       ref={containerRef}
-      className="min-h-screen py-20 relative overflow-hidden sticky top-0"
+      className="min-h-screen py-12 relative overflow-hidden sticky top-0"
       style={{ zIndex: 1 }}
     >
       {/* Animated Background */}

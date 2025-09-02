@@ -2,7 +2,7 @@ import ajayPhoto from "@assets/image_1756764365127.png";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="pt-8 pb-20 bg-secondary/30 relative overflow-hidden">
+    <section id="about" className="pt-4 pb-12 bg-secondary/30 relative overflow-hidden">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
