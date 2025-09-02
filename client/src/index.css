@@ -361,18 +361,32 @@
     animation: holographicShimmer 45s ease-in-out infinite;
   }
 
-  /* Static gradient text without animation */
-  .gradient-text-static {
+  /* Elegant hero name styling */
+  .hero-name {
     background: linear-gradient(
-      45deg,
-      var(--quantum-blue),
-      var(--quantum-green),
-      var(--quantum-purple),
-      var(--quantum-cyan)
+      135deg,
+      var(--foreground) 0%,
+      var(--quantum-blue) 30%,
+      var(--foreground) 60%,
+      var(--quantum-purple) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    letter-spacing: -0.02em;
+  }
+
+  /* Elegant navigation name styling */
+  .nav-name {
+    color: var(--foreground);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  
+  .dark .nav-name {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
   /* Card hover effects - theme adaptive */
