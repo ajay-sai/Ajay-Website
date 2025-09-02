@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Play, BarChart3, Brain, Database, Zap } from "lucide-react";
+import { ExternalLink, Github, Play, BarChart3, Brain, Database, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface MasonryItem {
   id: string;
@@ -287,18 +288,18 @@ export default function MasonryShowcase() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 gradient-text scroll-animate">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
             Interactive Portfolio Showcase
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-4 sm:mb-6 scroll-animate" />
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 scroll-animate">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate" />
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
             Explore my work, projects, achievements, and innovations
           </p>
         </div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 auto-rows-max">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 auto-rows-max">
           {masonryItems.map((item, index) => {
             const isVisible = visibleItems.has(item.id);
             const itemProgress = isVisible ? 1 : 0;
@@ -343,7 +344,7 @@ export default function MasonryShowcase() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="h-3/5 sm:h-1/3 p-2 sm:p-3 flex flex-col justify-start space-y-1 overflow-hidden">
+                  <div className="h-3/5 sm:h-1/3 p-3 sm:p-4 flex flex-col justify-start space-y-1 sm:space-y-2 overflow-hidden">
                     {/* Title and description */}
                     <div className="flex-shrink-0">
                       <h3 className="font-bold text-sm sm:text-lg mb-1 line-clamp-1 group-hover:text-primary transition-colors duration-300">
@@ -356,7 +357,7 @@ export default function MasonryShowcase() {
 
                     {/* Metrics with quantum effects */}
                     {item.metrics && (
-                      <div className="flex justify-center space-x-1 sm:space-x-2 mb-1 flex-shrink-0">
+                      <div className="flex justify-center space-x-2 sm:space-x-3 mb-2 flex-shrink-0">
                         {item.metrics.map((metric, metricIndex) => (
                           <div key={metricIndex} className="text-center group-hover:scale-105 transition-transform duration-300 flex-1">
                             <div className="text-primary font-bold text-xs sm:text-sm group-hover:text-accent transition-colors duration-300">{metric.value}</div>
@@ -367,7 +368,7 @@ export default function MasonryShowcase() {
                     )}
 
                     {/* Tags with quantum effects */}
-                    <div className="flex flex-wrap gap-1 flex-shrink-0">
+                    <div className="flex flex-wrap gap-1 mb-2 flex-shrink-0">
                       {item.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
@@ -381,6 +382,19 @@ export default function MasonryShowcase() {
                         <span className="px-1.5 py-0.5 bg-secondary/80 text-muted-foreground text-[9px] sm:text-xs rounded transition-all duration-300 hover:scale-105">
                           +{item.tags.length - 3}
                         </span>
+                      )}
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="flex space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 mt-auto flex-shrink-0">
+                      <Button variant="outline" size="sm" className="flex-1 text-[10px] sm:text-xs px-2 py-1 h-7 sm:h-8 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 flex items-center justify-center">
+                        <ExternalLink className="w-3 h-3 mr-1" />
+                        <span className="hidden sm:inline">View</span>
+                      </Button>
+                      {item.type === 'project' && (
+                        <Button variant="outline" size="sm" className="text-[10px] sm:text-xs px-2 py-1 h-7 sm:h-8 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 flex items-center justify-center">
+                          <Github className="w-3 h-3" />
+                        </Button>
                       )}
                     </div>
                   </div>
