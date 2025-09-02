@@ -59,7 +59,7 @@ export default function HeroSection() {
           <h1 className={`text-6xl md:text-7xl font-bold mb-4 transition-all duration-1000 delay-200 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <span className="gradient-text quantum-glow">
+            <span className="gradient-text">
               Ajay Miryala
             </span>
           </h1>

@@ -208,7 +208,7 @@ export default function MasonryShowcase() {
       case 'chart':
         return (
           <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-            {/* Animated chart visualization */}
+            {/* Static chart visualization */}
             <div className="absolute inset-0">
               {[...Array(8)].map((_, i) => (
                 <div
@@ -217,9 +217,7 @@ export default function MasonryShowcase() {
                   style={{
                     left: `${10 + i * 10}%`,
                     width: '8%',
-                    height: `${20 + Math.sin(scrollProgress * Math.PI * 2 + i) * 30}%`,
-                    transition: 'height 0.3s ease-out',
-                    animationDelay: `${i * 100}ms`
+                    height: `${30 + (i % 3) * 20}%`
                   }}
                 />
               ))}
@@ -232,17 +230,15 @@ export default function MasonryShowcase() {
         return (
           <div className="relative w-full h-full flex items-center justify-center">
             <Icon className="w-16 h-16 text-white/80" />
-            {/* Floating particles */}
+            {/* Static decorative elements */}
             <div className="absolute inset-0">
-              {[...Array(6)].map((_, i) => (
+              {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-2 h-2 bg-white/40 rounded-full"
+                  className="absolute w-1 h-1 bg-white/30 rounded-full"
                   style={{
-                    left: `${20 + i * 15}%`,
-                    top: `${30 + Math.sin(scrollProgress * Math.PI + i) * 20}%`,
-                    transform: `scale(${0.5 + Math.sin(scrollProgress * Math.PI * 2 + i) * 0.5})`,
-                    transition: 'all 0.3s ease-out'
+                    left: `${20 + i * 20}%`,
+                    top: `${30 + i * 15}%`
                   }}
                 />
               ))}
@@ -258,23 +254,12 @@ export default function MasonryShowcase() {
       ref={containerRef}
       className="py-20 relative overflow-hidden"
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 quantum-dots opacity-10"></div>
-      
-      {/* Floating particles for quantum effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(25)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full quantum-float"
-            style={{
-              left: `${(i * 19) % 100}%`,
-              top: `${(i * 23) % 100}%`,
-              animationDelay: `${i * 150}ms`,
-              animationDuration: `${4 + (i % 4)}s`
-            }}
-          />
-        ))}
+      {/* Minimal background effect */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10 w-2 h-2 bg-primary/50 rounded-full"></div>
+        <div className="absolute top-32 right-20 w-1 h-1 bg-accent/50 rounded-full"></div>
+        <div className="absolute bottom-20 left-1/3 w-1 h-1 bg-primary/50 rounded-full"></div>
+        <div className="absolute bottom-40 right-1/4 w-2 h-2 bg-accent/50 rounded-full"></div>
       </div>
 
       {/* Subtle static grid overlay */}
@@ -426,9 +411,7 @@ export default function MasonryShowcase() {
               key={stat.label}
               className="text-center p-4 quantum-card rounded-lg transform transition-all duration-1000 hover:scale-105 group cursor-pointer"
               style={{
-                transitionDelay: `${index * 200}ms`,
-                transform: `translateY(${scrollProgress > 0.5 ? 0 : 20}px)`,
-                opacity: scrollProgress > 0.5 ? 1 : 0.5
+                transitionDelay: `${index * 200}ms`
               }}
             >
               {/* Hover effect overlay */}
