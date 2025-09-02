@@ -60,14 +60,6 @@ const isMobile = () => {
 };
 
 export default function SkillsSection() {
-  const [mounted, setMounted] = useState(false);
-  const [mobile, setMobile] = useState(false);
-
-  useEffect(() => {
-    setMobile(isMobile());
-    const timer = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section id="skills" className="py-16 relative overflow-hidden">
@@ -105,16 +97,9 @@ export default function SkillsSection() {
             return (
               <div
                 key={category.title}
-                className={`transform transition-all mobile-smooth ${
-                  mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                } hover:scale-105`}
+                className="scroll-animate hover:scale-105"
                 style={{ 
-                  transitionDelay: `${categoryIndex * (mobile ? 150 : 100)}ms`,
-                  transitionDuration: mobile ? '1s' : '700ms',
-                  transitionTimingFunction: mobile 
-                    ? 'cubic-bezier(0.25, 0.1, 0.25, 1)' 
-                    : 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                  willChange: mounted ? 'auto' : 'transform, opacity'
+                  transitionDelay: `${categoryIndex * 100}ms`
                 }}
               >
                 <div className="quantum-card p-4 rounded-xl relative overflow-hidden group">
