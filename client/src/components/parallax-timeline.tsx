@@ -295,6 +295,13 @@ export default function ParallaxTimeline() {
   const [manualImageIndices, setManualImageIndices] = useState<{[key: number]: number}>({});
   const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
   const [touchEnd, setTouchEnd] = useState<{x: number, y: number} | null>(null);
+  
+  // Auto-scroll state
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [userScrolledManually, setUserScrolledManually] = useState(false);
+  const autoScrollRef = useRef<number>();
+  const lastManualScrollTime = useRef<number>(0);
+  const hasStartedAutoScroll = useRef<boolean>(false);
 
   useEffect(() => {
     setMobile(isMobile());
@@ -352,6 +359,93 @@ export default function ParallaxTimeline() {
   };
 
 
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    const startAutoScroll = () => {
+      if (!containerRef.current || userScrolledManually) return;
+      
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Check if timeline section is in view and user hasn't manually scrolled
+      if (rect.top <= windowHeight * 0.8 && rect.bottom >= 0 && !hasStartedAutoScroll.current) {
+        hasStartedAutoScroll.current = true;
+        setIsAutoScrolling(true);
+        
+        // Start smooth auto-scroll through the entire timeline
+        const startY = window.scrollY;
+        const targetY = startY + rect.height * 0.8; // Scroll through 80% of the timeline
+        const duration = 8000; // 8 seconds for the full journey
+        const startTime = performance.now();
+        
+        const animateScroll = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Smooth easing function
+          const easeInOutCubic = (t: number) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+          const easedProgress = easeInOutCubic(progress);
+          
+          const currentY = startY + (targetY - startY) * easedProgress;
+          
+          if (progress < 1 && isAutoScrolling && !userScrolledManually) {
+            window.scrollTo(0, currentY);
+            autoScrollRef.current = requestAnimationFrame(animateScroll);
+          } else {
+            setIsAutoScrolling(false);
+          }
+        };
+        
+        autoScrollRef.current = requestAnimationFrame(animateScroll);
+      }
+    };
+
+    const checkAutoScrollTrigger = () => {
+      if (!isAutoScrolling) {
+        startAutoScroll();
+      }
+    };
+
+    window.addEventListener('scroll', checkAutoScrollTrigger, { passive: true });
+    checkAutoScrollTrigger(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', checkAutoScrollTrigger);
+      if (autoScrollRef.current) {
+        cancelAnimationFrame(autoScrollRef.current);
+      }
+    };
+  }, [isAutoScrolling, userScrolledManually]);
+
+  // Detect manual scrolling to stop auto-scroll
+  useEffect(() => {
+    const detectManualScroll = () => {
+      const now = performance.now();
+      if (now - lastManualScrollTime.current < 100) { // Rapid scroll events indicate manual scroll
+        setUserScrolledManually(true);
+        setIsAutoScrolling(false);
+        if (autoScrollRef.current) {
+          cancelAnimationFrame(autoScrollRef.current);
+        }
+      }
+      lastManualScrollTime.current = now;
+    };
+
+    window.addEventListener('wheel', detectManualScroll, { passive: true });
+    window.addEventListener('touchmove', detectManualScroll, { passive: true });
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.key)) {
+        setUserScrolledManually(true);
+        setIsAutoScrolling(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener('wheel', detectManualScroll);
+      window.removeEventListener('touchmove', detectManualScroll);
+    };
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -472,6 +566,15 @@ export default function ParallaxTimeline() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
             A comprehensive timeline showcasing my evolution from student to Lead Data Scientist across diverse industries
           </p>
+          
+          {/* Auto-scroll indicator */}
+          {isAutoScrolling && (
+            <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
+              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+              <span>Auto-scrolling through timeline...</span>
+              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+            </div>
+          )}
         </div>
 
         {/* Timeline Line */}
