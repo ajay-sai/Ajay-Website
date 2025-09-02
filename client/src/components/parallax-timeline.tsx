@@ -307,49 +307,53 @@ export default function ParallaxTimeline() {
 
 
   useEffect(() => {
+    let ticking = false;
+    let lastScrollTime = 0;
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      const now = performance.now();
+      
+      // Throttle scroll events for better mobile performance
+      if (now - lastScrollTime < 16) return; // ~60fps max
+      lastScrollTime = now;
 
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const containerHeight = rect.height;
-      
-      // Calculate scroll progress: 0% when section starts entering viewport, 100% when it fully exits
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-      
-      // Progress starts when section top reaches bottom of viewport and ends when section bottom leaves top of viewport
-      const startProgress = windowHeight; // Section just starting to enter
-      const endProgress = -containerHeight; // Section has completely exited
-      
-      const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
-      const progress = Math.max(0, Math.min(1, rawProgress));
-      
-      setScrollProgress(progress);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (!containerRef.current) {
+            ticking = false;
+            return;
+          }
 
-      // Improved active event calculation with smoother transitions
-      const totalEvents = timelineEvents.length;
-      const eventProgress = progress * totalEvents;
-      const baseEventIndex = Math.floor(eventProgress);
-      const eventOffset = eventProgress - baseEventIndex;
-      
-      // Use a threshold to determine when to switch active events
-      let activeIndex;
-      if (eventOffset < 0.3) {
-        activeIndex = baseEventIndex;
-      } else if (eventOffset > 0.7) {
-        activeIndex = Math.min(baseEventIndex + 1, totalEvents - 1);
-      } else {
-        // In transition zone, keep current active or use closest
-        activeIndex = eventOffset < 0.5 ? baseEventIndex : Math.min(baseEventIndex + 1, totalEvents - 1);
+          const rect = containerRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const containerHeight = rect.height;
+          
+          // Simplified scroll progress calculation
+          const sectionTop = rect.top;
+          const startProgress = windowHeight;
+          const endProgress = -containerHeight;
+          
+          const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
+          const progress = Math.max(0, Math.min(1, rawProgress));
+          
+          setScrollProgress(progress);
+
+          // Simplified active event calculation for smoother mobile performance
+          const totalEvents = timelineEvents.length;
+          const eventProgress = progress * totalEvents;
+          const activeIndex = Math.round(eventProgress);
+          const clampedEvent = Math.max(0, Math.min(totalEvents - 1, activeIndex));
+          
+          setActiveEvent(clampedEvent);
+          ticking = false;
+        });
+        ticking = true;
       }
-      
-      const clampedEvent = Math.max(0, Math.min(totalEvents - 1, activeIndex));
-      setActiveEvent(clampedEvent);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll); // Handle window resize
+    // Use passive listeners for better mobile performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll();
 
     return () => {
@@ -371,37 +375,39 @@ export default function ParallaxTimeline() {
           className={`absolute inset-0 bg-gradient-to-br ${timelineEvents[activeEvent].color} opacity-10 transition-all duration-1000`}
         />
         
-        {/* Floating data visualization */}
+        {/* Simplified floating data visualization for better mobile performance */}
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
+          {[...Array(15)].map((_, i) => (
             <div
               key={i}
               className="absolute w-2 h-2 bg-white/20 rounded-full"
               style={{
-                left: `${(i * 17) % 100}%`,
-                top: `${(i * 23) % 100}%`,
-                transform: `translateY(${scrollProgress * -200 + (i * 10)}px) scale(${0.5 + Math.sin(scrollProgress * Math.PI + i) * 0.5})`,
-                opacity: 0.3 + Math.sin(scrollProgress * Math.PI * 2 + i) * 0.3,
-                transition: 'all 0.3s ease-out'
+                left: `${(i * 25) % 100}%`,
+                top: `${(i * 35) % 100}%`,
+                transform: `translate3d(0, ${scrollProgress * -100 + (i * 5)}px, 0) scale(${0.5 + Math.sin(scrollProgress * Math.PI + i) * 0.3})`,
+                opacity: 0.2 + Math.sin(scrollProgress * Math.PI + i) * 0.2,
+                transition: 'transform 0.2s ease-out, opacity 0.2s ease-out',
+                willChange: 'transform'
               }}
             />
           ))}
         </div>
 
-        {/* Neural network connections */}
+        {/* Simplified neural network connections for mobile */}
         <svg className="absolute inset-0 w-full h-full">
-          {[...Array(10)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <line
               key={i}
-              x1={`${(i * 20) % 100}%`}
-              y1={`${(i * 30) % 100}%`}
-              x2={`${((i + 3) * 20) % 100}%`}
-              y2={`${((i + 3) * 30) % 100}%`}
-              stroke="rgba(59, 130, 246, 0.2)"
+              x1={`${(i * 30) % 100}%`}
+              y1={`${(i * 40) % 100}%`}
+              x2={`${((i + 2) * 30) % 100}%`}
+              y2={`${((i + 2) * 40) % 100}%`}
+              stroke="rgba(59, 130, 246, 0.15)"
               strokeWidth="1"
               style={{
-                transform: `translateY(${scrollProgress * -100}px)`,
-                opacity: 0.5 + Math.sin(scrollProgress * Math.PI + i) * 0.3
+                transform: `translate3d(0, ${scrollProgress * -50}px, 0)`,
+                opacity: 0.3 + Math.sin(scrollProgress * Math.PI + i) * 0.2,
+                willChange: 'transform'
               }}
             />
           ))}
@@ -426,18 +432,22 @@ export default function ParallaxTimeline() {
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
             
-            // Better active state for transitions
-            const eventCenter = (index + 0.5) / timelineEvents.length;
-            const distanceFromCenter = Math.abs(scrollProgress - eventCenter);
-            const isInTransitionZone = distanceFromCenter < 0.15; // Wider activation zone
+            // Mobile-optimized active state calculation
+            const eventThreshold = index / timelineEvents.length;
+            const nextEventThreshold = (index + 1) / timelineEvents.length;
+            const isInActiveZone = scrollProgress >= eventThreshold - 0.1 && scrollProgress <= nextEventThreshold + 0.1;
+            
+            // Use CSS transforms for better mobile performance
+            const shouldAnimate = isActive || isInActiveZone;
             
             return (
               <div
                 key={event.sortOrder}
                 className={`relative mb-16 transition-all duration-1000`}
                 style={{
-                  transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 50}px)`,
-                  opacity: (isActive || isInTransitionZone) ? 1 : 0.3
+                  transform: `translate3d(0, ${shouldAnimate ? 0 : 50}px, 0)`,
+                  opacity: shouldAnimate ? 1 : 0.3,
+                  willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                 }}
               >
                 {/* Timeline Node - Adjusted for mobile */}
@@ -464,9 +474,10 @@ export default function ParallaxTimeline() {
                             className="h-48 bg-cover bg-center relative overflow-hidden"
                             style={{
                               backgroundImage: `url(${event.companyImage})`,
-                              transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px) scale(${(isActive || isInTransitionZone) ? 1 : 0.95})`,
-                              opacity: (isActive || isInTransitionZone) ? 1 : 0.7,
-                              transition: 'all 0.8s ease-out'
+                              transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0) scale(${shouldAnimate ? 1 : 0.95})`,
+                              opacity: shouldAnimate ? 1 : 0.7,
+                              transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+                              willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                             }}
                           >
                             {/* Overlay for text readability */}
@@ -496,9 +507,10 @@ export default function ParallaxTimeline() {
                       <h3 
                         className="text-2xl font-bold mb-3 transition-all duration-700"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 30}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '100ms'
+                          transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
+                          opacity: shouldAnimate ? 1 : 0,
+                          transitionDelay: shouldAnimate ? '100ms' : '0ms',
+                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
                         {event.title}
@@ -508,10 +520,11 @@ export default function ParallaxTimeline() {
                       <div 
                         className="flex flex-wrap gap-2 mb-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '200ms',
-                          transition: 'all 0.6s ease-out'
+                          transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
+                          opacity: shouldAnimate ? 1 : 0,
+                          transitionDelay: shouldAnimate ? '150ms' : '0ms',
+                          transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
@@ -525,9 +538,10 @@ export default function ParallaxTimeline() {
                       <p 
                         className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '300ms'
+                          transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
+                          opacity: shouldAnimate ? 1 : 0,
+                          transitionDelay: shouldAnimate ? '200ms' : '0ms',
+                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
                         {event.description}
@@ -537,10 +551,11 @@ export default function ParallaxTimeline() {
                       <div 
                         className="space-y-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 30}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '400ms',
-                          transition: 'all 0.7s ease-out'
+                          transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
+                          opacity: shouldAnimate ? 1 : 0,
+                          transitionDelay: shouldAnimate ? '250ms' : '0ms',
+                          transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
                         {event.achievements.map((achievement, achievementIndex) => {
@@ -558,9 +573,10 @@ export default function ParallaxTimeline() {
                               key={achievementIndex}
                               className="flex items-start space-x-3 transform transition-all duration-500"
                               style={{
-                                transform: `translateX(${(isActive || isInTransitionZone) ? 0 : (index % 2 === 0 ? -20 : 20)}px)`,
-                                opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                                transitionDelay: `${achievementIndex * 200 + 400}ms`
+                                transform: `translate3d(${shouldAnimate ? 0 : (index % 2 === 0 ? -20 : 20)}px, 0, 0)`,
+                                opacity: shouldAnimate ? 1 : 0,
+                                transitionDelay: shouldAnimate ? `${achievementIndex * 100 + 300}ms` : '0ms',
+                                willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                               }}
                             >
                               <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5 shadow-sm`}>
@@ -595,10 +611,11 @@ export default function ParallaxTimeline() {
                       <div 
                         className="mt-4 h-1 bg-secondary rounded-full overflow-hidden"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '600ms',
-                          transition: 'all 0.6s ease-out'
+                          transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
+                          opacity: shouldAnimate ? 1 : 0,
+                          transitionDelay: shouldAnimate ? '400ms' : '0ms',
+                          transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
                         }}
                       >
                         <div 
@@ -639,12 +656,12 @@ export default function ParallaxTimeline() {
                             if (manualIndex !== undefined) {
                               currentImageIndex = manualIndex;
                             } else {
-                              // Improved scroll-based cycling with better timing
-                              const scrollMultiplier = imageCount > 1 ? imageCount * 2 : 1;
-                              const baseProgress = scrollProgress * 20; // Increased sensitivity
-                              const offsetProgress = baseProgress + (index * 3); // Different timing per event
-                              const cycleProgress = offsetProgress % (imageCount * 2); // Slower cycling
-                              currentImageIndex = Math.floor(cycleProgress / 2) % imageCount;
+                              // Mobile-optimized scroll-based cycling with reduced sensitivity
+                              const scrollMultiplier = imageCount > 1 ? imageCount * 1.5 : 1;
+                              const baseProgress = scrollProgress * 8; // Reduced sensitivity for smoother mobile
+                              const offsetProgress = baseProgress + (index * 2); // Less aggressive timing per event
+                              const cycleProgress = offsetProgress % (imageCount * 3); // Much slower cycling
+                              currentImageIndex = Math.floor(cycleProgress / 3) % imageCount;
                             }
                             
                             const isCurrentImage = imageIndex === currentImageIndex;
@@ -652,12 +669,13 @@ export default function ParallaxTimeline() {
                             return (
                               <div
                                 key={imageIndex}
-                                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                                className={`absolute inset-0 transition-all duration-800 ease-out ${
                                   isCurrentImage ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                                 }`}
                                 style={{
-                                  transform: `translateX(${isCurrentImage ? 0 : (imageIndex < currentImageIndex ? -100 : 100)}px) scale(${isCurrentImage ? 1 : 0.95})`,
-                                  zIndex: isCurrentImage ? 10 : 1
+                                  transform: `translate3d(${isCurrentImage ? 0 : (imageIndex < currentImageIndex ? -100 : 100)}px, 0, 0) scale(${isCurrentImage ? 1 : 0.95})`,
+                                  zIndex: isCurrentImage ? 10 : 1,
+                                  willChange: isCurrentImage ? 'transform' : 'auto'
                                 }}
                               >
                                 <img 
