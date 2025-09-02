@@ -247,7 +247,9 @@ export default function ParallaxTimeline() {
     // Enhanced pattern to match more important metrics
     const pattern = /(\d+%|\$\d+[MKB]?|\d+\+|\d+x|\d+,\d+|\d+ [a-zA-Z]+|\d+ associates|\d+ students|\d+ companies)/g;
     
-    return text.replace(pattern, (match) => `<strong>${match}</strong>`);
+    return text.replace(pattern, (match) => 
+      `<span class="font-bold text-blue-400 bg-blue-400/10 px-1 rounded">${match}</span>`
+    );
   };
 
   useEffect(() => {
