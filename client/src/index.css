@@ -174,12 +174,12 @@
 
   @keyframes quantumGlow {
     0%, 100% { 
-      text-shadow: 0 0 5px var(--quantum-blue), 0 0 10px var(--quantum-blue);
+      text-shadow: 0 0 2px var(--quantum-blue);
       opacity: 1;
     }
     50% { 
-      text-shadow: 0 0 8px var(--quantum-blue), 0 0 15px var(--quantum-blue);
-      opacity: 0.8;
+      text-shadow: 0 0 4px var(--quantum-blue);
+      opacity: 0.95;
     }
   }
 
@@ -250,7 +250,7 @@
   }
 
   .quantum-glow {
-    animation: quantumGlow 4s ease-in-out infinite;
+    animation: quantumGlow 8s ease-in-out infinite;
   }
 
   .data-stream {

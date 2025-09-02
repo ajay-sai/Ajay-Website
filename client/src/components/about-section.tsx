@@ -38,12 +38,9 @@ export default function AboutSection() {
                 alt="Ajay Miryala - Lead Data Scientist"
                 className="rounded-2xl shadow-2xl w-full h-auto"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl holographic-shimmer"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl"></div>
               
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary rounded-full quantum-float opacity-80"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-accent rounded-full quantum-float opacity-60" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute top-1/2 -right-6 w-4 h-4 bg-primary rounded-full quantum-float opacity-70" style={{ animationDelay: '2s' }}></div>
+
             </div>
           </div>
         </div>

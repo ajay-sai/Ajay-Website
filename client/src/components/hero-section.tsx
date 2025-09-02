@@ -19,24 +19,15 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Quantum Background Effects */}
-      <div className="absolute inset-0 quantum-dots opacity-30"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10"></div>
+      {/* Minimal Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
       
-      {/* Neural Network Lines */}
-      <div className="absolute inset-0">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="neural-connection"
-            style={{
-              top: `${20 + i * 15}%`,
-              left: `${10 + i * 20}%`,
-              width: `${200 + i * 100}px`,
-              animationDelay: `${i * 0.5}s`,
-            }}
-          />
-        ))}
+      {/* Subtle decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-accent rounded-full"></div>
+        <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-primary rounded-full"></div>
+        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-accent rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -49,7 +40,7 @@ export default function HeroSection() {
               <img
                 src={ajayPhoto}
                 alt="Ajay Miryala - Lead Data Scientist"
-                className="w-48 h-48 rounded-full mx-auto object-cover border-4 border-primary shadow-2xl quantum-float quantum-pulse"
+                className="w-48 h-48 rounded-full mx-auto object-cover border-4 border-primary shadow-2xl"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-accent/20 mix-blend-overlay"></div>
             </div>
@@ -126,7 +117,7 @@ export default function HeroSection() {
               variant="ghost"
               size="icon"
               onClick={handleScrollToAbout}
-              className="animate-bounce hover:text-primary transition-colors quantum-float"
+              className="animate-bounce hover:text-primary transition-colors"
             >
               <ChevronDown className="h-8 w-8" />
             </Button>

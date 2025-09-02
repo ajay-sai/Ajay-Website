@@ -67,7 +67,7 @@ export default function DemosSection() {
 
         {/* Video Demos */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center quantum-glow">Project Demonstrations</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center gradient-text">Project Demonstrations</h3>
           <div className="grid md:grid-cols-2 gap-8">
             {videos.map((video, index) => (
               <div
@@ -79,10 +79,10 @@ export default function DemosSection() {
               >
                 <div className={`aspect-video bg-gradient-to-br ${video.thumbnail} flex items-center justify-center relative group cursor-pointer overflow-hidden`}>
                   <div className="text-center scroll-animate">
-                    <Play className="w-16 h-16 text-primary mb-4 quantum-glow group-hover:scale-110 transition-transform" />
+                    <Play className="w-16 h-16 text-primary mb-4 group-hover:scale-110 transition-transform" />
                     <p className="text-muted-foreground font-medium">{video.title}</p>
                   </div>
-                  <div className="absolute inset-0 holographic-shimmer opacity-0 group-hover:opacity-50 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/10 opacity-0 group-hover:opacity-50 transition-opacity"></div>
                 </div>
                 <div className="p-6">
                   <h4 className="text-lg font-semibold mb-2">{video.title}</h4>
@@ -95,7 +95,7 @@ export default function DemosSection() {
 
         {/* Image Gallery */}
         <div>
-          <h3 className="text-2xl font-bold mb-8 text-center quantum-glow">Project Visualizations</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center gradient-text">Project Visualizations</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {gallery.map((item, index) => (
               <div

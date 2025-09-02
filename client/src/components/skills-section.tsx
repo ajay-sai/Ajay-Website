@@ -64,30 +64,19 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-16 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 quantum-dots opacity-10"></div>
-      
-      {/* Floating particles for quantum effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full quantum-float"
-            style={{
-              left: `${(i * 23) % 100}%`,
-              top: `${(i * 17) % 100}%`,
-              animationDelay: `${i * 200}ms`,
-              animationDuration: `${3 + (i % 3)}s`
-            }}
-          />
-        ))}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 right-10 w-1 h-1 bg-primary/50 rounded-full"></div>
+        <div className="absolute bottom-32 left-20 w-2 h-2 bg-accent/50 rounded-full"></div>
       </div>
+      
+
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text scroll-animate">
             Technical Skills
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto quantum-glow"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -108,7 +97,7 @@ export default function SkillsSection() {
                   
                   <div className="relative z-10">
                     <div className="flex items-center mb-3">
-                      <IconComponent className={`${category.color} text-lg mr-2 quantum-glow transition-all duration-300 group-hover:scale-110`} />
+                      <IconComponent className={`${category.color} text-lg mr-2 transition-all duration-300 group-hover:scale-110`} />
                       <h3 className="text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                         {category.title}
                       </h3>
