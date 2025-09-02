@@ -3,6 +3,9 @@ import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings, GraduationCap
 import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
 import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
 import harleyDavidsonLogo from "@assets/image_1756766997358.png";
+// Workplace images for Home Depot
+const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
+const homeDepotImage2 = "/attached_assets/IMG_2329_1756775594779.JPG";
 
 interface TimelineEvent {
   year: string;
@@ -31,7 +34,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-blue-500 to-cyan-500",
     companyLogo: "🏠",
     companyColor: "#f96302",
-    workplaceImages: [harleyDavidsonImage1, harleyDavidsonImage2],
+    workplaceImages: [homeDepotImage1, homeDepotImage2],
     achievements: [
       "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
       "55% reduction in analytics turnaround time through custom prompt optimization frameworks",
