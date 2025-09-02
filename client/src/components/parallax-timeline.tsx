@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings, GraduationCap, BookOpen } from "lucide-react";
+import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings, GraduationCap, BookOpen, ChevronDown } from "lucide-react";
 import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
 import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
 import harleyDavidsonLogo from "@assets/image_1756790102894.png";
@@ -553,15 +553,10 @@ export default function ParallaxTimeline() {
             {!isAutoScrolling ? (
               <button
                 onClick={startAutoScroll}
-                className="group flex flex-col items-center space-y-2 animate-bounce hover:text-primary transition-colors bg-background/50 backdrop-blur-sm border border-border shadow-lg hover:bg-primary/10 rounded-xl px-6 py-4"
+                className="animate-bounce hover:text-primary transition-colors bg-background/50 backdrop-blur-sm border border-border shadow-lg hover:bg-primary/10 rounded-full p-4"
                 data-testid="button-auto-scroll-timeline"
               >
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse group-hover:animate-ping"></div>
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse group-hover:animate-ping"></div>
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse group-hover:animate-ping"></div>
-                </div>
-                <span className="text-sm font-medium">Take Guided Journey</span>
+                <ChevronDown className="h-8 w-8" />
               </button>
             ) : (
               <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
