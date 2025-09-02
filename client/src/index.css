@@ -361,7 +361,7 @@
     animation: holographicShimmer 45s ease-in-out infinite;
   }
 
-  /* Elegant hero name styling */
+  /* Elegant hero name styling with character animations */
   .hero-name {
     background: linear-gradient(
       135deg,
@@ -375,6 +375,20 @@
     background-clip: text;
     text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
     letter-spacing: -0.02em;
+  }
+
+  .hero-name .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px) rotateX(90deg);
+    animation: charReveal 0.8s ease-out forwards;
+  }
+
+  @keyframes charReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
   }
 
   /* Elegant navigation name styling */
