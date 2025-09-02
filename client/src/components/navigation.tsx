@@ -12,8 +12,8 @@ export default function Navigation() {
       setScrolled(window.scrollY > 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
@@ -29,23 +29,25 @@ export default function Navigation() {
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setIsOpen(false);
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-border' 
-        : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <button
-            onClick={() => handleNavClick('#home')}
-            className="text-xl nav-name cursor-pointer hover:scale-105 transition-all duration-300 hover:text-primary"
+            onClick={() => handleNavClick("#home")}
+            className="text-xl nav-name cursor-pointer hover:scale-105 gradient-text scroll-animate transition-all duration-3000 hover:text-primary"
           >
             Ajay Miryala
           </button>
@@ -75,7 +77,11 @@ export default function Navigation() {
               onClick={() => setIsOpen(!isOpen)}
               data-testid="mobile-menu-toggle"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
