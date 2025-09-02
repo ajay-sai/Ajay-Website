@@ -305,6 +305,9 @@ export default function ParallaxTimeline() {
 
   useEffect(() => {
     setMobile(isMobile());
+    // Reset auto-scroll state on component mount
+    setUserScrolledManually(false);
+    hasStartedAutoScroll.current = false;
   }, []);
   
   // Function to handle manual image navigation
@@ -366,8 +369,18 @@ export default function ParallaxTimeline() {
     let autoScrollAnimationId: number;
     
     const startAutoScroll = () => {
-      if (!containerRef.current || userScrolledManually || hasStartedAutoScroll.current) return;
+      console.log('startAutoScroll called', { 
+        containerExists: !!containerRef.current, 
+        userScrolledManually, 
+        hasStarted: hasStartedAutoScroll.current 
+      });
       
+      if (!containerRef.current || userScrolledManually || hasStartedAutoScroll.current) {
+        console.log('Auto-scroll blocked:', { containerRef: !!containerRef.current, userScrolledManually, hasStarted: hasStartedAutoScroll.current });
+        return;
+      }
+      
+      console.log('Starting auto-scroll animation...');
       hasStartedAutoScroll.current = true;
       setIsAutoScrolling(true);
       
@@ -377,8 +390,11 @@ export default function ParallaxTimeline() {
       const duration = 6000; // 6 seconds total
       const startTime = Date.now();
       
+      console.log('Auto-scroll params:', { startScrollY, scrollDistance, duration });
+      
       const animate = () => {
         if (userScrolledManually) {
+          console.log('Auto-scroll stopped - user scrolled manually');
           setIsAutoScrolling(false);
           return;
         }
@@ -401,6 +417,7 @@ export default function ParallaxTimeline() {
         if (progress < 1) {
           autoScrollAnimationId = requestAnimationFrame(animate);
         } else {
+          console.log('Auto-scroll completed');
           setIsAutoScrolling(false);
         }
       };
@@ -413,11 +430,22 @@ export default function ParallaxTimeline() {
       intersectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            console.log('Timeline intersection:', { 
+              isIntersecting: entry.isIntersecting, 
+              intersectionRatio: entry.intersectionRatio,
+              userScrolledManually,
+              hasStarted: hasStartedAutoScroll.current
+            });
+            
             if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+              console.log('Timeline is visible, scheduling auto-scroll...');
               // Small delay to ensure smooth transition
               setTimeout(() => {
                 if (!userScrolledManually && !hasStartedAutoScroll.current) {
+                  console.log('Conditions met, calling startAutoScroll');
                   startAutoScroll();
+                } else {
+                  console.log('Auto-scroll blocked by conditions:', { userScrolledManually, hasStarted: hasStartedAutoScroll.current });
                 }
               }, 800);
             }
@@ -442,24 +470,29 @@ export default function ParallaxTimeline() {
     };
   }, [userScrolledManually]);
 
-  // Detect user interaction to stop auto-scroll
+  // Detect user interaction to stop auto-scroll - very simple
   useEffect(() => {
-    const stopAutoScroll = () => {
-      setUserScrolledManually(true);
-      setIsAutoScrolling(false);
+    const stopAutoScroll = (e: Event) => {
+      console.log('User interaction detected:', e.type);
+      if (isAutoScrolling) {
+        setUserScrolledManually(true);
+        setIsAutoScrolling(false);
+      }
     };
 
-    // Listen for any user interaction
-    window.addEventListener('wheel', stopAutoScroll, { passive: true });
-    window.addEventListener('touchstart', stopAutoScroll, { passive: true });
-    window.addEventListener('keydown', stopAutoScroll);
+    // Only listen when auto-scroll is actually running
+    if (isAutoScrolling) {
+      window.addEventListener('wheel', stopAutoScroll, { passive: true });
+      window.addEventListener('touchmove', stopAutoScroll, { passive: true });
+      window.addEventListener('keydown', stopAutoScroll);
+    }
 
     return () => {
       window.removeEventListener('wheel', stopAutoScroll);
-      window.removeEventListener('touchstart', stopAutoScroll);  
+      window.removeEventListener('touchmove', stopAutoScroll);
       window.removeEventListener('keydown', stopAutoScroll);
     };
-  }, []);
+  }, [isAutoScrolling]);
 
   useEffect(() => {
     let ticking = false;
@@ -581,13 +614,30 @@ export default function ParallaxTimeline() {
             A comprehensive timeline showcasing my evolution from student to Lead Data Scientist across diverse industries
           </p>
           
-          {/* Auto-scroll indicator */}
+          {/* Auto-scroll indicator and reset button */}
           {isAutoScrolling && (
-            <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
-              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
-              <span>Auto-scrolling through timeline...</span>
-              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+            <div className="mt-4 flex flex-col items-center justify-center space-y-2 text-sm text-muted-foreground animate-pulse">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+                <span>Auto-scrolling through timeline...</span>
+                <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+              </div>
             </div>
+          )}
+          
+          {/* Debug reset button for development */}
+          {!isAutoScrolling && (
+            <button 
+              onClick={() => {
+                console.log('Resetting auto-scroll state');
+                setUserScrolledManually(false);
+                hasStartedAutoScroll.current = false;
+                setIsAutoScrolling(false);
+              }}
+              className="mt-2 px-4 py-2 bg-primary/20 text-primary rounded-lg text-sm hover:bg-primary/30 transition-colors"
+            >
+              Reset Auto-scroll (Debug)
+            </button>
           )}
         </div>
 
