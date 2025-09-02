@@ -501,90 +501,90 @@ export default function ParallaxTimeline() {
                 <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 md:top-8 sm:top-12 z-20">
                   {event.description.includes("Harley Davidson") ? (
                     /* Larger node for Harley Davidson with prominent logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={harleyDavidsonLogo} 
                         alt="Harley Davidson Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("Home Depot") && event.title.includes("Gen AI") ? (
                     /* Larger node for Home Depot Supply Chain with prominent logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={homeDepotLogo} 
                         alt="Home Depot Supply Chain Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("Home Depot") ? (
                     /* Larger node for Home Depot main logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={homeDepotMainLogo} 
                         alt="Home Depot Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("Principal Financial") ? (
                     /* Larger node for Principal Financial Group logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={principalLogo} 
                         alt="Principal Financial Group Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("University of Maryland") ? (
                     /* Larger node for University of Maryland logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={universityOfMarylandLogo} 
                         alt="University of Maryland Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("Bridge Solutions") ? (
                     /* Larger node for Bridge Solutions logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={bridgeSolutionsLogo} 
                         alt="Bridge Solutions Group Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("SRM University") ? (
                     /* Larger node for SRM University logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={srmUniversityLogo} 
                         alt="SRM University Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : event.description.includes("St Joseph's") ? (
                     /* Larger node for St Joseph's School logo */
-                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={stJosephsLogo} 
                         alt="St Joseph's Public School Logo" 
-                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                        className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
                   ) : (
