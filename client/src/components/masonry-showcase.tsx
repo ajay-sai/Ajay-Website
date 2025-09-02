@@ -267,34 +267,48 @@ export default function MasonryShowcase() {
       ref={containerRef}
       className="py-20 relative overflow-hidden"
     >
-      {/* Background with cascading effect */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-background" />
-        
-        {/* Cascading grid overlay */}
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-px h-20 bg-primary"
-              style={{
-                left: `${(i * 4) % 100}%`,
-                top: `${Math.sin(scrollProgress * Math.PI + i * 0.1) * 100}%`,
-                transform: `translateY(${scrollProgress * -200 + (i * 5)}px)`,
-                opacity: 0.3 + Math.sin(scrollProgress * Math.PI * 2 + i) * 0.3,
-                transition: 'all 0.2s ease-out'
-              }}
-            />
-          ))}
-        </div>
+      {/* Background Effects */}
+      <div className="absolute inset-0 quantum-dots opacity-10"></div>
+      
+      {/* Floating particles for quantum effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(25)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full quantum-float"
+            style={{
+              left: `${(i * 19) % 100}%`,
+              top: `${(i * 23) % 100}%`,
+              animationDelay: `${i * 150}ms`,
+              animationDuration: `${4 + (i % 4)}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Enhanced cascading grid overlay with quantum effects */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-px h-20 bg-gradient-to-b from-primary via-accent to-transparent quantum-glow"
+            style={{
+              left: `${(i * 4) % 100}%`,
+              top: `${Math.sin(scrollProgress * Math.PI + i * 0.1) * 100}%`,
+              transform: `translateY(${scrollProgress * -200 + (i * 5)}px)`,
+              opacity: 0.3 + Math.sin(scrollProgress * Math.PI * 2 + i) * 0.3,
+              transition: 'all 0.2s ease-out'
+            }}
+          />
+        ))}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text consciousness-expand">
             Interactive Portfolio Showcase
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 quantum-glow" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore my work through an immersive, cascading layout that reveals projects, achievements, and innovations
           </p>
@@ -318,24 +332,27 @@ export default function MasonryShowcase() {
                   willChange: isVisible ? 'auto' : 'transform, opacity'
                 }}
               >
-                <div className="quantum-card h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+                <div className="quantum-card h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer hover:scale-105 transition-all duration-500 reality-bend">
+                  {/* Quantum hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                  
                   {/* Media Section */}
                   <div className={`relative h-2/3 bg-gradient-to-br ${item.media.gradient} overflow-hidden`}>
                     {renderMedia(item)}
                     
-                    {/* Hover overlay */}
+                    {/* Enhanced hover overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                     
-                    {/* Type badge */}
+                    {/* Type badge with quantum glow */}
                     <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium capitalize">
+                      <span className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium capitalize quantum-glow">
                         {item.type}
                       </span>
                     </div>
 
-                    {/* Size indicator */}
+                    {/* Size indicator with quantum pulse */}
                     <div className="absolute top-4 left-4">
-                      <div className={`w-3 h-3 rounded-full ${
+                      <div className={`w-3 h-3 rounded-full quantum-glow ${
                         item.size === 'large' ? 'bg-green-400' :
                         item.size === 'medium' ? 'bg-yellow-400' : 'bg-blue-400'
                       }`} />
@@ -345,71 +362,75 @@ export default function MasonryShowcase() {
                   {/* Content Section */}
                   <div className="h-1/3 p-4 flex flex-col justify-between">
                     <div>
-                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300 consciousness-expand">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2 group-hover:text-foreground transition-colors duration-300">
                         {item.description}
                       </p>
                     </div>
 
-                    {/* Metrics */}
+                    {/* Metrics with quantum effects */}
                     {item.metrics && (
                       <div className="flex space-x-4 mb-3">
                         {item.metrics.map((metric, metricIndex) => (
-                          <div key={metricIndex} className="text-center">
-                            <div className="text-primary font-bold text-sm">{metric.value}</div>
+                          <div key={metricIndex} className="text-center group-hover:scale-110 transition-transform duration-300">
+                            <div className="text-primary font-bold text-sm quantum-glow group-hover:text-accent transition-colors duration-300">{metric.value}</div>
                             <div className="text-muted-foreground text-xs">{metric.label}</div>
                           </div>
                         ))}
                       </div>
                     )}
 
-                    {/* Tags */}
+                    {/* Tags with quantum effects */}
                     <div className="flex flex-wrap gap-1 mb-3">
                       {item.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-2 py-1 bg-secondary text-foreground text-xs rounded"
+                          className="px-2 py-1 bg-secondary/80 hover:bg-secondary text-foreground text-xs rounded transition-all duration-300 hover:scale-105 reality-bend cursor-pointer"
+                          style={{ animationDelay: `${tagIndex * 50}ms` }}
                         >
                           {tag}
                         </span>
                       ))}
                       {item.tags.length > 3 && (
-                        <span className="px-2 py-1 bg-secondary text-muted-foreground text-xs rounded">
+                        <span className="px-2 py-1 bg-secondary/80 text-muted-foreground text-xs rounded transition-all duration-300 hover:scale-105">
                           +{item.tags.length - 3}
                         </span>
                       )}
                     </div>
 
-                    {/* Action buttons */}
-                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button variant="outline" size="sm" className="flex-1">
+                    {/* Action buttons with quantum effects */}
+                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                      <Button variant="outline" size="sm" className="flex-1 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 quantum-glow">
                         <ExternalLink className="w-3 h-3 mr-1" />
                         View
                       </Button>
                       {item.type === 'project' && (
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" className="hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 quantum-glow">
                           <Github className="w-3 h-3" />
                         </Button>
                       )}
                     </div>
                   </div>
 
-                  {/* Progress indicator */}
+                  {/* Progress indicator with quantum glow */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
                     <div 
-                      className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000"
+                      className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000 quantum-glow"
                       style={{ width: `${itemProgress * 100}%` }}
                     />
                   </div>
+                  
+                  {/* Subtle border glow on hover */}
+                  <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary/20 transition-all duration-500"></div>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Floating stats */}
+        {/* Floating stats with quantum effects */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { label: 'Projects', value: '50+', color: 'text-blue-400' },
@@ -419,15 +440,23 @@ export default function MasonryShowcase() {
           ].map((stat, index) => (
             <div
               key={stat.label}
-              className="text-center p-4 quantum-card rounded-lg transform transition-all duration-1000"
+              className="text-center p-4 quantum-card rounded-lg transform transition-all duration-1000 hover:scale-105 reality-bend group cursor-pointer"
               style={{
                 transitionDelay: `${index * 200}ms`,
                 transform: `translateY(${scrollProgress > 0.5 ? 0 : 20}px)`,
                 opacity: scrollProgress > 0.5 ? 1 : 0.5
               }}
             >
-              <div className={`text-3xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
-              <div className="text-muted-foreground">{stat.label}</div>
+              {/* Hover effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+              
+              <div className="relative z-10">
+                <div className={`text-3xl font-bold ${stat.color} mb-2 quantum-glow consciousness-expand`}>{stat.value}</div>
+                <div className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{stat.label}</div>
+              </div>
+              
+              {/* Subtle border glow on hover */}
+              <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary/20 transition-all duration-500"></div>
             </div>
           ))}
         </div>
