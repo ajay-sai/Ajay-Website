@@ -172,14 +172,14 @@
     100% { transform: translateY(100vh); opacity: 0; }
   }
 
-  @keyframes elegantGlow {
+  @keyframes quantumGlow {
     0%, 100% { 
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 0 2px var(--quantum-blue);
       opacity: 1;
     }
     50% { 
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 8px hsl(var(--primary) / 0.1);
-      opacity: 1;
+      text-shadow: 0 0 4px var(--quantum-blue);
+      opacity: 0.95;
     }
   }
 
@@ -249,22 +249,8 @@
     animation: holographicShimmer 3s ease-in-out infinite;
   }
 
-  .elegant-glow {
-    animation: elegantGlow 6s ease-in-out infinite;
-  }
-  
-  .elegant-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: elegantShimmer 8s ease-in-out infinite;
-  }
-  
-  @keyframes elegantShimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+  .quantum-glow {
+    animation: quantumGlow 8s ease-in-out infinite;
   }
 
   .data-stream {
@@ -326,8 +312,10 @@
   /* Hardware acceleration for all animated elements */
   .quantum-card,
   .gradient-text,
-  .scroll-animate,
-  .elegant-text {
+  .consciousness-expand,
+  .reality-bend,
+  .quantum-float,
+  .scroll-animate {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
@@ -336,14 +324,20 @@
     perspective: 1000;
   }
 
-  /* Gradient text effects - elegant and refined */
+  /* Gradient text effects */
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    background-size: 200% 200%;
+    background: linear-gradient(
+      45deg,
+      var(--quantum-blue),
+      var(--quantum-green),
+      var(--quantum-purple),
+      var(--quantum-cyan)
+    );
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: elegantShimmer 12s ease-in-out infinite;
+    animation: holographicShimmer 4s ease-in-out infinite;
   }
 
   /* Card hover effects - theme adaptive */
