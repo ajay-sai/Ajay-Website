@@ -80,7 +80,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="py-20 bg-secondary/30 relative overflow-hidden">
+    <section id="projects" className="py-12 bg-secondary/30 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 neural-flow opacity-10"></div>
       

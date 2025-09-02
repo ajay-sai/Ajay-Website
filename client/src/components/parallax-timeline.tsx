@@ -414,7 +414,7 @@ export default function ParallaxTimeline() {
     <section 
       id="timeline"
       ref={containerRef}
-      className="min-h-[200vh] py-20 relative overflow-hidden"
+      className="min-h-[200vh] py-12 relative overflow-hidden"
     >
       {/* Fixed Background with Parallax */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -1 }}>

@@ -262,7 +262,7 @@ export default function MasonryShowcase() {
     <section 
       id="showcase"
       ref={containerRef}
-      className="py-20 relative overflow-hidden"
+      className="py-12 relative overflow-hidden"
     >
       {/* Minimal background effect */}
       <div className="absolute inset-0 opacity-5">

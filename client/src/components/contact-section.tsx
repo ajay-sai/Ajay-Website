@@ -47,7 +47,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary/30 relative overflow-hidden">
+    <section id="contact" className="py-12 bg-secondary/30 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-20 w-1 h-1 bg-primary/50 rounded-full"></div>
