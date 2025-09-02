@@ -47,17 +47,17 @@ export default function HeroSection() {
           </div>
 
           {/* Name */}
-          <h1 className={`text-6xl md:text-8xl lg:text-9xl font-black mb-6 hero-name-enhanced scroll-animate transition-all duration-1000 delay-200 ${
+          <h1 className={`text-6xl md:text-8xl lg:text-9xl font-black mb-6 scroll-animate transition-all duration-1000 delay-200 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`} data-testid="heading-hero-name">
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300 cursor-default mr-2 md:mr-4">
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300 cursor-default mr-2 md:mr-4 text-foreground font-black">
               Ajay
             </span>
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300 cursor-default bg-gradient-to-r from-primary via-accent to-purple-500 bg-clip-text text-transparent font-extrabold">
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300 cursor-default bg-gradient-to-r from-primary via-blue-500 to-purple-500 bg-clip-text text-transparent font-black">
               Miryala
             </span>
           </h1>
-          <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-accent to-purple-500 mx-auto mb-8 scroll-animate rounded-full shadow-lg"></div>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-blue-500 to-purple-500 mx-auto mb-8 scroll-animate rounded-full shadow-lg"></div>
 
           {/* Title */}
           <h2 className={`text-2xl md:text-3xl text-muted-foreground mb-6 transition-all duration-1000 delay-400 ${
