@@ -360,58 +360,73 @@ export default function ParallaxTimeline() {
 
 
 
-  // Auto-scroll functionality with improved mobile support
+  // Simplified auto-scroll functionality that works reliably
   useEffect(() => {
     let intersectionObserver: IntersectionObserver;
+    let autoScrollAnimationId: number;
     
     const startAutoScroll = () => {
-      if (!containerRef.current || userScrolledManually || isAutoScrolling) return;
+      if (!containerRef.current || userScrolledManually || hasStartedAutoScroll.current) return;
       
-      console.log('Starting auto-scroll...');
       hasStartedAutoScroll.current = true;
       setIsAutoScrolling(true);
       
-      // Start smooth auto-scroll through the entire timeline
-      const startY = window.scrollY;
       const rect = containerRef.current.getBoundingClientRect();
-      const targetY = startY + rect.height * 0.7; // Scroll through 70% of the timeline
-      const duration = mobile ? 10000 : 8000; // Slower on mobile for better UX
-      const startTime = performance.now();
+      const startScrollY = window.scrollY;
+      const scrollDistance = rect.height * 0.8; // Scroll through 80% of timeline
+      const duration = 6000; // 6 seconds total
+      const startTime = Date.now();
       
-      const animateScroll = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
+      const animate = () => {
+        if (userScrolledManually) {
+          setIsAutoScrolling(false);
+          return;
+        }
+        
+        const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        // Smooth easing function
-        const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        const easedProgress = easeInOutQuad(progress);
+        // Smooth easing
+        const easeProgress = progress < 0.5 
+          ? 2 * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
         
-        const currentY = startY + (targetY - startY) * easedProgress;
+        const currentScrollY = startScrollY + (scrollDistance * easeProgress);
         
-        if (progress < 1 && !userScrolledManually) {
-          window.scrollTo({ top: currentY, behavior: 'auto' });
-          autoScrollRef.current = requestAnimationFrame(animateScroll);
+        window.scrollTo({
+          top: currentScrollY,
+          behavior: 'auto'
+        });
+        
+        if (progress < 1) {
+          autoScrollAnimationId = requestAnimationFrame(animate);
         } else {
-          console.log('Auto-scroll completed or stopped');
           setIsAutoScrolling(false);
         }
       };
       
-      autoScrollRef.current = requestAnimationFrame(animateScroll);
+      autoScrollAnimationId = requestAnimationFrame(animate);
     };
 
-    // Use Intersection Observer for better trigger detection
+    // Set up intersection observer to trigger auto-scroll
     if (containerRef.current) {
       intersectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.3 && !hasStartedAutoScroll.current) {
-              console.log('Timeline section is visible, starting auto-scroll...');
-              setTimeout(() => startAutoScroll(), 500); // Small delay to ensure smooth start
+            if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+              // Small delay to ensure smooth transition
+              setTimeout(() => {
+                if (!userScrolledManually && !hasStartedAutoScroll.current) {
+                  startAutoScroll();
+                }
+              }, 800);
             }
           });
         },
-        { threshold: [0.3, 0.5] }
+        { 
+          threshold: 0.2,
+          rootMargin: '0px 0px -20% 0px'
+        }
       );
       
       intersectionObserver.observe(containerRef.current);
@@ -421,64 +436,30 @@ export default function ParallaxTimeline() {
       if (intersectionObserver) {
         intersectionObserver.disconnect();
       }
-      if (autoScrollRef.current) {
-        cancelAnimationFrame(autoScrollRef.current);
+      if (autoScrollAnimationId) {
+        cancelAnimationFrame(autoScrollAnimationId);
       }
     };
-  }, [mobile, userScrolledManually, isAutoScrolling]);
+  }, [userScrolledManually]);
 
-  // Detect manual scrolling to stop auto-scroll - simplified for mobile
+  // Detect user interaction to stop auto-scroll
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
-    let lastScrollY = window.scrollY;
-    
-    const detectManualScroll = () => {
-      if (isAutoScrolling) {
-        const currentScrollY = window.scrollY;
-        const scrollDiff = Math.abs(currentScrollY - lastScrollY);
-        
-        // Clear any existing timeout
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-        
-        // Set timeout to detect if scroll was manual (not from our auto-scroll)
-        scrollTimeout = setTimeout(() => {
-          if (scrollDiff > 5) { // Threshold for manual scroll detection
-            console.log('Manual scroll detected, stopping auto-scroll');
-            setUserScrolledManually(true);
-            setIsAutoScrolling(false);
-            if (autoScrollRef.current) {
-              cancelAnimationFrame(autoScrollRef.current);
-            }
-          }
-        }, 50);
-        
-        lastScrollY = currentScrollY;
-      }
+    const stopAutoScroll = () => {
+      setUserScrolledManually(true);
+      setIsAutoScrolling(false);
     };
 
-    // Listen for touch events specifically for mobile
-    const handleTouchStart = () => {
-      if (isAutoScrolling) {
-        console.log('Touch detected, stopping auto-scroll');
-        setUserScrolledManually(true);
-        setIsAutoScrolling(false);
-        if (autoScrollRef.current) {
-          cancelAnimationFrame(autoScrollRef.current);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', detectManualScroll, { passive: true });
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('wheel', handleTouchStart, { passive: true });
+    // Listen for any user interaction
+    window.addEventListener('wheel', stopAutoScroll, { passive: true });
+    window.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    window.addEventListener('keydown', stopAutoScroll);
 
     return () => {
-      window.removeEventListener('scroll', detectManualScroll);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('wheel', handleTouchStart);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
+      window.removeEventListener('wheel', stopAutoScroll);
+      window.removeEventListener('touchstart', stopAutoScroll);  
+      window.removeEventListener('keydown', stopAutoScroll);
     };
-  }, [isAutoScrolling]);
+  }, []);
 
   useEffect(() => {
     let ticking = false;
