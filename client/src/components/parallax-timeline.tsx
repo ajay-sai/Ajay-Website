@@ -469,12 +469,27 @@ export default function ParallaxTimeline() {
                       
 
                       
-                      <h3 className="text-2xl font-bold mb-3 transition-all duration-700">
+                      <h3 
+                        className="text-2xl font-bold mb-3 transition-all duration-700"
+                        style={{
+                          transform: `translateY(${isActive ? 0 : 30}px)`,
+                          opacity: isActive ? 1 : 0,
+                          transitionDelay: '100ms'
+                        }}
+                      >
                         {event.title}
                       </h3>
                       
                       {/* Year and Date Range Pills */}
-                      <div className="flex flex-wrap gap-2 mb-3">
+                      <div 
+                        className="flex flex-wrap gap-2 mb-3"
+                        style={{
+                          transform: `translateY(${isActive ? 0 : 20}px)`,
+                          opacity: isActive ? 1 : 0,
+                          transitionDelay: '200ms',
+                          transition: 'all 0.6s ease-out'
+                        }}
+                      >
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
                           {event.year}
                         </span>
@@ -483,12 +498,27 @@ export default function ParallaxTimeline() {
                         </span>
                       </div>
                       
-                      <p className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500">
+                      <p 
+                        className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500"
+                        style={{
+                          transform: `translateY(${isActive ? 0 : 20}px)`,
+                          opacity: isActive ? 1 : 0,
+                          transitionDelay: '300ms'
+                        }}
+                      >
                         {event.description}
                       </p>
 
                       {/* Achievements with Clean Icons */}
-                      <div className="space-y-3">
+                      <div 
+                        className="space-y-3"
+                        style={{
+                          transform: `translateY(${isActive ? 0 : 30}px)`,
+                          opacity: isActive ? 1 : 0,
+                          transitionDelay: '400ms',
+                          transition: 'all 0.7s ease-out'
+                        }}
+                      >
                         {event.achievements.map((achievement, achievementIndex) => {
                           const getIcon = () => {
                             if (achievementIndex === 0) return Target;
@@ -538,7 +568,15 @@ export default function ParallaxTimeline() {
                       </div>
 
                       {/* Progress Bar */}
-                      <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
+                      <div 
+                        className="mt-4 h-1 bg-secondary rounded-full overflow-hidden"
+                        style={{
+                          transform: `translateY(${isActive ? 0 : 20}px)`,
+                          opacity: isActive ? 1 : 0,
+                          transitionDelay: '600ms',
+                          transition: 'all 0.6s ease-out'
+                        }}
+                      >
                         <div 
                           className={`h-full bg-gradient-to-r ${event.color} transition-all duration-1000`}
                           style={{ width: `${itemProgress * 100}%` }}
