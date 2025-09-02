@@ -8,6 +8,9 @@ const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.j
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
 const homeDepotImage3 = "/attached_assets/20241023_132525_1756776021189.jpg"; // Moved from Senior Data Scientist
 
+// Data Scientist workplace image (University of Maryland campus)
+const dataScientistImage1 = "/attached_assets/20240427_120651_1756788379977.jpg";
+
 // Senior Data Scientist workplace images (swapped order of first two, removed third)
 const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
 const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
@@ -136,6 +139,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-indigo-500 to-purple-500",
     companyLogo: "💼",
     companyColor: "#1976d2",
+    workplaceImages: [dataScientistImage1],
     achievements: [
       "Predicted market regime of Russell 1000 companies for investment evaluation",
       "Achieved <strong class='text-blue-400'>78% accuracy</strong> in ML models and <strong class='text-blue-400'>5% improvement</strong> in client investment confidence",
@@ -592,7 +596,6 @@ export default function ParallaxTimeline() {
                   <div className="w-full lg:flex-1 lg:max-w-sm">
                     {/* Debug: {JSON.stringify(event.workplaceImages)} */}
                     {event.workplaceImages && event.workplaceImages.length > 0 && 
-                     event.title !== "Data Scientist" && 
                      event.title !== "Marketing Analyst" ? (
                       <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
                         <div className="p-4 pb-2">
