@@ -7,6 +7,12 @@ import harleyDavidsonLogo from "@assets/image_1756766997358.png";
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/attached_assets/IMG_2329_1756775594779.JPG";
 
+// Senior Data Scientist workplace images
+const seniorDataScientistImage1 = "/attached_assets/20231215_095639_1756775804398.jpg";
+const seniorDataScientistImage2 = "/attached_assets/20241025_152323_1756776021189.jpg";
+const seniorDataScientistImage3 = "/attached_assets/20241023_132525_1756776021189.jpg";
+const seniorDataScientistImage4 = "/attached_assets/20240508_203952_1756776021190.jpg";
+
 interface TimelineEvent {
   year: string;
   sortOrder: number;
@@ -51,6 +57,12 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-green-500 to-emerald-500",
     companyLogo: "🏠",
     companyColor: "#f96302",
+    workplaceImages: [
+      seniorDataScientistImage1,
+      seniorDataScientistImage2,
+      seniorDataScientistImage3,
+      seniorDataScientistImage4
+    ],
     achievements: [
       "Architected dynamic image generation pipeline transforming Home Depot's guided search",
       "87% accuracy in house renovation prediction targeting $20M marketing budget savings",
