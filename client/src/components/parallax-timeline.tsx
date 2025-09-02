@@ -8,6 +8,7 @@ import homeDepotMainLogo from "@assets/image_1756790646771.png";
 import principalLogo from "@assets/image_1756790768889.png";
 import universityOfMarylandLogo from "@assets/image_1756791087938.png";
 import bridgeSolutionsLogo from "@assets/image_1756791219923.png";
+import srmUniversityLogo from "@assets/image_1756791288961.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
@@ -560,6 +561,17 @@ export default function ParallaxTimeline() {
                       <img 
                         src={bridgeSolutionsLogo} 
                         alt="Bridge Solutions Group Logo" 
+                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                      />
+                    </div>
+                  ) : event.description.includes("SRM University") ? (
+                    /* Larger node for SRM University logo */
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                      isActive ? 'scale-110 shadow-2xl' : 'scale-100'
+                    }`}>
+                      <img 
+                        src={srmUniversityLogo} 
+                        alt="SRM University Logo" 
                         className="w-10 h-10 md:w-14 md:h-14 object-contain"
                       />
                     </div>
