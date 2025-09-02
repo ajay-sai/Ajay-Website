@@ -11,6 +11,7 @@ import bridgeSolutionsLogo from "@assets/image_1756791219923.png";
 import srmUniversityLogo from "@assets/image_1756791288961.png";
 import stJosephsLogo from "@assets/image_1756791337929.png";
 import stonedSantaLogo from "@assets/image_1756791679074.png";
+import homeDepotStoreLogo from "@assets/image_1756791876151.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
@@ -523,12 +524,12 @@ export default function ParallaxTimeline() {
                       />
                     </div>
                   ) : event.description.includes("Home Depot") ? (
-                    /* Larger node for Home Depot main logo */
+                    /* Larger node for Home Depot main logo - use store front for other positions */
                     <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
-                        src={homeDepotMainLogo} 
+                        src={event.title.includes("Lead Data Scientist") ? homeDepotStoreLogo : homeDepotMainLogo} 
                         alt="Home Depot Logo" 
                         className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
