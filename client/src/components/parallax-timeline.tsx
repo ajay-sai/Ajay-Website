@@ -19,6 +19,9 @@ const bachelorImage1 = "/attached_assets/IMG_20161106_212705_1756789364617.jpg";
 const bachelorImage2 = "/attached_assets/IMG_20161030_232457_1756789364618.jpg";
 const bachelorImage3 = "/attached_assets/Screenshot_20181124-163448__01_1756789364618.jpg";
 
+// High school education image
+const highSchoolImage1 = "/attached_assets/IMG_20160620_123802_1756789570118.jpg";
+
 // Senior Data Scientist workplace images (swapped order of first two, removed third)
 const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
 const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
@@ -249,6 +252,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-gray-500 to-slate-500",
     companyLogo: "🏫",
     companyColor: "#6b7280",
+    workplaceImages: [highSchoolImage1],
     achievements: [
       "Completed foundational education with focus on science and mathematics",
       "Strong academic performance leading to engineering admission",
