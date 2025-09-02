@@ -337,7 +337,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: holographicShimmer 12s ease-in-out infinite;
+    animation: holographicShimmer 20s ease-in-out infinite;
   }
 
   /* Card hover effects - theme adaptive */
