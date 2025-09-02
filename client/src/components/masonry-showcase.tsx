@@ -187,13 +187,13 @@ export default function MasonryShowcase() {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case 'small':
-        return 'col-span-1 row-span-1 h-80 sm:h-64';
+        return 'col-span-1 row-span-1 h-56 sm:h-64';
       case 'medium':
-        return 'col-span-1 row-span-2 h-[22rem] sm:h-80';
+        return 'col-span-1 row-span-2 h-72 sm:h-80';
       case 'large':
-        return 'col-span-2 row-span-2 h-[30rem] sm:h-96';
+        return 'col-span-2 row-span-2 h-80 sm:h-96';
       default:
-        return 'col-span-1 row-span-1 h-80 sm:h-64';
+        return 'col-span-1 row-span-1 h-56 sm:h-64';
     }
   };
 
@@ -344,42 +344,42 @@ export default function MasonryShowcase() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="h-3/5 sm:h-1/3 p-3 sm:p-4 flex flex-col justify-start space-y-1 sm:space-y-2 overflow-hidden">
+                  <div className="h-3/5 sm:h-1/3 p-2 sm:p-4 flex flex-col justify-start space-y-1 overflow-hidden">
                     {/* Title and description */}
                     <div className="flex-shrink-0">
                       <h3 className="font-bold text-sm sm:text-lg mb-1 line-clamp-1 group-hover:text-primary transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm mb-2 line-clamp-1 sm:line-clamp-2 group-hover:text-foreground transition-colors duration-300">
+                      <p className="text-muted-foreground text-xs sm:text-sm mb-1 sm:mb-2 line-clamp-1 sm:line-clamp-2 group-hover:text-foreground transition-colors duration-300">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Metrics with quantum effects */}
                     {item.metrics && (
-                      <div className="flex justify-center space-x-2 sm:space-x-3 mb-2 flex-shrink-0">
+                      <div className="flex justify-center space-x-2 sm:space-x-3 mb-1 sm:mb-2 flex-shrink-0">
                         {item.metrics.map((metric, metricIndex) => (
                           <div key={metricIndex} className="text-center group-hover:scale-105 transition-transform duration-300 flex-1">
                             <div className="text-primary font-bold text-xs sm:text-sm group-hover:text-accent transition-colors duration-300">{metric.value}</div>
-                            <div className="text-muted-foreground text-[9px] sm:text-xs leading-tight">{metric.label}</div>
+                            <div className="text-muted-foreground text-[8px] sm:text-xs leading-tight">{metric.label}</div>
                           </div>
                         ))}
                       </div>
                     )}
 
                     {/* Tags with quantum effects */}
-                    <div className="flex flex-wrap gap-1 mb-2 flex-shrink-0">
+                    <div className="flex flex-wrap gap-0.5 sm:gap-1 mb-1 sm:mb-2 flex-shrink-0">
                       {item.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-1.5 py-0.5 bg-secondary/80 hover:bg-secondary text-foreground text-[9px] sm:text-xs rounded transition-all duration-300 hover:scale-105 cursor-pointer"
+                          className="px-1 sm:px-1.5 py-0.5 bg-secondary/80 hover:bg-secondary text-foreground text-[8px] sm:text-xs rounded transition-all duration-300 hover:scale-105 cursor-pointer"
                           style={{ animationDelay: `${tagIndex * 50}ms` }}
                         >
                           {tag}
                         </span>
                       ))}
                       {item.tags.length > 3 && (
-                        <span className="px-1.5 py-0.5 bg-secondary/80 text-muted-foreground text-[9px] sm:text-xs rounded transition-all duration-300 hover:scale-105">
+                        <span className="px-1 sm:px-1.5 py-0.5 bg-secondary/80 text-muted-foreground text-[8px] sm:text-xs rounded transition-all duration-300 hover:scale-105">
                           +{item.tags.length - 3}
                         </span>
                       )}
