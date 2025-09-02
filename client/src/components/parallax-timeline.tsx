@@ -551,18 +551,18 @@ export default function ParallaxTimeline() {
           {/* Auto-scroll button and indicator */}
           <div className="mt-6 flex flex-col items-center space-y-3">
             {!isAutoScrolling ? (
-              <div className="group relative overflow-hidden bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 rounded-xl min-w-[200px]">
-                <button
-                  onClick={startAutoScroll}
-                  className="flex items-center justify-center space-x-3 relative z-10 px-8 py-4 w-full"
-                  data-testid="button-auto-scroll-timeline"
-                >
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse group-hover:animate-ping"></div>
-                  <span className="font-semibold tracking-wide">Take Guided Journey</span>
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse group-hover:animate-ping"></div>
-                </button>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
-              </div>
+              <button
+                onClick={startAutoScroll}
+                className="group flex flex-col items-center space-y-2 animate-bounce hover:text-primary transition-colors bg-background/50 backdrop-blur-sm border border-border shadow-lg hover:bg-primary/10 rounded-xl px-6 py-4"
+                data-testid="button-auto-scroll-timeline"
+              >
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse group-hover:animate-ping"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse group-hover:animate-ping"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse group-hover:animate-ping"></div>
+                </div>
+                <span className="text-sm font-medium">Take Guided Journey</span>
+              </button>
             ) : (
               <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
                 <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
