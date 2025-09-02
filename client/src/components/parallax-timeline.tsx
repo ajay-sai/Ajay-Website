@@ -382,12 +382,8 @@ export default function ParallaxTimeline() {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Ultra-smooth easing function for natural movement
-      const easeInOutCubic = (t: number) => {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      };
-      
-      const easedProgress = easeInOutCubic(progress);
+      // Linear progression for consistent scroll speed
+      const easedProgress = progress;
       const currentScrollY = startScrollY + (targetScrollY - startScrollY) * easedProgress;
       
       // Use smooth scrollTo for better performance
