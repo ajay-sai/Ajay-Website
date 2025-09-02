@@ -135,37 +135,11 @@ const timelineEvents: TimelineEvent[] = [
     ]
   },
   {
-    year: "2018",
-    title: "Bachelor of Technology in Computer Science",
-    description: "SRM University, Kattankulathur - Computer Science Engineering",
-    icon: BookOpen,
-    color: "from-amber-500 to-orange-500",
-    companyLogo: "🎓",
-    companyColor: "#1976d2",
-    achievements: [
-      "Comprehensive computer science foundation with focus on systems and AI",
-      "Core studies: Data Structures, Algorithms, Database Systems, AI & Expert Systems, Data Mining",
-      "Technologies: Web Technology, Software Engineering, Operating Systems, Network Security, Linux Internals"
-    ]
-  },
-  {
-    year: "2019c",
-    title: "Graduate Assistant",
-    description: "University of Maryland (May 2019 - Dec 2019)",
-    icon: Award,
-    color: "from-emerald-500 to-teal-500",
-    companyLogo: "🎓",
-    companyColor: "#d32f2f",
-    achievements: [
-      "Assessed and maintained student records for 4000+ students to improve academic standing",
-      "Led team of 10 undergraduate students improving satisfaction rate by 10%",
-      "Technologies: SQL data extraction, academic advisory programs, student performance analytics"
-    ]
-  },
-  {
     year: "2017",
+    sortOrder: 2017.05,
     title: "Data Analyst",
-    description: "Bridge Solutions (May 2017 - May 2018)",
+    description: "Bridge Solutions",
+    dateRange: "May 2017 - May 2018",
     icon: Calendar,
     color: "from-teal-500 to-cyan-500",
     companyLogo: "🌉",
@@ -175,8 +149,40 @@ const timelineEvents: TimelineEvent[] = [
       "Achieved $1M cost reduction through analytical inventory targeting and optimization",
       "Technologies: Tableau, Excel, Microsoft SQL Server, Python, Docker, IBM OMS 9.5, WMS 9.5"
     ]
+  },
+  {
+    year: "2019",
+    sortOrder: 2019.02,
+    title: "Master of Science in Business Analytics",
+    description: "University of Maryland, College Park - Robert H Smith School of Business",
+    dateRange: "Graduated May 2019",
+    icon: GraduationCap,
+    color: "from-emerald-500 to-teal-500",
+    companyLogo: "🎓",
+    companyColor: "#dc2626",
+    achievements: [
+      "Specialized in Big Data and Artificial Intelligence with comprehensive analytics training",
+      "Core coursework: Data Mining, Predictive Analytics, Database Management, Operations Analytics",
+      "Technologies: Python, Data Models & Decision Making, Google Analytics, Price Optimization, Revenue Management"
+    ]
+  },
+  {
+    year: "2017",
+    sortOrder: 2017.01,
+    title: "Bachelor of Technology in Computer Science",
+    description: "SRM University, Kattankulathur - Computer Science Engineering",
+    dateRange: "Graduated May 2017",
+    icon: BookOpen,
+    color: "from-amber-500 to-orange-500",
+    companyLogo: "🎓",
+    companyColor: "#1976d2",
+    achievements: [
+      "Comprehensive computer science foundation with focus on systems and AI",
+      "Core studies: Data Structures, Algorithms, Database Systems, AI & Expert Systems, Data Mining",
+      "Technologies: Web Technology, Software Engineering, Operating Systems, Network Security, Linux Internals"
+    ]
   }
-];
+].sort((a, b) => b.sortOrder - a.sortOrder);
 
 export default function ParallaxTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -359,8 +365,11 @@ export default function ParallaxTimeline() {
                         {event.description}
                       </p>
                       
-                      {/* Date Range */}
-                      <div className="mb-4">
+                      {/* Year and Date Range Pills */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
+                          {event.year}
+                        </span>
                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${isActive ? 'border-primary/50 bg-primary/10 text-primary' : 'border-border bg-secondary/50 text-muted-foreground'} transition-all duration-300`}>
                           📅 {event.dateRange}
                         </span>
