@@ -288,7 +288,7 @@ export default function MasonryShowcase() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
             Interactive Portfolio Showcase
           </h2>
@@ -299,7 +299,7 @@ export default function MasonryShowcase() {
         </div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 auto-rows-max">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6 auto-rows-max">
           {masonryItems.map((item, index) => {
             const isVisible = visibleItems.has(item.id);
             const itemProgress = isVisible ? 1 : 0;
@@ -385,14 +385,13 @@ export default function MasonryShowcase() {
                       )}
                     </div>
 
-                    {/* Action buttons */}
-                    <div className="flex space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 mt-auto flex-shrink-0">
-                      <Button variant="outline" size="sm" className="flex-1 text-[10px] sm:text-xs px-2 py-1 h-7 sm:h-8 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 flex items-center justify-center">
-                        <ExternalLink className="w-3 h-3 mr-1" />
-                        <span className="hidden sm:inline">View</span>
+                    {/* Action buttons - Hidden on mobile to save space */}
+                    <div className="hidden sm:flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 mt-auto flex-shrink-0">
+                      <Button variant="outline" size="sm" className="flex-1 text-xs px-2 py-1 h-8 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 flex items-center justify-center">
+                        <span>View</span>
                       </Button>
                       {item.type === 'project' && (
-                        <Button variant="outline" size="sm" className="text-[10px] sm:text-xs px-2 py-1 h-7 sm:h-8 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 flex items-center justify-center">
+                        <Button variant="outline" size="sm" className="text-xs px-2 py-1 h-8 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 flex items-center justify-center">
                           <Github className="w-3 h-3" />
                         </Button>
                       )}
@@ -416,7 +415,7 @@ export default function MasonryShowcase() {
         </div>
 
         {/* Floating stats with quantum effects */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-8 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
           {[
             { label: 'Projects', value: '50+', color: 'text-blue-400' },
             { label: 'Technologies', value: '25+', color: 'text-green-400' },
