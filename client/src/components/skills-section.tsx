@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Code, Layers, Cloud, Wrench } from "lucide-react";
+import { SkillsVariation1, SkillsVariation2, SkillsVariation3, SkillsVariation4 } from "./skills-variations";
 
 const skillCategories = [
   {
@@ -53,92 +54,70 @@ const skillCategories = [
 ];
 
 export default function SkillsSection() {
-  const [mounted, setMounted] = useState(false);
-  const [visibleSkills, setVisibleSkills] = useState<Set<string>>(new Set());
+  const [selectedVariation, setSelectedVariation] = useState(1);
 
-  useEffect(() => {
-    setMounted(true);
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const categoryTitle = entry.target.getAttribute('data-category');
-            if (categoryTitle) {
-              setTimeout(() => {
-                setVisibleSkills(prev => new Set([...prev, categoryTitle]));
-              }, 200);
-            }
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const skillCards = document.querySelectorAll('[data-category]');
-    skillCards.forEach(card => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, [mounted]);
-
+  // For demo purposes, show all 4 variations
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 quantum-dots opacity-10"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text consciousness-expand">
-            Technical Skills
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, categoryIndex) => {
-            const IconComponent = category.icon;
-            const isVisible = visibleSkills.has(category.title);
-            
-            return (
-              <div
-                key={category.title}
-                data-category={category.title}
-                className={`quantum-card p-6 rounded-xl shadow-lg transition-all duration-1000 ${
-                  mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${categoryIndex * 200}ms` }}
-              >
-                <div className="flex items-center mb-4">
-                  <IconComponent className={`${category.color} text-2xl mr-3 quantum-glow`} />
-                  <h3 className="text-xl font-semibold">{category.title}</h3>
-                </div>
-                
-                <div className="space-y-3">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name} className="flex items-center justify-between">
-                      <span className="flex items-center">
-                        <span className="mr-2">{skill.icon}</span>
-                        {skill.name}
-                      </span>
-                      <div className="w-20 bg-secondary rounded-full h-2 overflow-hidden">
-                        <div
-                          className={`h-2 rounded-full skill-progress transition-all duration-1500 ${
-                            category.color === 'text-primary' ? 'bg-primary' : 'bg-accent'
-                          }`}
-                          style={{
-                            width: isVisible ? `${skill.level}%` : '0%',
-                            transitionDelay: `${skillIndex * 100}ms`,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+    <div className="space-y-12">
+      {/* Variation Selector */}
+      <div className="text-center py-8 bg-secondary/20">
+        <h3 className="text-2xl font-bold mb-4">Choose Your Preferred Skills Layout:</h3>
+        <div className="flex justify-center gap-4 flex-wrap">
+          {[
+            { id: 1, name: "Minimal Pills" },
+            { id: 2, name: "Compact Cards" },
+            { id: 3, name: "Horizontal Badges" },
+            { id: 4, name: "Grid Icons" }
+          ].map((variant) => (
+            <button
+              key={variant.id}
+              onClick={() => setSelectedVariation(variant.id)}
+              className={`px-4 py-2 rounded-lg border transition-all ${
+                selectedVariation === variant.id
+                  ? 'bg-primary text-primary-foreground border-primary'
+                  : 'bg-background border-border hover:border-primary/50'
+              }`}
+            >
+              Variation {variant.id}: {variant.name}
+            </button>
+          ))}
         </div>
       </div>
-    </section>
+
+      {/* Show all variations for comparison */}
+      <div className="space-y-16">
+        <div className="border-2 border-primary/20 rounded-lg p-1">
+          <div className="text-center mb-4">
+            <h4 className="text-lg font-semibold text-primary">Variation 1: Minimal Pills</h4>
+            <p className="text-sm text-muted-foreground">Clean, minimal design with skill tags</p>
+          </div>
+          <SkillsVariation1 />
+        </div>
+
+        <div className="border-2 border-accent/20 rounded-lg p-1">
+          <div className="text-center mb-4">
+            <h4 className="text-lg font-semibold text-accent">Variation 2: Compact Cards</h4>
+            <p className="text-sm text-muted-foreground">Small cards with mini progress bars</p>
+          </div>
+          <SkillsVariation2 />
+        </div>
+
+        <div className="border-2 border-primary/20 rounded-lg p-1">
+          <div className="text-center mb-4">
+            <h4 className="text-lg font-semibold text-primary">Variation 3: Horizontal Badges</h4>
+            <p className="text-sm text-muted-foreground">Category-grouped horizontal layout</p>
+          </div>
+          <SkillsVariation3 />
+        </div>
+
+        <div className="border-2 border-accent/20 rounded-lg p-1">
+          <div className="text-center mb-4">
+            <h4 className="text-lg font-semibold text-accent">Variation 4: Grid Icons</h4>
+            <p className="text-sm text-muted-foreground">Icon grid with hover details</p>
+          </div>
+          <SkillsVariation4 />
+        </div>
+      </div>
+    </div>
   );
 }
