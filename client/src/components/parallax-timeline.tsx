@@ -359,12 +359,7 @@ export default function ParallaxTimeline() {
                         </div>
                       )}
                       
-                      {/* Year Badge for entries without images */}
-                      {!event.companyImage && (
-                        <div className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${event.color} text-white font-bold text-lg mb-4`}>
-                          {event.year}
-                        </div>
-                      )}
+
                       
                       <h3 className={`text-2xl font-bold mb-3 transition-all duration-700 ${isActive ? 'animate-highlight-title' : ''}`}
                           style={{
