@@ -589,14 +589,14 @@ export default function ParallaxTimeline() {
                         className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
-                  ) : event.description.includes("Stoned Santa") || event.title.includes("Stoned Santa") ? (
-                    /* Larger node for Stoned Santa logo */
+                  ) : event.description.includes("Anahata") || event.title.includes("Anahata") ? (
+                    /* Larger node for Anahata Art and Design logo */
                     <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg overflow-hidden ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={stonedSantaLogo} 
-                        alt="Stoned Santa Logo" 
+                        alt="Anahata Art and Design Logo" 
                         className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
