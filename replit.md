@@ -8,6 +8,15 @@ This is a modern, professional portfolio website for Ajay Miryala, a Lead Data S
 
 Preferred communication style: Simple, everyday language.
 
+## Outstanding Tasks
+
+### High Priority - Mobile Animation Issues (To Resume Tomorrow)
+- **Issue**: Mobile scroll animations still have pop/drop behavior instead of smooth transitions
+- **Affected Sections**: About Me, Interactive Portfolio Showcase, timeline job descriptions, portfolio subsections
+- **Current Status**: Attempted fixes with translate3d(), cubic-bezier easing, and willChange optimization, but mobile experience remains choppy
+- **Next Steps**: Need deeper investigation into mobile-specific scroll performance and animation timing
+- **Date Noted**: September 02, 2025
+
 ## System Architecture
 
 ### Frontend Architecture
