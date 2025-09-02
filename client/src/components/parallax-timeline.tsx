@@ -529,8 +529,8 @@ export default function ParallaxTimeline() {
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
-                        src={event.title.includes("Lead Data Scientist") ? homeDepotStoreLogo : homeDepotMainLogo} 
-                        alt="Home Depot Logo" 
+                        src={homeDepotStoreLogo} 
+                        alt="Home Depot Store Logo" 
                         className="w-8 h-8 md:w-12 md:h-12 object-contain"
                       />
                     </div>
