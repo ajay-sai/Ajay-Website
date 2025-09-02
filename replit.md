@@ -39,6 +39,19 @@ Preferred communication style: Simple, everyday language.
 - **CSS Optimizations**: Hardware acceleration, backface-visibility, reduced motion
 - **Sections Updated**: About, Skills, Timeline, Portfolio Showcase with mobile-smooth class
 
+### Dark/Light Mode Toggle Implementation (September 02, 2025)
+- **Completed**: Full dark/light mode toggle system with theme persistence
+- **Features Added**: Theme context, toggle component, system preference detection
+- **Integration**: Added to navigation (desktop and mobile), theme-adaptive CSS
+- **Styling**: Updated all components with proper light/dark mode support
+- **Storage**: localStorage persistence with system auto-detection fallback
+
+### Timeline Animation Fixes (September 02, 2025)
+- **Issue Resolved**: Fixed overlapping animations causing job descriptions to go out of focus
+- **Problem**: Multiple staggered animations, transforms, and scroll effects on same elements
+- **Solution**: Simplified animation logic, removed redundant transform effects
+- **Result**: Job descriptions now remain visible and readable during scroll
+
 ## System Architecture
 
 ### Frontend Architecture
