@@ -13,6 +13,10 @@ const seniorDataScientistImage2 = "/attached_assets/20241025_152323_175677602118
 const seniorDataScientistImage3 = "/attached_assets/20241023_132525_1756776021189.jpg";
 const seniorDataScientistImage4 = "/attached_assets/20240508_203952_1756776021190.jpg";
 
+// Senior Data Analyst workplace images
+const seniorDataAnalystImage1 = "/attached_assets/IMG-20220807-WA0018_1756776767995.jpg";
+const seniorDataAnalystImage2 = "/attached_assets/20220805_214208_1756776778383.jpg";
+
 interface TimelineEvent {
   year: string;
   sortOrder: number;
@@ -79,6 +83,10 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-purple-500 to-violet-500",
     companyLogo: "🏠",
     companyColor: "#f96302",
+    workplaceImages: [
+      seniorDataAnalystImage1,
+      seniorDataAnalystImage2
+    ],
     achievements: [
       "Analyzed customer behavior across platforms providing insights to 300+ associates",
       "Led Voice of Associates initiative reducing onboarding time by 20% and satisfaction by 10%",
