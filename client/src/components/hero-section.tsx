@@ -47,13 +47,12 @@ export default function HeroSection() {
           </div>
 
           {/* Name */}
-          <h1 className={`text-6xl md:text-7xl font-bold mb-4 transition-all duration-1000 delay-200 ${
+          <h1 className={`text-6xl md:text-7xl font-bold mb-4 gradient-text scroll-animate transition-all duration-1000 delay-200 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <span className="gradient-text">
-              Ajay Miryala
-            </span>
+            Ajay Miryala
           </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
 
           {/* Title */}
           <h2 className={`text-2xl md:text-3xl text-muted-foreground mb-6 transition-all duration-1000 delay-400 ${
