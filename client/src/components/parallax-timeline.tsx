@@ -313,6 +313,7 @@ export default function ParallaxTimeline() {
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const containerHeight = rect.height;
+      const isMobile = window.innerWidth < 768;
       
       // Calculate scroll progress: 0% when section starts entering viewport, 100% when it fully exits
       const sectionTop = rect.top;
@@ -327,17 +328,20 @@ export default function ParallaxTimeline() {
       
       setScrollProgress(progress);
 
-      // Improved active event calculation with smoother transitions
+      // Enhanced active event calculation with mobile-specific adjustments
       const totalEvents = timelineEvents.length;
       const eventProgress = progress * totalEvents;
       const baseEventIndex = Math.floor(eventProgress);
       const eventOffset = eventProgress - baseEventIndex;
       
+      // Mobile-friendly thresholds for smoother transitions
+      const thresholds = isMobile ? { lower: 0.2, upper: 0.8 } : { lower: 0.3, upper: 0.7 };
+      
       // Use a threshold to determine when to switch active events
       let activeIndex;
-      if (eventOffset < 0.3) {
+      if (eventOffset < thresholds.lower) {
         activeIndex = baseEventIndex;
-      } else if (eventOffset > 0.7) {
+      } else if (eventOffset > thresholds.upper) {
         activeIndex = Math.min(baseEventIndex + 1, totalEvents - 1);
       } else {
         // In transition zone, keep current active or use closest
@@ -348,13 +352,19 @@ export default function ParallaxTimeline() {
       setActiveEvent(clampedEvent);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll); // Handle window resize
+    // Mobile-specific scroll event setup
+    const isMobile = window.innerWidth < 768;
+    const scrollOptions = isMobile ? { passive: true } : undefined;
+    
+    window.addEventListener('scroll', handleScroll, scrollOptions);
+    window.addEventListener('resize', handleScroll);
+    window.addEventListener('orientationchange', handleScroll); // For mobile rotation
     handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('orientationchange', handleScroll);
     };
   }, []);
 
@@ -426,10 +436,12 @@ export default function ParallaxTimeline() {
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
             
-            // Better active state for transitions
+            // Better active state for transitions - enhanced for mobile
             const eventCenter = (index + 0.5) / timelineEvents.length;
             const distanceFromCenter = Math.abs(scrollProgress - eventCenter);
-            const isInTransitionZone = distanceFromCenter < 0.15; // Wider activation zone
+            const isMobile = window.innerWidth < 768;
+            const activationZone = isMobile ? 0.25 : 0.15; // Much wider zone for mobile
+            const isInTransitionZone = distanceFromCenter < activationZone;
             
             return (
               <div
