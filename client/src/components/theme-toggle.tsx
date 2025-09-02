@@ -17,7 +17,7 @@ export function ThemeToggle() {
         <Button 
           variant="outline" 
           size="icon" 
-          className="relative border-border/50 hover:border-primary/50 transition-all duration-300 quantum-glow"
+          className="relative border-border/50 hover:border-primary/50 transition-all duration-300"
           data-testid="theme-toggle-button"
         >
           {actualTheme === "light" ? (

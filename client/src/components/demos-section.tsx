@@ -59,7 +59,7 @@ export default function DemosSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground scroll-animate">
             Demos & Presentations
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
@@ -67,7 +67,7 @@ export default function DemosSection() {
 
         {/* Video Demos */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center gradient-text">Project Demonstrations</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center text-foreground">Project Demonstrations</h3>
           <div className="grid md:grid-cols-2 gap-8">
             {videos.map((video, index) => (
               <div
@@ -95,7 +95,7 @@ export default function DemosSection() {
 
         {/* Image Gallery */}
         <div>
-          <h3 className="text-2xl font-bold mb-8 text-center gradient-text">Project Visualizations</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center text-foreground">Project Visualizations</h3>
           <div className="grid md:grid-cols-3 gap-6">
             {gallery.map((item, index) => (
               <div
