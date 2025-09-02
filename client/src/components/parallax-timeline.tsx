@@ -360,106 +360,73 @@ export default function ParallaxTimeline() {
 
 
 
-  // Simplified auto-scroll functionality that works reliably
-  useEffect(() => {
-    let intersectionObserver: IntersectionObserver;
-    let autoScrollAnimationId: number;
+  // Button-triggered auto-scroll functionality
+  const startAutoScroll = () => {
+    if (!containerRef.current || isAutoScrolling) return;
     
-    const startAutoScroll = () => {
-      if (!containerRef.current || userScrolledManually || hasStartedAutoScroll.current) return;
-      
-      hasStartedAutoScroll.current = true;
-      setIsAutoScrolling(true);
-      
-      const rect = containerRef.current.getBoundingClientRect();
-      const startScrollY = window.scrollY;
-      const scrollDistance = rect.height * 0.8; // Scroll through 80% of timeline
-      const duration = 6000; // 6 seconds total
-      const startTime = Date.now();
-      
-      const animate = () => {
-        if (userScrolledManually) {
-          setIsAutoScrolling(false);
-          return;
-        }
-        
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Smooth easing
-        const easeProgress = progress < 0.5 
-          ? 2 * progress * progress 
-          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-        
-        const currentScrollY = startScrollY + (scrollDistance * easeProgress);
-        
-        window.scrollTo({
-          top: currentScrollY,
-          behavior: 'auto'
-        });
-        
-        if (progress < 1) {
-          autoScrollAnimationId = requestAnimationFrame(animate);
-        } else {
-          setIsAutoScrolling(false);
-        }
-      };
-      
-      autoScrollAnimationId = requestAnimationFrame(animate);
-    };
-
-    // Set up intersection observer to trigger auto-scroll
-    if (containerRef.current) {
-      intersectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-              // Small delay to ensure smooth transition
-              setTimeout(() => {
-                if (!userScrolledManually && !hasStartedAutoScroll.current) {
-                  startAutoScroll();
-                }
-              }, 800);
-            }
-          });
-        },
-        { 
-          threshold: 0.2,
-          rootMargin: '0px 0px -20% 0px'
-        }
-      );
-      
-      intersectionObserver.observe(containerRef.current);
-    }
-
-    return () => {
-      if (intersectionObserver) {
-        intersectionObserver.disconnect();
+    setIsAutoScrolling(true);
+    setUserScrolledManually(false);
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const startScrollY = window.scrollY;
+    const scrollDistance = rect.height * 0.8; // Scroll through 80% of timeline
+    const duration = 8000; // 8 seconds total
+    const startTime = Date.now();
+    
+    const animate = () => {
+      if (userScrolledManually) {
+        setIsAutoScrolling(false);
+        return;
       }
-      if (autoScrollAnimationId) {
-        cancelAnimationFrame(autoScrollAnimationId);
+      
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Smooth easing
+      const easeProgress = progress < 0.5 
+        ? 2 * progress * progress 
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      
+      const currentScrollY = startScrollY + (scrollDistance * easeProgress);
+      
+      window.scrollTo({
+        top: currentScrollY,
+        behavior: 'auto'
+      });
+      
+      if (progress < 1) {
+        autoScrollRef.current = requestAnimationFrame(animate);
+      } else {
+        setIsAutoScrolling(false);
       }
     };
-  }, [userScrolledManually]);
+    
+    autoScrollRef.current = requestAnimationFrame(animate);
+  };
 
   // Detect user interaction to stop auto-scroll
   useEffect(() => {
     const stopAutoScroll = () => {
       setUserScrolledManually(true);
       setIsAutoScrolling(false);
+      if (autoScrollRef.current) {
+        cancelAnimationFrame(autoScrollRef.current);
+      }
     };
 
-    // Listen for any user interaction
-    window.addEventListener('wheel', stopAutoScroll, { passive: true });
-    window.addEventListener('touchstart', stopAutoScroll, { passive: true });
-    window.addEventListener('keydown', stopAutoScroll);
+    // Listen for any user interaction during auto-scroll
+    if (isAutoScrolling) {
+      window.addEventListener('wheel', stopAutoScroll, { passive: true });
+      window.addEventListener('touchstart', stopAutoScroll, { passive: true });
+      window.addEventListener('keydown', stopAutoScroll);
+    }
 
     return () => {
       window.removeEventListener('wheel', stopAutoScroll);
       window.removeEventListener('touchstart', stopAutoScroll);  
       window.removeEventListener('keydown', stopAutoScroll);
     };
-  }, []);
+  }, [isAutoScrolling]);
 
   useEffect(() => {
     let ticking = false;
@@ -581,14 +548,32 @@ export default function ParallaxTimeline() {
             A comprehensive timeline showcasing my evolution from student to Lead Data Scientist across diverse industries
           </p>
           
-          {/* Auto-scroll indicator */}
-          {isAutoScrolling && (
-            <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
-              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
-              <span>Auto-scrolling through timeline...</span>
-              <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
-            </div>
-          )}
+          {/* Auto-scroll button and indicator */}
+          <div className="mt-6 flex flex-col items-center space-y-3">
+            {!isAutoScrolling ? (
+              <button
+                onClick={startAutoScroll}
+                className="group relative px-6 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-full font-medium shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+                data-testid="button-auto-scroll-timeline"
+              >
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                <span>Take Guided Journey</span>
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+              </button>
+            ) : (
+              <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground animate-pulse">
+                <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+                <span>Auto-scrolling through timeline...</span>
+                <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+              </div>
+            )}
+            <p className="text-xs text-muted-foreground text-center max-w-md">
+              {!isAutoScrolling 
+                ? "Click to automatically scroll through my professional journey" 
+                : "Touch anywhere to take manual control"
+              }
+            </p>
+          </div>
         </div>
 
         {/* Timeline Line */}
