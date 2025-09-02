@@ -317,10 +317,11 @@ export default function MasonryShowcase() {
               <div
                 key={item.id}
                 data-masonry-item={item.id}
-                className={`${getSizeClasses(item.size)} hover:scale-105 transition-all duration-700`}
+                className={`${getSizeClasses(item.size)} hover:scale-105`}
                 style={{
                   opacity: isVisible ? 1 : 0.3,
                   transform: `translateY(${isVisible ? 0 : 30}px) scale(${isVisible ? 1 : 0.95})`,
+                  transition: 'all 700ms ease-in-out',
                   transitionDelay: `${index * 100}ms`
                 }}
               >
