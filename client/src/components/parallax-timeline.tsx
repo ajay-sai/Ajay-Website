@@ -141,7 +141,7 @@ const timelineEvents: TimelineEvent[] = [
     dateRange: "February 2020 - March 2022",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
-    companyImage: harleyDavidsonLogo,
+
     workplaceImages: [harleyDavidsonImage1, harleyDavidsonImage2],
     achievements: [
       "Built optimized data models and ETL pipelines reducing data processing time by <strong class='text-blue-400'>80%</strong>",
@@ -555,6 +555,16 @@ export default function ParallaxTimeline() {
                         <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${isActive ? 'border-primary/50 bg-primary/10 text-primary' : 'border-border bg-secondary/50 text-muted-foreground'} transition-all duration-300`}>
                           📅 {event.dateRange}
                         </span>
+                        {/* Company Logo for Harley Davidson */}
+                        {event.description.includes("Harley Davidson") && (
+                          <div className="inline-flex items-center px-2 py-1 rounded-full bg-background/80 border border-border">
+                            <img 
+                              src={harleyDavidsonLogo} 
+                              alt="Harley Davidson Logo" 
+                              className="w-5 h-5 object-contain"
+                            />
+                          </div>
+                        )}
                       </div>
                       
                       <p className="text-muted-foreground mb-4 leading-relaxed">
