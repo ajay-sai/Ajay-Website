@@ -47,9 +47,9 @@ const timelineEvents: TimelineEvent[] = [
     companyColor: "#f96302",
     workplaceImages: [homeDepotImage1, homeDepotImage2, homeDepotImage3],
     achievements: [
-      "Designed scalable <strong class='text-blue-400'>generative AI systems</strong> for text summarization, Q&A bots, and contract parsing",
+      "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
       "<strong class='text-blue-400'>55% reduction</strong> in analytics turnaround time through custom prompt optimization frameworks",
-      "Technologies: <strong class='text-blue-400'>GPT-4, BERT, Gemini, Longformer, LoRA/QLoRA</strong>, HuggingFace, TFX, Vertex AI, MLflow"
+      "Technologies: GPT-4, BERT, Gemini, Longformer, LoRA/QLoRA, HuggingFace, TFX, Vertex AI, MLflow"
     ]
   },
   {
@@ -68,9 +68,9 @@ const timelineEvents: TimelineEvent[] = [
       seniorDataScientistImage3
     ],
     achievements: [
-      "Architected <strong class='text-blue-400'>dynamic image generation pipeline</strong> transforming Home Depot's guided search",
+      "Architected dynamic image generation pipeline transforming Home Depot's guided search",
       "<strong class='text-blue-400'>87% accuracy</strong> in house renovation prediction targeting <strong class='text-blue-400'>$20M</strong> marketing budget savings",
-      "Technologies: <strong class='text-blue-400'>Google Image Gen-3, Stable Diffusion, Gemini-1.5 Pro</strong>, ResNet, Vision Transformers, BigQuery"
+      "Technologies: Google Image Gen-3, Stable Diffusion, Gemini-1.5 Pro, ResNet, Vision Transformers, BigQuery"
     ]
   },
   {
@@ -89,9 +89,9 @@ const timelineEvents: TimelineEvent[] = [
       seniorDataAnalystImage3
     ],
     achievements: [
-      "Analyzed <strong class='text-blue-400'>customer behavior</strong> across platforms providing insights to <strong class='text-blue-400'>300+ associates</strong>",
-      "Led <strong class='text-blue-400'>Voice of Associates initiative</strong> reducing onboarding time by <strong class='text-blue-400'>20%</strong> and satisfaction by <strong class='text-blue-400'>10%</strong>",
-      "Technologies: <strong class='text-blue-400'>Adobe Analytics, Tableau, Google Data Studio</strong>, BigQuery, Python, Liftoff platform"
+      "Analyzed customer behavior across platforms providing insights to <strong class='text-blue-400'>300+ associates</strong>",
+      "Led Voice of Associates initiative reducing onboarding time by <strong class='text-blue-400'>20%</strong> and satisfaction by <strong class='text-blue-400'>10%</strong>",
+      "Technologies: Adobe Analytics, Tableau, Google Data Studio, BigQuery, Python, Liftoff platform"
     ]
   },
   {
@@ -105,9 +105,9 @@ const timelineEvents: TimelineEvent[] = [
     companyImage: harleyDavidsonLogo,
     workplaceImages: [harleyDavidsonImage1, harleyDavidsonImage2],
     achievements: [
-      "Built <strong class='text-blue-400'>optimized data models and ETL pipelines</strong> reducing data processing time by <strong class='text-blue-400'>80%</strong>",
+      "Built optimized data models and ETL pipelines reducing data processing time by <strong class='text-blue-400'>80%</strong>",
       "Decreased open purchase orders by <strong class='text-blue-400'>55%</strong> and inventory mismatches by <strong class='text-blue-400'>30%</strong>",
-      "Technologies: <strong class='text-blue-400'>Tableau, Power BI, SAP Analytics Cloud</strong>, SQL, Alteryx, FLEX PLM, EDI transactions"
+      "Technologies: Tableau, Power BI, SAP Analytics Cloud, SQL, Alteryx, FLEX PLM, EDI transactions"
     ]
   },
   {
@@ -121,9 +121,9 @@ const timelineEvents: TimelineEvent[] = [
     companyLogo: "💼",
     companyColor: "#1976d2",
     achievements: [
-      "Predicted <strong class='text-blue-400'>market regime of Russell 1000 companies</strong> for investment evaluation",
+      "Predicted market regime of Russell 1000 companies for investment evaluation",
       "Achieved <strong class='text-blue-400'>78% accuracy</strong> in ML models and <strong class='text-blue-400'>5% improvement</strong> in client investment confidence",
-      "Technologies: <strong class='text-blue-400'>Python, R, SQL Server, Logistic Regression</strong>, Random Forest, XGBoost, keras, sklearn"
+      "Technologies: Python, R, SQL Server, Logistic Regression, Random Forest, XGBoost, keras, sklearn"
     ]
   },
   {
@@ -137,9 +137,9 @@ const timelineEvents: TimelineEvent[] = [
     companyLogo: "🎨",
     companyColor: "#e91e63",
     achievements: [
-      "Managed <strong class='text-blue-400'>Google Ads campaign</strong> achieving <strong class='text-blue-400'>200% website traffic increase</strong> (<strong class='text-blue-400'>92% new users/week</strong>)",
-      "Generated <strong class='text-blue-400'>$3100 revenue</strong> with <strong class='text-blue-400'>113 product sales</strong> from <strong class='text-blue-400'>$300 budget</strong>",
-      "Technologies: <strong class='text-blue-400'>Google Ads, 110 ad copies, 6,000 keywords</strong>, web analytics, cost-per-click optimization"
+      "Managed Google Ads campaign achieving <strong class='text-blue-400'>200% website traffic increase</strong>",
+      "Generated <strong class='text-blue-400'>$3100 revenue</strong> with 113 product sales from $300 budget",
+      "Technologies: Google Ads, 110 ad copies, 6,000 keywords, web analytics, cost-per-click optimization"
     ]
   },
   {
@@ -154,8 +154,8 @@ const timelineEvents: TimelineEvent[] = [
     companyColor: "#d32f2f",
     achievements: [
       "Assessed and maintained student records for <strong class='text-blue-400'>4000+ students</strong> to improve academic standing",
-      "Led team of <strong class='text-blue-400'>10 undergraduate students</strong> improving satisfaction rate by <strong class='text-blue-400'>10%</strong>",
-      "Technologies: <strong class='text-blue-400'>SQL data extraction, academic advisory programs</strong>, student performance analytics"
+      "Led team of 10 undergraduate students improving satisfaction rate by <strong class='text-blue-400'>10%</strong>",
+      "Technologies: SQL data extraction, academic advisory programs, student performance analytics"
     ]
   },
   {
@@ -185,9 +185,9 @@ const timelineEvents: TimelineEvent[] = [
     companyLogo: "🌉",
     companyColor: "#00796b",
     achievements: [
-      "Created <strong class='text-blue-400'>visually impactful interactive dashboards</strong> reporting key KPIs for multiple clients",
+      "Created visually impactful interactive dashboards reporting key KPIs for multiple clients",
       "Achieved <strong class='text-blue-400'>$1M cost reduction</strong> through analytical inventory targeting and optimization",
-      "Technologies: <strong class='text-blue-400'>Tableau, Excel, Microsoft SQL Server</strong>, Python, Docker, IBM OMS 9.5, WMS 9.5"
+      "Technologies: Tableau, Excel, Microsoft SQL Server, Python, Docker, IBM OMS 9.5, WMS 9.5"
     ]
   },
   {
