@@ -360,7 +360,7 @@ export default function ParallaxTimeline() {
 
 
 
-  // Button-triggered auto-scroll functionality
+  // Button-triggered auto-scroll functionality with smooth scrolling
   const startAutoScroll = () => {
     if (!containerRef.current || isAutoScrolling) return;
     
@@ -369,39 +369,38 @@ export default function ParallaxTimeline() {
     
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
-    const scrollDistance = rect.height; // Scroll through 100% of timeline
-    const duration = 8000; // 8 seconds total
-    const startTime = Date.now();
+    const targetScrollY = startScrollY + rect.height; // Scroll through 100% of timeline
+    const duration = 10000; // 10 seconds for smoother experience
+    const startTime = performance.now();
     
-    const animate = () => {
+    const smoothScroll = (currentTime: number) => {
       if (userScrolledManually) {
         setIsAutoScrolling(false);
         return;
       }
       
-      const elapsed = Date.now() - startTime;
+      const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Smooth easing
-      const easeProgress = progress < 0.5 
-        ? 2 * progress * progress 
-        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      // Ultra-smooth easing function for natural movement
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
       
-      const currentScrollY = startScrollY + (scrollDistance * easeProgress);
+      const easedProgress = easeInOutCubic(progress);
+      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * easedProgress;
       
-      window.scrollTo({
-        top: currentScrollY,
-        behavior: 'auto'
-      });
+      // Use smooth scrollTo for better performance
+      window.scrollTo(0, currentScrollY);
       
       if (progress < 1) {
-        autoScrollRef.current = requestAnimationFrame(animate);
+        autoScrollRef.current = requestAnimationFrame(smoothScroll);
       } else {
         setIsAutoScrolling(false);
       }
     };
     
-    autoScrollRef.current = requestAnimationFrame(animate);
+    autoScrollRef.current = requestAnimationFrame(smoothScroll);
   };
 
   // Detect user interaction to stop auto-scroll
