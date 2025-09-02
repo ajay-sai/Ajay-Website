@@ -307,58 +307,82 @@ export default function ParallaxTimeline() {
 
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (!containerRef.current) {
+            ticking = false;
+            return;
+          }
 
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const containerHeight = rect.height;
-      const isMobile = window.innerWidth < 768;
-      
-      // Calculate scroll progress: 0% when section starts entering viewport, 100% when it fully exits
-      const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-      
-      // Progress starts when section top reaches bottom of viewport and ends when section bottom leaves top of viewport
-      const startProgress = windowHeight; // Section just starting to enter
-      const endProgress = -containerHeight; // Section has completely exited
-      
-      const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
-      const progress = Math.max(0, Math.min(1, rawProgress));
-      
-      setScrollProgress(progress);
+          const rect = containerRef.current.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const containerHeight = rect.height;
+          const isMobile = window.innerWidth < 768;
+          
+          // Calculate scroll progress with mobile-optimized calculations
+          const sectionTop = rect.top;
+          const sectionBottom = rect.bottom;
+          
+          // More generous mobile viewport calculations
+          const mobileOffset = isMobile ? windowHeight * 0.3 : 0;
+          const startProgress = windowHeight + mobileOffset;
+          const endProgress = -containerHeight - mobileOffset;
+          
+          const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
+          const progress = Math.max(0, Math.min(1, rawProgress));
+          
+          setScrollProgress(progress);
 
-      // Enhanced active event calculation with mobile-specific adjustments
-      const totalEvents = timelineEvents.length;
-      const eventProgress = progress * totalEvents;
-      const baseEventIndex = Math.floor(eventProgress);
-      const eventOffset = eventProgress - baseEventIndex;
-      
-      // Mobile-friendly thresholds for smoother transitions
-      const thresholds = isMobile ? { lower: 0.2, upper: 0.8 } : { lower: 0.3, upper: 0.7 };
-      
-      // Use a threshold to determine when to switch active events
-      let activeIndex;
-      if (eventOffset < thresholds.lower) {
-        activeIndex = baseEventIndex;
-      } else if (eventOffset > thresholds.upper) {
-        activeIndex = Math.min(baseEventIndex + 1, totalEvents - 1);
-      } else {
-        // In transition zone, keep current active or use closest
-        activeIndex = eventOffset < 0.5 ? baseEventIndex : Math.min(baseEventIndex + 1, totalEvents - 1);
+          // Smoother active event calculation for mobile
+          const totalEvents = timelineEvents.length;
+          const eventHeight = containerHeight / totalEvents;
+          
+          // Calculate which event should be active based on viewport center
+          const viewportCenter = windowHeight / 2;
+          const relativeCenter = viewportCenter - sectionTop;
+          const eventFromCenter = Math.floor(relativeCenter / eventHeight);
+          
+          // Apply mobile-specific smoothing
+          let activeIndex;
+          if (isMobile) {
+            // Much more aggressive smoothing for mobile
+            const smoothProgress = progress * totalEvents;
+            const baseIndex = Math.floor(smoothProgress);
+            const fraction = smoothProgress - baseIndex;
+            
+            if (fraction < 0.3) {
+              activeIndex = baseIndex;
+            } else if (fraction > 0.7) {
+              activeIndex = Math.min(baseIndex + 1, totalEvents - 1);
+            } else {
+              // Gradual transition zone
+              activeIndex = fraction < 0.5 ? baseIndex : Math.min(baseIndex + 1, totalEvents - 1);
+            }
+          } else {
+            // Desktop logic
+            const eventProgress = progress * totalEvents;
+            activeIndex = Math.round(eventProgress);
+          }
+          
+          const clampedEvent = Math.max(0, Math.min(totalEvents - 1, activeIndex));
+          setActiveEvent(clampedEvent);
+          
+          ticking = false;
+        });
+        ticking = true;
       }
-      
-      const clampedEvent = Math.max(0, Math.min(totalEvents - 1, activeIndex));
-      setActiveEvent(clampedEvent);
     };
 
-    // Mobile-specific scroll event setup
+    // Use passive scrolling for mobile performance
     const isMobile = window.innerWidth < 768;
     const scrollOptions = isMobile ? { passive: true } : undefined;
     
     window.addEventListener('scroll', handleScroll, scrollOptions);
     window.addEventListener('resize', handleScroll);
-    window.addEventListener('orientationchange', handleScroll); // For mobile rotation
+    window.addEventListener('orientationchange', handleScroll);
     handleScroll();
 
     return () => {
@@ -436,20 +460,26 @@ export default function ParallaxTimeline() {
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
             
-            // Better active state for transitions - enhanced for mobile
+            // Mobile-optimized transition zones
+            const isMobileDevice = window.innerWidth < 768;
             const eventCenter = (index + 0.5) / timelineEvents.length;
             const distanceFromCenter = Math.abs(scrollProgress - eventCenter);
-            const isMobile = window.innerWidth < 768;
-            const activationZone = isMobile ? 0.25 : 0.15; // Much wider zone for mobile
+            
+            // Much wider and more forgiving zones for mobile
+            const activationZone = isMobileDevice ? 0.35 : 0.18;
             const isInTransitionZone = distanceFromCenter < activationZone;
+            
+            // Additional mobile-specific active state
+            const mobileActiveRange = isMobileDevice ? 0.4 : 0.2;
+            const isMobileActive = isMobileDevice && distanceFromCenter < mobileActiveRange;
             
             return (
               <div
                 key={event.sortOrder}
                 className={`relative mb-16 transition-all duration-1000`}
                 style={{
-                  transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 50}px)`,
-                  opacity: (isActive || isInTransitionZone) ? 1 : 0.3
+                  transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 50}px)`,
+                  opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0.3
                 }}
               >
                 {/* Timeline Node - Adjusted for mobile */}
@@ -508,9 +538,10 @@ export default function ParallaxTimeline() {
                       <h3 
                         className="text-2xl font-bold mb-3 transition-all duration-700"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 30}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '100ms'
+                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 30}px)`,
+                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
+                          transitionDelay: isMobileDevice ? '50ms' : '100ms',
+                          transition: `all ${isMobileDevice ? '0.4s' : '0.7s'} cubic-bezier(0.4, 0, 0.2, 1)`
                         }}
                       >
                         {event.title}
@@ -520,10 +551,10 @@ export default function ParallaxTimeline() {
                       <div 
                         className="flex flex-wrap gap-2 mb-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '200ms',
-                          transition: 'all 0.6s ease-out'
+                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 20}px)`,
+                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
+                          transitionDelay: isMobileDevice ? '100ms' : '200ms',
+                          transition: `all ${isMobileDevice ? '0.3s' : '0.6s'} cubic-bezier(0.4, 0, 0.2, 1)`
                         }}
                       >
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
@@ -537,9 +568,10 @@ export default function ParallaxTimeline() {
                       <p 
                         className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 20}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '300ms'
+                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 20}px)`,
+                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
+                          transitionDelay: isMobileDevice ? '150ms' : '300ms',
+                          transition: `all ${isMobileDevice ? '0.3s' : '0.5s'} cubic-bezier(0.4, 0, 0.2, 1)`
                         }}
                       >
                         {event.description}
@@ -549,10 +581,10 @@ export default function ParallaxTimeline() {
                       <div 
                         className="space-y-3"
                         style={{
-                          transform: `translateY(${(isActive || isInTransitionZone) ? 0 : 30}px)`,
-                          opacity: (isActive || isInTransitionZone) ? 1 : 0,
-                          transitionDelay: '400ms',
-                          transition: 'all 0.7s ease-out'
+                          transform: `translateY(${(isActive || isInTransitionZone || isMobileActive) ? 0 : 30}px)`,
+                          opacity: (isActive || isInTransitionZone || isMobileActive) ? 1 : 0,
+                          transitionDelay: isMobileDevice ? '200ms' : '400ms',
+                          transition: `all ${isMobileDevice ? '0.4s' : '0.7s'} cubic-bezier(0.4, 0, 0.2, 1)`
                         }}
                       >
                         {event.achievements.map((achievement, achievementIndex) => {
