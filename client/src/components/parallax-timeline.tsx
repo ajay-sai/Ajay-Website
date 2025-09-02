@@ -509,10 +509,12 @@ export default function ParallaxTimeline() {
                             if (manualIndex !== undefined) {
                               currentImageIndex = manualIndex;
                             } else {
-                              // Adjust scroll rate based on number of images for this specific event
-                              const scrollMultiplier = imageCount > 1 ? imageCount * 0.8 : 1;
-                              const imageProgress = (scrollProgress * scrollMultiplier * 5 + index * 1.5) % imageCount;
-                              currentImageIndex = Math.floor(imageProgress);
+                              // Improved scroll-based cycling with better timing
+                              const scrollMultiplier = imageCount > 1 ? imageCount * 2 : 1;
+                              const baseProgress = scrollProgress * 20; // Increased sensitivity
+                              const offsetProgress = baseProgress + (index * 3); // Different timing per event
+                              const cycleProgress = offsetProgress % (imageCount * 2); // Slower cycling
+                              currentImageIndex = Math.floor(cycleProgress / 2) % imageCount;
                             }
                             
                             const isCurrentImage = imageIndex === currentImageIndex;
@@ -539,7 +541,7 @@ export default function ParallaxTimeline() {
                                 
                                 {/* Image counter */}
                                 <div className="absolute bottom-4 right-4 bg-black/80 text-white text-sm px-3 py-1 rounded-full backdrop-blur-sm">
-                                  {imageIndex + 1} of {event.workplaceImages?.length || 0}
+                                  {currentImageIndex + 1} of {event.workplaceImages?.length || 0}
                                 </div>
                                 
                                 {/* Clickable Progress indicator for current image */}
