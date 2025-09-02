@@ -6,8 +6,10 @@ import harleyDavidsonLogo from "@assets/image_1756766997358.png";
 
 interface TimelineEvent {
   year: string;
+  sortOrder: number;
   title: string;
   description: string;
+  dateRange: string;
   icon: React.ElementType;
   color: string;
   achievements: string[];
@@ -21,8 +23,10 @@ interface TimelineEvent {
 const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
+    sortOrder: 2025.01,
     title: "Gen AI/ML Engineer",
-    description: "The Home Depot Management Company (Jan 2025 - Present)",
+    description: "The Home Depot Management Company",
+    dateRange: "January 2025 - Present",
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
     companyLogo: "🏠",
@@ -36,8 +40,10 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2023",
+    sortOrder: 2023.06,
     title: "Senior Data Scientist - Decision Analytics",
-    description: "The Home Depot Management Company (Jun 2023 - Jan 2025)",
+    description: "The Home Depot Management Company",
+    dateRange: "June 2023 - January 2025",
     icon: Code,
     color: "from-green-500 to-emerald-500",
     companyLogo: "🏠",
@@ -50,8 +56,10 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2022",
+    sortOrder: 2022.03,
     title: "Senior Data Analyst",
-    description: "The Home Depot Management Company (Mar 2022 - Jun 2023)",
+    description: "The Home Depot Management Company",
+    dateRange: "March 2022 - June 2023",
     icon: Award,
     color: "from-purple-500 to-violet-500",
     companyLogo: "🏠",
@@ -64,8 +72,10 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2020",
+    sortOrder: 2020.02,
     title: "Data Analyst and Engineer",
-    description: "Harley Davidson Motor Company (Feb 2020 - Mar 2022)",
+    description: "Harley Davidson Motor Company",
+    dateRange: "February 2020 - March 2022",
     icon: Calendar,
     color: "from-orange-500 to-red-500",
     companyImage: harleyDavidsonLogo,
@@ -77,23 +87,11 @@ const timelineEvents: TimelineEvent[] = [
     ]
   },
   {
-    year: "2019a",
-    title: "Marketing Analyst",
-    description: "Anahata Art and Design Pvt (May 2019 - Dec 2019)",
-    icon: TrendingUp,
-    color: "from-pink-500 to-rose-500",
-    companyLogo: "🎨",
-    companyColor: "#e91e63",
-    achievements: [
-      "Managed Google Ads campaign achieving 200% website traffic increase (92% new users/week)",
-      "Generated $3100 revenue with 113 product sales from $300 budget",
-      "Technologies: Google Ads, 110 ad copies, 6,000 keywords, web analytics, cost-per-click optimization"
-    ]
-  },
-  {
-    year: "2019b",
+    year: "2019",
+    sortOrder: 2019.08,
     title: "Data Scientist",
-    description: "Principal Financial Group (Aug 2019 - Dec 2019)",
+    description: "Principal Financial Group",
+    dateRange: "August 2019 - December 2019",
     icon: Code,
     color: "from-indigo-500 to-purple-500",
     companyLogo: "💼",
@@ -106,8 +104,26 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
+    sortOrder: 2019.05,
+    title: "Marketing Analyst",
+    description: "Anahata Art and Design Pvt",
+    dateRange: "May 2019 - December 2019",
+    icon: TrendingUp,
+    color: "from-pink-500 to-rose-500",
+    companyLogo: "🎨",
+    companyColor: "#e91e63",
+    achievements: [
+      "Managed Google Ads campaign achieving 200% website traffic increase (92% new users/week)",
+      "Generated $3100 revenue with 113 product sales from $300 budget",
+      "Technologies: Google Ads, 110 ad copies, 6,000 keywords, web analytics, cost-per-click optimization"
+    ]
+  },
+  {
+    year: "2019",
+    sortOrder: 2019.01,
     title: "Master of Science in Business Analytics",
     description: "University of Maryland, College Park - Robert H Smith School of Business",
+    dateRange: "Graduated May 2019",
     icon: GraduationCap,
     color: "from-emerald-500 to-teal-500",
     companyLogo: "🎓",
@@ -263,7 +279,7 @@ export default function ParallaxTimeline() {
             
             return (
               <div
-                key={event.year}
+                key={event.sortOrder}
                 className={`relative mb-16 transition-all duration-1000`}
                 style={{
                   transform: `translateY(${isActive ? 0 : 50}px)`,
@@ -335,13 +351,20 @@ export default function ParallaxTimeline() {
                           }}>
                         {event.title}
                       </h3>
-                      <p className={`text-muted-foreground mb-4 leading-relaxed transition-all duration-500 ${isActive ? 'animate-highlight-text' : ''}`}
+                      <p className={`text-muted-foreground mb-2 leading-relaxed transition-all duration-500 ${isActive ? 'animate-highlight-text' : ''}`}
                          style={{
                            fontWeight: isActive ? '500' : '400',
                            opacity: isActive ? '1' : '0.8'
                          }}>
                         {event.description}
                       </p>
+                      
+                      {/* Date Range */}
+                      <div className="mb-4">
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${isActive ? 'border-primary/50 bg-primary/10 text-primary' : 'border-border bg-secondary/50 text-muted-foreground'} transition-all duration-300`}>
+                          📅 {event.dateRange}
+                        </span>
+                      </div>
 
                       {/* Achievements with Clean Icons */}
                       <div className="space-y-3">
