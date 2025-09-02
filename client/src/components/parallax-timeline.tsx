@@ -494,13 +494,13 @@ export default function ParallaxTimeline() {
                 <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 md:top-8 sm:top-12 z-20">
                   {event.description.includes("Harley Davidson") ? (
                     /* Larger node for Harley Davidson with prominent logo */
-                    <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={harleyDavidsonLogo} 
                         alt="Harley Davidson Logo" 
-                        className="w-12 h-12 md:w-16 md:h-16 object-contain"
+                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
                       />
                     </div>
                   ) : (
