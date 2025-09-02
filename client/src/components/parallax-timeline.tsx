@@ -10,7 +10,7 @@ import universityOfMarylandLogo from "@assets/image_1756791087938.png";
 import bridgeSolutionsLogo from "@assets/image_1756791219923.png";
 import srmUniversityLogo from "@assets/image_1756791288961.png";
 import stJosephsLogo from "@assets/image_1756791337929.png";
-import stonedSantaLogo from "@assets/image_1756791679074.png";
+import stonedSantaLogo from "@assets/image_1756792379931.png";
 import homeDepotStoreLogo from "@assets/image_1756791876151.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
