@@ -358,7 +358,7 @@ export default function ParallaxTimeline() {
                 } max-w-6xl mx-auto px-4`}>
                   
                   {/* Content Card */}
-                  <div className="w-full lg:flex-1 lg:max-w-md">
+                  <div className="w-full lg:flex-1 lg:max-w-2xl">
                     <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
                       {/* Company Logo Header */}
                       {event.companyImage && (
@@ -488,7 +488,9 @@ export default function ParallaxTimeline() {
                   {/* Workplace Gallery - Separate Container */}
                   <div className="w-full lg:flex-1 lg:max-w-sm">
                     {/* Debug: {JSON.stringify(event.workplaceImages)} */}
-                    {event.workplaceImages && event.workplaceImages.length > 0 ? (
+                    {event.workplaceImages && event.workplaceImages.length > 0 && 
+                     event.title !== "Data Scientist" && 
+                     event.title !== "Marketing Analyst" ? (
                       <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
                         <div className="p-4 pb-2">
                           <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
@@ -532,7 +534,7 @@ export default function ParallaxTimeline() {
                                 <img 
                                   src={image} 
                                   alt={`${event.title} workplace ${imageIndex + 1}`}
-                                  className="w-full h-full object-cover"
+                                  className="w-full h-full object-cover object-center"
                                 />
                                 
                                 {/* Image overlay with parallax effect */}
