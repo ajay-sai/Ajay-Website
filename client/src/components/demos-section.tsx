@@ -75,10 +75,13 @@ export default function DemosSection() {
             {videos.map((video, index) => (
               <div
                 key={video.title}
-                className={`quantum-card rounded-xl overflow-hidden shadow-lg transition-all duration-1000 ${
+                className={`quantum-card rounded-xl overflow-hidden shadow-lg ${
                   mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ 
+                  transition: 'all 1000ms ease-in-out',
+                  transitionDelay: `${index * 200}ms` 
+                }}
               >
                 <div className={`aspect-video bg-gradient-to-br ${video.thumbnail} flex items-center justify-center relative group cursor-pointer overflow-hidden`}>
                   <div className="text-center scroll-animate">
@@ -103,10 +106,13 @@ export default function DemosSection() {
             {gallery.map((item, index) => (
               <div
                 key={item.title}
-                className={`relative group overflow-hidden rounded-xl shadow-lg transition-all duration-1000 ${
+                className={`relative group overflow-hidden rounded-xl shadow-lg ${
                   mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{ 
+                  transition: 'all 1000ms ease-in-out',
+                  transitionDelay: `${index * 100}ms` 
+                }}
               >
                 <img
                   src={item.image}
