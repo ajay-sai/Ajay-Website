@@ -53,11 +53,20 @@ const skillCategories = [
   },
 ];
 
+// Mobile detection utility
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (window.innerWidth <= 768);
+};
+
 export default function SkillsSection() {
   const [mounted, setMounted] = useState(false);
+  const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setMobile(isMobile());
+    const timer = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -96,11 +105,15 @@ export default function SkillsSection() {
             return (
               <div
                 key={category.title}
-                className={`transform transition-all duration-700 ${
+                className={`transform transition-all mobile-smooth ${
                   mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                 } hover:scale-105`}
                 style={{ 
-                  transitionDelay: `${categoryIndex * 100}ms`,
+                  transitionDelay: `${categoryIndex * (mobile ? 150 : 100)}ms`,
+                  transitionDuration: mobile ? '1s' : '700ms',
+                  transitionTimingFunction: mobile 
+                    ? 'cubic-bezier(0.25, 0.1, 0.25, 1)' 
+                    : 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   willChange: mounted ? 'auto' : 'transform, opacity'
                 }}
               >

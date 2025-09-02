@@ -147,10 +147,21 @@ const masonryItems: MasonryItem[] = [
   }
 ];
 
+// Mobile detection utility
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (window.innerWidth <= 768);
+};
+
 export default function MasonryShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
+  const [mobile, setMobile] = useState(false);
+
+  useEffect(() => {
+    setMobile(isMobile());
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -324,11 +335,13 @@ export default function MasonryShowcase() {
               <div
                 key={item.id}
                 data-masonry-item={item.id}
-                className={`${getSizeClasses(item.size)} hover:scale-105`}
+                className={`${getSizeClasses(item.size)} hover:scale-105 mobile-smooth`}
                 style={{
-                  transform: `translate3d(0, ${isVisible ? 0 : 30}px, 0) scale(${isVisible ? 1 : 0.95})`,
+                  transform: `translate3d(0, ${isVisible ? 0 : (mobile ? 15 : 30)}px, 0) scale(${isVisible ? 1 : 0.95})`,
                   opacity: isVisible ? 1 : 0.3,
-                  transition: `all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 50}ms`,
+                  transition: mobile 
+                    ? `all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) ${index * 80}ms`
+                    : `all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 50}ms`,
                   willChange: isVisible ? 'auto' : 'transform, opacity'
                 }}
               >

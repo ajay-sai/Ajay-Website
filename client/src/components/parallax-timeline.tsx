@@ -243,15 +243,26 @@ const timelineEvents: TimelineEvent[] = [
   }
 ];
 
+// Mobile detection utility
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         (window.innerWidth <= 768);
+};
+
 export default function ParallaxTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeEvent, setActiveEvent] = useState(0);
+  const [mobile, setMobile] = useState(false);
   
   // State for manual image navigation and touch handling
   const [manualImageIndices, setManualImageIndices] = useState<{[key: number]: number}>({});
   const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
   const [touchEnd, setTouchEnd] = useState<{x: number, y: number} | null>(null);
+
+  useEffect(() => {
+    setMobile(isMobile());
+  }, []);
   
   // Function to handle manual image navigation
   const handleImageClick = (eventIndex: number, imageIndex: number) => {
@@ -313,8 +324,9 @@ export default function ParallaxTimeline() {
     const handleScroll = () => {
       const now = performance.now();
       
-      // Throttle scroll events for better mobile performance
-      if (now - lastScrollTime < 16) return; // ~60fps max
+      // Enhanced throttling for mobile performance
+      const throttleDelay = mobile ? 20 : 16; // Slower for mobile
+      if (now - lastScrollTime < throttleDelay) return;
       lastScrollTime = now;
 
       if (!ticking) {
@@ -445,12 +457,14 @@ export default function ParallaxTimeline() {
             return (
               <div
                 key={event.sortOrder}
-                className={`relative mb-16`}
+                className={`relative mb-16 mobile-smooth`}
                 style={{
-                  transform: `translate3d(0, ${shouldAnimate ? 0 : 50}px, 0)`,
+                  transform: `translate3d(0, ${shouldAnimate ? 0 : (mobile ? 25 : 50)}px, 0)`,
                   opacity: shouldAnimate ? 1 : 0.3,
-                  transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                  willChange: shouldAnimate ? 'transform, opacity' : 'auto'
+                  transition: mobile 
+                    ? 'all 1s cubic-bezier(0.25, 0.1, 0.25, 1)' 
+                    : 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  willChange: shouldAnimate ? 'auto' : 'transform, opacity'
                 }}
               >
                 {/* Timeline Node - Adjusted for mobile */}
@@ -508,12 +522,14 @@ export default function ParallaxTimeline() {
 
                       
                       <h3 
-                        className="text-2xl font-bold mb-3"
+                        className="text-2xl font-bold mb-3 mobile-smooth"
                         style={{
-                          transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
+                          transform: `translate3d(0, ${shouldAnimate ? 0 : (mobile ? 15 : 30)}px, 0)`,
                           opacity: shouldAnimate ? 1 : 0,
-                          transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '150ms' : '0ms'}`,
-                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
+                          transition: mobile 
+                            ? `all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${shouldAnimate ? '200ms' : '0ms'}`
+                            : `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '150ms' : '0ms'}`,
+                          willChange: shouldAnimate ? 'auto' : 'transform, opacity'
                         }}
                       >
                         {event.title}

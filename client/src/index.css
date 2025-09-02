@@ -216,6 +216,41 @@
     animation: realityBend 6s ease-in-out infinite;
   }
 
+  /* Mobile-optimized smooth animations */
+  .mobile-smooth {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-smooth {
+      will-change: transform, opacity;
+    }
+    
+    /* Smoother scroll behavior on mobile */
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Reduce motion for mobile performance */
+    .consciousness-expand {
+      animation-duration: 12s;
+    }
+    
+    .reality-bend {
+      animation-duration: 8s;
+    }
+    
+    .quantum-float {
+      animation-duration: 8s;
+    }
+  }
+
   /* Gradient text effects */
   .gradient-text {
     background: linear-gradient(
