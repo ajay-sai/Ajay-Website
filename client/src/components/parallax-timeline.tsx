@@ -4,6 +4,7 @@ import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
 import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
 import harleyDavidsonLogo from "@assets/image_1756790102894.png";
 import homeDepotLogo from "@assets/images_1756790566987.png";
+import homeDepotMainLogo from "@assets/image_1756790646771.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
@@ -504,14 +505,25 @@ export default function ParallaxTimeline() {
                         className="w-10 h-10 md:w-14 md:h-14 object-contain"
                       />
                     </div>
-                  ) : event.description.includes("Home Depot") ? (
-                    /* Larger node for Home Depot with prominent logo */
+                  ) : event.description.includes("Home Depot") && event.title.includes("Gen AI") ? (
+                    /* Larger node for Home Depot Supply Chain with prominent logo */
                     <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
                       isActive ? 'scale-110 shadow-2xl' : 'scale-100'
                     }`}>
                       <img 
                         src={homeDepotLogo} 
                         alt="Home Depot Supply Chain Logo" 
+                        className="w-10 h-10 md:w-14 md:h-14 object-contain"
+                      />
+                    </div>
+                  ) : event.description.includes("Home Depot") ? (
+                    /* Larger node for Home Depot main logo */
+                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                      isActive ? 'scale-110 shadow-2xl' : 'scale-100'
+                    }`}>
+                      <img 
+                        src={homeDepotMainLogo} 
+                        alt="Home Depot Logo" 
                         className="w-10 h-10 md:w-14 md:h-14 object-contain"
                       />
                     </div>
