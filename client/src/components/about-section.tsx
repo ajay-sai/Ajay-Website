@@ -36,7 +36,7 @@ export default function AboutSection() {
               <img
                 src={ajayPhoto}
                 alt="Ajay Miryala - Lead Data Scientist"
-                className="rounded-2xl shadow-2xl w-full h-auto reality-bend"
+                className="rounded-2xl shadow-2xl w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl holographic-shimmer"></div>
               

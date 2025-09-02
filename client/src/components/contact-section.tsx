@@ -53,7 +53,7 @@ export default function ContactSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text reality-bend">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
             Get In Touch
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
@@ -116,7 +116,7 @@ export default function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="quantum-card p-8 rounded-xl shadow-lg consciousness-expand">
+          <div className="quantum-card p-8 rounded-xl shadow-lg scroll-animate">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <Label htmlFor="name" className="text-sm font-medium text-muted-foreground mb-2 block">

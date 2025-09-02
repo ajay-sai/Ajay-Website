@@ -59,7 +59,7 @@ export default function DemosSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text consciousness-expand">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
             Demos & Presentations
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
@@ -78,7 +78,7 @@ export default function DemosSection() {
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <div className={`aspect-video bg-gradient-to-br ${video.thumbnail} flex items-center justify-center relative group cursor-pointer overflow-hidden`}>
-                  <div className="text-center consciousness-expand">
+                  <div className="text-center scroll-animate">
                     <Play className="w-16 h-16 text-primary mb-4 quantum-glow group-hover:scale-110 transition-transform" />
                     <p className="text-muted-foreground font-medium">{video.title}</p>
                   </div>
