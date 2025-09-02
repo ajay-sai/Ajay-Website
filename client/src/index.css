@@ -448,15 +448,25 @@
     0% {
       background: transparent;
       color: inherit;
+      font-weight: inherit;
+      transform: scale(1);
     }
-    50% {
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+    25% {
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
       color: rgb(59, 130, 246);
+      font-weight: 600;
+      transform: scale(1.02);
+    }
+    75% {
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+      color: rgb(59, 130, 246);
+      font-weight: 600;
       transform: scale(1.02);
     }
     100% {
       background: transparent;
       color: inherit;
+      font-weight: 500;
       transform: scale(1);
     }
   }
@@ -466,16 +476,19 @@
       transform: translateY(10px);
       opacity: 0.7;
       text-shadow: none;
+      font-weight: inherit;
     }
     50% {
       transform: translateY(0);
       opacity: 1;
       text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+      font-weight: 800;
     }
     100% {
       transform: translateY(0);
       opacity: 1;
       text-shadow: none;
+      font-weight: 700;
     }
   }
 
@@ -483,23 +496,33 @@
     0% {
       opacity: 0.7;
       transform: translateX(-5px);
+      font-weight: inherit;
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(0);
+      font-weight: 600;
     }
     100% {
       opacity: 1;
       transform: translateX(0);
+      font-weight: 500;
     }
   }
 
   .animate-highlight {
-    animation: highlight 2s ease-in-out;
+    animation: highlight 3s ease-in-out;
+    animation-fill-mode: forwards;
   }
 
   .animate-highlight-title {
-    animation: highlightTitle 1.5s ease-out;
+    animation: highlightTitle 2s ease-out;
+    animation-fill-mode: forwards;
   }
 
   .animate-highlight-text {
-    animation: highlightText 1s ease-out;
+    animation: highlightText 1.5s ease-out;
+    animation-fill-mode: forwards;
   }
 
   .cascade-in {

@@ -300,10 +300,18 @@ export default function ParallaxTimeline() {
                         </div>
                       )}
                       
-                      <h3 className={`text-2xl font-bold mb-2 ${isActive ? 'animate-highlight-title' : ''}`}>
+                      <h3 className={`text-2xl font-bold mb-2 transition-all duration-700 ${isActive ? 'animate-highlight-title' : ''}`}
+                          style={{
+                            fontWeight: isActive ? '800' : '700',
+                            color: isActive ? 'rgb(59, 130, 246)' : 'inherit'
+                          }}>
                         {event.title}
                       </h3>
-                      <p className={`text-muted-foreground mb-4 leading-relaxed ${isActive ? 'animate-highlight-text' : ''}`}>
+                      <p className={`text-muted-foreground mb-4 leading-relaxed transition-all duration-500 ${isActive ? 'animate-highlight-text' : ''}`}
+                         style={{
+                           fontWeight: isActive ? '500' : '400',
+                           opacity: isActive ? '1' : '0.8'
+                         }}>
                         {event.description}
                       </p>
 
@@ -345,9 +353,10 @@ export default function ParallaxTimeline() {
                                     </span>
                                   )}
                                   <span 
-                                    className={`${isActive ? 'animate-highlight' : ''}`}
+                                    className={`transition-all duration-500 ${isActive ? 'animate-highlight' : ''}`}
                                     style={{
-                                      animationDelay: `${achievementIndex * 300}ms`
+                                      animationDelay: `${achievementIndex * 300}ms`,
+                                      fontWeight: isActive ? '600' : 'inherit'
                                     }}
                                   >
                                     {isTechStack ? achievement.replace('Technologies: ', '') : achievement}
