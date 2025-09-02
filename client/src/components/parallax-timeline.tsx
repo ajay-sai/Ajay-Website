@@ -366,23 +366,16 @@ export default function ParallaxTimeline() {
                         </div>
                       )}
                       
-                      <h3 className={`text-2xl font-bold mb-2 transition-all duration-700 ${isActive ? 'animate-highlight-title' : ''}`}
+                      <h3 className={`text-2xl font-bold mb-3 transition-all duration-700 ${isActive ? 'animate-highlight-title' : ''}`}
                           style={{
                             fontWeight: isActive ? '800' : '700',
                             color: isActive ? 'rgb(59, 130, 246)' : 'inherit'
                           }}>
                         {event.title}
                       </h3>
-                      <p className={`text-muted-foreground mb-2 leading-relaxed transition-all duration-500 ${isActive ? 'animate-highlight-text' : ''}`}
-                         style={{
-                           fontWeight: isActive ? '500' : '400',
-                           opacity: isActive ? '1' : '0.8'
-                         }}>
-                        {event.description}
-                      </p>
                       
                       {/* Year and Date Range Pills */}
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2 mb-3">
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
                           {event.year}
                         </span>
@@ -390,6 +383,14 @@ export default function ParallaxTimeline() {
                           📅 {event.dateRange}
                         </span>
                       </div>
+                      
+                      <p className={`text-muted-foreground mb-4 leading-relaxed transition-all duration-500 ${isActive ? 'animate-highlight-text' : ''}`}
+                         style={{
+                           fontWeight: isActive ? '500' : '400',
+                           opacity: isActive ? '1' : '0.8'
+                         }}>
+                        {event.description}
+                      </p>
 
                       {/* Achievements with Clean Icons */}
                       <div className="space-y-3">
