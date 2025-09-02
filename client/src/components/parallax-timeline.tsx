@@ -29,6 +29,11 @@ const mastersImage2 = "/attached_assets/IMG-20181105-WA0008_1756780506780.jpg";
 const mastersImage3 = "/attached_assets/IMG-20200111-WA0007_1756780521102.jpg";
 const mastersImage4 = "/attached_assets/20210521_213843_1756780555219.jpg";
 
+// Bridge Solutions Data Analyst images
+const bridgeSolutionsImage1 = "/attached_assets/IMG_20170820_163622_1756780825081.jpg";
+const bridgeSolutionsImage2 = "/attached_assets/IMG-20170814-WA0017_1756780825082.jpg";
+const bridgeSolutionsImage3 = "/attached_assets/IMG-20170814-WA0013_1756780825082.jpg";
+
 interface TimelineEvent {
   year: string;
   sortOrder: number;
@@ -197,6 +202,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-teal-500 to-cyan-500",
     companyLogo: "🌉",
     companyColor: "#00796b",
+    workplaceImages: [bridgeSolutionsImage1, bridgeSolutionsImage2, bridgeSolutionsImage3],
     achievements: [
       "Created visually impactful interactive dashboards reporting key KPIs for multiple clients",
       "Achieved <strong class='text-blue-400'>$1M cost reduction</strong> through analytical inventory targeting and optimization",
