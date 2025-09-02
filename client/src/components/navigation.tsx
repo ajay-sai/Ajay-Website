@@ -47,7 +47,7 @@ export default function Navigation() {
           {/* Logo */}
           <button
             onClick={() => handleNavClick("#home")}
-            className="text-xl nav-name cursor-pointer hover:scale-105 gradient-text scroll-animate transition-all duration-3000 hover:text-primary"
+            className="text-xl nav-name cursor-pointer gradient-text scroll-animate"
           >
             Ajay Miryala
           </button>
