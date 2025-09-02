@@ -467,7 +467,8 @@ export default function ParallaxTimeline() {
 
                   {/* Workplace Gallery - Separate Container */}
                   <div className="w-full lg:flex-1 lg:max-w-sm">
-                    {event.workplaceImages ? (
+                    {/* Debug: {JSON.stringify(event.workplaceImages)} */}
+                    {event.workplaceImages && event.workplaceImages.length > 0 ? (
                       <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
                         <div className="p-4 pb-2">
                           <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
