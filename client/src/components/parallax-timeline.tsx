@@ -492,20 +492,25 @@ export default function ParallaxTimeline() {
               >
                 {/* Timeline Node - Adjusted for mobile */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-8 md:top-8 sm:top-12 z-20">
-                  <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
-                    isActive ? 'scale-110 shadow-lg shadow-primary/30' : 'scale-100'
-                  }`}>
-                    {/* Show company logo for Harley Davidson, otherwise show icon */}
-                    {event.description.includes("Harley Davidson") ? (
+                  {event.description.includes("Harley Davidson") ? (
+                    /* Larger node for Harley Davidson with prominent logo */
+                    <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full bg-white flex items-center justify-center border-4 border-background transition-all duration-500 shadow-lg ${
+                      isActive ? 'scale-110 shadow-2xl' : 'scale-100'
+                    }`}>
                       <img 
                         src={harleyDavidsonLogo} 
                         alt="Harley Davidson Logo" 
-                        className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                        className="w-16 h-16 md:w-20 md:h-20 object-contain"
                       />
-                    ) : (
+                    </div>
+                  ) : (
+                    /* Regular sized node for other entries */
+                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center border-4 border-background transition-all duration-500 ${
+                      isActive ? 'scale-110 shadow-lg shadow-primary/30' : 'scale-100'
+                    }`}>
                       <Icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Container for both Content Card and Workplace Gallery */}
