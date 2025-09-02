@@ -286,17 +286,17 @@ export default function MasonryShowcase() {
         ))}
       </div>
 
-      {/* Enhanced cascading grid overlay with quantum effects */}
+      {/* Enhanced cascading grid overlay - static version */}
       <div className="absolute inset-0 opacity-10">
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-px h-20 bg-gradient-to-b from-primary via-accent to-transparent quantum-glow"
+            className="absolute w-px h-20 bg-gradient-to-b from-primary via-accent to-transparent"
             style={{
               left: `${(i * 4) % 100}%`,
               top: `${Math.sin(scrollProgress * Math.PI + i * 0.1) * 100}%`,
               transform: `translateY(${scrollProgress * -200 + (i * 5)}px)`,
-              opacity: 0.3 + Math.sin(scrollProgress * Math.PI * 2 + i) * 0.3,
+              opacity: 0.3,
               transition: 'all 0.2s ease-out'
             }}
           />
@@ -308,7 +308,7 @@ export default function MasonryShowcase() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text consciousness-expand">
             Interactive Portfolio Showcase
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 quantum-glow" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore my work through an immersive, cascading layout that reveals projects, achievements, and innovations
           </p>
@@ -343,16 +343,16 @@ export default function MasonryShowcase() {
                     {/* Enhanced hover overlay */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                     
-                    {/* Type badge with quantum glow */}
+                    {/* Type badge */}
                     <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium capitalize quantum-glow">
+                      <span className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium capitalize">
                         {item.type}
                       </span>
                     </div>
 
-                    {/* Size indicator with quantum pulse */}
+                    {/* Size indicator */}
                     <div className="absolute top-4 left-4">
-                      <div className={`w-3 h-3 rounded-full quantum-glow ${
+                      <div className={`w-3 h-3 rounded-full ${
                         item.size === 'large' ? 'bg-green-400' :
                         item.size === 'medium' ? 'bg-yellow-400' : 'bg-blue-400'
                       }`} />
@@ -375,7 +375,7 @@ export default function MasonryShowcase() {
                       <div className="flex space-x-4 mb-3">
                         {item.metrics.map((metric, metricIndex) => (
                           <div key={metricIndex} className="text-center group-hover:scale-110 transition-transform duration-300">
-                            <div className="text-primary font-bold text-sm quantum-glow group-hover:text-accent transition-colors duration-300">{metric.value}</div>
+                            <div className="text-primary font-bold text-sm group-hover:text-accent transition-colors duration-300">{metric.value}</div>
                             <div className="text-muted-foreground text-xs">{metric.label}</div>
                           </div>
                         ))}
@@ -400,24 +400,24 @@ export default function MasonryShowcase() {
                       )}
                     </div>
 
-                    {/* Action buttons with quantum effects */}
+                    {/* Action buttons */}
                     <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                      <Button variant="outline" size="sm" className="flex-1 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 quantum-glow">
+                      <Button variant="outline" size="sm" className="flex-1 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
                         <ExternalLink className="w-3 h-3 mr-1" />
                         View
                       </Button>
                       {item.type === 'project' && (
-                        <Button variant="outline" size="sm" className="hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 quantum-glow">
+                        <Button variant="outline" size="sm" className="hover:bg-accent/10 hover:border-accent/50 transition-all duration-300">
                           <Github className="w-3 h-3" />
                         </Button>
                       )}
                     </div>
                   </div>
 
-                  {/* Progress indicator with quantum glow */}
+                  {/* Progress indicator */}
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
                     <div 
-                      className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000 quantum-glow"
+                      className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000"
                       style={{ width: `${itemProgress * 100}%` }}
                     />
                   </div>
@@ -451,7 +451,7 @@ export default function MasonryShowcase() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
               
               <div className="relative z-10">
-                <div className={`text-3xl font-bold ${stat.color} mb-2 quantum-glow consciousness-expand`}>{stat.value}</div>
+                <div className={`text-3xl font-bold ${stat.color} mb-2 consciousness-expand`}>{stat.value}</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{stat.label}</div>
               </div>
               
