@@ -650,11 +650,11 @@ export default function ParallaxTimeline() {
                                 <img 
                                   src={image} 
                                   alt={`${event.title} workplace ${imageIndex + 1}`}
-                                  className="w-full h-full object-cover object-center"
+                                  className="w-full h-full object-contain object-center bg-gradient-to-br from-secondary/20 to-muted/20"
                                 />
                                 
                                 {/* Image overlay with parallax effect */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                                 
                                 {/* Image counter */}
                                 <div className="absolute bottom-4 right-4 bg-black/80 text-white text-sm px-3 py-1 rounded-full backdrop-blur-sm">
