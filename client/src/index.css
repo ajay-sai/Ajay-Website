@@ -377,6 +377,47 @@
     letter-spacing: -0.02em;
   }
 
+  /* Enhanced hero name styling with modern typography */
+  .hero-name-enhanced {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-variation-settings: 'wght' 900, 'slnt' 0;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(
+      135deg,
+      var(--foreground) 0%,
+      var(--quantum-blue) 25%,
+      var(--quantum-purple) 50%,
+      var(--quantum-cyan) 75%,
+      var(--foreground) 100%
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographicShimmer 20s ease-in-out infinite;
+    text-shadow: 
+      0 0 40px rgba(59, 130, 246, 0.4),
+      0 0 80px rgba(139, 92, 246, 0.2);
+    position: relative;
+  }
+
+  .hero-name-enhanced::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    background-clip: inherit;
+    -webkit-background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+    filter: blur(2px);
+    opacity: 0.3;
+    z-index: -1;
+  }
+
   .hero-name .char {
     display: inline-block;
     opacity: 0;
