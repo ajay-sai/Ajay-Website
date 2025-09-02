@@ -56,19 +56,6 @@ const masonryItems: MasonryItem[] = [
     ]
   },
   {
-    id: '3',
-    title: 'Quantum Computing',
-    description: 'Research in quantum machine learning algorithms',
-    type: 'skill',
-    size: 'small',
-    media: {
-      type: 'image',
-      gradient: 'from-cyan-400 to-blue-600'
-    },
-    icon: Zap,
-    tags: ['Qiskit', 'Research']
-  },
-  {
     id: '4',
     title: 'Data Pipeline Architecture',
     description: 'Scalable ETL processing 500TB+ daily',
@@ -118,7 +105,7 @@ const masonryItems: MasonryItem[] = [
   {
     id: '7',
     title: 'MLOps Excellence',
-    description: 'Automated model training and deployment',
+    description: 'Production-grade ML pipelines with automated versioning and deployment',
     type: 'skill',
     size: 'small',
     media: {
@@ -126,7 +113,11 @@ const masonryItems: MasonryItem[] = [
       gradient: 'from-indigo-400 to-purple-600'
     },
     icon: Zap,
-    tags: ['MLflow', 'Kubeflow']
+    tags: ['TFX', 'Vertex AI', 'MLflow'],
+    metrics: [
+      { label: 'Pipeline Uptime', value: '99.9%' },
+      { label: 'Model Deployment', value: '<10min' }
+    ]
   },
   {
     id: '8',
@@ -303,7 +294,7 @@ export default function MasonryShowcase() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
-            Explore my work through an immersive, cascading layout that reveals projects, achievements, and innovations
+            Explore my work, projects, achievements, and innovations
           </p>
         </div>
 
