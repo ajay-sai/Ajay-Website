@@ -500,7 +500,7 @@ export default function ParallaxTimeline() {
                       <img 
                         src={harleyDavidsonLogo} 
                         alt="Harley Davidson Logo" 
-                        className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                        className="w-12 h-12 md:w-16 md:h-16 object-contain"
                       />
                     </div>
                   ) : (
