@@ -219,6 +219,17 @@ export default function ParallaxTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeEvent, setActiveEvent] = useState(0);
+  
+  // State for manual image navigation
+  const [manualImageIndices, setManualImageIndices] = useState<{[key: number]: number}>({});
+  
+  // Function to handle manual image navigation
+  const handleImageClick = (eventIndex: number, imageIndex: number) => {
+    setManualImageIndices(prev => ({
+      ...prev,
+      [eventIndex]: imageIndex
+    }));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -480,9 +491,20 @@ export default function ParallaxTimeline() {
                         {/* Main Image Display */}
                         <div className="relative h-64 overflow-hidden">
                           {event.workplaceImages?.slice(0, 5).map((image, imageIndex) => {
-                            // Calculate which image should be visible based on scroll progress
-                            const imageProgress = (scrollProgress * 10 + index * 2) % (event.workplaceImages?.length || 1);
-                            const currentImageIndex = Math.floor(imageProgress);
+                            // Use manual selection if available, otherwise use scroll-based selection
+                            const manualIndex = manualImageIndices[index];
+                            const imageCount = event.workplaceImages?.length || 1;
+                            
+                            let currentImageIndex;
+                            if (manualIndex !== undefined) {
+                              currentImageIndex = manualIndex;
+                            } else {
+                              // Adjust scroll rate based on number of images for this specific event
+                              const scrollMultiplier = imageCount > 1 ? imageCount * 0.8 : 1;
+                              const imageProgress = (scrollProgress * scrollMultiplier * 5 + index * 1.5) % imageCount;
+                              currentImageIndex = Math.floor(imageProgress);
+                            }
+                            
                             const isCurrentImage = imageIndex === currentImageIndex;
                             
                             return (
@@ -510,18 +532,20 @@ export default function ParallaxTimeline() {
                                   {imageIndex + 1} of {event.workplaceImages?.length || 0}
                                 </div>
                                 
-                                {/* Progress indicator for current image */}
+                                {/* Clickable Progress indicator for current image */}
                                 {isCurrentImage && (
                                   <div className="absolute bottom-4 left-4">
                                     <div className="flex space-x-1">
                                       {event.workplaceImages?.slice(0, 5).map((_, dotIndex) => (
-                                        <div
+                                        <button
                                           key={dotIndex}
-                                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                          onClick={() => handleImageClick(index, dotIndex)}
+                                          className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 cursor-pointer ${
                                             dotIndex === currentImageIndex 
                                               ? 'bg-white shadow-lg' 
-                                              : 'bg-white/40'
+                                              : 'bg-white/40 hover:bg-white/60'
                                           }`}
+                                          aria-label={`View image ${dotIndex + 1} of ${event.workplaceImages?.length}`}
                                         />
                                       ))}
                                     </div>
