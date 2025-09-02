@@ -47,7 +47,7 @@ export default function HeroSection() {
           </div>
 
           {/* Name */}
-          <h1 className={`text-6xl md:text-7xl font-bold mb-4 gradient-text scroll-animate transition-all duration-1000 delay-200 ${
+          <h1 className={`text-6xl md:text-7xl font-bold mb-4 hero-name scroll-animate transition-all duration-1000 delay-200 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             Ajay Miryala
