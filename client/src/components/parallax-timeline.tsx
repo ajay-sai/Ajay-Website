@@ -360,90 +360,58 @@ export default function ParallaxTimeline() {
 
 
 
-  // Auto-scroll functionality with mobile-first approach
+  // Auto-scroll functionality with improved mobile support
   useEffect(() => {
     let intersectionObserver: IntersectionObserver;
-    let hasTriggered = false;
     
     const startAutoScroll = () => {
-      if (!containerRef.current || userScrolledManually || isAutoScrolling || hasTriggered) return;
+      if (!containerRef.current || userScrolledManually || isAutoScrolling) return;
       
-      hasTriggered = true;
-      console.log('🚀 Starting auto-scroll... Mobile:', mobile);
+      console.log('Starting auto-scroll...');
       hasStartedAutoScroll.current = true;
       setIsAutoScrolling(true);
       
-      // Get current position
-      const startY = window.pageYOffset || document.documentElement.scrollTop;
+      // Start smooth auto-scroll through the entire timeline
+      const startY = window.scrollY;
       const rect = containerRef.current.getBoundingClientRect();
-      const absoluteTop = startY + rect.top;
-      const scrollDistance = rect.height * 0.75; // Scroll through 75% of timeline
-      const targetY = absoluteTop + scrollDistance;
-      
-      console.log(`📍 Start: ${startY}, Target: ${targetY}, Distance: ${scrollDistance}`);
-      
-      const duration = mobile ? 12000 : 10000; // Even slower on mobile
+      const targetY = startY + rect.height * 0.7; // Scroll through 70% of the timeline
+      const duration = mobile ? 10000 : 8000; // Slower on mobile for better UX
       const startTime = performance.now();
       
       const animateScroll = (currentTime: number) => {
-        if (userScrolledManually) {
-          console.log('❌ Auto-scroll stopped by user');
-          setIsAutoScrolling(false);
-          return;
-        }
-        
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
-        // Gentle easing for mobile
-        const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
-        const easedProgress = easeInOutSine(progress);
+        // Smooth easing function
+        const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const easedProgress = easeInOutQuad(progress);
         
         const currentY = startY + (targetY - startY) * easedProgress;
         
-        // Use different scroll methods for better mobile compatibility
-        if (mobile) {
-          // Force scroll on mobile
-          document.documentElement.scrollTop = currentY;
-          document.body.scrollTop = currentY;
-        } else {
-          window.scrollTo(0, currentY);
-        }
-        
-        if (progress < 1) {
+        if (progress < 1 && !userScrolledManually) {
+          window.scrollTo({ top: currentY, behavior: 'auto' });
           autoScrollRef.current = requestAnimationFrame(animateScroll);
         } else {
-          console.log('✅ Auto-scroll completed');
+          console.log('Auto-scroll completed or stopped');
           setIsAutoScrolling(false);
         }
       };
       
-      // Start the animation
       autoScrollRef.current = requestAnimationFrame(animateScroll);
     };
 
-    // More aggressive intersection observer for mobile
+    // Use Intersection Observer for better trigger detection
     if (containerRef.current) {
-      const options = {
-        root: null,
-        rootMargin: mobile ? '-20% 0px -20% 0px' : '-10% 0px -10% 0px',
-        threshold: mobile ? [0.2, 0.3] : [0.3, 0.5]
-      };
-      
       intersectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            console.log(`👁️ Intersection: ${entry.intersectionRatio}, isIntersecting: ${entry.isIntersecting}`);
-            
-            if (entry.isIntersecting && entry.intersectionRatio > 0.2 && !hasStartedAutoScroll.current) {
-              console.log('🎯 Timeline section is visible, triggering auto-scroll...');
-              // Immediate trigger for mobile, small delay for desktop
-              const delay = mobile ? 100 : 800;
-              setTimeout(() => startAutoScroll(), delay);
+            if (entry.isIntersecting && entry.intersectionRatio > 0.3 && !hasStartedAutoScroll.current) {
+              console.log('Timeline section is visible, starting auto-scroll...');
+              setTimeout(() => startAutoScroll(), 500); // Small delay to ensure smooth start
             }
           });
         },
-        options
+        { threshold: [0.3, 0.5] }
       );
       
       intersectionObserver.observe(containerRef.current);
@@ -459,11 +427,39 @@ export default function ParallaxTimeline() {
     };
   }, [mobile, userScrolledManually, isAutoScrolling]);
 
-  // Simplified manual scroll detection optimized for mobile
+  // Detect manual scrolling to stop auto-scroll - simplified for mobile
   useEffect(() => {
-    const handleUserInteraction = (eventType: string) => {
+    let scrollTimeout: NodeJS.Timeout;
+    let lastScrollY = window.scrollY;
+    
+    const detectManualScroll = () => {
       if (isAutoScrolling) {
-        console.log(`🛑 User interaction detected (${eventType}), stopping auto-scroll`);
+        const currentScrollY = window.scrollY;
+        const scrollDiff = Math.abs(currentScrollY - lastScrollY);
+        
+        // Clear any existing timeout
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        
+        // Set timeout to detect if scroll was manual (not from our auto-scroll)
+        scrollTimeout = setTimeout(() => {
+          if (scrollDiff > 5) { // Threshold for manual scroll detection
+            console.log('Manual scroll detected, stopping auto-scroll');
+            setUserScrolledManually(true);
+            setIsAutoScrolling(false);
+            if (autoScrollRef.current) {
+              cancelAnimationFrame(autoScrollRef.current);
+            }
+          }
+        }, 50);
+        
+        lastScrollY = currentScrollY;
+      }
+    };
+
+    // Listen for touch events specifically for mobile
+    const handleTouchStart = () => {
+      if (isAutoScrolling) {
+        console.log('Touch detected, stopping auto-scroll');
         setUserScrolledManually(true);
         setIsAutoScrolling(false);
         if (autoScrollRef.current) {
@@ -472,26 +468,15 @@ export default function ParallaxTimeline() {
       }
     };
 
-    // More comprehensive event listeners for mobile
-    const events = [
-      { type: 'touchstart', handler: () => handleUserInteraction('touch') },
-      { type: 'touchmove', handler: () => handleUserInteraction('touchmove') },
-      { type: 'wheel', handler: () => handleUserInteraction('wheel') },
-      { type: 'keydown', handler: (e: KeyboardEvent) => {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'].includes(e.key)) {
-          handleUserInteraction('keyboard');
-        }
-      }}
-    ];
-
-    events.forEach(({ type, handler }) => {
-      window.addEventListener(type, handler as EventListener, { passive: true });
-    });
+    window.addEventListener('scroll', detectManualScroll, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('wheel', handleTouchStart, { passive: true });
 
     return () => {
-      events.forEach(({ type, handler }) => {
-        window.removeEventListener(type, handler as EventListener);
-      });
+      window.removeEventListener('scroll', detectManualScroll);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('wheel', handleTouchStart);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, [isAutoScrolling]);
 
