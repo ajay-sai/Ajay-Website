@@ -47,12 +47,17 @@ export default function HeroSection() {
           </div>
 
           {/* Name */}
-          <h1 className={`text-6xl md:text-7xl font-bold mb-4 hero-name scroll-animate transition-all duration-1000 delay-200 ${
+          <h1 className={`text-6xl md:text-8xl lg:text-9xl font-black mb-6 hero-name-enhanced scroll-animate transition-all duration-1000 delay-200 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            Ajay Miryala
+          }`} data-testid="heading-hero-name">
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300 cursor-default mr-2 md:mr-4">
+              Ajay
+            </span>
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300 cursor-default bg-gradient-to-r from-primary via-accent to-purple-500 bg-clip-text text-transparent font-extrabold">
+              Miryala
+            </span>
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-primary via-accent to-purple-500 mx-auto mb-8 scroll-animate rounded-full shadow-lg"></div>
 
           {/* Title */}
           <h2 className={`text-2xl md:text-3xl text-muted-foreground mb-6 transition-all duration-1000 delay-400 ${
@@ -62,41 +67,36 @@ export default function HeroSection() {
           </h2>
 
           {/* Social Links */}
-          <div className={`flex justify-center space-x-6 mb-12 transition-all duration-1000 delay-600 ${
+          <div className={`flex flex-col sm:flex-row justify-center items-center gap-4 mb-12 transition-all duration-1000 delay-600 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
+            <div className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 rounded-xl min-w-[140px]">
               <a
                 href="https://www.linkedin.com/in/ajay-sai/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2"
+                className="flex items-center justify-center space-x-3 relative z-10 px-8 py-4"
+                data-testid="button-linkedin"
               >
-                <Linkedin className="h-5 w-5" />
-                <span>LinkedIn</span>
+                <Linkedin className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="font-semibold tracking-wide">LinkedIn</span>
               </a>
-            </Button>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+            </div>
             
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-border hover:bg-secondary text-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
+            <div className="group relative overflow-hidden bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white border border-gray-600 hover:border-gray-500 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 rounded-xl min-w-[140px]">
               <a
                 href="https://github.com/ajay-sai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2"
+                className="flex items-center justify-center space-x-3 relative z-10 px-8 py-4"
+                data-testid="button-github"
               >
-                <Github className="h-5 w-5" />
-                <span>GitHub</span>
+                <Github className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="font-semibold tracking-wide">GitHub</span>
               </a>
-            </Button>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+            </div>
           </div>
 
           {/* Scroll Indicator */}
