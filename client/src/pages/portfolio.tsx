@@ -12,6 +12,7 @@ import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useCursorEffects } from "@/hooks/use-cursor-effects";
+import { ThemeProvider } from "@/contexts/theme-context";
 
 export default function Portfolio() {
   useScrollAnimation();
@@ -30,24 +31,25 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Quantum Background Effects */}
-      <QuantumBackground />
-      <ParticleSystem />
-      
-      {/* Navigation */}
-      <Navigation />
-      
-      {/* Main Content */}
-      <main className="relative z-10">
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <MasonryShowcase />
-        <ParallaxTimeline />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
+    <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+      <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+        {/* Quantum Background Effects */}
+        <QuantumBackground />
+        <ParticleSystem />
+        
+        {/* Navigation */}
+        <Navigation />
+        
+        {/* Main Content */}
+        <main className="relative z-10">
+          <HeroSection />
+          <AboutSection />
+          <SkillsSection />
+          <MasonryShowcase />
+          <ParallaxTimeline />
+          <ProjectsSection />
+          <ContactSection />
+        </main>
       
       {/* Footer */}
       <footer className="relative z-10 py-16 bg-gradient-to-t from-neural-primary via-background to-background border-t border-border/50">
@@ -99,6 +101,7 @@ export default function Portfolio() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
