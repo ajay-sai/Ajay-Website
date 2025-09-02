@@ -52,6 +52,16 @@ Preferred communication style: Simple, everyday language.
 - **Solution**: Simplified animation logic, removed redundant transform effects
 - **Result**: Job descriptions now remain visible and readable during scroll
 
+### Animation System Overhaul (September 02, 2025)
+- **Issue Resolved**: Eliminated jarring turning animations and improved visual aesthetics
+- **Problem**: Consciousness-expand and reality-bend animations were too intense with rotations and 3D transforms
+- **Solution**: 
+  - Simplified consciousness-expand to gentle scale (1.02x) and opacity changes
+  - Reduced reality-bend to subtle translateY movement with brightness adjustment
+  - Replaced aggressive animations with unified scroll-animate system
+  - Removed distracting background grid animations in project showcase
+- **Result**: All animations now smooth, aesthetically pleasing, and easy on the eyes
+
 ## System Architecture
 
 ### Frontend Architecture

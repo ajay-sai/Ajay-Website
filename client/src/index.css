@@ -198,35 +198,23 @@
   }
 
   @keyframes consciousnessExpand {
-    0% { 
-      transform: scale(1) rotate(0deg);
-      filter: hue-rotate(0deg);
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 1;
     }
     50% { 
-      transform: scale(1.05) rotate(180deg);
-      filter: hue-rotate(180deg);
-    }
-    100% { 
-      transform: scale(1) rotate(360deg);
-      filter: hue-rotate(360deg);
+      transform: scale(1.02);
+      opacity: 0.9;
     }
   }
 
   @keyframes realityBend {
     0%, 100% { 
-      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      transform: translateY(0px);
       filter: brightness(1);
     }
-    25% { 
-      transform: perspective(1000px) rotateX(5deg) rotateY(-2deg);
-      filter: brightness(1.1);
-    }
     50% { 
-      transform: perspective(1000px) rotateX(-2deg) rotateY(5deg);
-      filter: brightness(0.9);
-    }
-    75% { 
-      transform: perspective(1000px) rotateX(3deg) rotateY(-3deg);
+      transform: translateY(-2px);
       filter: brightness(1.05);
     }
   }
@@ -274,11 +262,11 @@
   }
 
   .consciousness-expand {
-    animation: consciousnessExpand 8s ease-in-out infinite;
+    animation: consciousnessExpand 4s ease-in-out infinite;
   }
 
   .reality-bend {
-    animation: realityBend 6s ease-in-out infinite;
+    animation: realityBend 3s ease-in-out infinite;
   }
 
   /* Unified scroll animation system */
@@ -309,11 +297,11 @@
     
     /* Reduce motion for mobile performance */
     .consciousness-expand {
-      animation-duration: 12s;
+      animation-duration: 6s;
     }
     
     .reality-bend {
-      animation-duration: 8s;
+      animation-duration: 4s;
     }
     
     .quantum-float {

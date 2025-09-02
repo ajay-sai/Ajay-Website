@@ -277,18 +277,16 @@ export default function MasonryShowcase() {
         ))}
       </div>
 
-      {/* Enhanced cascading grid overlay - static version */}
-      <div className="absolute inset-0 opacity-10">
-        {[...Array(50)].map((_, i) => (
+      {/* Subtle static grid overlay */}
+      <div className="absolute inset-0 opacity-5">
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-px h-20 bg-gradient-to-b from-primary via-accent to-transparent"
+            className="absolute w-px h-16 bg-gradient-to-b from-primary/50 to-transparent"
             style={{
-              left: `${(i * 4) % 100}%`,
-              top: `${Math.sin(scrollProgress * Math.PI + i * 0.1) * 100}%`,
-              transform: `translateY(${scrollProgress * -200 + (i * 5)}px)`,
-              opacity: 0.3,
-              transition: 'all 0.2s ease-out'
+              left: `${(i * 8) % 100}%`,
+              top: `${(i * 12) % 100}%`,
+              opacity: 0.2
             }}
           />
         ))}
@@ -296,11 +294,11 @@ export default function MasonryShowcase() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text consciousness-expand">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
             Interactive Portfolio Showcase
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate" />
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
             Explore my work through an immersive, cascading layout that reveals projects, achievements, and innovations
           </p>
         </div>
@@ -318,7 +316,7 @@ export default function MasonryShowcase() {
                   transitionDelay: `${index * 100}ms`
                 }}
               >
-                <div className="quantum-card h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer hover:scale-105 transition-all duration-500 reality-bend">
+                <div className="quantum-card h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer hover:scale-105 transition-all duration-500">
                   {/* Quantum hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                   
@@ -348,7 +346,7 @@ export default function MasonryShowcase() {
                   {/* Content Section */}
                   <div className="h-1/3 p-4 flex flex-col justify-between">
                     <div>
-                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300 consciousness-expand">
+                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
                         {item.title}
                       </h3>
                       <p className="text-muted-foreground text-sm mb-3 line-clamp-2 group-hover:text-foreground transition-colors duration-300">
@@ -373,7 +371,7 @@ export default function MasonryShowcase() {
                       {item.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-2 py-1 bg-secondary/80 hover:bg-secondary text-foreground text-xs rounded transition-all duration-300 hover:scale-105 reality-bend cursor-pointer"
+                          className="px-2 py-1 bg-secondary/80 hover:bg-secondary text-foreground text-xs rounded transition-all duration-300 hover:scale-105 cursor-pointer"
                           style={{ animationDelay: `${tagIndex * 50}ms` }}
                         >
                           {tag}
@@ -426,7 +424,7 @@ export default function MasonryShowcase() {
           ].map((stat, index) => (
             <div
               key={stat.label}
-              className="text-center p-4 quantum-card rounded-lg transform transition-all duration-1000 hover:scale-105 reality-bend group cursor-pointer"
+              className="text-center p-4 quantum-card rounded-lg transform transition-all duration-1000 hover:scale-105 group cursor-pointer"
               style={{
                 transitionDelay: `${index * 200}ms`,
                 transform: `translateY(${scrollProgress > 0.5 ? 0 : 20}px)`,
@@ -437,7 +435,7 @@ export default function MasonryShowcase() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
               
               <div className="relative z-10">
-                <div className={`text-3xl font-bold ${stat.color} mb-2 consciousness-expand`}>{stat.value}</div>
+                <div className={`text-3xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
                 <div className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">{stat.label}</div>
               </div>
               

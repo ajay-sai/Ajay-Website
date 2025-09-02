@@ -84,7 +84,7 @@ export default function SkillsSection() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text consciousness-expand">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text scroll-animate">
             Technical Skills
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent mx-auto quantum-glow"></div>
@@ -118,7 +118,7 @@ export default function SkillsSection() {
                       {category.skills.map((skill, skillIndex) => (
                         <span
                           key={skill.name}
-                          className={`inline-flex items-center px-2 py-1 bg-secondary/80 hover:bg-secondary text-xs rounded-full border border-border/50 transition-all duration-300 hover:scale-105 hover:shadow-lg reality-bend cursor-pointer ${
+                          className={`inline-flex items-center px-2 py-1 bg-secondary/80 hover:bg-secondary text-xs rounded-full border border-border/50 transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer ${
                             category.color === 'text-primary' ? 'hover:border-primary/50 hover:bg-primary/10' : 'hover:border-accent/50 hover:bg-accent/10'
                           }`}
                           style={{
