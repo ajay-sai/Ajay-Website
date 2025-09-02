@@ -86,8 +86,8 @@
   }
 
   @keyframes quantumPulse {
-    0% { box-shadow: 0 0 0 0 hsla(207, 90%, 54%, 0.7); }
-    70% { box-shadow: 0 0 0 30px hsla(207, 90%, 54%, 0); }
+    0% { box-shadow: 0 0 0 0 hsla(207, 90%, 54%, 0.4); }
+    50% { box-shadow: 0 0 0 10px hsla(207, 90%, 54%, 0.1); }
     100% { box-shadow: 0 0 0 0 hsla(207, 90%, 54%, 0); }
   }
 
@@ -109,16 +109,12 @@
 
   @keyframes quantumGlow {
     0%, 100% { 
-      text-shadow: 0 0 5px var(--quantum-blue), 0 0 10px var(--quantum-blue), 0 0 15px var(--quantum-blue);
-    }
-    25% { 
-      text-shadow: 0 0 5px var(--quantum-green), 0 0 10px var(--quantum-green), 0 0 15px var(--quantum-green);
+      text-shadow: 0 0 5px var(--quantum-blue), 0 0 10px var(--quantum-blue);
+      opacity: 1;
     }
     50% { 
-      text-shadow: 0 0 5px var(--quantum-purple), 0 0 10px var(--quantum-purple), 0 0 15px var(--quantum-purple);
-    }
-    75% { 
-      text-shadow: 0 0 5px var(--quantum-cyan), 0 0 10px var(--quantum-cyan), 0 0 15px var(--quantum-cyan);
+      text-shadow: 0 0 8px var(--quantum-blue), 0 0 15px var(--quantum-blue);
+      opacity: 0.8;
     }
   }
 
