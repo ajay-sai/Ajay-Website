@@ -23,6 +23,12 @@ const graduateAssistantImage1 = "/attached_assets/20240424_161717_1756780061878.
 const graduateAssistantImage2 = "/attached_assets/Screenshot_20190129-080233_1756780061880.jpg";
 const graduateAssistantImage3 = "/attached_assets/Generated Image September 01, 2025 - 10_25PM (1)_1756780361828.jpeg";
 
+// Master's degree images
+const mastersImage1 = "/attached_assets/IMG-20191122-WA0013_1756780506778.jpg";
+const mastersImage2 = "/attached_assets/IMG-20181105-WA0008_1756780506780.jpg";
+const mastersImage3 = "/attached_assets/IMG-20200111-WA0007_1756780521102.jpg";
+const mastersImage4 = "/attached_assets/20210521_213843_1756780555219.jpg";
+
 interface TimelineEvent {
   year: string;
   sortOrder: number;
@@ -174,6 +180,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-emerald-500 to-teal-500",
     companyLogo: "🎓",
     companyColor: "#dc2626",
+    workplaceImages: [mastersImage1, mastersImage2, mastersImage3, mastersImage4],
     achievements: [
       "Specialized in Big Data and Artificial Intelligence with comprehensive analytics training",
       "Core coursework: Data Mining, Predictive Analytics, Database Management, Operations Analytics",
