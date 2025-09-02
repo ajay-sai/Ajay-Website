@@ -344,55 +344,55 @@ export default function MasonryShowcase() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="h-1/3 p-4 flex flex-col justify-between">
+                  <div className="h-1/3 p-3 sm:p-4 flex flex-col justify-between min-h-[120px] sm:min-h-[140px]">
                     <div>
-                      <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="font-bold text-sm sm:text-lg mb-1 sm:mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2 group-hover:text-foreground transition-colors duration-300">
+                      <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2 group-hover:text-foreground transition-colors duration-300">
                         {item.description}
                       </p>
                     </div>
 
                     {/* Metrics with quantum effects */}
                     {item.metrics && (
-                      <div className="flex space-x-4 mb-3">
+                      <div className="flex justify-center space-x-2 sm:space-x-4 mb-2 sm:mb-3 flex-shrink-0">
                         {item.metrics.map((metric, metricIndex) => (
-                          <div key={metricIndex} className="text-center group-hover:scale-110 transition-transform duration-300">
-                            <div className="text-primary font-bold text-sm group-hover:text-accent transition-colors duration-300">{metric.value}</div>
-                            <div className="text-muted-foreground text-xs">{metric.label}</div>
+                          <div key={metricIndex} className="text-center group-hover:scale-110 transition-transform duration-300 flex-1 min-w-0">
+                            <div className="text-primary font-bold text-xs sm:text-sm group-hover:text-accent transition-colors duration-300 truncate">{metric.value}</div>
+                            <div className="text-muted-foreground text-[10px] sm:text-xs truncate">{metric.label}</div>
                           </div>
                         ))}
                       </div>
                     )}
 
                     {/* Tags with quantum effects */}
-                    <div className="flex flex-wrap gap-1 mb-3">
+                    <div className="flex flex-wrap gap-1 mb-2 sm:mb-3 flex-shrink-0">
                       {item.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-2 py-1 bg-secondary/80 hover:bg-secondary text-foreground text-xs rounded transition-all duration-300 hover:scale-105 cursor-pointer"
+                          className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-secondary/80 hover:bg-secondary text-foreground text-[10px] sm:text-xs rounded transition-all duration-300 hover:scale-105 cursor-pointer"
                           style={{ animationDelay: `${tagIndex * 50}ms` }}
                         >
                           {tag}
                         </span>
                       ))}
                       {item.tags.length > 3 && (
-                        <span className="px-2 py-1 bg-secondary/80 text-muted-foreground text-xs rounded transition-all duration-300 hover:scale-105">
+                        <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-secondary/80 text-muted-foreground text-[10px] sm:text-xs rounded transition-all duration-300 hover:scale-105">
                           +{item.tags.length - 3}
                         </span>
                       )}
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                      <Button variant="outline" size="sm" className="flex-1 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
-                        <ExternalLink className="w-3 h-3 mr-1" />
+                    <div className="flex space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0 mt-auto">
+                      <Button variant="outline" size="sm" className="flex-1 text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
+                        <ExternalLink className="w-2 h-2 sm:w-3 sm:h-3 mr-1" />
                         View
                       </Button>
                       {item.type === 'project' && (
-                        <Button variant="outline" size="sm" className="hover:bg-accent/10 hover:border-accent/50 transition-all duration-300">
-                          <Github className="w-3 h-3" />
+                        <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300">
+                          <Github className="w-2 h-2 sm:w-3 sm:h-3" />
                         </Button>
                       )}
                     </div>
