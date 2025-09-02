@@ -5,17 +5,18 @@ import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
 import harleyDavidsonLogo from "@assets/image_1756766997358.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
-const homeDepotImage2 = "/attached_assets/IMG_2329_1756775594779.JPG";
+const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
 
-// Senior Data Scientist workplace images
-const seniorDataScientistImage1 = "/attached_assets/20231215_095639_1756775804398.jpg";
-const seniorDataScientistImage2 = "/attached_assets/20241025_152323_1756776021189.jpg";
+// Senior Data Scientist workplace images (swapped order of first two)
+const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
+const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
 const seniorDataScientistImage3 = "/attached_assets/20241023_132525_1756776021189.jpg";
 const seniorDataScientistImage4 = "/attached_assets/20240508_203952_1756776021190.jpg";
 
-// Senior Data Analyst workplace images
+// Senior Data Analyst workplace images (added third image)
 const seniorDataAnalystImage1 = "/attached_assets/IMG-20220807-WA0018_1756776767995.jpg";
 const seniorDataAnalystImage2 = "/attached_assets/20220805_214208_1756776778383.jpg";
+const seniorDataAnalystImage3 = "/attached_assets/IMG_1219_1756777552748.jpg"; // New image
 
 interface TimelineEvent {
   year: string;
@@ -85,7 +86,8 @@ const timelineEvents: TimelineEvent[] = [
     companyColor: "#f96302",
     workplaceImages: [
       seniorDataAnalystImage1,
-      seniorDataAnalystImage2
+      seniorDataAnalystImage2,
+      seniorDataAnalystImage3
     ],
     achievements: [
       "Analyzed customer behavior across platforms providing insights to 300+ associates",
