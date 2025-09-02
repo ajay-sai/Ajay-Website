@@ -156,6 +156,7 @@ const isMobile = () => {
 export default function MasonryShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -166,12 +167,30 @@ export default function MasonryShowcase() {
       
       const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height)));
       setScrollProgress(progress);
+
+      // Observe individual masonry items for staggered animation
+      const items = containerRef.current.querySelectorAll('[data-masonry-item]');
+      const newVisibleItems = new Set<string>();
+
+      items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.top < windowHeight && itemRect.bottom > 0) {
+          const itemId = item.getAttribute('data-masonry-item');
+          if (itemId) newVisibleItems.add(itemId);
+        }
+      });
+
+      setVisibleItems(newVisibleItems);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const throttledScroll = () => {
+      requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', throttledScroll);
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
   }, []);
 
   const getSizeClasses = (size: string) => {
@@ -208,16 +227,16 @@ export default function MasonryShowcase() {
       case 'chart':
         return (
           <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-            {/* Static chart visualization */}
+            {/* Smooth chart visualization */}
             <div className="absolute inset-0">
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute bottom-4 bg-white/30 rounded-t"
+                  className="absolute bottom-4 bg-white/30 rounded-t transition-all duration-2000"
                   style={{
                     left: `${10 + i * 10}%`,
                     width: '8%',
-                    height: `${30 + (i % 3) * 20}%`
+                    height: `${25 + Math.sin(scrollProgress * Math.PI + i * 0.5) * 20}%`
                   }}
                 />
               ))}
@@ -291,13 +310,17 @@ export default function MasonryShowcase() {
         {/* Masonry Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-max">
           {masonryItems.map((item, index) => {
+            const isVisible = visibleItems.has(item.id);
+            const itemProgress = isVisible ? 1 : 0;
             
             return (
               <div
                 key={item.id}
                 data-masonry-item={item.id}
-                className={`${getSizeClasses(item.size)} hover:scale-105 scroll-animate`}
+                className={`${getSizeClasses(item.size)} hover:scale-105 transition-all duration-700`}
                 style={{
+                  opacity: isVisible ? 1 : 0.3,
+                  transform: `translateY(${isVisible ? 0 : 30}px) scale(${isVisible ? 1 : 0.95})`,
                   transitionDelay: `${index * 100}ms`
                 }}
               >
@@ -387,7 +410,7 @@ export default function MasonryShowcase() {
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
                     <div 
                       className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000"
-                      style={{ width: '100%' }}
+                      style={{ width: `${itemProgress * 100}%` }}
                     />
                   </div>
                   
@@ -411,7 +434,9 @@ export default function MasonryShowcase() {
               key={stat.label}
               className="text-center p-4 quantum-card rounded-lg transform transition-all duration-1000 hover:scale-105 group cursor-pointer"
               style={{
-                transitionDelay: `${index * 200}ms`
+                transitionDelay: `${index * 200}ms`,
+                transform: `translateY(${scrollProgress > 0.5 ? 0 : 20}px)`,
+                opacity: scrollProgress > 0.5 ? 1 : 0.6
               }}
             >
               {/* Hover effect overlay */}
