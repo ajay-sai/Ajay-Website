@@ -14,6 +14,11 @@ const dataScientistImage1 = "/attached_assets/20240427_120651_1756788379977.jpg"
 // Marketing Analyst graduation image
 const marketingAnalystImage1 = "/attached_assets/20210521_131718_1756788953660.jpg";
 
+// Bachelor's degree college images
+const bachelorImage1 = "/attached_assets/IMG_20161106_212705_1756789364617.jpg";
+const bachelorImage2 = "/attached_assets/IMG_20161030_232457_1756789364618.jpg";
+const bachelorImage3 = "/attached_assets/Screenshot_20181124-163448__01_1756789364618.jpg";
+
 // Senior Data Scientist workplace images (swapped order of first two, removed third)
 const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
 const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
@@ -227,6 +232,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-amber-500 to-orange-500",
     companyLogo: "🎓",
     companyColor: "#1976d2",
+    workplaceImages: [bachelorImage1, bachelorImage2, bachelorImage3],
     achievements: [
       "Comprehensive computer science foundation with focus on systems and AI",
       "Core studies: Data Structures, Algorithms, Database Systems, AI & Expert Systems, Data Mining",
