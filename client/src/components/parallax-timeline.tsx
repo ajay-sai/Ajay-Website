@@ -8,8 +8,11 @@ const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.j
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
 const homeDepotImage3 = "/attached_assets/20241023_132525_1756776021189.jpg"; // Moved from Senior Data Scientist
 
-// Data Scientist workplace image (University of Maryland campus)
+// Data Scientist images
 const dataScientistImage1 = "/attached_assets/20240427_120651_1756788379977.jpg";
+const dataScientistImage2 = "/attached_assets/IMG_20180811_194748_1756789697281.jpg";
+const dataScientistImage3 = "/attached_assets/IMG-20191110-WA0025_1756789697282.jpg";
+const dataScientistImage4 = "/attached_assets/Screenshot_20180831-101808__01_1756789720602.jpg";
 
 // Marketing Analyst images
 const marketingAnalystImage1 = "/attached_assets/20210521_131718_1756788953660.jpg";
@@ -152,7 +155,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-indigo-500 to-purple-500",
     companyLogo: "💼",
     companyColor: "#1976d2",
-    workplaceImages: [dataScientistImage1],
+    workplaceImages: [dataScientistImage1, dataScientistImage2, dataScientistImage3, dataScientistImage4],
     achievements: [
       "Predicted market regime of Russell 1000 companies for investment evaluation",
       "Achieved <strong class='text-blue-400'>78% accuracy</strong> in ML models and <strong class='text-blue-400'>5% improvement</strong> in client investment confidence",
