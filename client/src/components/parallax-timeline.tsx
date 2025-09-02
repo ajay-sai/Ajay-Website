@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings, GraduationCap, BookOpen } from "lucide-react";
 import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
 import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
-import harleyDavidsonLogo from "@assets/image_1756766997358.png";
+import harleyDavidsonLogo from "@assets/image_1756790102894.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
