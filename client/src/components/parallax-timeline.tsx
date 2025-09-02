@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings } from "lucide-react";
+import { Calendar, TrendingUp, Award, Code, Target, Zap, Settings, GraduationCap, BookOpen } from "lucide-react";
 import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
 import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
 import harleyDavidsonLogo from "@assets/image_1756766997358.png";
@@ -102,6 +102,34 @@ const timelineEvents: TimelineEvent[] = [
       "Predicted market regime of Russell 1000 companies for investment evaluation",
       "Achieved 78% accuracy in ML models and 5% improvement in client investment confidence",
       "Technologies: Python, R, SQL Server, Logistic Regression, Random Forest, XGBoost, keras, sklearn"
+    ]
+  },
+  {
+    year: "2019",
+    title: "Master of Science in Business Analytics",
+    description: "University of Maryland, College Park - Robert H Smith School of Business",
+    icon: GraduationCap,
+    color: "from-emerald-500 to-teal-500",
+    companyLogo: "🎓",
+    companyColor: "#dc2626",
+    achievements: [
+      "Specialized in Big Data and Artificial Intelligence with comprehensive analytics training",
+      "Core coursework: Data Mining, Predictive Analytics, Database Management, Operations Analytics",
+      "Technologies: Python, Data Models & Decision Making, Google Analytics, Price Optimization, Revenue Management"
+    ]
+  },
+  {
+    year: "2018",
+    title: "Bachelor of Technology in Computer Science",
+    description: "SRM University, Kattankulathur - Computer Science Engineering",
+    icon: BookOpen,
+    color: "from-amber-500 to-orange-500",
+    companyLogo: "🎓",
+    companyColor: "#1976d2",
+    achievements: [
+      "Comprehensive computer science foundation with focus on systems and AI",
+      "Core studies: Data Structures, Algorithms, Database Systems, AI & Expert Systems, Data Mining",
+      "Technologies: Web Technology, Software Engineering, Operating Systems, Network Security, Linux Internals"
     ]
   },
   {
@@ -219,7 +247,7 @@ export default function ParallaxTimeline() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
-            Professional Journey
+            Professional & Educational Journey
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
