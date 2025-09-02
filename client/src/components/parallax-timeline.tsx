@@ -11,6 +11,9 @@ const homeDepotImage3 = "/attached_assets/20241023_132525_1756776021189.jpg"; //
 // Data Scientist workplace image (University of Maryland campus)
 const dataScientistImage1 = "/attached_assets/20240427_120651_1756788379977.jpg";
 
+// Marketing Analyst graduation image
+const marketingAnalystImage1 = "/attached_assets/20210521_131718_1756788953660.jpg";
+
 // Senior Data Scientist workplace images (swapped order of first two, removed third)
 const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
 const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
@@ -156,6 +159,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-pink-500 to-rose-500",
     companyLogo: "🎨",
     companyColor: "#e91e63",
+    workplaceImages: [marketingAnalystImage1],
     achievements: [
       "Managed Google Ads campaign achieving <strong class='text-blue-400'>200% website traffic increase</strong>",
       "Generated <strong class='text-blue-400'>$3100 revenue</strong> with 113 product sales from $300 budget",
@@ -595,8 +599,7 @@ export default function ParallaxTimeline() {
                   {/* Workplace Gallery - Separate Container */}
                   <div className="w-full lg:flex-1 lg:max-w-sm">
                     {/* Debug: {JSON.stringify(event.workplaceImages)} */}
-                    {event.workplaceImages && event.workplaceImages.length > 0 && 
-                     event.title !== "Marketing Analyst" ? (
+                    {event.workplaceImages && event.workplaceImages.length > 0 ? (
                       <div className="bg-background/95 backdrop-blur-sm border border-border rounded-xl overflow-hidden shadow-xl">
                         <div className="p-4 pb-2">
                           <h4 className="text-sm font-semibold text-muted-foreground mb-3 flex items-center">
