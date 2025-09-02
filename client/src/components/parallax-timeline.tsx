@@ -240,6 +240,16 @@ export default function ParallaxTimeline() {
     }));
   };
 
+  // Function to highlight important numbers and words
+  const highlightImportantText = (text: string, isActive: boolean) => {
+    if (!isActive) return text;
+    
+    // Enhanced pattern to match more important metrics
+    const pattern = /(\d+%|\$\d+[MKB]?|\d+\+|\d+x|\d+,\d+|\d+ [a-zA-Z]+|\d+ associates|\d+ students|\d+ companies)/g;
+    
+    return text.replace(pattern, (match) => `<strong>${match}</strong>`);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -396,11 +406,7 @@ export default function ParallaxTimeline() {
                       
 
                       
-                      <h3 className={`text-2xl font-bold mb-3 transition-all duration-700 ${isActive ? 'animate-highlight-title' : ''}`}
-                          style={{
-                            fontWeight: isActive ? '800' : '700',
-                            color: isActive ? 'rgb(59, 130, 246)' : 'inherit'
-                          }}>
+                      <h3 className="text-2xl font-bold mb-3 transition-all duration-700">
                         {event.title}
                       </h3>
                       
@@ -414,11 +420,7 @@ export default function ParallaxTimeline() {
                         </span>
                       </div>
                       
-                      <p className={`text-muted-foreground mb-4 leading-relaxed transition-all duration-500 ${isActive ? 'animate-highlight-text' : ''}`}
-                         style={{
-                           fontWeight: isActive ? '500' : '400',
-                           opacity: isActive ? '1' : '0.8'
-                         }}>
+                      <p className="text-muted-foreground mb-4 leading-relaxed transition-all duration-500">
                         {event.description}
                       </p>
 
@@ -460,14 +462,14 @@ export default function ParallaxTimeline() {
                                     </span>
                                   )}
                                   <span 
-                                    className={`transition-all duration-500 ${isActive ? 'animate-highlight' : ''}`}
-                                    style={{
-                                      animationDelay: `${achievementIndex * 300}ms`,
-                                      fontWeight: isActive ? '600' : 'inherit'
+                                    className="transition-all duration-500"
+                                    dangerouslySetInnerHTML={{
+                                      __html: highlightImportantText(
+                                        isTechStack ? achievement.replace('Technologies: ', '') : achievement,
+                                        isActive
+                                      )
                                     }}
-                                  >
-                                    {isTechStack ? achievement.replace('Technologies: ', '') : achievement}
-                                  </span>
+                                  />
                                 </p>
                               </div>
                             </div>
