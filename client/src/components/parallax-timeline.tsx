@@ -370,7 +370,7 @@ export default function ParallaxTimeline() {
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
     const targetScrollY = startScrollY + rect.height; // Scroll through 100% of timeline
-    const duration = 10000; // 10 seconds for smoother experience
+    const duration = 30000; // 30 seconds for very slow, relaxed journey
     const startTime = performance.now();
     
     const smoothScroll = (currentTime: number) => {
