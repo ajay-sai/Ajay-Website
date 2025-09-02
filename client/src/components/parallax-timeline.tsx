@@ -21,6 +21,7 @@ const seniorDataAnalystImage3 = "/attached_assets/IMG_1219_1756777552748.jpg"; /
 // Graduate Assistant workplace images
 const graduateAssistantImage1 = "/attached_assets/20240424_161717_1756780061878.jpg";
 const graduateAssistantImage2 = "/attached_assets/Screenshot_20190129-080233_1756780061880.jpg";
+const graduateAssistantImage3 = "/attached_assets/Generated Image September 01, 2025 - 10_25PM (1)_1756780361828.jpeg";
 
 interface TimelineEvent {
   year: string;
@@ -156,7 +157,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-emerald-500 to-teal-500",
     companyLogo: "🎓",
     companyColor: "#d32f2f",
-    workplaceImages: [graduateAssistantImage1, graduateAssistantImage2],
+    workplaceImages: [graduateAssistantImage1, graduateAssistantImage2, graduateAssistantImage3],
     achievements: [
       "Assessed and maintained student records for <strong class='text-blue-400'>4000+ students</strong> to improve academic standing",
       "Led team of 10 undergraduate students improving satisfaction rate by <strong class='text-blue-400'>10%</strong>",
