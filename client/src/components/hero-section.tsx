@@ -107,7 +107,7 @@ export default function HeroSection() {
               variant="ghost"
               size="icon"
               onClick={handleScrollToAbout}
-              className="animate-bounce hover:text-primary transition-colors"
+              className="animate-bounce hover:text-primary transition-colors bg-background/50 backdrop-blur-sm border border-border shadow-lg hover:bg-primary/10"
             >
               <ChevronDown className="h-8 w-8" />
             </Button>
