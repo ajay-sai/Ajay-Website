@@ -187,13 +187,13 @@ export default function MasonryShowcase() {
   const getSizeClasses = (size: string) => {
     switch (size) {
       case 'small':
-        return 'col-span-1 row-span-1 h-72 sm:h-64';
+        return 'col-span-1 row-span-1 h-80 sm:h-64';
       case 'medium':
-        return 'col-span-1 row-span-2 h-96 sm:h-80';
+        return 'col-span-1 row-span-2 h-[22rem] sm:h-80';
       case 'large':
-        return 'col-span-2 row-span-2 h-[28rem] sm:h-96';
+        return 'col-span-2 row-span-2 h-[30rem] sm:h-96';
       default:
-        return 'col-span-1 row-span-1 h-72 sm:h-64';
+        return 'col-span-1 row-span-1 h-80 sm:h-64';
     }
   };
 
@@ -299,7 +299,7 @@ export default function MasonryShowcase() {
         </div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-max">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 auto-rows-max">
           {masonryItems.map((item, index) => {
             const isVisible = visibleItems.has(item.id);
             const itemProgress = isVisible ? 1 : 0;
@@ -321,7 +321,7 @@ export default function MasonryShowcase() {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                   
                   {/* Media Section */}
-                  <div className={`relative h-1/2 sm:h-2/3 bg-gradient-to-br ${item.media.gradient} overflow-hidden`}>
+                  <div className={`relative h-2/5 sm:h-2/3 bg-gradient-to-br ${item.media.gradient} overflow-hidden`}>
                     {renderMedia(item)}
                     
                     {/* Enhanced hover overlay */}
@@ -344,7 +344,7 @@ export default function MasonryShowcase() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="h-1/2 sm:h-1/3 p-3 sm:p-4 flex flex-col justify-start space-y-2 overflow-hidden">
+                  <div className="h-3/5 sm:h-1/3 p-3 sm:p-4 flex flex-col justify-start space-y-1 sm:space-y-2 overflow-hidden">
                     {/* Title and description */}
                     <div className="flex-shrink-0">
                       <h3 className="font-bold text-sm sm:text-lg mb-1 line-clamp-1 group-hover:text-primary transition-colors duration-300">
@@ -386,14 +386,14 @@ export default function MasonryShowcase() {
                     </div>
 
                     {/* Action buttons */}
-                    <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-1 group-hover:translate-y-0 mt-auto flex-shrink-0">
-                      <Button variant="outline" size="sm" className="flex-1 text-[10px] sm:text-xs px-2 py-1 h-6 sm:h-8 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
-                        <ExternalLink className="w-2 h-2 sm:w-3 sm:h-3 mr-0.5 sm:mr-1" />
-                        View
+                    <div className="flex space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 mt-auto flex-shrink-0">
+                      <Button variant="outline" size="sm" className="flex-1 text-[10px] sm:text-xs px-2 py-1 h-7 sm:h-8 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 flex items-center justify-center">
+                        <ExternalLink className="w-3 h-3 mr-1" />
+                        <span className="hidden sm:inline">View</span>
                       </Button>
                       {item.type === 'project' && (
-                        <Button variant="outline" size="sm" className="text-[10px] sm:text-xs px-2 py-1 h-6 sm:h-8 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300">
-                          <Github className="w-2 h-2 sm:w-3 sm:h-3" />
+                        <Button variant="outline" size="sm" className="text-[10px] sm:text-xs px-2 py-1 h-7 sm:h-8 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 flex items-center justify-center">
+                          <Github className="w-3 h-3" />
                         </Button>
                       )}
                     </div>
