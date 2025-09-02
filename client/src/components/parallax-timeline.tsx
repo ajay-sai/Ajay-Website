@@ -11,8 +11,10 @@ const homeDepotImage3 = "/attached_assets/20241023_132525_1756776021189.jpg"; //
 // Data Scientist workplace image (University of Maryland campus)
 const dataScientistImage1 = "/attached_assets/20240427_120651_1756788379977.jpg";
 
-// Marketing Analyst graduation image
+// Marketing Analyst images
 const marketingAnalystImage1 = "/attached_assets/20210521_131718_1756788953660.jpg";
+const marketingAnalystImage2 = "/attached_assets/IMG_20190509_180536_1756789644236.jpg";
+const marketingAnalystImage3 = "/attached_assets/IMG-20190908-WA0038_1756789644237.jpg";
 
 // Bachelor's degree college images
 const bachelorImage1 = "/attached_assets/IMG_20161106_212705_1756789364617.jpg";
@@ -167,7 +169,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-pink-500 to-rose-500",
     companyLogo: "🎨",
     companyColor: "#e91e63",
-    workplaceImages: [marketingAnalystImage1],
+    workplaceImages: [marketingAnalystImage1, marketingAnalystImage2, marketingAnalystImage3],
     achievements: [
       "Managed Google Ads campaign achieving <strong class='text-blue-400'>200% website traffic increase</strong>",
       "Generated <strong class='text-blue-400'>$3100 revenue</strong> with 113 product sales from $300 budget",
