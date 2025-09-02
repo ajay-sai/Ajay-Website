@@ -6,12 +6,12 @@ import harleyDavidsonLogo from "@assets/image_1756766997358.png";
 // Workplace images for Home Depot
 const homeDepotImage1 = "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
+const homeDepotImage3 = "/attached_assets/20241023_132525_1756776021189.jpg"; // Moved from Senior Data Scientist
 
-// Senior Data Scientist workplace images (swapped order of first two)
+// Senior Data Scientist workplace images (swapped order of first two, removed third)
 const seniorDataScientistImage1 = "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
 const seniorDataScientistImage2 = "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 1
-const seniorDataScientistImage3 = "/attached_assets/20241023_132525_1756776021189.jpg";
-const seniorDataScientistImage4 = "/attached_assets/20240508_203952_1756776021190.jpg";
+const seniorDataScientistImage3 = "/attached_assets/20240508_203952_1756776021190.jpg"; // Was image 4
 
 // Senior Data Analyst workplace images (added third image)
 const seniorDataAnalystImage1 = "/attached_assets/IMG-20220807-WA0018_1756776767995.jpg";
@@ -45,7 +45,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-blue-500 to-cyan-500",
     companyLogo: "🏠",
     companyColor: "#f96302",
-    workplaceImages: [homeDepotImage1, homeDepotImage2],
+    workplaceImages: [homeDepotImage1, homeDepotImage2, homeDepotImage3],
     achievements: [
       "Designed scalable generative AI systems for text summarization, Q&A bots, and contract parsing",
       "55% reduction in analytics turnaround time through custom prompt optimization frameworks",
@@ -65,8 +65,7 @@ const timelineEvents: TimelineEvent[] = [
     workplaceImages: [
       seniorDataScientistImage1,
       seniorDataScientistImage2,
-      seniorDataScientistImage3,
-      seniorDataScientistImage4
+      seniorDataScientistImage3
     ],
     achievements: [
       "Architected dynamic image generation pipeline transforming Home Depot's guided search",
