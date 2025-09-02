@@ -23,7 +23,7 @@ interface TimelineEvent {
 const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
-    sortOrder: 2025.01,
+    sortOrder: 1,
     title: "Gen AI/ML Engineer",
     description: "The Home Depot Management Company",
     dateRange: "January 2025 - Present",
@@ -40,7 +40,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2023",
-    sortOrder: 2023.06,
+    sortOrder: 2,
     title: "Senior Data Scientist - Decision Analytics",
     description: "The Home Depot Management Company",
     dateRange: "June 2023 - January 2025",
@@ -56,7 +56,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2022",
-    sortOrder: 2022.03,
+    sortOrder: 3,
     title: "Senior Data Analyst",
     description: "The Home Depot Management Company",
     dateRange: "March 2022 - June 2023",
@@ -72,7 +72,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2020",
-    sortOrder: 2020.02,
+    sortOrder: 4,
     title: "Data Analyst and Engineer",
     description: "Harley Davidson Motor Company",
     dateRange: "February 2020 - March 2022",
@@ -88,7 +88,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 2019.08,
+    sortOrder: 5,
     title: "Data Scientist",
     description: "Principal Financial Group",
     dateRange: "August 2019 - December 2019",
@@ -104,7 +104,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 2019.05,
+    sortOrder: 6,
     title: "Marketing Analyst",
     description: "Anahata Art and Design Pvt",
     dateRange: "May 2019 - December 2019",
@@ -120,7 +120,23 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 2019.01,
+    sortOrder: 7,
+    title: "Graduate Assistant",
+    description: "University of Maryland",
+    dateRange: "May 2019 - December 2019",
+    icon: Award,
+    color: "from-emerald-500 to-teal-500",
+    companyLogo: "🎓",
+    companyColor: "#d32f2f",
+    achievements: [
+      "Assessed and maintained student records for 4000+ students to improve academic standing",
+      "Led team of 10 undergraduate students improving satisfaction rate by 10%",
+      "Technologies: SQL data extraction, academic advisory programs, student performance analytics"
+    ]
+  },
+  {
+    year: "2019",
+    sortOrder: 8,
     title: "Master of Science in Business Analytics",
     description: "University of Maryland, College Park - Robert H Smith School of Business",
     dateRange: "Graduated May 2019",
@@ -136,7 +152,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2017",
-    sortOrder: 2017.05,
+    sortOrder: 9,
     title: "Data Analyst",
     description: "Bridge Solutions",
     dateRange: "May 2017 - May 2018",
@@ -151,24 +167,8 @@ const timelineEvents: TimelineEvent[] = [
     ]
   },
   {
-    year: "2019",
-    sortOrder: 2019.02,
-    title: "Master of Science in Business Analytics",
-    description: "University of Maryland, College Park - Robert H Smith School of Business",
-    dateRange: "Graduated May 2019",
-    icon: GraduationCap,
-    color: "from-emerald-500 to-teal-500",
-    companyLogo: "🎓",
-    companyColor: "#dc2626",
-    achievements: [
-      "Specialized in Big Data and Artificial Intelligence with comprehensive analytics training",
-      "Core coursework: Data Mining, Predictive Analytics, Database Management, Operations Analytics",
-      "Technologies: Python, Data Models & Decision Making, Google Analytics, Price Optimization, Revenue Management"
-    ]
-  },
-  {
     year: "2017",
-    sortOrder: 2017.01,
+    sortOrder: 10,
     title: "Bachelor of Technology in Computer Science",
     description: "SRM University, Kattankulathur - Computer Science Engineering",
     dateRange: "Graduated May 2017",
@@ -181,8 +181,24 @@ const timelineEvents: TimelineEvent[] = [
       "Core studies: Data Structures, Algorithms, Database Systems, AI & Expert Systems, Data Mining",
       "Technologies: Web Technology, Software Engineering, Operating Systems, Network Security, Linux Internals"
     ]
+  },
+  {
+    year: "2015",
+    sortOrder: 11,
+    title: "High School Education",
+    description: "St Joseph's Public School & Sri Chaitanya Junior Kalasa",
+    dateRange: "Until 10th: St Joseph's | 11th-12th: Sri Chaitanya",
+    icon: BookOpen,
+    color: "from-gray-500 to-slate-500",
+    companyLogo: "🏫",
+    companyColor: "#6b7280",
+    achievements: [
+      "Completed foundational education with focus on science and mathematics",
+      "Strong academic performance leading to engineering admission",
+      "Technologies: Mathematics, Physics, Chemistry, Computer Science fundamentals"
+    ]
   }
-].sort((a, b) => b.sortOrder - a.sortOrder);
+];
 
 export default function ParallaxTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
