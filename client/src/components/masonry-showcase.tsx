@@ -310,11 +310,12 @@ export default function MasonryShowcase() {
               <div
                 key={item.id}
                 data-masonry-item={item.id}
-                className={`${getSizeClasses(item.size)} transform transition-all duration-1000 hover:scale-105`}
+                className={`${getSizeClasses(item.size)} hover:scale-105`}
                 style={{
-                  transitionDelay: `${index * 100}ms`,
-                  transform: `translateY(${isVisible ? 0 : 30}px) scale(${isVisible ? 1 : 0.95})`,
-                  opacity: isVisible ? 1 : 0.3
+                  transform: `translate3d(0, ${isVisible ? 0 : 30}px, 0) scale(${isVisible ? 1 : 0.95})`,
+                  opacity: isVisible ? 1 : 0.3,
+                  transition: `all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 50}ms`,
+                  willChange: isVisible ? 'auto' : 'transform, opacity'
                 }}
               >
                 <div className="quantum-card h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer">
