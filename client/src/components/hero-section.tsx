@@ -61,17 +61,8 @@ export default function HeroSection() {
             Lead Data Scientist
           </h2>
 
-          {/* Bio */}
-          <p className={`text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed transition-all duration-1000 delay-600 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            Lead AI Data Scientist with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
-            Specializing in the full-stack infrastructure that powers modern AI, from scalable analytics platforms to operationalizing 
-            complete lifecycle management of Generative AI models including RAG and multi-modal systems.
-          </p>
-
           {/* Social Links */}
-          <div className={`flex justify-center space-x-6 mb-12 transition-all duration-1000 delay-800 ${
+          <div className={`flex justify-center space-x-6 mb-12 transition-all duration-1000 delay-600 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <Button
@@ -109,7 +100,7 @@ export default function HeroSection() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className={`transition-all duration-1000 delay-1000 ${
+          <div className={`transition-all duration-1000 delay-800 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <Button
