@@ -444,15 +444,8 @@ export default function ParallaxTimeline() {
             const isActive = activeEvent >= index;
             const itemProgress = Math.max(0, Math.min(1, (scrollProgress - (index / timelineEvents.length)) * timelineEvents.length));
             
-            // Smoother mobile active state calculation with larger activation zones
-            const eventThreshold = index / timelineEvents.length;
-            const nextEventThreshold = (index + 1) / timelineEvents.length;
-            const eventCenter = (eventThreshold + nextEventThreshold) / 2;
-            const distanceFromCenter = Math.abs(scrollProgress - eventCenter);
-            const activationRadius = 0.2; // Larger radius for smoother transitions
-            
-            const isInActiveZone = distanceFromCenter < activationRadius;
-            const shouldAnimate = isActive || isInActiveZone;
+            // Simplified activation logic - just use visibility-based animation
+            const shouldAnimate = isActive;
             
             return (
               <div
@@ -483,7 +476,13 @@ export default function ParallaxTimeline() {
                   
                   {/* Content Card */}
                   <div className="w-full lg:flex-1 lg:max-w-2xl">
-                    <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden">
+                    <div className="quantum-card p-6 rounded-xl shadow-lg overflow-hidden"
+                         style={{
+                           opacity: shouldAnimate ? 1 : 0.4,
+                           transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
+                           transition: 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                           willChange: shouldAnimate ? 'auto' : 'transform, opacity'
+                         }}>
                       {/* Company Logo Header */}
                       {event.companyImage && (
                         <div className="relative -m-6 mb-6">
@@ -521,30 +520,12 @@ export default function ParallaxTimeline() {
                       
 
                       
-                      <h3 
-                        className="text-2xl font-bold mb-3 mobile-smooth"
-                        style={{
-                          transform: `translate3d(0, ${shouldAnimate ? 0 : (mobile ? 15 : 30)}px, 0)`,
-                          opacity: shouldAnimate ? 1 : 0,
-                          transition: mobile 
-                            ? `all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${shouldAnimate ? '200ms' : '0ms'}`
-                            : `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '150ms' : '0ms'}`,
-                          willChange: shouldAnimate ? 'auto' : 'transform, opacity'
-                        }}
-                      >
+                      <h3 className="text-2xl font-bold mb-3">
                         {event.title}
                       </h3>
                       
                       {/* Year and Date Range Pills */}
-                      <div 
-                        className="flex flex-wrap gap-2 mb-3"
-                        style={{
-                          transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
-                          opacity: shouldAnimate ? 1 : 0,
-                          transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '250ms' : '0ms'}`,
-                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
-                        }}
-                      >
+                      <div className="flex flex-wrap gap-2 mb-3">
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${event.color} text-white shadow-sm`}>
                           {event.year}
                         </span>
@@ -553,28 +534,12 @@ export default function ParallaxTimeline() {
                         </span>
                       </div>
                       
-                      <p 
-                        className="text-muted-foreground mb-4 leading-relaxed"
-                        style={{
-                          transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
-                          opacity: shouldAnimate ? 1 : 0,
-                          transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '350ms' : '0ms'}`,
-                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
-                        }}
-                      >
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
                         {event.description}
                       </p>
 
                       {/* Achievements with Clean Icons */}
-                      <div 
-                        className="space-y-3"
-                        style={{
-                          transform: `translate3d(0, ${shouldAnimate ? 0 : 30}px, 0)`,
-                          opacity: shouldAnimate ? 1 : 0,
-                          transition: `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '450ms' : '0ms'}`,
-                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
-                        }}
-                      >
+                      <div className="space-y-3">
                         {event.achievements.map((achievement, achievementIndex) => {
                           const getIcon = () => {
                             if (achievementIndex === 0) return Target;
@@ -589,12 +554,6 @@ export default function ParallaxTimeline() {
                             <div
                               key={achievementIndex}
                               className="flex items-start space-x-3"
-                              style={{
-                                transform: `translate3d(${shouldAnimate ? 0 : (index % 2 === 0 ? -20 : 20)}px, 0, 0)`,
-                                opacity: shouldAnimate ? 1 : 0,
-                                transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? `${achievementIndex * 100 + 500}ms` : '0ms'}`,
-                                willChange: shouldAnimate ? 'transform, opacity' : 'auto'
-                              }}
                             >
                               <div className={`flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-r ${event.color} flex items-center justify-center mt-0.5 shadow-sm`}>
                                 <IconComponent className="w-3 h-3 text-white" />
@@ -612,7 +571,6 @@ export default function ParallaxTimeline() {
                                     </span>
                                   )}
                                   <span 
-                                    className="transition-all duration-500"
                                     dangerouslySetInnerHTML={{
                                       __html: isTechStack ? achievement.replace('Technologies: ', '') : achievement
                                     }}
@@ -625,15 +583,7 @@ export default function ParallaxTimeline() {
                       </div>
 
                       {/* Progress Bar */}
-                      <div 
-                        className="mt-4 h-1 bg-secondary rounded-full overflow-hidden"
-                        style={{
-                          transform: `translate3d(0, ${shouldAnimate ? 0 : 20}px, 0)`,
-                          opacity: shouldAnimate ? 1 : 0,
-                          transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${shouldAnimate ? '700ms' : '0ms'}`,
-                          willChange: shouldAnimate ? 'transform, opacity' : 'auto'
-                        }}
-                      >
+                      <div className="mt-4 h-1 bg-secondary rounded-full overflow-hidden">
                         <div 
                           className={`h-full bg-gradient-to-r ${event.color} transition-all duration-1000`}
                           style={{ width: `${itemProgress * 100}%` }}
