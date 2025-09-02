@@ -361,6 +361,22 @@
     animation: holographicShimmer 45s ease-in-out infinite;
   }
 
+  /* 2-minute animation for Ajay Miryala */
+  .gradient-text-name {
+    background: linear-gradient(
+      45deg,
+      var(--quantum-blue),
+      var(--quantum-green),
+      var(--quantum-purple),
+      var(--quantum-cyan)
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographicShimmer 120s ease-in-out infinite;
+  }
+
   /* Card hover effects - theme adaptive */
   .quantum-card {
     background: var(--card);
