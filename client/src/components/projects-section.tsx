@@ -86,10 +86,13 @@ export default function ProjectsSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
+            Showcasing innovative data science projects that transform complex challenges into actionable solutions
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

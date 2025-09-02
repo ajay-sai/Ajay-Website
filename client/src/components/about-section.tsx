@@ -6,8 +6,11 @@ export default function AboutSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground scroll-animate">About Me</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">About Me</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
+            Discover my journey, expertise, and passion for transforming data into actionable insights
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
