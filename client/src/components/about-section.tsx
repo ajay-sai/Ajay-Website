@@ -19,9 +19,15 @@ export default function AboutSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className={`space-y-6 transition-all duration-1000 ${
-            mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
+          <div 
+            className="space-y-6"
+            style={{
+              transform: `translate3d(${mounted ? 0 : -30}px, 0, 0)`,
+              opacity: mounted ? 1 : 0,
+              transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              willChange: mounted ? 'auto' : 'transform, opacity'
+            }}
+          >
             <p className="text-lg text-muted-foreground leading-relaxed">
               Lead AI Data Scientist with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
               I specialize in building the full-stack infrastructure that powers modern AI, from architecting scalable ETL and 
@@ -40,9 +46,15 @@ export default function AboutSection() {
           </div>
 
           {/* Image */}
-          <div className={`relative transition-all duration-1000 delay-300 ${
-            mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
+          <div 
+            className="relative"
+            style={{
+              transform: `translate3d(${mounted ? 0 : 30}px, 0, 0)`,
+              opacity: mounted ? 1 : 0,
+              transition: 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 200ms',
+              willChange: mounted ? 'auto' : 'transform, opacity'
+            }}
+          >
             <div className="relative group">
               <img
                 src={ajayPhoto}
