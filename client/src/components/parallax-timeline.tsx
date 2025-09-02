@@ -312,11 +312,18 @@ export default function ParallaxTimeline() {
 
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      const containerHeight = rect.height;
       
-      // Calculate scroll progress through this section
-      const start = -rect.height / 2;
-      const end = windowHeight;
-      const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (end - start)));
+      // Calculate scroll progress: 0% when section starts entering viewport, 100% when it fully exits
+      const sectionTop = rect.top;
+      const sectionBottom = rect.bottom;
+      
+      // Progress starts when section top reaches bottom of viewport and ends when section bottom leaves top of viewport
+      const startProgress = windowHeight; // Section just starting to enter
+      const endProgress = -containerHeight; // Section has completely exited
+      
+      const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
+      const progress = Math.max(0, Math.min(1, rawProgress));
       
       setScrollProgress(progress);
 
