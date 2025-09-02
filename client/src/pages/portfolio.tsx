@@ -56,7 +56,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8">
             <div className="space-y-4">
-              <div className="text-3xl font-bold gradient-text">Ajay Miryala</div>
+              <div className="text-3xl font-bold gradient-text-slow">Ajay Miryala</div>
               <p className="text-xl text-muted-foreground">Lead Data Scientist | AI Innovator</p>
               <p className="text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 Transforming businesses through data-driven insights and cutting-edge machine learning solutions.

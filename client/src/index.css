@@ -337,7 +337,23 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: holographicShimmer 20s ease-in-out infinite;
+    animation: holographicShimmer 35s ease-in-out infinite;
+  }
+
+  /* Slower animation specifically for name/important headings */
+  .gradient-text-slow {
+    background: linear-gradient(
+      45deg,
+      var(--quantum-blue),
+      var(--quantum-green),
+      var(--quantum-purple),
+      var(--quantum-cyan)
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographicShimmer 45s ease-in-out infinite;
   }
 
   /* Card hover effects - theme adaptive */
