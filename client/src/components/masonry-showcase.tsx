@@ -156,12 +156,6 @@ const isMobile = () => {
 export default function MasonryShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set());
-  const [mobile, setMobile] = useState(false);
-
-  useEffect(() => {
-    setMobile(isMobile());
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,20 +166,6 @@ export default function MasonryShowcase() {
       
       const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height)));
       setScrollProgress(progress);
-
-      // Observe individual items
-      const items = containerRef.current.querySelectorAll('[data-masonry-item]');
-      const newVisibleItems = new Set<string>();
-
-      items.forEach(item => {
-        const itemRect = item.getBoundingClientRect();
-        if (itemRect.top < windowHeight && itemRect.bottom > 0) {
-          const itemId = item.getAttribute('data-masonry-item');
-          if (itemId) newVisibleItems.add(itemId);
-        }
-      });
-
-      setVisibleItems(newVisibleItems);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -328,21 +308,14 @@ export default function MasonryShowcase() {
         {/* Masonry Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-max">
           {masonryItems.map((item, index) => {
-            const isVisible = visibleItems.has(item.id);
-            const itemProgress = isVisible ? 1 : 0;
             
             return (
               <div
                 key={item.id}
                 data-masonry-item={item.id}
-                className={`${getSizeClasses(item.size)} hover:scale-105 mobile-smooth`}
+                className={`${getSizeClasses(item.size)} hover:scale-105 scroll-animate`}
                 style={{
-                  transform: `translate3d(0, ${isVisible ? 0 : (mobile ? 15 : 30)}px, 0) scale(${isVisible ? 1 : 0.95})`,
-                  opacity: isVisible ? 1 : 0.3,
-                  transition: mobile 
-                    ? `all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) ${index * 80}ms`
-                    : `all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 50}ms`,
-                  willChange: isVisible ? 'auto' : 'transform, opacity'
+                  transitionDelay: `${index * 100}ms`
                 }}
               >
                 <div className="quantum-card h-full rounded-xl overflow-hidden shadow-lg group cursor-pointer hover:scale-105 transition-all duration-500 reality-bend">
@@ -431,7 +404,7 @@ export default function MasonryShowcase() {
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-secondary">
                     <div 
                       className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-1000"
-                      style={{ width: `${itemProgress * 100}%` }}
+                      style={{ width: '100%' }}
                     />
                   </div>
                   

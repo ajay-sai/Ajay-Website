@@ -11,53 +11,27 @@ export function useScrollAnimation() {
     const mobile = isMobile();
     
     const observerOptions = {
-      threshold: mobile ? 0.15 : 0.1,
-      rootMargin: mobile ? '0px 0px -30px 0px' : '0px 0px -50px 0px'
+      threshold: mobile ? 0.2 : 0.15,
+      rootMargin: mobile ? '0px 0px -20px 0px' : '0px 0px -30px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
-          const element = entry.target as HTMLElement;
-          
-          // Mobile-optimized smooth animations
-          if (mobile) {
-            element.style.opacity = '1';
-            element.style.transform = 'translate3d(0, 0, 0)';
-            element.style.willChange = 'auto';
-          } else {
-            element.style.opacity = '1';
-            element.style.transform = 'translate3d(0, 0, 0)';
-            element.style.willChange = 'auto';
-          }
+          entry.target.classList.remove('animate-out');
+        } else {
+          entry.target.classList.remove('animate-in');
+          entry.target.classList.add('animate-out');
         }
       });
     }, observerOptions);
 
-    // Observe all elements with animation classes
-    const animatedElements = document.querySelectorAll(
-      '.quantum-card, .gradient-text, .consciousness-expand, .reality-bend, .mobile-smooth'
-    );
+    // Only observe elements with specific scroll animation class
+    const animatedElements = document.querySelectorAll('.scroll-animate');
     
-    animatedElements.forEach((el, index) => {
-      const element = el as HTMLElement;
-      element.style.opacity = '0';
-      
-      if (mobile) {
-        // Mobile: gentler transforms and longer delays for smoothness
-        element.style.transform = 'translate3d(0, 15px, 0)';
-        element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
-        element.style.transitionDelay = `${index * 80}ms`;
-      } else {
-        // Desktop: standard animations
-        element.style.transform = 'translate3d(0, 30px, 0)';
-        element.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        element.style.transitionDelay = `${index * 50}ms`;
-      }
-      
-      element.style.willChange = 'transform, opacity';
-      observer.observe(element);
+    animatedElements.forEach((el) => {
+      observer.observe(el);
     });
 
     return () => observer.disconnect();
