@@ -49,7 +49,10 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-20 bg-secondary/30 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 quantum-dots opacity-10"></div>
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-20 w-1 h-1 bg-primary/50 rounded-full"></div>
+        <div className="absolute bottom-20 right-20 w-2 h-2 bg-accent/50 rounded-full"></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -66,10 +69,10 @@ export default function ContactSection() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div className="text-center lg:text-left">
-              <h3 className="text-2xl font-bold mb-6 quantum-glow">Let's Connect</h3>
+              <h3 className="text-2xl font-bold mb-6 gradient-text">Let's Connect</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center group-hover:bg-primary/30 transition-colors quantum-pulse">
+                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                     <Mail className="text-primary" />
                   </div>
                   <div>
@@ -79,7 +82,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                  <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center group-hover:bg-accent/30 transition-colors quantum-pulse">
+                  <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center group-hover:bg-accent/30 transition-colors">
                     <Linkedin className="text-accent" />
                   </div>
                   <div>
@@ -96,7 +99,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-center justify-center lg:justify-start space-x-4 group">
-                  <div className="w-12 h-12 bg-foreground/20 rounded-full flex items-center justify-center group-hover:bg-foreground/30 transition-colors quantum-pulse">
+                  <div className="w-12 h-12 bg-foreground/20 rounded-full flex items-center justify-center group-hover:bg-foreground/30 transition-colors">
                     <Github className="text-foreground" />
                   </div>
                   <div>
