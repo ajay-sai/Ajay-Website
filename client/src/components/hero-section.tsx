@@ -81,8 +81,8 @@ export default function HeroSection() {
 
             <div className="group relative overflow-hidden bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 rounded-xl min-w-[140px]">
               <a
-                href="/resume.docx"
-                download="Ajay_Miryala_Resume.docx"
+                href="/api/download/resume"
+                download="Ajay_Miryala_Resume.pdf"
                 className="flex items-center justify-center space-x-3 relative z-10 px-8 py-4"
                 data-testid="button-resume-download"
               >
