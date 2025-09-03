@@ -299,6 +299,7 @@ export default function ParallaxTimeline() {
   // Auto-scroll state
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [userScrolledManually, setUserScrolledManually] = useState(false);
+  const [showProgressIndicator, setShowProgressIndicator] = useState(false);
   const autoScrollRef = useRef<number>();
   const lastManualScrollTime = useRef<number>(0);
   const hasStartedAutoScroll = useRef<boolean>(false);
@@ -366,6 +367,7 @@ export default function ParallaxTimeline() {
     
     setIsAutoScrolling(true);
     setUserScrolledManually(false);
+    setShowProgressIndicator(true); // Show progress indicator when auto-scroll starts
     
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
@@ -446,13 +448,21 @@ export default function ParallaxTimeline() {
           const windowHeight = window.innerHeight;
           const containerHeight = rect.height;
           
-          // Simplified scroll progress calculation
+          // Modified scroll progress calculation: 10% to 100%
           const sectionTop = rect.top;
           const startProgress = windowHeight;
           const endProgress = -containerHeight;
           
           const rawProgress = (startProgress - sectionTop) / (startProgress - endProgress);
-          const progress = Math.max(0, Math.min(1, rawProgress));
+          const baseProgress = Math.max(0, Math.min(1, rawProgress));
+          
+          // Map progress from 0-1 to 0.1-1 (10% to 100%)
+          const progress = 0.1 + (baseProgress * 0.9);
+          
+          // Only show progress indicator if user has interacted with button or scrolled past it
+          if (!showProgressIndicator && baseProgress > 0.1) {
+            setShowProgressIndicator(true);
+          }
           
           setScrollProgress(progress);
 
@@ -939,19 +949,21 @@ export default function ParallaxTimeline() {
           })}
         </div>
 
-        {/* Progress Indicator */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
-            <span className="text-white/70 text-sm">Timeline Progress</span>
-            <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
-                style={{ width: `${scrollProgress * 100}%` }}
-              />
+        {/* Progress Indicator - Only show after user has scrolled to button */}
+        {showProgressIndicator && (
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+              <span className="text-white/70 text-sm">Timeline Progress</span>
+              <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+                  style={{ width: `${Math.round(scrollProgress * 100)}%` }}
+                />
+              </div>
+              <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
             </div>
-            <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
