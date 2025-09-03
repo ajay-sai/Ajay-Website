@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Linkedin, Github, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import ajayPhoto from "@assets/image_1756764365127.png";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     setMounted(true);
@@ -14,6 +16,38 @@ export default function HeroSection() {
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleResumeDownload = async () => {
+    try {
+      const response = await fetch('/api/download/resume');
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Ajay_Miryala_Resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        toast({
+          title: "✓ Resume Downloaded Successfully!",
+          description: "Thank you for your interest. The resume has been saved to your device.",
+          duration: 4000,
+        });
+      } else {
+        throw new Error('Failed to download resume');
+      }
+    } catch (error) {
+      toast({
+        title: "Download Failed",
+        description: "Sorry, there was an issue downloading the resume. Please try again.",
+        variant: "destructive",
+        duration: 4000,
+      });
     }
   };
 
@@ -80,15 +114,14 @@ export default function HeroSection() {
             </div>
 
             <div className="group relative overflow-hidden bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 rounded-xl min-w-[140px]">
-              <a
-                href="/api/download/resume"
-                download="Ajay_Miryala_Resume.pdf"
-                className="flex items-center justify-center space-x-3 relative z-10 px-8 py-4"
+              <button
+                onClick={handleResumeDownload}
+                className="flex items-center justify-center space-x-3 relative z-10 px-8 py-4 w-full bg-transparent border-0 text-white cursor-pointer"
                 data-testid="button-resume-download"
               >
                 <Download className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
                 <span className="font-semibold tracking-wide">Resume</span>
-              </a>
+              </button>
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
             </div>
             
