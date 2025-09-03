@@ -425,12 +425,13 @@ export default function ParallaxTimeline() {
   // Detect user interaction to stop auto-scroll
   useEffect(() => {
     const stopAutoScroll = () => {
-      setUserScrolledManually(true);
-      isScrollingRef.current = false;
-      setIsAutoScrolling(false);
       if (autoScrollRef.current) {
         cancelAnimationFrame(autoScrollRef.current);
       }
+      // Reset all states to allow immediate restart
+      isScrollingRef.current = false;
+      setIsAutoScrolling(false);
+      setUserScrolledManually(false); // Reset so next click works immediately
     };
 
     // Listen for any user interaction during auto-scroll
