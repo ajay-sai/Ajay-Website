@@ -369,6 +369,10 @@ export default function ParallaxTimeline() {
     setUserScrolledManually(false);
     hasStartedAutoScroll.current = true;
     
+    // Temporarily disable smooth scroll behavior for manual control
+    const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
     const targetScrollY = startScrollY + rect.height; // Scroll through 100% of timeline
@@ -380,6 +384,8 @@ export default function ParallaxTimeline() {
     const smoothScroll = (currentTime: number) => {
       if (userScrolledManually) {
         console.log('Auto-scroll stopped by user interaction');
+        // Restore original scroll behavior
+        document.documentElement.style.scrollBehavior = originalScrollBehavior;
         setIsAutoScrolling(false);
         return;
       }
@@ -396,14 +402,15 @@ export default function ParallaxTimeline() {
         currentScrollY 
       });
       
-      // Use document scrolling to ensure it actually moves the page
-      document.documentElement.scrollTop = currentScrollY;
-      document.body.scrollTop = currentScrollY; // For Safari compatibility
+      // Use window.scrollTo with behavior auto for immediate effect
+      window.scrollTo(0, currentScrollY);
       
       if (progress < 1) {
         autoScrollRef.current = requestAnimationFrame(smoothScroll);
       } else {
         console.log('Auto-scroll completed');
+        // Restore original scroll behavior
+        document.documentElement.style.scrollBehavior = originalScrollBehavior;
         setIsAutoScrolling(false);
       }
     };
