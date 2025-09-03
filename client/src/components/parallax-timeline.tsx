@@ -396,11 +396,9 @@ export default function ParallaxTimeline() {
         currentScrollY 
       });
       
-      // Use window.scrollTo with immediate scrolling
-      window.scrollTo({
-        top: currentScrollY,
-        behavior: 'auto' // Immediate, not smooth - we handle the smoothness
-      });
+      // Use document scrolling to ensure it actually moves the page
+      document.documentElement.scrollTop = currentScrollY;
+      document.body.scrollTop = currentScrollY; // For Safari compatibility
       
       if (progress < 1) {
         autoScrollRef.current = requestAnimationFrame(smoothScroll);
