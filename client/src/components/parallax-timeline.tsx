@@ -370,13 +370,7 @@ export default function ParallaxTimeline() {
     
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
-    
-    // Calculate proper target - scroll to the end of the timeline section
-    const timelineTop = rect.top + startScrollY; // Absolute position of timeline start
-    const timelineHeight = rect.height;
-    const targetScrollY = timelineTop + timelineHeight - window.innerHeight + 100; // End with some padding
-    
-    
+    const targetScrollY = startScrollY + rect.height; // Scroll through 100% of timeline
     const duration = 30000; // 30 seconds for very slow, relaxed journey
     const startTime = performance.now();
     
@@ -390,9 +384,10 @@ export default function ParallaxTimeline() {
       const progress = Math.min(elapsed / duration, 1);
       
       // Linear progression for consistent scroll speed
-      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * progress;
+      const easedProgress = progress;
+      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * easedProgress;
       
-      // Use direct scrollTo without behavior to avoid conflicts
+      // Use smooth scrollTo for better performance
       window.scrollTo(0, currentScrollY);
       
       if (progress < 1) {
@@ -407,60 +402,15 @@ export default function ParallaxTimeline() {
 
   // Detect user interaction to stop auto-scroll
   useEffect(() => {
-    const stopAutoScroll = (e: Event) => {
-      // Only stop on actual scroll attempts, not just any interaction
-      if (e.type === 'wheel') {
-        const wheelEvent = e as WheelEvent;
-        // Only stop if there's significant wheel movement
-        if (Math.abs(wheelEvent.deltaY) > 10) {
-          setUserScrolledManually(true);
-          setIsAutoScrolling(false);
-          if (autoScrollRef.current) {
-            cancelAnimationFrame(autoScrollRef.current);
-          }
-        }
-      } else if (e.type === 'touchstart') {
-        // Only stop on touch moves that are meant for scrolling (not clicking)
-        const touchEvent = e as TouchEvent;
-        const startY = touchEvent.touches[0].clientY;
-        
-        const handleTouchMove = (moveEvent: TouchEvent) => {
-          const currentY = moveEvent.touches[0].clientY;
-          const deltaY = Math.abs(currentY - startY);
-          
-          // Only stop if user is trying to scroll (significant vertical movement)
-          if (deltaY > 30) {
-            setUserScrolledManually(true);
-            setIsAutoScrolling(false);
-            if (autoScrollRef.current) {
-              cancelAnimationFrame(autoScrollRef.current);
-            }
-            window.removeEventListener('touchmove', handleTouchMove);
-          }
-        };
-        
-        window.addEventListener('touchmove', handleTouchMove, { passive: true });
-        
-        // Clean up after touch ends
-        const handleTouchEnd = () => {
-          window.removeEventListener('touchmove', handleTouchMove);
-          window.removeEventListener('touchend', handleTouchEnd);
-        };
-        window.addEventListener('touchend', handleTouchEnd, { passive: true });
-      } else if (e.type === 'keydown') {
-        const keyEvent = e as KeyboardEvent;
-        // Only stop on scroll-related keys
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'].includes(keyEvent.key)) {
-          setUserScrolledManually(true);
-          setIsAutoScrolling(false);
-          if (autoScrollRef.current) {
-            cancelAnimationFrame(autoScrollRef.current);
-          }
-        }
+    const stopAutoScroll = () => {
+      setUserScrolledManually(true);
+      setIsAutoScrolling(false);
+      if (autoScrollRef.current) {
+        cancelAnimationFrame(autoScrollRef.current);
       }
     };
 
-    // Listen for user scroll interactions during auto-scroll
+    // Listen for any user interaction during auto-scroll
     if (isAutoScrolling) {
       window.addEventListener('wheel', stopAutoScroll, { passive: true });
       window.addEventListener('touchstart', stopAutoScroll, { passive: true });
@@ -479,9 +429,6 @@ export default function ParallaxTimeline() {
     let lastScrollTime = 0;
 
     const handleScroll = () => {
-      // Skip scroll handling during auto-scroll to prevent conflicts
-      if (isAutoScrolling) return;
-      
       const now = performance.now();
       
       // Enhanced throttling for mobile performance
@@ -536,7 +483,7 @@ export default function ParallaxTimeline() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [isAutoScrolling]);
+  }, []);
 
   return (
     <section 
