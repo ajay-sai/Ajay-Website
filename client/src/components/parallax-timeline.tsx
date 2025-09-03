@@ -376,20 +376,12 @@ export default function ParallaxTimeline() {
     const timelineHeight = rect.height;
     const targetScrollY = timelineTop + timelineHeight - window.innerHeight + 100; // End with some padding
     
-    console.log('Auto-scroll starting:', {
-      startScrollY,
-      timelineTop,
-      timelineHeight,
-      targetScrollY,
-      rectTop: rect.top
-    });
     
     const duration = 30000; // 30 seconds for very slow, relaxed journey
     const startTime = performance.now();
     
     const smoothScroll = (currentTime: number) => {
       if (userScrolledManually) {
-        console.log('Auto-scroll stopped by user interaction');
         setIsAutoScrolling(false);
         return;
       }
@@ -400,18 +392,12 @@ export default function ParallaxTimeline() {
       // Linear progression for consistent scroll speed
       const currentScrollY = startScrollY + (targetScrollY - startScrollY) * progress;
       
-      console.log('Auto-scrolling:', { progress: (progress * 100).toFixed(1) + '%', currentScrollY });
-      
-      // Use smooth scrollTo for better performance
-      window.scrollTo({
-        top: currentScrollY,
-        behavior: 'auto' // Use 'auto' to avoid conflicts with browser smooth scrolling
-      });
+      // Use direct scrollTo without behavior to avoid conflicts
+      window.scrollTo(0, currentScrollY);
       
       if (progress < 1) {
         autoScrollRef.current = requestAnimationFrame(smoothScroll);
       } else {
-        console.log('Auto-scroll completed');
         setIsAutoScrolling(false);
       }
     };
@@ -493,6 +479,9 @@ export default function ParallaxTimeline() {
     let lastScrollTime = 0;
 
     const handleScroll = () => {
+      // Skip scroll handling during auto-scroll to prevent conflicts
+      if (isAutoScrolling) return;
+      
       const now = performance.now();
       
       // Enhanced throttling for mobile performance
@@ -547,7 +536,7 @@ export default function ParallaxTimeline() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, []);
+  }, [isAutoScrolling]);
 
   return (
     <section 
