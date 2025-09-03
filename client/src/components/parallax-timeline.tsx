@@ -303,6 +303,7 @@ export default function ParallaxTimeline() {
   const autoScrollRef = useRef<number>();
   const lastManualScrollTime = useRef<number>(0);
   const hasStartedAutoScroll = useRef<boolean>(false);
+  const isScrollingRef = useRef<boolean>(false);
 
   useEffect(() => {
     setMobile(isMobile());
@@ -363,8 +364,9 @@ export default function ParallaxTimeline() {
 
   // Button-triggered auto-scroll functionality with smooth scrolling
   const startAutoScroll = () => {
-    if (!containerRef.current || isAutoScrolling) return;
+    if (!containerRef.current || isScrollingRef.current) return;
     
+    isScrollingRef.current = true;
     setIsAutoScrolling(true);
     setUserScrolledManually(false);
     hasStartedAutoScroll.current = true;
@@ -386,6 +388,7 @@ export default function ParallaxTimeline() {
         console.log('Auto-scroll stopped by user interaction');
         // Restore original scroll behavior
         document.documentElement.style.scrollBehavior = originalScrollBehavior;
+        isScrollingRef.current = false;
         setIsAutoScrolling(false);
         return;
       }
@@ -411,6 +414,7 @@ export default function ParallaxTimeline() {
         console.log('Auto-scroll completed');
         // Restore original scroll behavior
         document.documentElement.style.scrollBehavior = originalScrollBehavior;
+        isScrollingRef.current = false;
         setIsAutoScrolling(false);
       }
     };
@@ -422,6 +426,7 @@ export default function ParallaxTimeline() {
   useEffect(() => {
     const stopAutoScroll = () => {
       setUserScrolledManually(true);
+      isScrollingRef.current = false;
       setIsAutoScrolling(false);
       if (autoScrollRef.current) {
         cancelAnimationFrame(autoScrollRef.current);
@@ -962,18 +967,19 @@ export default function ParallaxTimeline() {
           })}
         </div>
 
-        {/* Progress Indicator - Only show when in journey section */}
+        {/* Enhanced Progress Indicator - Only show when in journey section */}
         {isInJourneySection && (
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
-              <span className="text-white/70 text-sm">Timeline Progress</span>
-              <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="flex items-center space-x-3 bg-background/90 dark:bg-background/80 backdrop-blur-lg rounded-full px-6 py-3 border border-border shadow-2xl">
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse"></div>
+              <span className="text-foreground font-medium text-sm">Journey Progress</span>
+              <div className="w-32 h-3 bg-muted rounded-full overflow-hidden shadow-inner">
                 <div 
-                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-primary via-accent to-primary transition-all duration-500 shadow-lg"
                   style={{ width: `${scrollProgress * 100}%` }}
                 />
               </div>
-              <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
+              <span className="text-foreground font-bold text-sm min-w-[3rem] text-center">{Math.round(scrollProgress * 100)}%</span>
             </div>
           </div>
         )}
