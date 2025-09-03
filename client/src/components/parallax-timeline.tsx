@@ -970,33 +970,17 @@ export default function ParallaxTimeline() {
 
         {/* Enhanced Progress Indicator - Only show when in journey section */}
         {isInJourneySection && (
-          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out">
-            <div className="flex items-center space-x-4 bg-background/95 dark:bg-background/90 backdrop-blur-xl rounded-2xl px-8 py-4 border-2 border-primary/20 shadow-2xl hover:shadow-3xl transition-all duration-300">
-              {/* Animated indicator dot */}
-              <div className="relative">
-                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse shadow-lg"></div>
-                <div className="absolute inset-0 w-4 h-4 rounded-full bg-primary/30 animate-ping"></div>
-              </div>
-              
-              {/* Progress label */}
-              <span className="text-foreground font-semibold text-base">Journey Progress</span>
-              
-              {/* Enhanced progress bar */}
-              <div className="w-40 h-4 bg-muted/50 rounded-full overflow-hidden shadow-inner border border-muted">
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+            <div className="flex items-center space-x-3 bg-background/90 dark:bg-background/80 backdrop-blur-lg rounded-full px-6 py-3 border border-border shadow-2xl">
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse"></div>
+              <span className="text-foreground font-medium text-sm">Journey Progress</span>
+              <div className="w-32 h-3 bg-muted rounded-full overflow-hidden shadow-inner">
                 <div 
-                  className="h-full bg-gradient-to-r from-primary via-accent to-primary transition-all duration-700 ease-out shadow-lg relative"
+                  className="h-full bg-gradient-to-r from-primary via-accent to-primary transition-all duration-500 shadow-lg"
                   style={{ width: `${scrollProgress * 100}%` }}
-                >
-                  {/* Shimmer effect on progress bar */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
-                </div>
+                />
               </div>
-              
-              {/* Percentage display */}
-              <div className="flex items-center space-x-1">
-                <span className="text-foreground font-bold text-lg min-w-[3rem] text-center">{Math.round(scrollProgress * 100)}</span>
-                <span className="text-muted-foreground text-sm">%</span>
-              </div>
+              <span className="text-foreground font-bold text-sm min-w-[3rem] text-center">{Math.round(scrollProgress * 100)}%</span>
             </div>
           </div>
         )}
