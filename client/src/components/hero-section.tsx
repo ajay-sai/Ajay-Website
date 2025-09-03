@@ -34,9 +34,8 @@ export default function HeroSection() {
         document.body.removeChild(a);
         
         toast({
-          title: "✓ Resume Downloaded Successfully!",
-          description: "Thank you for your interest. The resume has been saved to your device.",
-          duration: 4000,
+          title: "✓ Downloaded",
+          duration: 2000,
         });
       } else {
         throw new Error('Failed to download resume');
@@ -44,9 +43,8 @@ export default function HeroSection() {
     } catch (error) {
       toast({
         title: "Download Failed",
-        description: "Sorry, there was an issue downloading the resume. Please try again.",
         variant: "destructive",
-        duration: 4000,
+        duration: 2000,
       });
     }
   };
