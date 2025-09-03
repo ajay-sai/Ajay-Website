@@ -370,12 +370,26 @@ export default function ParallaxTimeline() {
     
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
-    const targetScrollY = startScrollY + rect.height; // Scroll through 100% of timeline
+    
+    // Calculate proper target - scroll to the end of the timeline section
+    const timelineTop = rect.top + startScrollY; // Absolute position of timeline start
+    const timelineHeight = rect.height;
+    const targetScrollY = timelineTop + timelineHeight - window.innerHeight + 100; // End with some padding
+    
+    console.log('Auto-scroll starting:', {
+      startScrollY,
+      timelineTop,
+      timelineHeight,
+      targetScrollY,
+      rectTop: rect.top
+    });
+    
     const duration = 30000; // 30 seconds for very slow, relaxed journey
     const startTime = performance.now();
     
     const smoothScroll = (currentTime: number) => {
       if (userScrolledManually) {
+        console.log('Auto-scroll stopped by user interaction');
         setIsAutoScrolling(false);
         return;
       }
@@ -384,15 +398,20 @@ export default function ParallaxTimeline() {
       const progress = Math.min(elapsed / duration, 1);
       
       // Linear progression for consistent scroll speed
-      const easedProgress = progress;
-      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * easedProgress;
+      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * progress;
+      
+      console.log('Auto-scrolling:', { progress: (progress * 100).toFixed(1) + '%', currentScrollY });
       
       // Use smooth scrollTo for better performance
-      window.scrollTo(0, currentScrollY);
+      window.scrollTo({
+        top: currentScrollY,
+        behavior: 'auto' // Use 'auto' to avoid conflicts with browser smooth scrolling
+      });
       
       if (progress < 1) {
         autoScrollRef.current = requestAnimationFrame(smoothScroll);
       } else {
+        console.log('Auto-scroll completed');
         setIsAutoScrolling(false);
       }
     };
