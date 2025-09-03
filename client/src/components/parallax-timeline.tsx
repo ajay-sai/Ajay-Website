@@ -290,7 +290,6 @@ export default function ParallaxTimeline() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeEvent, setActiveEvent] = useState(0);
   const [mobile, setMobile] = useState(false);
-  const [isTimelineVisible, setIsTimelineVisible] = useState(false);
   
   // State for manual image navigation and touch handling
   const [manualImageIndices, setManualImageIndices] = useState<{[key: number]: number}>({});
@@ -456,10 +455,6 @@ export default function ParallaxTimeline() {
           const progress = Math.max(0, Math.min(1, rawProgress));
           
           setScrollProgress(progress);
-
-          // Check if timeline section is visible on screen
-          const isVisible = sectionTop < windowHeight && (sectionTop + containerHeight) > 0;
-          setIsTimelineVisible(isVisible);
 
           // Simplified active event calculation for smoother mobile performance
           const totalEvents = timelineEvents.length;
@@ -944,21 +939,19 @@ export default function ParallaxTimeline() {
           })}
         </div>
 
-        {/* Progress Indicator - Only show when timeline is visible */}
-        {isTimelineVisible && (
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20 transition-opacity duration-300">
-            <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
-              <span className="text-white/70 text-sm">Timeline Progress</span>
-              <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
-                  style={{ width: `${scrollProgress * 100}%` }}
-                />
-              </div>
-              <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
+        {/* Progress Indicator */}
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+            <span className="text-white/70 text-sm">Timeline Progress</span>
+            <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+                style={{ width: `${scrollProgress * 100}%` }}
+              />
             </div>
+            <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
