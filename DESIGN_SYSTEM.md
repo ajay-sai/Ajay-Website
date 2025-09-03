@@ -104,7 +104,6 @@ border: 1px solid var(--border);
 .quantum-float {
   animation: quantumFloat 6s ease-in-out infinite;
 }
-
 ```
 
 **Holographic Shimmer**
