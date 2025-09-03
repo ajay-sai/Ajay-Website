@@ -290,6 +290,7 @@ export default function ParallaxTimeline() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeEvent, setActiveEvent] = useState(0);
   const [mobile, setMobile] = useState(false);
+  const [isInJourneySection, setIsInJourneySection] = useState(false);
   
   // State for manual image navigation and touch handling
   const [manualImageIndices, setManualImageIndices] = useState<{[key: number]: number}>({});
@@ -366,6 +367,7 @@ export default function ParallaxTimeline() {
     
     setIsAutoScrolling(true);
     setUserScrolledManually(false);
+    hasStartedAutoScroll.current = true;
     
     const rect = containerRef.current.getBoundingClientRect();
     const startScrollY = window.scrollY;
@@ -373,8 +375,11 @@ export default function ParallaxTimeline() {
     const duration = 30000; // 30 seconds for very slow, relaxed journey
     const startTime = performance.now();
     
+    console.log('Starting auto-scroll:', { startScrollY, targetScrollY, duration });
+    
     const smoothScroll = (currentTime: number) => {
       if (userScrolledManually) {
+        console.log('Auto-scroll stopped by user interaction');
         setIsAutoScrolling(false);
         return;
       }
@@ -383,15 +388,24 @@ export default function ParallaxTimeline() {
       const progress = Math.min(elapsed / duration, 1);
       
       // Linear progression for consistent scroll speed
-      const easedProgress = progress;
-      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * easedProgress;
+      const currentScrollY = startScrollY + (targetScrollY - startScrollY) * progress;
       
-      // Use smooth scrollTo for better performance
-      window.scrollTo(0, currentScrollY);
+      // Log progress for debugging
+      console.log('Auto-scrolling:', { 
+        progress: `${(progress * 100).toFixed(1)}%`, 
+        currentScrollY 
+      });
+      
+      // Use window.scrollTo with immediate scrolling
+      window.scrollTo({
+        top: currentScrollY,
+        behavior: 'auto' // Immediate, not smooth - we handle the smoothness
+      });
       
       if (progress < 1) {
         autoScrollRef.current = requestAnimationFrame(smoothScroll);
       } else {
+        console.log('Auto-scroll completed');
         setIsAutoScrolling(false);
       }
     };
@@ -445,6 +459,10 @@ export default function ParallaxTimeline() {
           const rect = containerRef.current.getBoundingClientRect();
           const windowHeight = window.innerHeight;
           const containerHeight = rect.height;
+          
+          // Check if user is in the journey section (timeline is visible)
+          const isInSection = rect.top < windowHeight && rect.bottom > 0;
+          setIsInJourneySection(isInSection);
           
           // Simplified scroll progress calculation
           const sectionTop = rect.top;
@@ -939,19 +957,21 @@ export default function ParallaxTimeline() {
           })}
         </div>
 
-        {/* Progress Indicator */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
-            <span className="text-white/70 text-sm">Timeline Progress</span>
-            <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
-                style={{ width: `${scrollProgress * 100}%` }}
-              />
+        {/* Progress Indicator - Only show when in journey section */}
+        {isInJourneySection && (
+          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="flex items-center space-x-2 bg-black/20 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+              <span className="text-white/70 text-sm">Timeline Progress</span>
+              <div className="w-24 h-2 bg-white/20 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-300"
+                  style={{ width: `${scrollProgress * 100}%` }}
+                />
+              </div>
+              <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
             </div>
-            <span className="text-white/70 text-sm">{Math.round(scrollProgress * 100)}%</span>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
