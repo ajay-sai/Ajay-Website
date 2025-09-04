@@ -10,6 +10,7 @@ import ParallaxTimeline from "@/components/parallax-timeline";
 import ContactSection from "@/components/contact-section";
 import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
+import ScrollNavigation from "@/components/scroll-navigation";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useCursorEffects } from "@/hooks/use-cursor-effects";
 import { ThemeProvider } from "@/contexts/theme-context";
@@ -39,6 +40,9 @@ export default function Portfolio() {
         
         {/* Navigation */}
         <Navigation />
+        
+        {/* Scroll Navigation */}
+        <ScrollNavigation />
         
         {/* Main Content */}
         <main className="relative z-10">
