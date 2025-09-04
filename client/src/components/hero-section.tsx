@@ -3,7 +3,6 @@ import { ChevronDown, Linkedin, Github, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import ajayPhoto from "@assets/image_1756764365127.png";
-import Floating3DElements from "./floating-3d-elements";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -47,9 +46,6 @@ export default function HeroSection() {
     <section id="home" className="pt-16 pb-4 flex items-center justify-center relative overflow-hidden">
       {/* Minimal Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
-      
-      {/* 3D Floating Elements */}
-      <Floating3DElements />
       
       {/* Subtle decorative elements */}
       <div className="absolute inset-0 opacity-10">
