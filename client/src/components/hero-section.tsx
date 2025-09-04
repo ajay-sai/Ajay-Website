@@ -19,34 +19,27 @@ export default function HeroSection() {
     }
   };
 
-  const handleResumeDownload = async () => {
-    try {
-      const response = await fetch('/api/download/resume');
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Ajay_Miryala_Resume.pdf';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-        
-        toast({
-          title: "✓ Downloaded",
-          duration: 2000,
-        });
-      } else {
-        throw new Error('Failed to download resume');
-      }
-    } catch (error) {
-      toast({
-        title: "Download Failed",
-        variant: "destructive",
-        duration: 2000,
-      });
-    }
+  const handleResumeDownload = () => {
+    // Use a more reliable approach - direct link with target="_blank"
+    // This ensures the browser handles the download properly
+    const downloadUrl = '/api/download/resume';
+    
+    // Create a hidden link and trigger the download
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = 'Ajay_Miryala_Resume.pdf';
+    link.target = '_blank';
+    link.style.display = 'none';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Show success message
+    toast({
+      title: "✓ Downloaded",
+      duration: 2000,
+    });
   };
 
   return (
