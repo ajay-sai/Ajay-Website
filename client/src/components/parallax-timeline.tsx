@@ -878,6 +878,10 @@ export default function ParallaxTimeline() {
                             let currentImageIndex;
                             if (manualIndex !== undefined) {
                               currentImageIndex = manualIndex;
+                            } else if (isAutoScrolling) {
+                              // During auto-scroll, always show the first image (index 0)
+                              // This gives you control over what visitors see during automated journey
+                              currentImageIndex = 0;
                             } else {
                               // Mobile-optimized scroll-based cycling with reduced sensitivity
                               const scrollMultiplier = imageCount > 1 ? imageCount * 1.5 : 1;
