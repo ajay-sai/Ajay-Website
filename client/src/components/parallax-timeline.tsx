@@ -236,7 +236,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-teal-500 to-cyan-500",
     companyLogo: "🌉",
     companyColor: "#00796b",
-    workplaceImages: [bridgeSolutionsImage1, bridgeSolutionsImage2, bridgeSolutionsImage3, bridgeSolutionsImage4],
+    workplaceImages: [bridgeSolutionsImage3, bridgeSolutionsImage2, bridgeSolutionsImage1, bridgeSolutionsImage4],
     achievements: [
       "Created visually impactful interactive dashboards reporting key KPIs for multiple clients",
       "Achieved <strong class='text-blue-400'>$1M cost reduction</strong> through analytical inventory targeting and optimization",
@@ -253,7 +253,7 @@ const timelineEvents: TimelineEvent[] = [
     color: "from-amber-500 to-orange-500",
     companyLogo: "🎓",
     companyColor: "#1976d2",
-    workplaceImages: [bachelorImage1, bachelorImage2, bachelorImage3],
+    workplaceImages: [bachelorImage3, bachelorImage2, bachelorImage1],
     achievements: [
       "Comprehensive computer science foundation with focus on systems and AI",
       "Core studies: Data Structures, Algorithms, Database Systems, AI & Expert Systems, Data Mining",
