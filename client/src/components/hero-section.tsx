@@ -83,7 +83,7 @@ export default function HeroSection() {
           <h2 className={`text-2xl md:text-3xl text-muted-foreground mb-6 transition-all duration-1000 delay-400 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            Lead Data Scientist
+            Generative AI and ML Engineer
           </h2>
 
           {/* Social Links */}

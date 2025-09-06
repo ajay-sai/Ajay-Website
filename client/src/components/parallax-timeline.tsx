@@ -119,7 +119,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
     sortOrder: 1,
-    title: "Gen AI/ML Engineer",
+    title: "Generative AI and ML Engineer",
     description: "The Home Depot Management Company",
     dateRange: "January 2025 - Present",
     icon: TrendingUp,
