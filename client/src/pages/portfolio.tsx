@@ -21,7 +21,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     // Set document title for SEO
-    document.title = "Ajay Miryala - Lead Data Scientist | AI & Machine Learning Expert";
+    document.title = "Ajay Miryala - Generative AI and ML Engineer | AI & Machine Learning Expert";
     
     // Add quantum body class for global effects
     document.body.classList.add('quantum-reality');

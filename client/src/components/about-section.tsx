@@ -17,7 +17,7 @@ export default function AboutSection() {
           {/* Content */}
           <div className="space-y-6 scroll-animate">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Lead AI Data Scientist with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
+              Generative AI and ML Engineer with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
               I specialize in building the full-stack infrastructure that powers modern AI, from architecting scalable ETL and 
               analytics platforms (BigQuery, GCP) to operationalizing the complete lifecycle of Generative AI models, including 
               RAG and multi-modal systems.
@@ -38,7 +38,7 @@ export default function AboutSection() {
             <div className="relative group">
               <img
                 src={ajayPhoto}
-                alt="Ajay Miryala - Lead Data Scientist"
+                alt="Ajay Miryala - Generative AI and ML Engineer"
                 className="rounded-2xl shadow-2xl w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl"></div>
