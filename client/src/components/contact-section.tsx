@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Send, Phone, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -82,6 +82,21 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-center justify-center lg:justify-start space-x-4 group">
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center group-hover:bg-green-500/30 transition-colors">
+                    <Phone className="text-green-500" />
+                  </div>
+                  <div>
+                    <div className="font-semibold">Phone</div>
+                    <a 
+                      href="tel:240-360-7905" 
+                      className="text-muted-foreground hover:text-green-500 transition-colors"
+                    >
+                      (240) 360-7905
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-center lg:justify-start space-x-4 group">
                   <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center group-hover:bg-accent/30 transition-colors">
                     <Linkedin className="text-accent" />
                   </div>
@@ -114,6 +129,57 @@ export default function ContactSection() {
                     </a>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Cal.com Booking Section */}
+            <div className="text-center lg:text-left">
+              <h3 className="text-2xl font-bold mb-6 gradient-text">Schedule a Meeting</h3>
+              <p className="text-muted-foreground mb-6">
+                Ready to discuss your project? Book a convenient time slot that works for you.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-3">
+                <a
+                  href="https://cal.com/ajay-sai/15min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg p-4 block"
+                  data-testid="button-book-15min"
+                >
+                  <div className="flex items-center justify-center space-x-2 relative z-10">
+                    <Calendar className="h-5 w-5" />
+                    <span className="font-semibold">15 Min Chat</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+                </a>
+
+                <a
+                  href="https://cal.com/ajay-sai/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden bg-gradient-to-r from-green-600 to-green-700 hover:from-green-500 hover:to-green-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg p-4 block"
+                  data-testid="button-book-30min"
+                >
+                  <div className="flex items-center justify-center space-x-2 relative z-10">
+                    <Calendar className="h-5 w-5" />
+                    <span className="font-semibold">30 Min Meeting</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+                </a>
+
+                <a
+                  href="https://cal.com/ajay-sai/working-session"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 rounded-lg p-4 block"
+                  data-testid="button-book-60min"
+                >
+                  <div className="flex items-center justify-center space-x-2 relative z-10">
+                    <Calendar className="h-5 w-5" />
+                    <span className="font-semibold">60 Min Session</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+                </a>
               </div>
             </div>
           </div>
