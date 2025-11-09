@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ThemeProvider } from "@/contexts/theme-context";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -25,6 +25,8 @@ export default function Projects() {
   const { data: selectedProject, isLoading: isLoadingProject } = useQuery<Project>({
     queryKey: ['/api/projects', selectedProjectSlug],
     enabled: !!selectedProjectSlug,
+    staleTime: 5 * 60 * 1000, // Cache for 5 minutes
+    gcTime: 10 * 60 * 1000, // Keep in cache for 10 minutes
   });
 
   useEffect(() => {
@@ -41,6 +43,12 @@ export default function Projects() {
       setSelectedProjectSlug(projects[0].slug);
     }
   }, [projects, selectedProjectSlug]);
+
+  // Memoize processed markdown content to avoid re-parsing
+  const processedMarkdown = useMemo(() => {
+    if (!selectedProject?.contentMarkdown) return '';
+    return selectedProject.contentMarkdown.replace(/^# .+\n\n/, '');
+  }, [selectedProject?.contentMarkdown]);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
@@ -217,7 +225,7 @@ export default function Projects() {
                       {/* Markdown Content */}
                       <div className="prose prose-lg dark:prose-invert max-w-none">
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                          {selectedProject.contentMarkdown.replace(/^# .+\n\n/, '')}
+                          {processedMarkdown}
                         </ReactMarkdown>
                       </div>
                     </div>
