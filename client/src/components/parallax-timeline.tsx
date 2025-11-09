@@ -650,7 +650,7 @@ export default function ParallaxTimeline() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
             A comprehensive timeline showcasing my evolution from student to
-            Lead Data Scientist across diverse industries
+            Generative AI and ML Engineer across diverse industries
           </p>
 
           {/* Auto-scroll button and indicator */}
