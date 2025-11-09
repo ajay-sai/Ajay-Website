@@ -138,10 +138,6 @@ export default function Projects() {
                     </div>
                   ) : selectedProject ? (
                     <div className="bg-card border border-border rounded-lg p-8 shadow-xl" data-testid="project-detail-panel">
-                      <h1 className="text-3xl font-bold mb-4 gradient-text" data-testid={`project-title-${selectedProject.slug}`}>
-                        {selectedProject.title}
-                      </h1>
-                      
                       {selectedProject.coverImage && (
                         <img
                           src={selectedProject.coverImage}
@@ -149,7 +145,14 @@ export default function Projects() {
                           className="w-full h-64 object-cover rounded-lg mb-6"
                         />
                       )}
-                      
+
+                      {/* Markdown Content */}
+                      <div className="prose prose-lg dark:prose-invert max-w-none mb-6">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {selectedProject.contentMarkdown}
+                        </ReactMarkdown>
+                      </div>
+
                       <p className="text-lg text-muted-foreground mb-6">
                         {selectedProject.summary}
                       </p>
@@ -208,13 +211,6 @@ export default function Projects() {
                           </div>
                         </div>
                       )}
-
-                      {/* Markdown Content */}
-                      <div className="prose prose-lg dark:prose-invert max-w-none">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                          {selectedProject.contentMarkdown}
-                        </ReactMarkdown>
-                      </div>
                     </div>
                   ) : (
                     <div className="bg-card border border-border rounded-lg p-12 text-center">

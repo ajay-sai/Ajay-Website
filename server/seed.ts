@@ -20,7 +20,9 @@ export async function seedProjects() {
         tags: ["RAG", "Knowledge Graph", "LLM", "Neo4j", "Enterprise AI"],
         technologies: ["GPT-4", "Neo4j", "LangChain", "Python", "GCP", "BigQuery"],
         links: [],
-        contentMarkdown: `## Overview
+        contentMarkdown: `# Neo4j Knowledge-Graph RAG Assistant
+
+## Overview
 Designed and deployed a production-grade Retrieval-Augmented Generation (RAG) system using Neo4j knowledge graphs to power intelligent Q&A capabilities for 200+ business analysts at The Home Depot.
 
 ## Challenge
@@ -70,7 +72,9 @@ Analysts needed quick access to complex, interrelated business data scattered ac
         tags: ["Generative AI", "Image Generation", "E-Commerce", "Computer Vision"],
         technologies: ["Google Image Gen-3", "Stable Diffusion", "Gemini-1.5 Pro", "ResNet", "Vision Transformers", "BigQuery"],
         links: [],
-        contentMarkdown: `## Project Overview
+        contentMarkdown: `# AI-Powered Dynamic Image Generation for E-Commerce
+
+## Project Overview
 Transformed The Home Depot's guided search experience by implementing an AI-powered dynamic image generation system that creates personalized product visualizations based on customer queries.
 
 ## Business Context
@@ -132,7 +136,9 @@ Customers searching for home improvement solutions often struggle to visualize h
         tags: ["LLM Orchestration", "AI Safety", "Production ML", "Agent Systems"],
         technologies: ["GPT-4", "Gemini", "LangChain", "Pydantic", "FastAPI", "MLflow"],
         links: [],
-        contentMarkdown: `## Executive Summary
+        contentMarkdown: `# Multi-LLM Orchestration System with Safety Filters
+
+## Executive Summary
 Built a production-ready multi-LLM orchestration platform enabling safe, reliable, and cost-effective deployment of large language models for enterprise use cases at The Home Depot.
 
 ## System Architecture
