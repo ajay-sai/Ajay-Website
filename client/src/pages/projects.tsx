@@ -139,7 +139,7 @@ export default function Projects() {
                   ) : selectedProject ? (
                     <div className="bg-card border border-border rounded-lg p-8 shadow-xl" data-testid="project-detail-panel">
                       {/* Project Title */}
-                      <h1 className="text-4xl font-bold mb-6 gradient-text" data-testid={`project-title-${selectedProject.slug}`}>
+                      <h1 className="text-4xl font-bold mb-6 text-foreground" data-testid={`project-title-${selectedProject.slug}`}>
                         {selectedProject.title}
                       </h1>
 
