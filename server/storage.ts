@@ -1,4 +1,4 @@
-import { users, projects, type User, type InsertUser, type Project, type InsertProject } from "@shared/schema";
+import { users, projects, type User, type InsertUser, type Project, type InsertProject, type ProjectListItem } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
 
@@ -9,8 +9,8 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   
   // Project CRUD operations
-  getAllProjects(): Promise<Project[]>;
-  getFeaturedProjects(): Promise<Project[]>;
+  getAllProjects(): Promise<ProjectListItem[]>;
+  getFeaturedProjects(): Promise<ProjectListItem[]>;
   getProjectBySlug(slug: string): Promise<Project | undefined>;
   getProjectById(id: number): Promise<Project | undefined>;
   createProject(project: InsertProject): Promise<Project>;
@@ -37,12 +37,32 @@ export class DatabaseStorage implements IStorage {
     return user;
   }
 
-  async getAllProjects(): Promise<Project[]> {
-    return await db.select().from(projects).orderBy(projects.id);
+  async getAllProjects(): Promise<ProjectListItem[]> {
+    return await db.select({
+      id: projects.id,
+      slug: projects.slug,
+      title: projects.title,
+      summary: projects.summary,
+      coverImage: projects.coverImage,
+      featured: projects.featured,
+      tags: projects.tags,
+      technologies: projects.technologies,
+      links: projects.links,
+    }).from(projects).orderBy(projects.id);
   }
 
-  async getFeaturedProjects(): Promise<Project[]> {
-    return await db.select().from(projects).where(eq(projects.featured, true)).orderBy(projects.id);
+  async getFeaturedProjects(): Promise<ProjectListItem[]> {
+    return await db.select({
+      id: projects.id,
+      slug: projects.slug,
+      title: projects.title,
+      summary: projects.summary,
+      coverImage: projects.coverImage,
+      featured: projects.featured,
+      tags: projects.tags,
+      technologies: projects.technologies,
+      links: projects.links,
+    }).from(projects).where(eq(projects.featured, true)).orderBy(projects.id);
   }
 
   async getProjectBySlug(slug: string): Promise<Project | undefined> {
