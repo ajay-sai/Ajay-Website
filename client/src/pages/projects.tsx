@@ -146,71 +146,75 @@ export default function Projects() {
                         />
                       )}
 
+                      {/* Metadata Grid */}
+                      <div className="grid gap-4 mb-8 p-4 bg-secondary/30 rounded-lg border border-border/50">
+                        {/* Tags */}
+                        <div>
+                          <div className="text-sm font-semibold text-muted-foreground mb-2 flex items-center">
+                            <Tag className="w-4 h-4 mr-1" />
+                            Skills
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedProject.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="px-2 py-1 bg-primary/15 text-primary rounded-full text-xs font-medium"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Technologies */}
+                        <div>
+                          <div className="text-sm font-semibold text-muted-foreground mb-2 flex items-center">
+                            <Code className="w-4 h-4 mr-1" />
+                            Tech Stack
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedProject.technologies.map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-2 py-1 bg-accent/15 text-accent rounded-md text-xs font-medium"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Links */}
+                        {selectedProject.links && selectedProject.links.length > 0 && (
+                          <div>
+                            <div className="text-sm font-semibold text-muted-foreground mb-2 flex items-center">
+                              <ExternalLink className="w-4 h-4 mr-1" />
+                              Links
+                            </div>
+                            <div className="flex flex-wrap gap-3">
+                              {selectedProject.links.map((link, index) => (
+                                <a
+                                  key={index}
+                                  href={link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-primary hover:text-primary/80 underline text-sm"
+                                  data-testid={`project-link-${index}`}
+                                >
+                                  Link {index + 1}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
                       {/* Markdown Content */}
-                      <div className="prose prose-lg dark:prose-invert max-w-none mb-6">
+                      <div className="prose prose-lg dark:prose-invert max-w-none">
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
                           {selectedProject.contentMarkdown}
                         </ReactMarkdown>
                       </div>
-
-                      <p className="text-lg text-muted-foreground mb-6">
-                        {selectedProject.summary}
-                      </p>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {selectedProject.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-flex items-center px-3 py-1 bg-primary/15 text-primary rounded-full text-sm font-medium"
-                          >
-                            <Tag className="w-3 h-3 mr-1" />
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Technologies */}
-                      <div className="mb-6">
-                        <h3 className="text-xl font-bold mb-3 flex items-center">
-                          <Code className="w-5 h-5 mr-2" />
-                          Tech Stack
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedProject.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 bg-accent/15 text-accent rounded-md text-sm font-medium"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Links */}
-                      {selectedProject.links && selectedProject.links.length > 0 && (
-                        <div className="mb-6">
-                          <h3 className="text-xl font-bold mb-3 flex items-center">
-                            <ExternalLink className="w-5 h-5 mr-2" />
-                            Related Links
-                          </h3>
-                          <div className="space-y-2">
-                            {selectedProject.links.map((link, index) => (
-                              <a
-                                key={index}
-                                href={link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block text-primary hover:text-primary/80 underline"
-                                data-testid={`project-link-${index}`}
-                              >
-                                {link}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
                     </div>
                   ) : (
                     <div className="bg-card border border-border rounded-lg p-12 text-center">
