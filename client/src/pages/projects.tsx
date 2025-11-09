@@ -8,7 +8,7 @@ import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
 import { personSchema, breadcrumbSchema, createProjectSchema } from "@/components/seo/schemas";
-import type { Project } from "@shared/schema";
+import type { Project, ProjectListItem } from "@shared/schema";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ExternalLink, Tag, Code } from "lucide-react";
@@ -16,10 +16,15 @@ import { ExternalLink, Tag, Code } from "lucide-react";
 export default function Projects() {
   useScrollAnimation();
   useCursorEffects();
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProjectSlug, setSelectedProjectSlug] = useState<string | null>(null);
 
-  const { data: projects, isLoading } = useQuery<Project[]>({
+  const { data: projects, isLoading } = useQuery<ProjectListItem[]>({
     queryKey: ['/api/projects'],
+  });
+
+  const { data: selectedProject, isLoading: isLoadingProject } = useQuery<Project>({
+    queryKey: ['/api/projects', selectedProjectSlug],
+    enabled: !!selectedProjectSlug,
   });
 
   useEffect(() => {
@@ -32,10 +37,10 @@ export default function Projects() {
 
   // Auto-select first project if available
   useEffect(() => {
-    if (projects && projects.length > 0 && !selectedProject) {
-      setSelectedProject(projects[0]);
+    if (projects && projects.length > 0 && !selectedProjectSlug) {
+      setSelectedProjectSlug(projects[0].slug);
     }
-  }, [projects, selectedProject]);
+  }, [projects, selectedProjectSlug]);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
@@ -92,9 +97,9 @@ export default function Projects() {
                     {projects.map((project) => (
                       <div
                         key={project.id}
-                        onClick={() => setSelectedProject(project)}
+                        onClick={() => setSelectedProjectSlug(project.slug)}
                         className={`p-4 rounded-lg cursor-pointer transition-all duration-300 ${
-                          selectedProject?.id === project.id
+                          selectedProjectSlug === project.slug
                             ? 'bg-primary/20 border-2 border-primary shadow-lg'
                             : 'bg-secondary hover:bg-secondary/80 border-2 border-transparent'
                         }`}
@@ -128,7 +133,11 @@ export default function Projects() {
 
                 {/* Right Panel - Project Detail */}
                 <div className="lg:col-span-8">
-                  {selectedProject ? (
+                  {isLoadingProject ? (
+                    <div className="bg-card border border-border rounded-lg p-12 text-center">
+                      <div className="text-lg text-muted-foreground">Loading project details...</div>
+                    </div>
+                  ) : selectedProject ? (
                     <div className="bg-card border border-border rounded-lg p-8 shadow-xl" data-testid="project-detail-panel">
                       {selectedProject.coverImage && (
                         <img

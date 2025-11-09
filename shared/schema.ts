@@ -36,3 +36,4 @@ export const insertProjectSchema = createInsertSchema(projects).omit({
 
 export type InsertProject = z.infer<typeof insertProjectSchema>;
 export type Project = typeof projects.$inferSelect;
+export type ProjectListItem = Omit<Project, 'contentMarkdown'>;
