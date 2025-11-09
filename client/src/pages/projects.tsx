@@ -92,7 +92,6 @@ export default function Projects() {
               <div className="grid lg:grid-cols-12 gap-8">
                 {/* Left Sidebar - Project List */}
                 <div className="lg:col-span-4 space-y-4">
-                  <h2 className="text-2xl font-bold mb-4">All Projects</h2>
                   <div className="space-y-3">
                     {projects.map((project) => (
                       <div
@@ -139,6 +138,10 @@ export default function Projects() {
                     </div>
                   ) : selectedProject ? (
                     <div className="bg-card border border-border rounded-lg p-8 shadow-xl" data-testid="project-detail-panel">
+                      <h1 className="text-3xl font-bold mb-4 gradient-text" data-testid={`project-title-${selectedProject.slug}`}>
+                        {selectedProject.title}
+                      </h1>
+                      
                       {selectedProject.coverImage && (
                         <img
                           src={selectedProject.coverImage}
@@ -146,10 +149,6 @@ export default function Projects() {
                           className="w-full h-64 object-cover rounded-lg mb-6"
                         />
                       )}
-                      
-                      <h2 className="text-3xl font-bold mb-4 gradient-text" data-testid={`project-title-${selectedProject.slug}`}>
-                        {selectedProject.title}
-                      </h2>
                       
                       <p className="text-lg text-muted-foreground mb-6">
                         {selectedProject.summary}
