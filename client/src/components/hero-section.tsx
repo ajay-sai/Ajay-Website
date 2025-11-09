@@ -64,7 +64,7 @@ export default function HeroSection() {
             <div className="relative inline-block">
               <img
                 src={ajayPhoto}
-                alt="Ajay Miryala - Lead Data Scientist"
+                alt="Ajay Miryala - Generative AI and ML Engineer"
                 className="w-48 h-48 rounded-full mx-auto object-cover border-4 border-primary shadow-2xl"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-accent/20 mix-blend-overlay"></div>
