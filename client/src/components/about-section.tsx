@@ -1,4 +1,4 @@
-import ajayPhoto from "@assets/image_1756764365127.png";
+import ajayPhoto from "@assets/20240420_202714_1762722420285.jpg";
 
 export default function AboutSection() {
   return (
