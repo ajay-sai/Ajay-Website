@@ -22,7 +22,7 @@ export default function Navigation() {
     { href: "/", label: "Home" },
     { href: "/journey", label: "Journey" },
     { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/contact", label: "Schedule Meeting" },
   ];
 
   const isActive = (href: string) => {

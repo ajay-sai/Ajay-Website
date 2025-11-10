@@ -24,16 +24,16 @@ export default function Contact() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <SEOHead
-        title="Contact Ajay Miryala - Get In Touch | AI Consulting"
-        description="Get in touch with Ajay Miryala to discuss AI projects, collaboration opportunities, or consulting services. Specializing in Generative AI, ML Engineering, and scalable data systems. Email: sai.ajaysai@gmail.com | Phone: (240) 360-7905"
-        keywords={["Contact", "AI Consulting", "ML Consulting", "Generative AI Expert", "Hire AI Engineer", "AI Project Collaboration"]}
+        title="Schedule Meeting with Ajay Miryala | AI Consulting"
+        description="Schedule a meeting with Ajay Miryala to discuss AI projects, collaboration opportunities, or consulting services. Specializing in Generative AI, ML Engineering, and scalable data systems. Email: sai.ajaysai@gmail.com | Phone: (240) 360-7905"
+        keywords={["Schedule Meeting", "AI Consulting", "ML Consulting", "Generative AI Expert", "Hire AI Engineer", "AI Project Collaboration"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
-              { name: "Contact", url: `${window.location.origin}/contact` }
+              { name: "Schedule Meeting", url: `${window.location.origin}/contact` }
             ])
           ]
         }}

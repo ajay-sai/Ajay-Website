@@ -55,20 +55,14 @@ export default function Home() {
           <section className="py-16 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">
-                Ready to explore more?
+                Get In Touch
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Discover my professional journey, detailed project case studies, and let's connect.
+                Ready to collaborate on innovative data science projects? Let's discuss how advanced analytics and machine learning can transform your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/journey" className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-testid="link-view-journey">
-                  View My Journey
-                </Link>
-                <Link href="/projects" className="inline-block px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-testid="link-explore-projects">
-                  Explore Projects
-                </Link>
-                <Link href="/contact" className="inline-block px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-testid="link-get-in-touch">
-                  Get In Touch
+                <Link href="/contact" className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" data-testid="link-lets-connect">
+                  Let's Connect
                 </Link>
               </div>
             </div>
