@@ -12,6 +12,8 @@ const journeyHighlights = [
     icon: TrendingUp,
     gradient: "from-blue-500 to-cyan-500",
     keyMetric: "55% faster analytics",
+    highlights: ["GPT-4", "Gemini", "RAG Systems", "Contract Parsing"],
+    achievements: ["Text Summarization", "Q&A Bots", "Prompt Optimization"],
   },
   {
     year: "2023",
@@ -22,6 +24,8 @@ const journeyHighlights = [
     icon: Code,
     gradient: "from-green-500 to-emerald-500",
     keyMetric: "$20M savings target",
+    highlights: ["Image Gen", "Stable Diffusion", "Vision Transformers", "BigQuery"],
+    achievements: ["87% Accuracy", "Dynamic Pipelines", "Guided Search"],
   },
   {
     year: "2022",
@@ -32,6 +36,8 @@ const journeyHighlights = [
     icon: Award,
     gradient: "from-purple-500 to-violet-500",
     keyMetric: "300+ associates impact",
+    highlights: ["Adobe Analytics", "Tableau", "Data Studio", "Python"],
+    achievements: ["Customer Insights", "Voice of Associates", "20% Faster Onboarding"],
   },
   {
     year: "2020",
@@ -42,6 +48,8 @@ const journeyHighlights = [
     icon: Zap,
     gradient: "from-orange-500 to-red-500",
     keyMetric: "80% faster processing",
+    highlights: ["ETL Pipelines", "Power BI", "SAP", "Alteryx"],
+    achievements: ["55% Less POs", "30% Better Inventory", "Data Modeling"],
   },
   {
     year: "2019",
@@ -52,6 +60,8 @@ const journeyHighlights = [
     icon: Code,
     gradient: "from-indigo-500 to-purple-500",
     keyMetric: "78% ML accuracy",
+    highlights: ["XGBoost", "Random Forest", "Python", "SQL Server"],
+    achievements: ["Market Regime Prediction", "Russell 1000", "5% Better Confidence"],
   },
   {
     year: "2019",
@@ -62,6 +72,8 @@ const journeyHighlights = [
     icon: Target,
     gradient: "from-pink-500 to-rose-500",
     keyMetric: "200% traffic growth",
+    highlights: ["Google Ads", "6K Keywords", "Web Analytics", "CPC Optimization"],
+    achievements: ["$3100 Revenue", "113 Sales", "$300 Budget"],
   },
   {
     year: "2019",
@@ -72,6 +84,8 @@ const journeyHighlights = [
     icon: Award,
     gradient: "from-emerald-500 to-teal-500",
     keyMetric: "4000+ students served",
+    highlights: ["SQL", "Student Records", "Academic Advisory", "Team Leadership"],
+    achievements: ["10% Better Satisfaction", "10 Team Members", "Performance Analytics"],
   },
   {
     year: "2017",
@@ -82,6 +96,8 @@ const journeyHighlights = [
     icon: Calendar,
     gradient: "from-teal-500 to-cyan-500",
     keyMetric: "$1M cost reduction",
+    highlights: ["Tableau", "SQL Server", "Docker", "IBM OMS"],
+    achievements: ["Interactive Dashboards", "KPI Reporting", "Inventory Optimization"],
   },
 ];
 
@@ -190,15 +206,20 @@ export default function JourneyPreview() {
               >
                 {/* Content */}
                 <div>
-                  <h3 className="text-sm font-bold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-sm font-bold mb-2 group-hover:text-primary transition-colors">
                     {milestone.title}
                   </h3>
-                  <p className="text-xs text-primary font-semibold mb-1">{milestone.company}</p>
                   
-                  {/* Type & Date Range */}
-                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                  {/* Company & Date Pills */}
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium">
+                      {milestone.company}
+                    </span>
+                    <span className="px-2 py-0.5 bg-muted text-muted-foreground text-xs rounded font-medium">
+                      {milestone.dateRange}
+                    </span>
                     {milestone.type !== 'Full-time' && (
-                      <span className={`inline-block px-2 py-0.5 text-xs font-semibold rounded ${
+                      <span className={`px-2 py-0.5 text-xs font-semibold rounded ${
                         milestone.type === 'Internship'
                           ? 'bg-blue-500/20 text-blue-400'
                           : 'bg-amber-500/20 text-amber-400'
@@ -206,12 +227,30 @@ export default function JourneyPreview() {
                         {milestone.type}
                       </span>
                     )}
-                    <p className="text-xs text-muted-foreground">{milestone.dateRange}</p>
                   </div>
                   
-                  {/* Key Metric Badge */}
-                  <div className={`inline-block px-2 py-1 bg-gradient-to-r ${milestone.gradient} bg-opacity-10 rounded text-xs font-semibold`}>
-                    {milestone.keyMetric}
+                  {/* Tech Highlights */}
+                  <div className="mb-2">
+                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">Tech</p>
+                    <div className="flex flex-wrap gap-1">
+                      {milestone.highlights.map((tech, i) => (
+                        <span key={i} className="px-1.5 py-0.5 bg-accent/10 text-accent text-xs rounded">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Career Achievements */}
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">Impact</p>
+                    <div className="flex flex-wrap gap-1">
+                      {milestone.achievements.map((achievement, i) => (
+                        <span key={i} className={`px-1.5 py-0.5 bg-gradient-to-r ${milestone.gradient} bg-opacity-10 text-xs rounded font-medium`}>
+                          {achievement}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
