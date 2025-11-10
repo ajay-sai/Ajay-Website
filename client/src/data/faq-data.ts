@@ -6,7 +6,7 @@ export const faqData = [
   },
   {
     question: "What companies has Ajay Miryala worked for?",
-    answer: "Ajay has worked at The Home Depot (current role as Generative AI and ML Engineer), Harley Davidson (Data Analyst and Engineer), Principal Financial Group (Data Scientist), University of Maryland (Graduate Assistant), and Bridge Solutions (Data Analyst). His experience spans retail, manufacturing, finance, and education industries."
+    answer: "Ajay has worked at The Home Depot (current role as Gen AI / ML Engineer), Harley Davidson (Data Analyst and Engineer), Principal Financial Group (Data Scientist), Anahata Art and Design (Marketing Analyst), University of Maryland (Graduate Assistant), and Bridge Solutions (Data Analyst). His experience spans retail, manufacturing, finance, marketing, and education industries."
   },
   {
     question: "What is Ajay's location and availability?",
@@ -30,6 +30,6 @@ export const faqData = [
   },
   {
     question: "What education and certifications does Ajay have?",
-    answer: "Ajay holds a Master of Science in Business Statistics from the University of Maryland, College Park (Robert H. Smith School of Business, graduated 2019) and a Bachelor of Technology in Computer Science from SRM University (graduated 2017). His education combines statistical rigor with computer science fundamentals."
+    answer: "Ajay holds a Master of Science in Business Statistics from the University of Maryland, College Park (Robert H. Smith School of Business, graduated 2019) and a Bachelor of Technology in Computer Science from SRM University (graduated 2017). He is certified as a Google Professional Data Engineer, Google Ads Professional, Certified Data Scientist (Data Camp), and Certified Data Analyst in Python (Edureka)."
   }
 ];

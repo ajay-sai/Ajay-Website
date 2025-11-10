@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const journeyHighlights = [
   {
     year: "2025",
-    title: "Generative AI & ML Engineer",
+    title: "Gen AI / ML Engineer",
     company: "The Home Depot",
     dateRange: "Jan 2025 - Present",
     startDate: "2025-01",
@@ -21,7 +21,7 @@ const journeyHighlights = [
   },
   {
     year: "2023",
-    title: "Senior Data Scientist",
+    title: "Senior Data Scientist - Decision Analytics",
     company: "The Home Depot",
     dateRange: "Jun 2023 - Jan 2025",
     startDate: "2023-06",
