@@ -14,17 +14,29 @@ export default function AboutSection() {
           {/* Content */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Generative AI and ML Engineer with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
-              I specialize in building the full-stack infrastructure that powers modern AI, from architecting scalable ETL and 
-              analytics platforms (BigQuery, GCP) to operationalizing the complete lifecycle of Generative AI models, including 
-              RAG and multi-modal systems.
+              I build AI systems that actually work in production. Not proofs of concept—real, scalable solutions that 
+              handle millions of queries, save companies tens of millions of dollars, and make complex technology accessible 
+              to thousands of users who've never written a line of code.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              My focus is on creating resilient, efficient, and scalable solutions that serve as the backbone for enterprise-level 
-              AI applications. At The Home Depot, I've architected LLM evaluation pipelines, engineered Neo4j Knowledge-Graph RAG 
-              assistants for 200+ analysts, and deployed multi-LLM orchestration systems with structured outputs and safety filters, 
-              delivering measurable impact including 60% reduction in manual reporting and $20M potential marketing savings.
+              Over the past 8 years, I've gone from analyzing spreadsheets to architecting Generative AI platforms at 
+              Fortune 500 companies. Today at The Home Depot, I orchestrate LLM systems that parse contracts, generate 
+              dynamic content, and power Knowledge-Graph RAG assistants—cutting analytics time by 60% and targeting 
+              $20M in marketing optimization.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              My specialty? Taking bleeding-edge AI research and turning it into production-grade infrastructure. 
+              Whether it's building multi-modal pipelines with GPT-4 and Gemini, optimizing Vision Transformers for 
+              image generation at scale, or engineering RAG systems with Neo4j—I focus on what moves the needle: 
+              reliability, speed, and measurable business impact.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              From Atlanta, with a Master's in Business Statistics from University of Maryland and hands across 
+              retail, manufacturing, finance, and education—I speak both technical and business. Because the best 
+              AI solutions don't just work technically; they solve real problems people care about.
             </p>
           </div>
 
