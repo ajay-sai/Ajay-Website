@@ -1,0 +1,77 @@
+2025-11-10T15:06:32Z info: Deployment: e00291a5-fe33-41a4-b5e2-2c20a7fca7db
+2025-11-10T15:06:32Z info: Build: 31cdcac4-875b-4993-a229-fd69b59b2dde
+2025-11-10T15:06:32Z info: Connecting to builder
+2025-11-10T15:06:33Z info: Builder connected
+2025-11-10T15:06:34Z info: Installing packages
+2025-11-10T15:06:35Z info: Starting Build
+
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+
+vite v5.4.19 building for production...
+
+transforming...
+
+Browserslist: browsers data (caniuse-lite) is 13 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+✓ 1998 modules transformed.
+
+rendering chunks...
+
+computing gzip size...
+
+../dist/public/index.html                                  1.73 kB │ gzip:   0.82 kB
+
+../dist/public/assets/images_1756790566987-DfZjOFyW.png    9.03 kB
+../dist/public/assets/image_1756790646771-C1GGnw_R.png    13.23 kB
+
+../dist/public/assets/image_1756790768889-CR_BhAYt.png    29.63 kB
+
+../dist/public/assets/image_1756791087938-enugsyUJ.png    32.29 kB
+
+../dist/public/assets/image_1756791219923-BDhG3XyR.png    32.54 kB
+
+../dist/public/assets/image_1756790102894-BNGkQbw4.png    35.83 kB
+
+../dist/public/assets/image_1756791288961-D0VyJf8E.png    54.99 kB
+
+../dist/public/assets/image_1756791876151-SRUWcYm2.png    67.14 kB
+
+../dist/public/assets/image_1756791337929-DwKF0bPR.png    87.14 kB
+
+../dist/public/assets/index-CCgwEt1R.css                 120.36 kB │ gzip:  18.56 kB
+
+../dist/public/assets/index-COR9c7Ma.js                  631.68 kB │ gzip: 188.40 kB
+
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+✓ built in 7.18s
+
+
+  dist/index.js  24.6kb
+
+⚡ Done in 339ms
+
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.6.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+npm notice To update run: npm install -g npm@11.6.2
+npm notice
+
+2025-11-10T15:06:47Z info: Pushing pid1 binary layer...
+2025-11-10T15:06:49Z info: Created pid1 binary layer
+2025-11-10T15:06:50Z info: Pushing Repl layer...
+2025-11-10T15:06:50Z info: Pushing hosting layer...
+2025-11-10T15:06:50Z info: Retrieved cached nix layer
+2025-11-10T15:06:50Z info: Created hosting layer
+2025-11-10T15:12:33Z info: Created Repl layer
+2025-11-10T15:12:33Z info: Pushing Repl (cache) layer...
+2025-11-10T15:12:33Z info: Created Repl (cache) layer
+2025-11-10T15:12:33Z error: image size is over the limit of 8 GiB
