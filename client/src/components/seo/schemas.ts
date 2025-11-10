@@ -96,6 +96,7 @@ export const personSchema = {
     "sameAs": "https://www.homedepot.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "2455 Paces Ferry Rd",
       "addressLocality": "Atlanta",
       "addressRegion": "GA",
       "addressCountry": "US"
@@ -161,6 +162,7 @@ export const organizationSchemas = [
     ],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "2455 Paces Ferry Rd",
       "addressLocality": "Atlanta",
       "addressRegion": "GA",
       "addressCountry": "US"
@@ -177,6 +179,7 @@ export const organizationSchemas = [
     ],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "3700 W Juneau Ave",
       "addressLocality": "Milwaukee",
       "addressRegion": "WI",
       "addressCountry": "US"
@@ -193,6 +196,7 @@ export const organizationSchemas = [
     ],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "711 High St",
       "addressLocality": "Des Moines",
       "addressRegion": "IA",
       "addressCountry": "US"
@@ -209,6 +213,7 @@ export const organizationSchemas = [
     ],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "7999 Regents Dr",
       "addressLocality": "College Park",
       "addressRegion": "MD",
       "addressCountry": "US"
@@ -221,6 +226,7 @@ export const organizationSchemas = [
     "url": "https://ajaymiryala.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Road No. 2, Banjara Hills",
       "addressLocality": "Hyderabad",
       "addressRegion": "Telangana",
       "addressCountry": "IN"
@@ -233,6 +239,7 @@ export const organizationSchemas = [
     "url": "https://ajaymiryala.com",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "MG Road",
       "addressLocality": "Bangalore",
       "addressRegion": "Karnataka",
       "addressCountry": "IN"
