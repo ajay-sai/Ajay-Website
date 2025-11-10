@@ -11,8 +11,7 @@ import {
   BookOpen,
   ChevronDown,
 } from "lucide-react";
-import harleyDavidsonImage1 from "@assets/image_1756765291859.png";
-import harleyDavidsonImage2 from "@assets/image_1756766255322.png";
+// Company logos remain as @assets imports (small files, needed at build time)
 import harleyDavidsonLogo from "@assets/image_1756790102894.png";
 import homeDepotLogo from "@assets/images_1756790566987.png";
 import homeDepotMainLogo from "@assets/image_1756790646771.png";
@@ -24,7 +23,9 @@ import stJosephsLogo from "@assets/image_1756791337929.png";
 import stonedSantaLogo from "@assets/image_1756792379931.png";
 import homeDepotStoreLogo from "@assets/image_1756791876151.png";
 
-// All workplace images now served from Object Storage for optimized deployment
+// All workplace images now served from Object Storage for optimized deployment (70MB saved)
+const harleyDavidsonImage1 = "/public-objects/timeline/image_1756765291859.png";
+const harleyDavidsonImage2 = "/public-objects/timeline/image_1756766255322.png";
 const homeDepotImage1 = "/public-objects/timeline/20250515_110951(0) (1)_1756775594777.jpg";
 const homeDepotImage2 = "/public-objects/timeline/IMG_2329-EDIT_1756777352943.jpg";
 const homeDepotImage3 = "/public-objects/timeline/20241023_132525_1756776021189.jpg";

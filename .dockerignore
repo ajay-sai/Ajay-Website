@@ -43,9 +43,8 @@ replit.md
 *.md
 LICENSE
 
-# Large static assets that should not be in deployment
+# Large static assets that should not be in deployment (migrated to Object Storage)
 attached_assets/
-public/resume.pdf
 
 # Build artifacts (will be rebuilt during deployment)
 dist
