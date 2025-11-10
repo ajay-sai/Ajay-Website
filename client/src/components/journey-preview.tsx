@@ -124,7 +124,7 @@ export default function JourneyPreview() {
                 {/* Content */}
                 <div>
                   <h3 className="text-sm font-bold mb-2 group-hover:text-primary transition-colors">
-                    {milestone.title}
+                    {milestone.title}{milestone.type !== 'Full-time' && `, ${milestone.type}`}
                   </h3>
                   
                   {/* Company & Date Pills */}
@@ -135,15 +135,6 @@ export default function JourneyPreview() {
                     <span className="px-2 py-0.5 bg-muted text-muted-foreground text-xs rounded font-medium">
                       {milestone.dateRange}
                     </span>
-                    {milestone.type !== 'Full-time' && (
-                      <span className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                        milestone.type === 'Internship'
-                          ? 'bg-blue-500/20 text-blue-400'
-                          : 'bg-amber-500/20 text-amber-400'
-                      }`}>
-                        {milestone.type}
-                      </span>
-                    )}
                   </div>
                   
                   {/* Tech Highlights */}
