@@ -293,45 +293,44 @@
     will-change: auto;
   }
 
-  @media (max-width: 768px) {
+  
+  /* Respect user's reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
     .scroll-animate {
-      transform: translate3d(0, 15px, 0);
-      transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+      transition: none;
+      will-change: auto;
     }
     
-    /* Smoother scroll behavior on mobile */
+    .consciousness-expand,
+    .reality-bend,
+    .quantum-float,
+    .gradient-text,
+    .gradient-text-slow,
+    .hero-name-enhanced,
+    .quantum-pulse,
+    .neural-flow,
+    .holographic-shimmer {
+      animation: none;
+    }
+    
+    .quantum-card {
+      backdrop-filter: none;
+    }
+    
     html {
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Reduce motion for mobile performance */
-    .consciousness-expand {
-      animation-duration: 6s;
-    }
-    
-    .reality-bend {
-      animation-duration: 4s;
-    }
-    
-    .quantum-float {
-      animation-duration: 8s;
+      scroll-behavior: auto;
     }
   }
 
-  /* Hardware acceleration for all animated elements */
-  .quantum-card,
-  .gradient-text,
-  .consciousness-expand,
-  .reality-bend,
-  .quantum-float,
-  .scroll-animate {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
+  /* Hardware acceleration for select elements only */
+  @media (min-width: 769px) {
+    .quantum-card,
+    .scroll-animate {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
   }
 
   /* Gradient text effects */
@@ -594,34 +593,21 @@
     transition: transform 0.1s ease;
   }
 
-  /* Responsive quantum effects */
-  @media (max-width: 768px) {
-    .quantum-float {
-      animation-duration: 4s;
+  /* Performance optimizations - only when needed */
+  @media (min-width: 769px) {
+    .will-change-transform {
+      will-change: transform;
     }
-    
-    .consciousness-expand {
-      animation-duration: 6s;
+
+    .will-change-opacity {
+      will-change: opacity;
     }
-    
-    .reality-bend {
-      animation: none;
+
+    .gpu-accelerated {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000;
     }
-  }
-
-  /* Performance optimizations */
-  .will-change-transform {
-    will-change: transform;
-  }
-
-  .will-change-opacity {
-    will-change: opacity;
-  }
-
-  .gpu-accelerated {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
   }
 
   /* Masonry and Cascading Effects */
