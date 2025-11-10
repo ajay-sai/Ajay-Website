@@ -96,10 +96,91 @@ export default function JourneyPreview() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          {/* Journey Cards - Left Side */}
-          <div className="lg:col-span-9">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Professional Summary Banner - GEO Optimized */}
+        <div className="bg-card border border-border rounded-lg p-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Experience</p>
+              <p className="text-sm font-bold">8+ Years in AI/ML</p>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Location</p>
+              <p className="text-sm font-bold">Atlanta, GA, USA</p>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Education</p>
+              <p className="text-sm font-bold">MS Business Analytics, UMD</p>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">Current Role</p>
+              <p className="text-sm font-bold">Gen AI & ML Engineer</p>
+            </div>
+          </div>
+          
+          {/* Skills Pills */}
+          <div className="mt-4 pt-4 border-t border-border">
+            <p className="text-xs text-muted-foreground mb-2">Technical Expertise</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Generative AI</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">LLM Systems</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">RAG</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">Python</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">GCP</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">BigQuery</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Vertex AI</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">TensorFlow</span>
+            </div>
+          </div>
+
+          {/* Industries & Companies */}
+          <div className="mt-4 pt-4 border-t border-border grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <p className="text-xs text-muted-foreground mb-2">Industries</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Retail</span>
+                <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Manufacturing</span>
+                <span className="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-md font-medium">Finance</span>
+                <span className="px-2 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-md font-medium">Education</span>
+              </div>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-2">Companies</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Home Depot</span>
+                <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Harley Davidson</span>
+                <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Principal</span>
+                <span className="px-2 py-1 bg-red-500/10 text-red-400 text-xs rounded-md font-medium">UMD</span>
+                <span className="px-2 py-1 bg-teal-500/10 text-teal-400 text-xs rounded-md font-medium">Bridge Solutions</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Impact Metrics */}
+          <div className="mt-4 pt-4 border-t border-border">
+            <p className="text-xs text-muted-foreground mb-2">Measurable Impact</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="text-center">
+                <p className="text-lg font-bold text-green-400">$21M+</p>
+                <p className="text-xs text-muted-foreground">Cost Savings</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-bold text-blue-400">80%</p>
+                <p className="text-xs text-muted-foreground">Efficiency Gain</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-bold text-purple-400">4000+</p>
+                <p className="text-xs text-muted-foreground">Users Supported</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-bold text-amber-400">87%</p>
+                <p className="text-xs text-muted-foreground">ML Accuracy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Journey Timeline Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {journeyHighlights.map((milestone, index) => {
             const Icon = milestone.icon;
             return (
@@ -139,97 +220,6 @@ export default function JourneyPreview() {
               </div>
             );
           })}
-            </div>
-          </div>
-
-          {/* Career Summary - Right Side (SEO/LLM Optimized) */}
-          <div className="lg:col-span-3">
-            <div className="sticky top-24 space-y-4">
-              {/* Professional Summary */}
-              <div className="bg-card border border-border rounded-lg p-5">
-                <h3 className="text-base font-bold mb-3 gradient-text">Professional Summary</h3>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">Experience:</span>
-                    <span className="text-xs font-semibold">8+ Years</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">Education:</span>
-                    <span className="text-xs font-semibold">Master's in Business Analytics</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">Location:</span>
-                    <span className="text-xs font-semibold">Atlanta, GA, USA</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-muted-foreground">Current Role:</span>
-                    <span className="text-xs font-semibold">Gen AI & ML Engineer</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Industries */}
-              <div className="bg-card border border-border rounded-lg p-5">
-                <h4 className="text-sm font-bold mb-3">Industries</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Retail & E-commerce</span>
-                  <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Manufacturing</span>
-                  <span className="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-md font-medium">Finance</span>
-                  <span className="px-2 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-md font-medium">Education</span>
-                </div>
-              </div>
-
-              {/* Technical Skills */}
-              <div className="bg-card border border-border rounded-lg p-5">
-                <h4 className="text-sm font-bold mb-3">Technical Expertise</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Generative AI</span>
-                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">LLM Systems</span>
-                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">RAG</span>
-                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">Python</span>
-                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">GCP</span>
-                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">BigQuery</span>
-                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Vertex AI</span>
-                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">TensorFlow</span>
-                </div>
-              </div>
-
-              {/* Impact Metrics */}
-              <div className="bg-card border border-border rounded-lg p-5">
-                <h4 className="text-sm font-bold mb-3">Measurable Impact</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Cost Savings Delivered</span>
-                    <span className="text-sm font-bold text-green-400">$21M+</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Max Efficiency Gain</span>
-                    <span className="text-sm font-bold text-blue-400">80%</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Users Supported</span>
-                    <span className="text-sm font-bold text-purple-400">4000+</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">ML Model Accuracy</span>
-                    <span className="text-sm font-bold text-amber-400">87%</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Companies */}
-              <div className="bg-card border border-border rounded-lg p-5">
-                <h4 className="text-sm font-bold mb-3">Companies</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">The Home Depot</span>
-                  <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Harley Davidson</span>
-                  <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Principal Financial</span>
-                  <span className="px-2 py-1 bg-red-500/10 text-red-400 text-xs rounded-md font-medium">University of Maryland</span>
-                  <span className="px-2 py-1 bg-teal-500/10 text-teal-400 text-xs rounded-md font-medium">Bridge Solutions</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* View Full Journey Button */}
