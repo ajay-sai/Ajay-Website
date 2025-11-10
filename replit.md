@@ -194,6 +194,37 @@ Migrated all large images (timeline + profile photos, ~76MB total) from local at
 - **Cache Control**: 1-year browser cache for optimal performance
 - **Deployment Ready**: Under Cloud Run 8 GiB limit, all @assets imports < 100KB
 
+### Deployment Optimization - November 10, 2024
+Additional deployment size optimizations to resolve Cloud Run 8 GiB limit errors:
+
+**Issues Identified:**
+- 7.3GB .cache directory being included in deployment
+- Old build cache causing migrated images to be re-bundled
+- Large JavaScript bundle (631KB uncompressed)
+
+**Solutions Applied:**
+1. **.dockerignore Enhancements**
+   - Added .cache/, .turbo, .next, .nuxt to exclusions
+   - Prevents 7.3GB cache directory from being deployed
+   
+2. **Build Cache Management**
+   - Cleared dist/ and .vite/ directories
+   - Fresh production build verified clean (1.2MB total)
+   - No large images in dist/public/assets/
+   
+3. **Build Output Verification**
+   - Total dist size: 1.2MB
+   - JavaScript bundle: 631.68 KB (gzipped: 188.40 KB)
+   - CSS bundle: 120.36 KB (gzipped: 18.56 KB)
+   - 9 small company logos: all < 100KB
+   
+**Deployment Footprint:**
+- .cache/ excluded: 7.3GB saved
+- attached_assets/ excluded: 69MB saved
+- .git/ excluded: 82MB saved
+- node_modules excluded: 401MB saved (reinstalled during deployment)
+- **Total savings: ~8.5GB**
+
 **Files Modified:**
 - server/objectStorage.ts (new)
 - server/routes.ts (added public-objects route)

@@ -51,6 +51,12 @@ dist
 .vite
 *.local
 
+# Cache directories (can be 7+ GB)
+.cache
+.turbo
+.next
+.nuxt
+
 # Python cache (if any)
 __pycache__
 *.py[cod]
