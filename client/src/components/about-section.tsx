@@ -1,4 +1,5 @@
-import ajayPhoto from "@assets/20240420_202714_1762722420285.jpg";
+// Profile photo served from Object Storage for optimized deployment
+const ajayPhoto = "/public-objects/profile/20240420_202714_1762722420285.jpg";
 
 export default function AboutSection() {
   return (
