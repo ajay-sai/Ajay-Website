@@ -114,15 +114,6 @@ export default function JourneyPreview() {
                   </div>
                 </div>
 
-                {/* Icon */}
-                <div className="mb-3 flex items-center">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${milestone.gradient} p-0.5 flex-shrink-0`}>
-                    <div className="w-full h-full bg-card rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                </div>
-
                 {/* Content */}
                 <div>
                   <h3 className="text-sm font-bold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
@@ -160,64 +151,88 @@ export default function JourneyPreview() {
 
           {/* Career Summary - Right Side (SEO/LLM Optimized) */}
           <div className="lg:col-span-3">
-            <div className="sticky top-24 bg-card border border-border rounded-lg p-6 space-y-6">
-              <div>
-                <h3 className="text-lg font-bold mb-4 gradient-text">Career Highlights</h3>
-                
-                {/* Key Stats - Structured for LLMs */}
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">8+ Years Experience</p>
-                      <p className="text-xs text-muted-foreground">Data Science & AI Engineering</p>
-                    </div>
+            <div className="sticky top-24 space-y-4">
+              {/* Professional Summary */}
+              <div className="bg-card border border-border rounded-lg p-5">
+                <h3 className="text-base font-bold mb-3 gradient-text">Professional Summary</h3>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground">Experience:</span>
+                    <span className="text-xs font-semibold">8+ Years</span>
                   </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">5 Companies</p>
-                      <p className="text-xs text-muted-foreground">Fortune 500 & Startups</p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground">Education:</span>
+                    <span className="text-xs font-semibold">Master's in Business Analytics</span>
                   </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">Master's Degree</p>
-                      <p className="text-xs text-muted-foreground">Business Analytics, UMD</p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground">Location:</span>
+                    <span className="text-xs font-semibold">Atlanta, GA, USA</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground">Current Role:</span>
+                    <span className="text-xs font-semibold">Gen AI & ML Engineer</span>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t border-border pt-4">
-                <h4 className="text-sm font-bold mb-3">Core Expertise</h4>
+              {/* Industries */}
+              <div className="bg-card border border-border rounded-lg p-5">
+                <h4 className="text-sm font-bold mb-3">Industries</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Retail & E-commerce</span>
+                  <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Manufacturing</span>
+                  <span className="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-md font-medium">Finance</span>
+                  <span className="px-2 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-md font-medium">Education</span>
+                </div>
+              </div>
+
+              {/* Technical Skills */}
+              <div className="bg-card border border-border rounded-lg p-5">
+                <h4 className="text-sm font-bold mb-3">Technical Expertise</h4>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Generative AI</span>
                   <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">LLM Systems</span>
                   <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">RAG</span>
-                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">ML Engineering</span>
-                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Data Analytics</span>
+                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">Python</span>
+                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">GCP</span>
+                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">BigQuery</span>
+                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Vertex AI</span>
+                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">TensorFlow</span>
                 </div>
               </div>
 
-              <div className="border-t border-border pt-4">
-                <h4 className="text-sm font-bold mb-3">Impact Metrics</h4>
+              {/* Impact Metrics */}
+              <div className="bg-card border border-border rounded-lg p-5">
+                <h4 className="text-sm font-bold mb-3">Measurable Impact</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Cost Savings</span>
+                    <span className="text-xs text-muted-foreground">Cost Savings Delivered</span>
                     <span className="text-sm font-bold text-green-400">$21M+</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Efficiency Gains</span>
-                    <span className="text-sm font-bold text-blue-400">80%+</span>
+                    <span className="text-xs text-muted-foreground">Max Efficiency Gain</span>
+                    <span className="text-sm font-bold text-blue-400">80%</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-muted-foreground">Users Impacted</span>
+                    <span className="text-xs text-muted-foreground">Users Supported</span>
                     <span className="text-sm font-bold text-purple-400">4000+</span>
                   </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-muted-foreground">ML Model Accuracy</span>
+                    <span className="text-sm font-bold text-amber-400">87%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Companies */}
+              <div className="bg-card border border-border rounded-lg p-5">
+                <h4 className="text-sm font-bold mb-3">Companies</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">The Home Depot</span>
+                  <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Harley Davidson</span>
+                  <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Principal Financial</span>
+                  <span className="px-2 py-1 bg-red-500/10 text-red-400 text-xs rounded-md font-medium">University of Maryland</span>
+                  <span className="px-2 py-1 bg-teal-500/10 text-teal-400 text-xs rounded-md font-medium">Bridge Solutions</span>
                 </div>
               </div>
             </div>
