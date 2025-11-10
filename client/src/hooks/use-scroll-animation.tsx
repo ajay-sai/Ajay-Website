@@ -17,12 +17,11 @@ export function useScrollAnimation() {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+          // Only animate once - add animate-in and never remove it
           entry.target.classList.add('animate-in');
-          entry.target.classList.remove('animate-out');
-        } else {
-          entry.target.classList.remove('animate-in');
-          entry.target.classList.add('animate-out');
+          // Stop observing this element since it's already animated
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
