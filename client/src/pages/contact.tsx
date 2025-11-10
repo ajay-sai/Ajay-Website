@@ -8,7 +8,7 @@ import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
 import PageBreadcrumb from "@/components/page-breadcrumb";
-import { personSchema, breadcrumbSchema } from "@/components/seo/schemas";
+import { personSchema, breadcrumbSchema, webPageSchema } from "@/components/seo/schemas";
 
 export default function Contact() {
   useScrollAnimation();
@@ -32,6 +32,12 @@ export default function Contact() {
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
+            webPageSchema({
+              name: "Schedule Meeting with Ajay Miryala",
+              description: "Schedule a meeting to discuss AI projects, collaboration opportunities, or consulting services",
+              url: `${window.location.origin}/contact`,
+              dateModified: "2025-11-10"
+            }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
               { name: "Schedule Meeting", url: `${window.location.origin}/contact` }

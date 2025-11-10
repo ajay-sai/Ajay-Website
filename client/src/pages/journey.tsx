@@ -8,7 +8,7 @@ import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
 import PageBreadcrumb from "@/components/page-breadcrumb";
-import { personSchema, breadcrumbSchema } from "@/components/seo/schemas";
+import { personSchema, breadcrumbSchema, webPageSchema } from "@/components/seo/schemas";
 
 export default function Journey() {
   useScrollAnimation();
@@ -32,6 +32,12 @@ export default function Journey() {
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
+            webPageSchema({
+              name: "Professional Journey - Ajay Miryala",
+              description: "Career timeline from student to Generative AI and ML Engineer, featuring roles at The Home Depot, Harley Davidson, Principal Financial",
+              url: `${window.location.origin}/journey`,
+              dateModified: "2025-11-10"
+            }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
               { name: "Journey", url: `${window.location.origin}/journey` }
