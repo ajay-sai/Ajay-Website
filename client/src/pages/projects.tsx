@@ -8,7 +8,7 @@ import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
 import PageBreadcrumb from "@/components/page-breadcrumb";
-import { personSchema, breadcrumbSchema, createProjectSchema } from "@/components/seo/schemas";
+import { personSchema, breadcrumbSchema, webPageSchema, createProjectSchema } from "@/components/seo/schemas";
 import type { Project, ProjectListItem } from "@shared/schema";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -61,6 +61,12 @@ export default function Projects() {
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
+            webPageSchema({
+              name: "AI Projects & Case Studies - Ajay Miryala",
+              description: "Detailed case studies and technical deep-dives into production AI projects including Neo4j RAG systems and LLM orchestration platforms",
+              url: `${window.location.origin}/projects`,
+              dateModified: "2025-11-10"
+            }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
               { name: "Projects", url: `${window.location.origin}/projects` }

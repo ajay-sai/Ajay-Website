@@ -13,7 +13,7 @@ import FAQSection from "@/components/faq-section";
 import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
-import { personSchema, breadcrumbSchema, faqSchema, organizationSchemas, workExperienceSchemas } from "@/components/seo/schemas";
+import { personSchema, breadcrumbSchema, faqSchema, webPageSchema, organizationSchemas, workExperienceSchemas } from "@/components/seo/schemas";
 import { faqData } from "@/data/faq-data";
 
 export default function Home() {
@@ -37,6 +37,12 @@ export default function Home() {
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
+            webPageSchema({
+              name: "Ajay Miryala - Generative AI and ML Engineer",
+              description: "Professional portfolio showcasing expertise in Generative AI, LLM systems, RAG architectures, and production machine learning",
+              url: window.location.origin,
+              dateModified: "2025-11-10"
+            }),
             ...organizationSchemas,
             ...workExperienceSchemas,
             breadcrumbSchema([

@@ -149,6 +149,42 @@ export const faqSchema = (faqs: Array<{ question: string; answer: string }>) => 
   }))
 });
 
+export const webPageSchema = (page: {
+  name: string;
+  description: string;
+  url: string;
+  dateModified?: string;
+  breadcrumb?: Array<{ name: string; url: string }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": page.name,
+  "description": page.description,
+  "url": page.url,
+  "inLanguage": "en-US",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Ajay Miryala - AI & ML Portfolio",
+    "url": "https://ajaymiryala.com"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Ajay Miryala",
+    "jobTitle": "Generative AI and ML Engineer",
+    "url": "https://ajaymiryala.com"
+  },
+  "dateModified": page.dateModified || new Date().toISOString().split('T')[0],
+  "breadcrumb": page.breadcrumb ? {
+    "@type": "BreadcrumbList",
+    "itemListElement": page.breadcrumb.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  } : undefined
+});
+
 // Organization schemas for employment history
 export const organizationSchemas = [
   {
