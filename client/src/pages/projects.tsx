@@ -7,6 +7,7 @@ import Navigation from "@/components/navigation";
 import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
+import PageBreadcrumb from "@/components/page-breadcrumb";
 import { personSchema, breadcrumbSchema, createProjectSchema } from "@/components/seo/schemas";
 import type { Project, ProjectListItem } from "@shared/schema";
 import ReactMarkdown from "react-markdown";
@@ -81,6 +82,10 @@ export default function Projects() {
         
         <main className="relative z-10 pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-8">
+              <PageBreadcrumb items={[{ label: "Projects & Case Studies" }]} />
+            </div>
+            
             {/* Header */}
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
