@@ -50,6 +50,7 @@ attached_assets/
 dist
 .vite
 *.local
+.local
 
 # Cache directories (can be 7+ GB)
 .cache
@@ -57,11 +58,12 @@ dist
 .next
 .nuxt
 
-# Python cache (if any)
+# Python cache and libraries
 __pycache__
 *.py[cod]
 *$py.class
 *.pyc
+.pythonlibs
 
 # Logs
 logs
@@ -73,6 +75,8 @@ temp
 *.tmp
 *.swp
 *.bak
+*.tar.gz
+*.zip
 
 # OS files
 Thumbs.db
