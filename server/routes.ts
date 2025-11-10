@@ -1,10 +1,11 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertProjectSchema } from "@shared/schema";
+import { insertProjectSchema, contactFormSchema } from "@shared/schema";
 import { seedProjects } from "./seed";
 import path from "path";
 import { ObjectStorageService } from "./objectStorage";
+import { Resend } from "resend";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Seed projects on startup
@@ -127,6 +128,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error('Error searching for public object:', error);
       return res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+  // Contact form endpoint - send email notification
+  app.post('/api/contact', async (req, res) => {
+    try {
+      const validatedData = contactFormSchema.parse(req.body);
+      
+      const resendApiKey = process.env.RESEND_API_KEY;
+      if (!resendApiKey) {
+        console.error('RESEND_API_KEY is not configured');
+        return res.status(500).json({ 
+          message: 'Email service is not configured. Please contact the administrator.' 
+        });
+      }
+
+      const resend = new Resend(resendApiKey);
+      
+      await resend.emails.send({
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: 'sai.ajaysai@gmail.com',
+        replyTo: validatedData.email,
+        subject: `Portfolio Contact: ${validatedData.name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>From:</strong> ${validatedData.name}</p>
+          <p><strong>Email:</strong> ${validatedData.email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${validatedData.message.replace(/\n/g, '<br>')}</p>
+        `,
+        text: `
+New Contact Form Submission
+
+From: ${validatedData.name}
+Email: ${validatedData.email}
+
+Message:
+${validatedData.message}
+        `
+      });
+
+      res.status(200).json({ 
+        message: 'Message sent successfully' 
+      });
+    } catch (error) {
+      console.error('Error sending contact email:', error);
+      
+      if (error instanceof Error && 'name' in error && error.name === 'ZodError') {
+        return res.status(400).json({ 
+          message: 'Invalid form data',
+          errors: error 
+        });
+      }
+      
+      res.status(500).json({ 
+        message: 'Failed to send message. Please try again or email directly.' 
+      });
     }
   });
 
