@@ -1,14 +1,10 @@
 import { useEffect, useRef } from "react";
-import { useMotionProfile } from "@/hooks/use-motion-profile";
 
 export default function QuantumBackground() {
-  const { shouldReduceMotion } = useMotionProfile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
 
   useEffect(() => {
-    if (shouldReduceMotion) return;
-    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -89,19 +85,7 @@ export default function QuantumBackground() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [shouldReduceMotion]);
-
-  if (shouldReduceMotion) {
-    return (
-      <div 
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)',
-          opacity: 0.4
-        }}
-      />
-    );
-  }
+  }, []);
 
   return (
     <canvas
