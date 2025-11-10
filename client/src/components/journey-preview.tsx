@@ -48,7 +48,7 @@ const journeyHighlights = [
     title: "Data Scientist",
     company: "Principal Financial",
     dateRange: "Aug 2019 - Dec 2019",
-    type: "Full-time",
+    type: "Internship",
     icon: Code,
     gradient: "from-indigo-500 to-purple-500",
     keyMetric: "78% ML accuracy",
@@ -96,7 +96,10 @@ export default function JourneyPreview() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          {/* Journey Cards - Left Side */}
+          <div className="lg:col-span-9">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {journeyHighlights.map((milestone, index) => {
             const Icon = milestone.icon;
             return (
@@ -128,16 +131,16 @@ export default function JourneyPreview() {
                   <p className="text-xs text-primary font-semibold mb-1">{milestone.company}</p>
                   
                   {/* Type & Date Range */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`inline-block px-2 py-0.5 text-xs font-semibold rounded ${
-                      milestone.type === 'Full-time' 
-                        ? 'bg-green-500/20 text-green-400' 
-                        : milestone.type === 'Internship'
-                        ? 'bg-blue-500/20 text-blue-400'
-                        : 'bg-amber-500/20 text-amber-400'
-                    }`}>
-                      {milestone.type}
-                    </span>
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    {milestone.type !== 'Full-time' && (
+                      <span className={`inline-block px-2 py-0.5 text-xs font-semibold rounded ${
+                        milestone.type === 'Internship'
+                          ? 'bg-blue-500/20 text-blue-400'
+                          : 'bg-amber-500/20 text-amber-400'
+                      }`}>
+                        {milestone.type}
+                      </span>
+                    )}
                     <p className="text-xs text-muted-foreground">{milestone.dateRange}</p>
                   </div>
                   
@@ -152,6 +155,73 @@ export default function JourneyPreview() {
               </div>
             );
           })}
+            </div>
+          </div>
+
+          {/* Career Summary - Right Side (SEO/LLM Optimized) */}
+          <div className="lg:col-span-3">
+            <div className="sticky top-24 bg-card border border-border rounded-lg p-6 space-y-6">
+              <div>
+                <h3 className="text-lg font-bold mb-4 gradient-text">Career Highlights</h3>
+                
+                {/* Key Stats - Structured for LLMs */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">8+ Years Experience</p>
+                      <p className="text-xs text-muted-foreground">Data Science & AI Engineering</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">5 Companies</p>
+                      <p className="text-xs text-muted-foreground">Fortune 500 & Startups</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">Master's Degree</p>
+                      <p className="text-xs text-muted-foreground">Business Analytics, UMD</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-border pt-4">
+                <h4 className="text-sm font-bold mb-3">Core Expertise</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Generative AI</span>
+                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">LLM Systems</span>
+                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">RAG</span>
+                  <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">ML Engineering</span>
+                  <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Data Analytics</span>
+                </div>
+              </div>
+
+              <div className="border-t border-border pt-4">
+                <h4 className="text-sm font-bold mb-3">Impact Metrics</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-muted-foreground">Cost Savings</span>
+                    <span className="text-sm font-bold text-green-400">$21M+</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-muted-foreground">Efficiency Gains</span>
+                    <span className="text-sm font-bold text-blue-400">80%+</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-muted-foreground">Users Impacted</span>
+                    <span className="text-sm font-bold text-purple-400">4000+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* View Full Journey Button */}
