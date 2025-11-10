@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Linkedin, Github, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import ajayPhoto from "@assets/image_1756764365127.png";
+
+// Profile photo served from Object Storage for optimized deployment
+const ajayPhoto = "/public-objects/profile/image_1756764365127.png";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
