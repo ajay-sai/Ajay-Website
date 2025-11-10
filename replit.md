@@ -3,7 +3,7 @@
 ## Overview
 This is a modern, professional portfolio website for Ajay Miryala, a Generative AI and ML Engineer with a Master of Science in Business Statistics from the University of Maryland. The application is a full-stack web application built with React for the frontend and Express.js for the backend, using PostgreSQL as the database (managed through Drizzle ORM). The website showcases Ajay's skills, projects, and expertise in generative AI, LLM systems, RAG architectures, and production ML through an immersive, visually stunning interface with quantum-themed animations and effects. Its purpose is to present a professional online presence, highlight capabilities, and provide an engaging user experience for potential employers or collaborators. The site features a clean multi-page navigation structure with dedicated pages for Home, Professional Journey, Projects & Case Studies, and Schedule Meeting (Contact).
 
-**Latest Update (Nov 10, 2024):** Object Storage migration completed - all 34 timeline images now served from Replit Object Storage for optimized deployment. Deployment build size reduced by 70MB by excluding attached_assets directory.
+**Latest Update (Nov 10, 2024):** Object Storage migration completed - all large images (timeline + profile photos) now served from Replit Object Storage. Deployment build size reduced by ~76MB. Asset policy established: @assets for logos only (<200KB), Object Storage for photos (>200KB).
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
@@ -151,7 +151,7 @@ Completed comprehensive work experience data extraction and Schema.org complianc
 - No console errors, all pages functional
 
 ### Object Storage Migration - November 10, 2024
-Migrated 34 timeline images (70MB) from local attached_assets to Replit Object Storage for deployment optimization:
+Migrated all large images (timeline + profile photos, ~76MB total) from local attached_assets to Replit Object Storage for deployment optimization:
 
 **Implementation:**
 1. **Object Storage Setup**
@@ -165,22 +165,26 @@ Migrated 34 timeline images (70MB) from local attached_assets to Replit Object S
    - Implemented searchPublicObject() and downloadObject() methods
    - Set cache headers: `public, max-age=3600` for optimal CDN caching
 
-3. **Image Upload** (scripts/upload-timeline-images.ts, scripts/upload-harley-images.ts)
-   - Created automated upload scripts for all 34 timeline images
-   - Uploaded to `public/timeline/` directory in Object Storage bucket
+3. **Image Upload** (scripts/upload-timeline-images.ts, scripts/upload-harley-images.ts, scripts/upload-hero-about-images.ts)
+   - Created automated upload scripts for all images
+   - Timeline images: 34 files uploaded to `public/timeline/` (~70MB)
+   - Profile photos: 2 files uploaded to `public/profile/` (~6.4MB)
    - Set appropriate content types (image/jpeg, image/png) and cache control
-   - All 34 images successfully uploaded with 100% success rate
+   - All 36 images successfully uploaded with 100% success rate
 
-4. **Frontend Updates** (client/src/components/parallax-timeline.tsx)
-   - Updated all workplace image paths from `/attached_assets/` to `/public-objects/timeline/`
-   - Company logos remain as @assets imports (small files needed at build time)
-   - Preserved all 34 image references across 11 timeline events
+4. **Frontend Updates** 
+   - **parallax-timeline.tsx**: Updated all workplace image paths to `/public-objects/timeline/`
+   - **about-section.tsx**: Migrated 6.3MB profile photo to `/public-objects/profile/`
+   - **hero-section.tsx**: Migrated profile photo to `/public-objects/profile/`
+   - Company logos remain as @assets imports (small files <200KB, needed at build time)
    - No functional changes to component logic or animations
 
-5. **Deployment Optimization** (.dockerignore)
+5. **Deployment Optimization** (.dockerignore, ASSET_POLICY.md)
    - Added attached_assets/ to .dockerignore
-   - Reduced deployment build size by 70MB
+   - Established asset policy: @assets for logos only (<200KB), Object Storage for photos (>200KB)
+   - Reduced deployment build size by ~76MB (70MB timeline + 6.4MB profile photos)
    - Images now served from cloud storage with CDN caching
+   - Documented asset management strategy in ASSET_POLICY.md
 
 **Benefits:**
 - **Build Size**: Reduced by 70MB (attached_assets excluded from deployment)
