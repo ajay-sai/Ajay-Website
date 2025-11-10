@@ -2,7 +2,12 @@ import ajayPhoto from "@assets/20240420_202714_1762722420285.jpg";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="pt-4 pb-12 bg-secondary/30 relative overflow-hidden">
+    <section 
+      id="about" 
+      className="pt-4 pb-12 bg-secondary/30 relative overflow-hidden"
+      itemScope
+      itemType="https://schema.org/Person"
+    >
       
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         <div className="text-center mb-16">
@@ -11,35 +16,38 @@ export default function AboutSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+          {/* Hidden schema data */}
+          <meta itemProp="name" content="Ajay Miryala" />
+          <meta itemProp="jobTitle" content="Generative AI and ML Engineer" />
           {/* Content */}
-          <div className="space-y-6">
+          <div className="space-y-6" itemProp="description">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Most AI demos look impressive. Most AI in production doesn't work. I bridge that gap.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              For the past 8 years, I've been building the infrastructure that makes Generative AI actually useful—transforming 
+              For the past <data value="8">8 years</data>, I've been building the infrastructure that makes Generative AI actually useful—transforming 
               research papers and prototype models into systems that handle millions of real-world queries, scale across enterprise 
               environments, and deliver returns measured in millions, not metrics.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              At The Home Depot, I architect the AI systems powering business decisions: LLM orchestration platforms that parse 
-              contracts and generate insights, Knowledge-Graph RAG assistants serving 200+ analysts, and multi-modal pipelines 
-              that cut manual work by 60% while targeting $20M in optimization opportunities. Before that, I built data ecosystems 
-              at Harley Davidson, predictive models at Principal Financial, and marketing intelligence systems that turned 
-              $300 into $3,100.
+              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">The Home Depot</span></span>, I architect the AI systems powering business decisions: LLM orchestration platforms that parse 
+              contracts and generate insights, Knowledge-Graph RAG assistants serving <data value="200">200+ analysts</data>, and multi-modal pipelines 
+              that cut manual work by <data value="60">60%</data> while targeting <data value="20000000">$20M</data> in optimization opportunities. Before that, I built data ecosystems 
+              at <span itemProp="alumniOf" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Harley Davidson</span></span>, predictive models at <span itemProp="alumniOf" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Principal Financial</span></span>, and marketing intelligence systems that turned 
+              <data value="300">$300</data> into <data value="3100">$3,100</data>.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
               What sets my work apart? I don't just implement models—I engineer end-to-end solutions. From ETL pipelines and data 
               architecture (BigQuery, GCP) to RAG systems and LLM evaluation frameworks, I build the full stack that makes AI 
-              production-ready. GPT-4, Gemini, Vision Transformers, Neo4j—I've deployed them all, not in notebooks, but in systems 
+              production-ready. <span itemProp="knowsAbout">GPT-4</span>, <span itemProp="knowsAbout">Gemini</span>, <span itemProp="knowsAbout">Vision Transformers</span>, <span itemProp="knowsAbout">Neo4j</span>—I've deployed them all, not in notebooks, but in systems 
               serving thousands of users daily.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Based in Atlanta with a Master's in Business Statistics from University of Maryland, I've worked across retail, 
+              Based in <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Atlanta</span></span> with a <span itemProp="alumniOf" itemScope itemType="https://schema.org/EducationalOrganization"><span itemProp="name">Master's in Business Statistics from University of Maryland</span></span>, I've worked across retail, 
               manufacturing, finance, and education. This cross-industry perspective taught me something critical: the best AI 
               solutions aren't the most sophisticated—they're the ones that solve real problems for real people, reliably, at scale.
             </p>
@@ -52,6 +60,7 @@ export default function AboutSection() {
                 src={ajayPhoto}
                 alt="Ajay Miryala - Generative AI and ML Engineer"
                 className="rounded-2xl shadow-2xl w-full h-auto"
+                itemProp="image"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl"></div>
             </div>
@@ -64,19 +73,25 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             <div>
               <p className="text-xs text-muted-foreground mb-1">Experience</p>
-              <p className="text-sm font-bold">8+ Years in AI/ML</p>
+              <p className="text-sm font-bold">
+                <data value="8">8+</data> Years in AI/ML
+              </p>
             </div>
-            <div>
+            <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
               <p className="text-xs text-muted-foreground mb-1">Location</p>
-              <p className="text-sm font-bold">Atlanta, GA, USA</p>
+              <p className="text-sm font-bold">
+                <span itemProp="addressLocality">Atlanta</span>, <span itemProp="addressRegion">GA</span>, <span itemProp="addressCountry">USA</span>
+              </p>
             </div>
-            <div>
+            <div itemProp="alumniOf" itemScope itemType="https://schema.org/EducationalOrganization">
               <p className="text-xs text-muted-foreground mb-1">Education</p>
-              <p className="text-sm font-bold">MS Business Statistics, UMD</p>
+              <p className="text-sm font-bold">
+                <span itemProp="name">MS Business Statistics, UMD</span>
+              </p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Current Role</p>
-              <p className="text-sm font-bold">Gen AI & ML Engineer</p>
+              <p className="text-sm font-bold" itemProp="jobTitle">Gen AI & ML Engineer</p>
             </div>
           </div>
           
@@ -84,14 +99,14 @@ export default function AboutSection() {
           <div className="mb-6 pb-6 border-b border-border">
             <p className="text-xs text-muted-foreground mb-3 font-semibold">Technical Expertise</p>
             <div className="flex flex-wrap gap-2">
-              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Generative AI</span>
-              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">LLM Systems</span>
-              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">RAG</span>
-              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">Python</span>
-              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">GCP</span>
-              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">BigQuery</span>
-              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium">Vertex AI</span>
-              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium">TensorFlow</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium" itemProp="knowsAbout">Generative AI</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium" itemProp="knowsAbout">LLM Systems</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium" itemProp="knowsAbout">RAG</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium" itemProp="knowsAbout">Python</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium" itemProp="knowsAbout">GCP</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium" itemProp="knowsAbout">BigQuery</span>
+              <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md font-medium" itemProp="knowsAbout">Vertex AI</span>
+              <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-md font-medium" itemProp="knowsAbout">TensorFlow</span>
             </div>
           </div>
 
@@ -119,10 +134,10 @@ export default function AboutSection() {
           </div>
 
           {/* Impact Metrics */}
-          <div>
+          <div itemProp="awards">
             <p className="text-xs text-muted-foreground mb-3 font-semibold">Measurable Impact</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-3 bg-secondary/30 rounded-lg">
+              <div className="text-center p-3 bg-secondary/30 rounded-lg" itemProp="award">
                 <p className="text-2xl font-bold text-green-400">$21M+</p>
                 <p className="text-xs text-muted-foreground mt-1">Cost Savings</p>
               </div>

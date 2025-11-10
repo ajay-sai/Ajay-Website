@@ -51,10 +51,28 @@ export default function SEOHead({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage || defaultImage} />
       
+      {/* Language and Geo Meta Tags */}
+      <meta httpEquiv="content-language" content="en-US" />
+      <meta name="language" content="English" />
+      <meta name="geo.region" content="US-GA" />
+      <meta name="geo.placename" content="Atlanta" />
+      <meta name="geo.position" content="33.7490;-84.3880" />
+      <meta name="ICBM" content="33.7490, -84.3880" />
+      
+      {/* Target Audience and Coverage */}
+      <meta name="coverage" content="Worldwide" />
+      <meta name="distribution" content="Global" />
+      <meta name="target" content="all" />
+      <meta name="audience" content="AI Engineers, ML Engineers, Data Scientists, Tech Recruiters, Engineering Managers" />
+      <meta name="subject" content="Generative AI, Machine Learning, LLM Systems, Production AI" />
+      
       {/* Additional Meta Tags for AI/Search Engines */}
       <meta name="author" content="Ajay Miryala" />
+      <meta name="copyright" content="© 2024 Ajay Miryala" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="googlebot" content="index, follow" />
+      <meta name="rating" content="General" />
+      <meta name="revisit-after" content="7 days" />
       
       {/* JSON-LD Structured Data for AI Search Engines */}
       {schema && (

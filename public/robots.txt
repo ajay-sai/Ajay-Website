@@ -1,0 +1,39 @@
+# Robots.txt - AI Crawler Optimization
+# Website: Ajay Miryala - Generative AI and ML Engineer
+# Updated: 2024-11-10
+
+# Allow all AI crawlers and search engines
+User-agent: *
+Allow: /
+
+# AI-specific bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://ajaymiryala.com/sitemap.xml
+
+# Crawl-delay for courtesy (optional)
+Crawl-delay: 1

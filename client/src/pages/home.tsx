@@ -8,10 +8,13 @@ import AboutSection from "@/components/about-section";
 import JourneyPreview from "@/components/journey-preview";
 import SkillsSection from "@/components/skills-section";
 import ProjectsSection from "@/components/projects-section";
+import ServicesSection from "@/components/services-section";
+import FAQSection from "@/components/faq-section";
 import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
-import { personSchema, breadcrumbSchema } from "@/components/seo/schemas";
+import { personSchema, breadcrumbSchema, faqSchema, organizationSchemas, workExperienceSchemas } from "@/components/seo/schemas";
+import { faqData } from "@/data/faq-data";
 
 export default function Home() {
   useCursorEffects();
@@ -34,9 +37,12 @@ export default function Home() {
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
+            ...organizationSchemas,
+            ...workExperienceSchemas,
             breadcrumbSchema([
               { name: "Home", url: window.location.origin }
-            ])
+            ]),
+            faqSchema(faqData)
           ]
         }}
       />
@@ -52,6 +58,8 @@ export default function Home() {
           <JourneyPreview />
           <SkillsSection />
           <ProjectsSection />
+          <ServicesSection />
+          <FAQSection />
           
           {/* CTA Section */}
           <section className="py-16 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 relative overflow-hidden">
