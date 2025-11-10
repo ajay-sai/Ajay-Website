@@ -23,81 +23,50 @@ import srmUniversityLogo from "@assets/image_1756791288961.png";
 import stJosephsLogo from "@assets/image_1756791337929.png";
 import stonedSantaLogo from "@assets/image_1756792379931.png";
 import homeDepotStoreLogo from "@assets/image_1756791876151.png";
-// Workplace images for Home Depot
-const homeDepotImage1 =
-  "/attached_assets/20250515_110951(0) (1)_1756775594777.jpg";
-const homeDepotImage2 = "/attached_assets/IMG_2329-EDIT_1756777352943.jpg"; // Updated image
-const homeDepotImage3 = "/attached_assets/20241023_132525_1756776021189.jpg"; // Moved from Senior Data Scientist
 
-// Data Scientist images
-const dataScientistImage1 =
-  "/attached_assets/20240427_120651_1756788379977.jpg";
-const dataScientistImage2 =
-  "/attached_assets/IMG_20180811_194748_1756789697281.jpg";
-const dataScientistImage3 =
-  "/attached_assets/IMG-20191110-WA0025_1756789697282.jpg";
-const dataScientistImage4 =
-  "/attached_assets/Screenshot_20180831-101808__01_1756789720602.jpg";
+// All workplace images now served from Object Storage for optimized deployment
+const homeDepotImage1 = "/public-objects/timeline/20250515_110951(0) (1)_1756775594777.jpg";
+const homeDepotImage2 = "/public-objects/timeline/IMG_2329-EDIT_1756777352943.jpg";
+const homeDepotImage3 = "/public-objects/timeline/20241023_132525_1756776021189.jpg";
 
-// Marketing Analyst images
-const marketingAnalystImage1 =
-  "/attached_assets/20210521_131718_1756788953660.jpg";
-const marketingAnalystImage2 =
-  "/attached_assets/IMG_20190509_180536_1756789644236.jpg";
-const marketingAnalystImage3 =
-  "/attached_assets/IMG-20190908-WA0038_1756789644237.jpg";
+const dataScientistImage1 = "/public-objects/timeline/20240427_120651_1756788379977.jpg";
+const dataScientistImage2 = "/public-objects/timeline/IMG_20180811_194748_1756789697281.jpg";
+const dataScientistImage3 = "/public-objects/timeline/IMG-20191110-WA0025_1756789697282.jpg";
+const dataScientistImage4 = "/public-objects/timeline/Screenshot_20180831-101808__01_1756789720602.jpg";
 
-// Bachelor's degree college images
-const bachelorImage1 = "/attached_assets/IMG_20161106_212705_1756789364617.jpg";
-const bachelorImage2 = "/attached_assets/IMG_20161030_232457_1756789364618.jpg";
-const bachelorImage3 =
-  "/attached_assets/Screenshot_20181124-163448__01_1756789364618.jpg";
+const marketingAnalystImage1 = "/public-objects/timeline/20210521_131718_1756788953660.jpg";
+const marketingAnalystImage2 = "/public-objects/timeline/IMG_20190509_180536_1756789644236.jpg";
+const marketingAnalystImage3 = "/public-objects/timeline/IMG-20190908-WA0038_1756789644237.jpg";
 
-// High school education image
-const highSchoolImage1 =
-  "/attached_assets/IMG_20160620_123802_1756789570118.jpg";
+const bachelorImage1 = "/public-objects/timeline/IMG_20161106_212705_1756789364617.jpg";
+const bachelorImage2 = "/public-objects/timeline/IMG_20161030_232457_1756789364618.jpg";
+const bachelorImage3 = "/public-objects/timeline/Screenshot_20181124-163448__01_1756789364618.jpg";
 
-// Gen AI/ML Engineer workplace image
-const genAIEngineerImage1 = "/attached_assets/IMG_2331_1756789866665.JPG";
+const highSchoolImage1 = "/public-objects/timeline/IMG_20160620_123802_1756789570118.jpg";
 
-// Senior Data Scientist workplace images (swapped order of first two, removed third)
-const seniorDataScientistImage1 =
-  "/attached_assets/20241025_152323_1756776021189.jpg"; // Was image 2
-const seniorDataScientistImage2 =
-  "/attached_assets/20240508_203952_1756776021190.jpg"; // Was image 1
-const seniorDataScientistImage3 =
-  "/attached_assets/20231215_095639_1756775804398.jpg"; // Was image 4
+const genAIEngineerImage1 = "/public-objects/timeline/IMG_2331_1756789866665.JPG";
 
-// Senior Data Analyst workplace images (added third image)
-const seniorDataAnalystImage1 =
-  "/attached_assets/IMG-20220807-WA0018_1756776767995.jpg";
-const seniorDataAnalystImage2 =
-  "/attached_assets/20220805_214208_1756776778383.jpg";
-const seniorDataAnalystImage3 = "/attached_assets/IMG_1219_1756777552748.jpg"; // New image
+const seniorDataScientistImage1 = "/public-objects/timeline/20241025_152323_1756776021189.jpg";
+const seniorDataScientistImage2 = "/public-objects/timeline/20240508_203952_1756776021190.jpg";
+const seniorDataScientistImage3 = "/public-objects/timeline/20231215_095639_1756775804398.jpg";
 
-// Graduate Assistant workplace images
-const graduateAssistantImage1 =
-  "/attached_assets/20240424_161717_1756780061878.jpg";
-const graduateAssistantImage2 =
-  "/attached_assets/Screenshot_20190129-080233_1756780061880.jpg";
-const graduateAssistantImage3 =
-  "/attached_assets/Generated Image September 01, 2025 - 10_25PM (1)_1756780361828.jpeg";
+const seniorDataAnalystImage1 = "/public-objects/timeline/IMG-20220807-WA0018_1756776767995.jpg";
+const seniorDataAnalystImage2 = "/public-objects/timeline/20220805_214208_1756776778383.jpg";
+const seniorDataAnalystImage3 = "/public-objects/timeline/IMG_1219_1756777552748.jpg";
 
-// Master's degree images
-const mastersImage1 = "/attached_assets/IMG-20191122-WA0013_1756780506778.jpg";
-const mastersImage2 = "/attached_assets/IMG-20181105-WA0008_1756780506780.jpg";
-const mastersImage3 = "/attached_assets/IMG-20200111-WA0007_1756780521102.jpg";
-const mastersImage4 = "/attached_assets/20210521_213843_1756780555219.jpg";
+const graduateAssistantImage1 = "/public-objects/timeline/20240424_161717_1756780061878.jpg";
+const graduateAssistantImage2 = "/public-objects/timeline/Screenshot_20190129-080233_1756780061880.jpg";
+const graduateAssistantImage3 = "/public-objects/timeline/Generated Image September 01, 2025 - 10_25PM (1)_1756780361828.jpeg";
 
-// Bridge Solutions Data Analyst images
-const bridgeSolutionsImage1 =
-  "/attached_assets/IMG_20170820_163622_1756780825081.jpg";
-const bridgeSolutionsImage2 =
-  "/attached_assets/IMG-20170814-WA0017_1756780825082.jpg";
-const bridgeSolutionsImage3 =
-  "/attached_assets/IMG-20170814-WA0013_1756780825082.jpg";
-const bridgeSolutionsImage4 =
-  "/attached_assets/IMG-20170811-WA0004_1756789814799.jpg";
+const mastersImage1 = "/public-objects/timeline/IMG-20191122-WA0013_1756780506778.jpg";
+const mastersImage2 = "/public-objects/timeline/IMG-20181105-WA0008_1756780506780.jpg";
+const mastersImage3 = "/public-objects/timeline/IMG-20200111-WA0007_1756780521102.jpg";
+const mastersImage4 = "/public-objects/timeline/20210521_213843_1756780555219.jpg";
+
+const bridgeSolutionsImage1 = "/public-objects/timeline/IMG_20170820_163622_1756780825081.jpg";
+const bridgeSolutionsImage2 = "/public-objects/timeline/IMG-20170814-WA0017_1756780825082.jpg";
+const bridgeSolutionsImage3 = "/public-objects/timeline/IMG-20170814-WA0013_1756780825082.jpg";
+const bridgeSolutionsImage4 = "/public-objects/timeline/IMG-20170811-WA0004_1756789814799.jpg";
 
 interface TimelineEvent {
   year: string;

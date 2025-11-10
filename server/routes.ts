@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { insertProjectSchema } from "@shared/schema";
 import { seedProjects } from "./seed";
 import path from "path";
+import { ObjectStorageService } from "./objectStorage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Seed projects on startup
@@ -110,6 +111,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(404).json({ message: 'Resume not found' });
       }
     });
+  });
+
+  // Object Storage route - serve public images from cloud storage
+  // Reference: blueprint:javascript_object_storage
+  app.get('/public-objects/:filePath(*)', async (req, res) => {
+    const filePath = req.params.filePath;
+    const objectStorageService = new ObjectStorageService();
+    try {
+      const file = await objectStorageService.searchPublicObject(filePath);
+      if (!file) {
+        return res.status(404).json({ error: 'File not found' });
+      }
+      objectStorageService.downloadObject(file, res);
+    } catch (error) {
+      console.error('Error searching for public object:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   });
 
   const httpServer = createServer(app);
