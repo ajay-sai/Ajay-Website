@@ -6,13 +6,13 @@ export default function AboutSection() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text scroll-animate">About Me</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-6 scroll-animate">
+          <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Generative AI and ML Engineer with 8+ years of experience designing and deploying robust, production-grade data ecosystems. 
               I specialize in building the full-stack infrastructure that powers modern AI, from architecting scalable ETL and 
@@ -31,7 +31,7 @@ export default function AboutSection() {
           </div>
 
           {/* Image */}
-          <div className="relative scroll-animate">
+          <div className="relative">
             <div className="relative group">
               <img
                 src={ajayPhoto}
