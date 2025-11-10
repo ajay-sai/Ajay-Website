@@ -8,6 +8,7 @@ const journeyHighlights = [
     title: "Generative AI & ML Engineer",
     company: "The Home Depot",
     dateRange: "Jan 2025 - Present",
+    type: "Full-time",
     icon: TrendingUp,
     gradient: "from-blue-500 to-cyan-500",
     keyMetric: "55% faster analytics",
@@ -17,6 +18,7 @@ const journeyHighlights = [
     title: "Senior Data Scientist",
     company: "The Home Depot",
     dateRange: "Jun 2023 - Jan 2025",
+    type: "Full-time",
     icon: Code,
     gradient: "from-green-500 to-emerald-500",
     keyMetric: "$20M savings target",
@@ -26,6 +28,7 @@ const journeyHighlights = [
     title: "Senior Data Analyst",
     company: "The Home Depot",
     dateRange: "Mar 2022 - Jun 2023",
+    type: "Full-time",
     icon: Award,
     gradient: "from-purple-500 to-violet-500",
     keyMetric: "300+ associates impact",
@@ -35,6 +38,7 @@ const journeyHighlights = [
     title: "Data Analyst & Engineer",
     company: "Harley Davidson",
     dateRange: "Feb 2020 - Mar 2022",
+    type: "Full-time",
     icon: Zap,
     gradient: "from-orange-500 to-red-500",
     keyMetric: "80% faster processing",
@@ -44,6 +48,7 @@ const journeyHighlights = [
     title: "Data Scientist",
     company: "Principal Financial",
     dateRange: "Aug 2019 - Dec 2019",
+    type: "Full-time",
     icon: Code,
     gradient: "from-indigo-500 to-purple-500",
     keyMetric: "78% ML accuracy",
@@ -53,6 +58,7 @@ const journeyHighlights = [
     title: "Marketing Analyst",
     company: "Anahata Art & Design",
     dateRange: "May 2019 - Dec 2019",
+    type: "Internship",
     icon: Target,
     gradient: "from-pink-500 to-rose-500",
     keyMetric: "200% traffic growth",
@@ -62,6 +68,7 @@ const journeyHighlights = [
     title: "Graduate Assistant",
     company: "University of Maryland",
     dateRange: "May 2019 - Dec 2019",
+    type: "Part-time",
     icon: Award,
     gradient: "from-emerald-500 to-teal-500",
     keyMetric: "4000+ students served",
@@ -71,6 +78,7 @@ const journeyHighlights = [
     title: "Data Analyst",
     company: "Bridge Solutions",
     dateRange: "May 2017 - May 2018",
+    type: "Full-time",
     icon: Calendar,
     gradient: "from-teal-500 to-cyan-500",
     keyMetric: "$1M cost reduction",
@@ -118,7 +126,20 @@ export default function JourneyPreview() {
                     {milestone.title}
                   </h3>
                   <p className="text-xs text-primary font-semibold mb-1">{milestone.company}</p>
-                  <p className="text-xs text-muted-foreground mb-2">{milestone.dateRange}</p>
+                  
+                  {/* Type & Date Range */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`inline-block px-2 py-0.5 text-xs font-semibold rounded ${
+                      milestone.type === 'Full-time' 
+                        ? 'bg-green-500/20 text-green-400' 
+                        : milestone.type === 'Internship'
+                        ? 'bg-blue-500/20 text-blue-400'
+                        : 'bg-amber-500/20 text-amber-400'
+                    }`}>
+                      {milestone.type}
+                    </span>
+                    <p className="text-xs text-muted-foreground">{milestone.dateRange}</p>
+                  </div>
                   
                   {/* Key Metric Badge */}
                   <div className={`inline-block px-2 py-1 bg-gradient-to-r ${milestone.gradient} bg-opacity-10 rounded text-xs font-semibold`}>
