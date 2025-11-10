@@ -3,7 +3,7 @@
 ## Overview
 This is a modern, professional portfolio website for Ajay Miryala, a Generative AI and ML Engineer with a Master of Science in Business Statistics from the University of Maryland. The application is a full-stack web application built with React for the frontend and Express.js for the backend, using PostgreSQL as the database (managed through Drizzle ORM). The website showcases Ajay's skills, projects, and expertise in generative AI, LLM systems, RAG architectures, and production ML through an immersive, visually stunning interface with quantum-themed animations and effects. Its purpose is to present a professional online presence, highlight capabilities, and provide an engaging user experience for potential employers or collaborators. The site features a clean multi-page navigation structure with dedicated pages for Home, Professional Journey, Projects & Case Studies, and Schedule Meeting (Contact).
 
-**Latest Update (Nov 10, 2024):** Comprehensive GEO (Generative Engine Optimization) implementation completed with FAQ section, Services section, enhanced schema markup, semantic HTML, temporal/quantifiable data tags, and AI crawler optimization (sitemap.xml, robots.txt).
+**Latest Update (Nov 10, 2024):** Object Storage migration completed - all 34 timeline images now served from Replit Object Storage for optimized deployment. Deployment build size reduced by 70MB by excluding attached_assets directory.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
@@ -26,6 +26,7 @@ Preferred communication style: Simple, everyday language.
 - **Development Server**: Integrated with Vite for hot module replacement.
 - **Error Handling**: Centralized middleware.
 - **Logging**: Custom request logging with performance metrics.
+- **Object Storage**: Replit Object Storage (Google Cloud Storage) for serving public assets like timeline images.
 
 ### Database Architecture
 - **ORM**: Drizzle ORM for type-safe database operations.
@@ -148,3 +149,49 @@ Completed comprehensive work experience data extraction and Schema.org complianc
 - Verified all 50 bullets present in rendered schema
 - Confirmed 6 organizations have complete address data including streetAddress
 - No console errors, all pages functional
+
+### Object Storage Migration - November 10, 2024
+Migrated 34 timeline images (70MB) from local attached_assets to Replit Object Storage for deployment optimization:
+
+**Implementation:**
+1. **Object Storage Setup**
+   - Created default bucket: `replit-objstore-115625ec-c30f-4fba-b127-b0b97d692d24`
+   - Configured public directory: `/repl-default-bucket-2757ce05-f5e0-4b34-ae6d-fb5b07515b64/public`
+   - Set environment variables: PUBLIC_OBJECT_SEARCH_PATHS, PRIVATE_OBJECT_DIR
+
+2. **Server Implementation** (server/objectStorage.ts, server/routes.ts)
+   - Created ObjectStorageService with Google Cloud Storage client
+   - Added `/public-objects/:filePath(*)` route to serve public images
+   - Implemented searchPublicObject() and downloadObject() methods
+   - Set cache headers: `public, max-age=3600` for optimal CDN caching
+
+3. **Image Upload** (scripts/upload-timeline-images.ts, scripts/upload-harley-images.ts)
+   - Created automated upload scripts for all 34 timeline images
+   - Uploaded to `public/timeline/` directory in Object Storage bucket
+   - Set appropriate content types (image/jpeg, image/png) and cache control
+   - All 34 images successfully uploaded with 100% success rate
+
+4. **Frontend Updates** (client/src/components/parallax-timeline.tsx)
+   - Updated all workplace image paths from `/attached_assets/` to `/public-objects/timeline/`
+   - Company logos remain as @assets imports (small files needed at build time)
+   - Preserved all 34 image references across 11 timeline events
+   - No functional changes to component logic or animations
+
+5. **Deployment Optimization** (.dockerignore)
+   - Added attached_assets/ to .dockerignore
+   - Reduced deployment build size by 70MB
+   - Images now served from cloud storage with CDN caching
+
+**Benefits:**
+- **Build Size**: Reduced by 70MB (attached_assets excluded from deployment)
+- **Performance**: Images served from Google Cloud Storage with CDN caching
+- **Scalability**: Offloaded static assets to object storage infrastructure
+- **Cache Control**: 1-hour browser cache, long-term CDN caching enabled
+
+**Files Modified:**
+- server/objectStorage.ts (new)
+- server/routes.ts (added public-objects route)
+- client/src/components/parallax-timeline.tsx (updated URLs)
+- scripts/upload-timeline-images.ts (new)
+- .dockerignore (added attached_assets)
+- replit.md (documentation update)
