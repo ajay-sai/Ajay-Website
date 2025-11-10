@@ -3,8 +3,4 @@ name = "repl-nix-workspace"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.11"
-dependencies = [
-    "docling>=2.61.1",
-    "pypdf2>=3.0.1",
-    "python-docx>=1.2.0",
-]
+dependencies = []
