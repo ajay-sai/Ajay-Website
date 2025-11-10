@@ -7,6 +7,7 @@ import ContactSection from "@/components/contact-section";
 import ParticleSystem from "@/components/particle-system";
 import QuantumBackground from "@/components/quantum-background";
 import SEOHead from "@/components/seo/SEOHead";
+import PageBreadcrumb from "@/components/page-breadcrumb";
 import { personSchema, breadcrumbSchema } from "@/components/seo/schemas";
 
 export default function Contact() {
@@ -45,6 +46,9 @@ export default function Contact() {
         <Navigation />
         
         <main className="relative z-10 pt-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <PageBreadcrumb items={[{ label: "Schedule Meeting" }]} />
+          </div>
           <ContactSection />
         </main>
       
