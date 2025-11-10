@@ -14,29 +14,34 @@ export default function AboutSection() {
           {/* Content */}
           <div className="space-y-6">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I build AI systems that actually work in production. Not proofs of concept—real, scalable solutions that 
-              handle millions of queries, save companies tens of millions of dollars, and make complex technology accessible 
-              to thousands of users who've never written a line of code.
+              Most AI demos look impressive. Most AI in production doesn't work. I bridge that gap.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Over the past 8 years, I've gone from analyzing spreadsheets to architecting Generative AI platforms at 
-              Fortune 500 companies. Today at The Home Depot, I orchestrate LLM systems that parse contracts, generate 
-              dynamic content, and power Knowledge-Graph RAG assistants—cutting analytics time by 60% and targeting 
-              $20M in marketing optimization.
+              For the past 8 years, I've been building the infrastructure that makes Generative AI actually useful—transforming 
+              research papers and prototype models into systems that handle millions of real-world queries, scale across enterprise 
+              environments, and deliver returns measured in millions, not metrics.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              My specialty? Taking bleeding-edge AI research and turning it into production-grade infrastructure. 
-              Whether it's building multi-modal pipelines with GPT-4 and Gemini, optimizing Vision Transformers for 
-              image generation at scale, or engineering RAG systems with Neo4j—I focus on what moves the needle: 
-              reliability, speed, and measurable business impact.
+              At The Home Depot, I architect the AI systems powering business decisions: LLM orchestration platforms that parse 
+              contracts and generate insights, Knowledge-Graph RAG assistants serving 200+ analysts, and multi-modal pipelines 
+              that cut manual work by 60% while targeting $20M in optimization opportunities. Before that, I built data ecosystems 
+              at Harley Davidson, predictive models at Principal Financial, and marketing intelligence systems that turned 
+              $300 into $3,100.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              From Atlanta, with a Master's in Business Statistics from University of Maryland and hands across 
-              retail, manufacturing, finance, and education—I speak both technical and business. Because the best 
-              AI solutions don't just work technically; they solve real problems people care about.
+              What sets my work apart? I don't just implement models—I engineer end-to-end solutions. From ETL pipelines and data 
+              architecture (BigQuery, GCP) to RAG systems and LLM evaluation frameworks, I build the full stack that makes AI 
+              production-ready. GPT-4, Gemini, Vision Transformers, Neo4j—I've deployed them all, not in notebooks, but in systems 
+              serving thousands of users daily.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Based in Atlanta with a Master's in Business Statistics from University of Maryland, I've worked across retail, 
+              manufacturing, finance, and education. This cross-industry perspective taught me something critical: the best AI 
+              solutions aren't the most sophisticated—they're the ones that solve real problems for real people, reliably, at scale.
             </p>
           </div>
 
