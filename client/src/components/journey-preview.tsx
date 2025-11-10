@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, TrendingUp, Code, Award } from "lucide-react";
+import { ArrowRight, TrendingUp, Code, Award, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const journeyHighlights = [
@@ -39,6 +39,18 @@ const journeyHighlights = [
       "Technologies: Tableau, Power BI, SAP Analytics Cloud, Alteryx",
     ],
   },
+  {
+    year: "2017",
+    title: "Data Analyst",
+    company: "Bridge Solutions",
+    dateRange: "May 2017 - May 2018",
+    icon: Calendar,
+    gradient: "from-teal-500 to-cyan-500",
+    achievements: [
+      "$1M cost reduction through analytical inventory targeting and optimization",
+      "Technologies: Tableau, SQL Server, Python, Docker, IBM OMS/WMS",
+    ],
+  },
 ];
 
 export default function JourneyPreview() {
@@ -49,13 +61,10 @@ export default function JourneyPreview() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
             Professional Journey
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A snapshot of my career progression from data analytics to generative AI engineering
-          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {journeyHighlights.map((milestone, index) => {
             const Icon = milestone.icon;
             return (
