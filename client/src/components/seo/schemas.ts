@@ -31,7 +31,7 @@ export const personSchema = {
     {
       "@type": "EducationalOrganization",
       "name": "University of Maryland, College Park",
-      "description": "Master of Science in Business Analytics"
+      "description": "Master of Science in Business Statistics"
     },
     {
       "@type": "EducationalOrganization",

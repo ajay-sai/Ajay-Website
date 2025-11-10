@@ -263,7 +263,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2019",
     sortOrder: 8,
-    title: "Master of Science in Business Analytics",
+    title: "Master of Science in Business Statistics",
     description:
       "University of Maryland, College Park - Robert H Smith School of Business",
     dateRange: "Graduated May 2019",
