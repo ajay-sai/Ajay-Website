@@ -4,8 +4,8 @@ export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ajay Miryala",
-  "jobTitle": "Gen AI / ML Engineer",
-  "description": "Experienced Gen AI / ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
+  "jobTitle": "Generative AI and ML Engineer",
+  "description": "Experienced Generative AI and ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
   "url": "https://ajaymiryala.com",
   "sameAs": [
     "https://www.linkedin.com/in/ajay-sai/",
@@ -44,7 +44,7 @@ export const personSchema = {
   ],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Gen AI / ML Engineer",
+    "name": "Generative AI and ML Engineer",
     "skills": "GPT-4, Gemini, RAG Systems, Neo4j, Knowledge Graphs, LLM Orchestration, BigQuery, Vertex AI, TensorFlow, Python, GCP, Production ML Infrastructure",
     "occupationLocation": {
       "@type": "City",
@@ -89,7 +89,7 @@ export const personSchema = {
   "worksFor": {
     "@type": "Organization",
     "name": "The Home Depot",
-    "description": "Gen AI / ML Engineer",
+    "description": "Generative AI and ML Engineer",
     "sameAs": "https://www.homedepot.com",
     "address": {
       "@type": "PostalAddress",
@@ -116,7 +116,7 @@ export const createProjectSchema = (project: {
   "author": {
     "@type": "Person",
     "name": "Ajay Miryala",
-    "jobTitle": "Gen AI / ML Engineer"
+    "jobTitle": "Generative AI and ML Engineer"
   },
   "datePublished": project.datePublished,
 });
@@ -211,7 +211,7 @@ export const organizationSchemas = [
 export const workExperienceSchemas = [
   {
     "@type": "EmployeeRole",
-    "roleName": "Gen AI / ML Engineer",
+    "roleName": "Generative AI and ML Engineer",
     "startDate": "2025-01",
     "employee": {
       "@type": "Person",

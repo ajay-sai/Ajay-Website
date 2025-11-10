@@ -6,7 +6,7 @@ export const faqData = [
   },
   {
     question: "What companies has Ajay Miryala worked for?",
-    answer: "Ajay has worked at The Home Depot (current role as Gen AI / ML Engineer), Harley Davidson (Data Analyst and Engineer), Principal Financial Group (Data Scientist), Anahata Art and Design (Marketing Analyst), University of Maryland (Graduate Assistant), and Bridge Solutions (Data Analyst). His experience spans retail, manufacturing, finance, marketing, and education industries."
+    answer: "Ajay has worked at The Home Depot (current role as Generative AI and ML Engineer), Harley Davidson (Data Analyst and Engineer), Principal Financial Group (Data Scientist), Anahata Art and Design (Marketing Analyst), University of Maryland (Graduate Assistant), and Bridge Solutions (Data Analyst). His experience spans retail, manufacturing, finance, marketing, and education industries."
   },
   {
     question: "What is Ajay's location and availability?",
