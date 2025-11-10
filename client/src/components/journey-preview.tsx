@@ -107,13 +107,6 @@ export default function JourneyPreview() {
                 key={index}
                 className="group relative bg-card border border-border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Year Badge */}
-                <div className="absolute -top-2 -right-2">
-                  <div className={`px-3 py-1 bg-gradient-to-r ${milestone.gradient} text-white text-xs font-bold rounded-full shadow-md`}>
-                    {milestone.year}
-                  </div>
-                </div>
-
                 {/* Content */}
                 <div>
                   <h3 className="text-sm font-bold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
