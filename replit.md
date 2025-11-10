@@ -4,6 +4,15 @@
 This project is a modern, professional portfolio website for Ajay Miryala, a Generative AI and ML Engineer. The site aims to showcase his skills, projects, and expertise in areas like generative AI, LLM systems, RAG architectures, and production ML through an immersive, visually engaging interface. It features a full-stack architecture with React for the frontend and Express.js for the backend, utilizing PostgreSQL and Drizzle ORM. The primary purpose is to establish a strong online professional presence, highlight capabilities to potential employers or collaborators, and provide an engaging user experience with quantum-themed animations and effects.
 
 ## Recent Changes (November 10, 2025)
+
+**Enhanced SEO and GEO Optimizations:**
+- Added comprehensive static meta tags and structured data to index.html for better crawler support (Person and WebSite schemas)
+- Created noscript fallback content with contact information and navigation for non-JavaScript crawlers
+- Implemented PageBreadcrumb component for visible breadcrumb navigation on all pages (Journey, Projects, Contact)
+- Added WebPage structured data schema to all pages for page-level SEO optimization
+- Updated sitemap.xml with current dates and proper namespace declarations
+- All pages now include unique, page-specific structured data following schema.org standards
+
 **Fixed 8GB Deployment Size Issue:**
 - Identified and removed unused Python dependencies (docling, pypdf2, python-docx) that were pulling in 7.3GB of ML/CUDA libraries
 - Added Python cache directories to .gitignore (.cache, .pythonlibs, __pycache__, *.pyc, uv.lock)
@@ -23,7 +32,7 @@ Preferred communication style: Simple, everyday language.
 - **Animations**: Custom CSS animations with quantum and neural network themes, focusing on smooth, non-distracting transitions.
 - **Design Principles**: Emphasizes a clean, professional aesthetic, consistent heading formats, and subtle visual enhancements like particle systems.
 - **Theming**: Dark/light mode toggle with persistence and system preference detection.
-- **GEO Optimization**: Comprehensive structured data (Person, Organization, FAQPage, Service schemas), semantic HTML, and enhanced meta tags for AI crawlers.
+- **SEO/GEO Optimization**: Comprehensive structured data (Person, WebPage, WebSite, Organization, FAQPage, BreadcrumbList schemas), semantic HTML, visible breadcrumb navigation, enhanced meta tags for AI crawlers, and noscript fallback content for non-JavaScript crawlers.
 
 ### Backend Architecture
 - **Framework**: Express.js with TypeScript and ES Modules.
