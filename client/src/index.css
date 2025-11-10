@@ -137,7 +137,8 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Removed global scroll-behavior: smooth to allow fast manual scrolling */
+    /* Smooth scrolling is now applied only to programmatic scrolls via JS */
   }
 }
 
