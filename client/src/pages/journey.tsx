@@ -51,10 +51,6 @@ export default function Journey() {
         {/* Footer */}
         <footer className="relative z-10 py-8 bg-gradient-to-t from-neural-primary via-background to-background border-t border-border/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-6">
-              <h2 className="text-lg font-semibold gradient-text">Connect With Me</h2>
-            </div>
-            
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 max-w-3xl mx-auto">
                 {/* Email */}
                 <a 

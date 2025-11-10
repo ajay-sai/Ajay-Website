@@ -182,12 +182,10 @@ export default function ProjectsSection() {
             className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
             <a
-              href="https://github.com/ajay-sai"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/projects"
               className="flex items-center space-x-2"
             >
-              <Github className="h-5 w-5" />
+              <ExternalLink className="h-5 w-5" />
               <span>View All Projects</span>
             </a>
           </Button>
