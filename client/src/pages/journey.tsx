@@ -120,10 +120,9 @@ export default function Journey() {
                   <div className="text-xs text-muted-foreground">ajay-sai</div>
                 </a>
               </div>
-            </div>
 
-            <div className="text-center pt-6 border-t border-border/30">
-              <div className="text-sm text-muted-foreground">
+            <div className="text-center pt-4 border-t border-border/30">
+              <div className="text-xs text-muted-foreground">
                 © 2024 Ajay Miryala. Crafted with advanced web technologies and quantum-inspired design.
               </div>
             </div>
