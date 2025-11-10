@@ -5,6 +5,7 @@ import { useCursorEffects } from "@/hooks/use-cursor-effects";
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import AboutSection from "@/components/about-section";
+import JourneyPreview from "@/components/journey-preview";
 import SkillsSection from "@/components/skills-section";
 import ProjectsSection from "@/components/projects-section";
 import ParticleSystem from "@/components/particle-system";
@@ -48,6 +49,7 @@ export default function Home() {
         <main className="relative z-10">
           <HeroSection />
           <AboutSection />
+          <JourneyPreview />
           <SkillsSection />
           <ProjectsSection />
           
