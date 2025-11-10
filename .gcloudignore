@@ -1,0 +1,83 @@
+# Development files
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__
+.nyc_output
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation and project files
+README.md
+replit.md
+*.md
+LICENSE
+
+# Large static assets that should not be in deployment (migrated to Object Storage)
+attached_assets/
+
+# Build artifacts (will be rebuilt during deployment)
+dist
+.vite
+*.local
+.local
+
+# Cache directories (can be 7+ GB)
+.cache
+.turbo
+.next
+.nuxt
+
+# Python cache and libraries
+__pycache__
+*.py[cod]
+*$py.class
+*.pyc
+.pythonlibs
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp
+temp
+*.tmp
+*.swp
+*.bak
+*.tar.gz
+*.zip
+
+# OS files
+Thumbs.db
+.DS_Store
