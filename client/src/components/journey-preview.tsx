@@ -109,7 +109,7 @@ export default function JourneyPreview() {
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Education</p>
-              <p className="text-sm font-bold">MS Business Analytics, UMD</p>
+              <p className="text-sm font-bold">MS Business Statistics, UMD</p>
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Current Role</p>
