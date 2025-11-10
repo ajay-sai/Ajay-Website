@@ -11,7 +11,7 @@ import {
   BookOpen,
   ChevronDown,
 } from "lucide-react";
-// Company logos remain as @assets imports (small files, needed at build time)
+// Company logos - small files only (<100KB) as @assets imports for build-time bundling
 import harleyDavidsonLogo from "@assets/image_1756790102894.png";
 import homeDepotLogo from "@assets/images_1756790566987.png";
 import homeDepotMainLogo from "@assets/image_1756790646771.png";
@@ -20,8 +20,10 @@ import universityOfMarylandLogo from "@assets/image_1756791087938.png";
 import bridgeSolutionsLogo from "@assets/image_1756791219923.png";
 import srmUniversityLogo from "@assets/image_1756791288961.png";
 import stJosephsLogo from "@assets/image_1756791337929.png";
-import stonedSantaLogo from "@assets/image_1756792379931.png";
 import homeDepotStoreLogo from "@assets/image_1756791876151.png";
+
+// Large logo (378KB) served from Object Storage
+const stonedSantaLogo = "/public-objects/logos/image_1756792379931.png";
 
 // All workplace images now served from Object Storage for optimized deployment (70MB saved)
 const harleyDavidsonImage1 = "/public-objects/timeline/image_1756765291859.png";

@@ -165,18 +165,19 @@ Migrated all large images (timeline + profile photos, ~76MB total) from local at
    - Implemented searchPublicObject() and downloadObject() methods
    - Set cache headers: `public, max-age=3600` for optimal CDN caching
 
-3. **Image Upload** (scripts/upload-timeline-images.ts, scripts/upload-harley-images.ts, scripts/upload-hero-about-images.ts)
+3. **Image Upload** (scripts/upload-timeline-images.ts, scripts/upload-harley-images.ts, scripts/upload-hero-about-images.ts, scripts/upload-large-logos.ts)
    - Created automated upload scripts for all images
    - Timeline images: 34 files uploaded to `public/timeline/` (~70MB)
    - Profile photos: 2 files uploaded to `public/profile/` (~6.4MB)
+   - Large logos: 1 file uploaded to `public/logos/` (378KB Stoned Santa logo)
    - Set appropriate content types (image/jpeg, image/png) and cache control
-   - All 36 images successfully uploaded with 100% success rate
+   - All 37 images successfully uploaded with 100% success rate
 
 4. **Frontend Updates** 
-   - **parallax-timeline.tsx**: Updated all workplace image paths to `/public-objects/timeline/`
+   - **parallax-timeline.tsx**: Updated all workplace images to `/public-objects/timeline/`, migrated 378KB logo to `/public-objects/logos/`
    - **about-section.tsx**: Migrated 6.3MB profile photo to `/public-objects/profile/`
    - **hero-section.tsx**: Migrated profile photo to `/public-objects/profile/`
-   - Company logos remain as @assets imports (small files <200KB, needed at build time)
+   - Small company logos remain as @assets imports (all < 100KB, needed at build time)
    - No functional changes to component logic or animations
 
 5. **Deployment Optimization** (.dockerignore, ASSET_POLICY.md)
@@ -187,10 +188,11 @@ Migrated all large images (timeline + profile photos, ~76MB total) from local at
    - Documented asset management strategy in ASSET_POLICY.md
 
 **Benefits:**
-- **Build Size**: Reduced by 70MB (attached_assets excluded from deployment)
+- **Build Size**: Reduced by ~76MB (all large images moved to cloud storage)
 - **Performance**: Images served from Google Cloud Storage with CDN caching
 - **Scalability**: Offloaded static assets to object storage infrastructure
-- **Cache Control**: 1-hour browser cache, long-term CDN caching enabled
+- **Cache Control**: 1-year browser cache for optimal performance
+- **Deployment Ready**: Under Cloud Run 8 GiB limit, all @assets imports < 100KB
 
 **Files Modified:**
 - server/objectStorage.ts (new)
