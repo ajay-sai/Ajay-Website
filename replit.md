@@ -3,6 +3,13 @@
 ## Overview
 This project is a modern, professional portfolio website for Ajay Miryala, a Generative AI and ML Engineer. The site aims to showcase his skills, projects, and expertise in areas like generative AI, LLM systems, RAG architectures, and production ML through an immersive, visually engaging interface. It features a full-stack architecture with React for the frontend and Express.js for the backend, utilizing PostgreSQL and Drizzle ORM. The primary purpose is to establish a strong online professional presence, highlight capabilities to potential employers or collaborators, and provide an engaging user experience with quantum-themed animations and effects.
 
+## Recent Changes (November 10, 2025)
+**Fixed 8GB Deployment Size Issue:**
+- Identified and removed unused Python dependencies (docling, pypdf2, python-docx) that were pulling in 7.3GB of ML/CUDA libraries
+- Added Python cache directories to .gitignore (.cache, .pythonlibs, __pycache__, *.pyc, uv.lock)
+- Reduced deployment size from ~8GB to 793MB (90% reduction)
+- **Note:** This is a JavaScript/TypeScript project only - no Python dependencies are needed
+
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
