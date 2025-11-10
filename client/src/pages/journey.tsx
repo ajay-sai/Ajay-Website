@@ -44,7 +44,7 @@ export default function Journey() {
         
         <Navigation />
         
-        <main className="relative z-10">
+        <main className="relative z-10 pt-24 pb-16">
           <ParallaxTimeline />
         </main>
       
