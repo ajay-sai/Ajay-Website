@@ -134,15 +134,10 @@
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     overflow-x: hidden;
-    touch-action: pan-y pinch-zoom;
-    overscroll-behavior-y: contain;
   }
 
   html {
     scroll-behavior: smooth;
-    touch-action: pan-y pinch-zoom;
-    overscroll-behavior: none;
-    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -293,44 +288,45 @@
     will-change: auto;
   }
 
-  
-  /* Respect user's reduced motion preference */
-  @media (prefers-reduced-motion: reduce) {
+  @media (max-width: 768px) {
     .scroll-animate {
-      transition: none;
-      will-change: auto;
+      transform: translate3d(0, 15px, 0);
+      transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
     
-    .consciousness-expand,
-    .reality-bend,
-    .quantum-float,
-    .gradient-text,
-    .gradient-text-slow,
-    .hero-name-enhanced,
-    .quantum-pulse,
-    .neural-flow,
-    .holographic-shimmer {
-      animation: none;
-    }
-    
-    .quantum-card {
-      backdrop-filter: none;
-    }
-    
+    /* Smoother scroll behavior on mobile */
     html {
-      scroll-behavior: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Reduce motion for mobile performance */
+    .consciousness-expand {
+      animation-duration: 6s;
+    }
+    
+    .reality-bend {
+      animation-duration: 4s;
+    }
+    
+    .quantum-float {
+      animation-duration: 8s;
     }
   }
 
-  /* Hardware acceleration for select elements only */
-  @media (min-width: 769px) {
-    .quantum-card,
-    .scroll-animate {
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
+  /* Hardware acceleration for all animated elements */
+  .quantum-card,
+  .gradient-text,
+  .consciousness-expand,
+  .reality-bend,
+  .quantum-float,
+  .scroll-animate {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
   }
 
   /* Gradient text effects */
@@ -593,21 +589,34 @@
     transition: transform 0.1s ease;
   }
 
-  /* Performance optimizations - only when needed */
-  @media (min-width: 769px) {
-    .will-change-transform {
-      will-change: transform;
+  /* Responsive quantum effects */
+  @media (max-width: 768px) {
+    .quantum-float {
+      animation-duration: 4s;
     }
+    
+    .consciousness-expand {
+      animation-duration: 6s;
+    }
+    
+    .reality-bend {
+      animation: none;
+    }
+  }
 
-    .will-change-opacity {
-      will-change: opacity;
-    }
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
 
-    .gpu-accelerated {
-      transform: translateZ(0);
-      backface-visibility: hidden;
-      perspective: 1000;
-    }
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
   }
 
   /* Masonry and Cascading Effects */
