@@ -4,8 +4,8 @@ export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ajay Miryala",
-  "jobTitle": "Generative AI and ML Engineer",
-  "description": "Experienced Generative AI and ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
+  "jobTitle": "Gen AI / ML Engineer",
+  "description": "Experienced Gen AI / ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
   "url": "https://ajaymiryala.com",
   "sameAs": [
     "https://www.linkedin.com/in/ajay-sai/",
@@ -44,7 +44,7 @@ export const personSchema = {
   ],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Generative AI and ML Engineer",
+    "name": "Gen AI / ML Engineer",
     "skills": "GPT-4, Gemini, RAG Systems, Neo4j, Knowledge Graphs, LLM Orchestration, BigQuery, Vertex AI, TensorFlow, Python, GCP, Production ML Infrastructure",
     "occupationLocation": {
       "@type": "City",
@@ -62,7 +62,7 @@ export const personSchema = {
     "80% efficiency improvement in data processing",
     "87% ML model accuracy achievement",
     "4000+ users supported with production AI systems",
-    "60% reduction in manual reporting time"
+    "55% reduction in manual reporting time"
   ],
   "seeks": {
     "@type": "Demand",
@@ -89,7 +89,7 @@ export const personSchema = {
   "worksFor": {
     "@type": "Organization",
     "name": "The Home Depot",
-    "description": "Generative AI and ML Engineer",
+    "description": "Gen AI / ML Engineer",
     "sameAs": "https://www.homedepot.com",
     "address": {
       "@type": "PostalAddress",
@@ -116,7 +116,7 @@ export const createProjectSchema = (project: {
   "author": {
     "@type": "Person",
     "name": "Ajay Miryala",
-    "jobTitle": "Generative AI and ML Engineer"
+    "jobTitle": "Gen AI / ML Engineer"
   },
   "datePublished": project.datePublished,
 });
@@ -198,6 +198,12 @@ export const organizationSchemas = [
     "@id": "https://ajaymiryala.com/#bridge-solutions",
     "name": "Bridge Solutions",
     "url": "https://ajaymiryala.com"
+  },
+  {
+    "@type": "Organization",
+    "@id": "https://ajaymiryala.com/#anahata",
+    "name": "Anahata Art and Design",
+    "url": "https://ajaymiryala.com"
   }
 ];
 
@@ -205,7 +211,7 @@ export const organizationSchemas = [
 export const workExperienceSchemas = [
   {
     "@type": "EmployeeRole",
-    "roleName": "Generative AI and ML Engineer",
+    "roleName": "Gen AI / ML Engineer",
     "startDate": "2025-01",
     "employee": {
       "@type": "Person",
@@ -223,7 +229,7 @@ export const workExperienceSchemas = [
         "addressCountry": "US"
       }
     },
-    "description": "Architecting LLM orchestration platforms, Knowledge-Graph RAG assistants, and multi-modal pipelines. Delivered 60% reduction in analytics time and targeting $20M in optimization opportunities."
+    "description": "Architecting LLM orchestration platforms, Knowledge-Graph RAG assistants, and multi-modal pipelines. Delivered 55% reduction in analytics time and targeting $20M in optimization opportunities."
   },
   {
     "@type": "EmployeeRole",
@@ -280,6 +286,20 @@ export const workExperienceSchemas = [
       "@id": "https://ajaymiryala.com/#principal-financial"
     },
     "description": "Predicted market regime of Russell 1000 companies achieving 78% ML accuracy and 5% improvement in investment confidence."
+  },
+  {
+    "@type": "EmployeeRole",
+    "roleName": "Marketing Analyst",
+    "startDate": "2019-05",
+    "endDate": "2019-12",
+    "employee": {
+      "@type": "Person",
+      "name": "Ajay Miryala"
+    },
+    "worksFor": {
+      "@id": "https://ajaymiryala.com/#anahata"
+    },
+    "description": "Managed Google Ads campaign with $300 budget achieving 200% increase in website traffic, 113 sales generating $3100 revenue, and optimized CPC to $0.11."
   },
   {
     "@type": "EmployeeRole",
