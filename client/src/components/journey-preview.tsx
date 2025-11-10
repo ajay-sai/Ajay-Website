@@ -159,15 +159,6 @@ export default function JourneyPreview() {
                     {milestone.title}{milestone.type !== 'Full-time' && `, ${milestone.type}`}
                   </h3>
                   
-                  {/* Key Metric Badge */}
-                  <div className="mb-2">
-                    <span className={`inline-flex items-center px-2 py-1 bg-gradient-to-r ${milestone.gradient} text-white text-xs rounded font-bold`}>
-                      <data value={milestone.metricValue} className="font-bold">
-                        {milestone.keyMetric}
-                      </data>
-                    </span>
-                  </div>
-                  
                   {/* Company & Date Pills */}
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     <span 
@@ -209,6 +200,13 @@ export default function JourneyPreview() {
                   <div>
                     <p className="text-xs text-muted-foreground mb-1.5 font-semibold">Impact</p>
                     <div className="flex flex-wrap gap-1">
+                      {/* Key Metric as first impact item */}
+                      <span className={`px-1.5 py-0.5 bg-gradient-to-r ${milestone.gradient} text-white text-xs rounded font-bold`}>
+                        <data value={milestone.metricValue}>
+                          {milestone.keyMetric}
+                        </data>
+                      </span>
+                      {/* Other achievements */}
                       {milestone.achievements.map((achievement, i) => (
                         <span key={i} className={`px-1.5 py-0.5 bg-gradient-to-r ${milestone.gradient} bg-opacity-10 text-xs rounded font-medium`}>
                           {achievement}
