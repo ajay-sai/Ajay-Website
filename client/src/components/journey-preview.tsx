@@ -8,10 +8,14 @@ const journeyHighlights = [
     title: "Generative AI & ML Engineer",
     company: "The Home Depot",
     dateRange: "Jan 2025 - Present",
+    startDate: "2025-01",
+    endDate: null,
     type: "Full-time",
     icon: TrendingUp,
     gradient: "from-blue-500 to-cyan-500",
     keyMetric: "55% faster analytics",
+    metricValue: 55,
+    metricUnit: "percent",
     highlights: ["GPT-4", "Gemini", "RAG Systems", "Contract Parsing"],
     achievements: ["Text Summarization", "Q&A Bots", "Prompt Optimization"],
   },
@@ -20,10 +24,14 @@ const journeyHighlights = [
     title: "Senior Data Scientist",
     company: "The Home Depot",
     dateRange: "Jun 2023 - Jan 2025",
+    startDate: "2023-06",
+    endDate: "2025-01",
     type: "Full-time",
     icon: Code,
     gradient: "from-green-500 to-emerald-500",
     keyMetric: "$20M savings target",
+    metricValue: 20000000,
+    metricUnit: "USD",
     highlights: ["Image Gen", "Stable Diffusion", "Vision Transformers", "BigQuery"],
     achievements: ["87% Accuracy", "Dynamic Pipelines", "Guided Search"],
   },
@@ -32,10 +40,14 @@ const journeyHighlights = [
     title: "Senior Data Analyst",
     company: "The Home Depot",
     dateRange: "Mar 2022 - Jun 2023",
+    startDate: "2022-03",
+    endDate: "2023-06",
     type: "Full-time",
     icon: Award,
     gradient: "from-purple-500 to-violet-500",
     keyMetric: "300+ associates impact",
+    metricValue: 300,
+    metricUnit: "users",
     highlights: ["Adobe Analytics", "Tableau", "Data Studio", "Python"],
     achievements: ["Customer Insights", "Voice of Associates", "20% Faster Onboarding"],
   },
@@ -44,10 +56,14 @@ const journeyHighlights = [
     title: "Data Analyst & Engineer",
     company: "Harley Davidson",
     dateRange: "Feb 2020 - Mar 2022",
+    startDate: "2020-02",
+    endDate: "2022-03",
     type: "Full-time",
     icon: Zap,
     gradient: "from-orange-500 to-red-500",
     keyMetric: "80% faster processing",
+    metricValue: 80,
+    metricUnit: "percent",
     highlights: ["ETL Pipelines", "Power BI", "SAP", "Alteryx"],
     achievements: ["55% Less POs", "30% Better Inventory", "Data Modeling"],
   },
@@ -56,10 +72,14 @@ const journeyHighlights = [
     title: "Data Scientist",
     company: "Principal Financial",
     dateRange: "Aug 2019 - Dec 2019",
+    startDate: "2019-08",
+    endDate: "2019-12",
     type: "Internship",
     icon: Code,
     gradient: "from-indigo-500 to-purple-500",
     keyMetric: "78% ML accuracy",
+    metricValue: 78,
+    metricUnit: "percent",
     highlights: ["XGBoost", "Random Forest", "Python", "SQL Server"],
     achievements: ["Market Regime Prediction", "Russell 1000", "5% Better Confidence"],
   },
@@ -68,10 +88,14 @@ const journeyHighlights = [
     title: "Marketing Analyst",
     company: "Anahata Art & Design",
     dateRange: "May 2019 - Dec 2019",
+    startDate: "2019-05",
+    endDate: "2019-12",
     type: "Internship",
     icon: Target,
     gradient: "from-pink-500 to-rose-500",
     keyMetric: "200% traffic growth",
+    metricValue: 200,
+    metricUnit: "percent",
     highlights: ["Google Ads", "6K Keywords", "Web Analytics", "CPC Optimization"],
     achievements: ["$3100 Revenue", "113 Sales", "$300 Budget"],
   },
@@ -80,10 +104,14 @@ const journeyHighlights = [
     title: "Graduate Assistant",
     company: "University of Maryland",
     dateRange: "May 2019 - Dec 2019",
+    startDate: "2019-05",
+    endDate: "2019-12",
     type: "Part-time",
     icon: Award,
     gradient: "from-emerald-500 to-teal-500",
     keyMetric: "4000+ students served",
+    metricValue: 4000,
+    metricUnit: "users",
     highlights: ["SQL", "Student Records", "Academic Advisory", "Team Leadership"],
     achievements: ["10% Better Satisfaction", "10 Team Members", "Performance Analytics"],
   },
@@ -92,10 +120,14 @@ const journeyHighlights = [
     title: "Data Analyst",
     company: "Bridge Solutions",
     dateRange: "May 2017 - May 2018",
+    startDate: "2017-05",
+    endDate: "2018-05",
     type: "Full-time",
     icon: Calendar,
     gradient: "from-teal-500 to-cyan-500",
     keyMetric: "$1M cost reduction",
+    metricValue: 1000000,
+    metricUnit: "USD",
     highlights: ["Tableau", "SQL Server", "Docker", "IBM OMS"],
     achievements: ["Interactive Dashboards", "KPI Reporting", "Inventory Optimization"],
   },
@@ -127,13 +159,37 @@ export default function JourneyPreview() {
                     {milestone.title}{milestone.type !== 'Full-time' && `, ${milestone.type}`}
                   </h3>
                   
+                  {/* Key Metric Badge */}
+                  <div className="mb-2">
+                    <span className={`inline-flex items-center px-2 py-1 bg-gradient-to-r ${milestone.gradient} text-white text-xs rounded font-bold`}>
+                      <data value={milestone.metricValue} className="font-bold">
+                        {milestone.keyMetric}
+                      </data>
+                    </span>
+                  </div>
+                  
                   {/* Company & Date Pills */}
                   <div className="flex flex-wrap gap-1.5 mb-3">
-                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium">
-                      {milestone.company}
+                    <span 
+                      className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium"
+                      itemProp="worksFor"
+                      itemScope
+                      itemType="https://schema.org/Organization"
+                    >
+                      <span itemProp="name">{milestone.company}</span>
                     </span>
                     <span className="px-2 py-0.5 bg-muted text-muted-foreground text-xs rounded font-medium">
-                      {milestone.dateRange}
+                      <time dateTime={milestone.startDate} itemProp="startDate">
+                        {milestone.dateRange.split(' - ')[0]}
+                      </time>
+                      {' - '}
+                      {milestone.endDate ? (
+                        <time dateTime={milestone.endDate} itemProp="endDate">
+                          {milestone.dateRange.split(' - ')[1]}
+                        </time>
+                      ) : (
+                        <span itemProp="endDate">Present</span>
+                      )}
                     </span>
                   </div>
                   
