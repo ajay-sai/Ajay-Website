@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useMotionProfile } from "@/hooks/use-motion-profile";
 
 interface Particle {
   x: number;
@@ -11,11 +12,14 @@ interface Particle {
 }
 
 export default function ParticleSystem() {
+  const { shouldReduceMotion } = useMotionProfile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -115,7 +119,11 @@ export default function ParticleSystem() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [shouldReduceMotion]);
+
+  if (shouldReduceMotion) {
+    return null;
+  }
 
   return (
     <canvas
