@@ -1,43 +1,70 @@
 import { Link } from "wouter";
-import { ArrowRight, TrendingUp, Code, Award, Calendar } from "lucide-react";
+import { ArrowRight, TrendingUp, Code, Award, Calendar, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const journeyHighlights = [
   {
     year: "2025",
-    title: "Generative AI and ML Engineer",
+    title: "Generative AI & ML Engineer",
     company: "The Home Depot",
-    dateRange: "January 2025 - Present",
+    dateRange: "Jan 2025 - Present",
     icon: TrendingUp,
     gradient: "from-blue-500 to-cyan-500",
-    achievements: [
-      "55% reduction in analytics turnaround time through custom prompt optimization",
-      "Technologies: GPT-4, Gemini, BERT, Vertex AI, MLflow",
-    ],
+    keyMetric: "55% faster analytics",
   },
   {
     year: "2023",
     title: "Senior Data Scientist",
     company: "The Home Depot",
-    dateRange: "June 2023 - January 2025",
+    dateRange: "Jun 2023 - Jan 2025",
     icon: Code,
     gradient: "from-green-500 to-emerald-500",
-    achievements: [
-      "87% accuracy in house renovation prediction targeting $20M marketing savings",
-      "Technologies: Google Image Gen-3, Stable Diffusion, Vision Transformers",
-    ],
+    keyMetric: "$20M savings target",
+  },
+  {
+    year: "2022",
+    title: "Senior Data Analyst",
+    company: "The Home Depot",
+    dateRange: "Mar 2022 - Jun 2023",
+    icon: Award,
+    gradient: "from-purple-500 to-violet-500",
+    keyMetric: "300+ associates impact",
   },
   {
     year: "2020",
-    title: "Data Analyst and Engineer",
+    title: "Data Analyst & Engineer",
     company: "Harley Davidson",
-    dateRange: "February 2020 - March 2022",
-    icon: Award,
+    dateRange: "Feb 2020 - Mar 2022",
+    icon: Zap,
     gradient: "from-orange-500 to-red-500",
-    achievements: [
-      "80% reduction in data processing time through optimized ETL pipelines",
-      "Technologies: Tableau, Power BI, SAP Analytics Cloud, Alteryx",
-    ],
+    keyMetric: "80% faster processing",
+  },
+  {
+    year: "2019",
+    title: "Data Scientist",
+    company: "Principal Financial",
+    dateRange: "Aug 2019 - Dec 2019",
+    icon: Code,
+    gradient: "from-indigo-500 to-purple-500",
+    keyMetric: "78% ML accuracy",
+  },
+  {
+    year: "2019",
+    title: "Marketing Analyst",
+    company: "Anahata Art & Design",
+    dateRange: "May 2019 - Dec 2019",
+    icon: Target,
+    gradient: "from-pink-500 to-rose-500",
+    keyMetric: "200% traffic growth",
+  },
+  {
+    year: "2019",
+    title: "Graduate Assistant",
+    company: "University of Maryland",
+    dateRange: "May 2019 - Dec 2019",
+    icon: Award,
+    gradient: "from-emerald-500 to-teal-500",
+    keyMetric: "4000+ students served",
   },
   {
     year: "2017",
@@ -46,10 +73,7 @@ const journeyHighlights = [
     dateRange: "May 2017 - May 2018",
     icon: Calendar,
     gradient: "from-teal-500 to-cyan-500",
-    achievements: [
-      "$1M cost reduction through analytical inventory targeting and optimization",
-      "Technologies: Tableau, SQL Server, Python, Docker, IBM OMS/WMS",
-    ],
+    keyMetric: "$1M cost reduction",
   },
 ];
 
@@ -64,61 +88,46 @@ export default function JourneyPreview() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {journeyHighlights.map((milestone, index) => {
             const Icon = milestone.icon;
             return (
               <div
                 key={index}
-                className="group relative bg-card border border-border rounded-xl p-6 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2"
+                className="group relative bg-card border border-border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Year Badge */}
-                <div className="absolute -top-4 left-6">
-                  <div className={`px-4 py-1 bg-gradient-to-r ${milestone.gradient} text-white text-sm font-bold rounded-full shadow-lg`}>
+                <div className="absolute -top-2 -right-2">
+                  <div className={`px-3 py-1 bg-gradient-to-r ${milestone.gradient} text-white text-xs font-bold rounded-full shadow-md`}>
                     {milestone.year}
                   </div>
                 </div>
 
                 {/* Icon */}
-                <div className="mt-4 mb-6 flex items-center justify-center">
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${milestone.gradient} p-0.5`}>
-                    <div className="w-full h-full bg-card rounded-full flex items-center justify-center">
-                      <Icon className={`w-8 h-8 bg-gradient-to-br ${milestone.gradient} bg-clip-text text-transparent`} style={{ 
-                        stroke: 'url(#gradient)',
-                        fill: 'none'
-                      }} />
-                      <svg width="0" height="0">
-                        <defs>
-                          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-                            <stop offset="100%" stopColor="rgb(6, 182, 212)" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                <div className="mb-3 flex items-center">
+                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${milestone.gradient} p-0.5 flex-shrink-0`}>
+                    <div className="w-full h-full bg-card rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <div>
+                  <h3 className="text-sm font-bold mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                     {milestone.title}
                   </h3>
-                  <p className="text-primary font-semibold mb-1">{milestone.company}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{milestone.dateRange}</p>
+                  <p className="text-xs text-primary font-semibold mb-1">{milestone.company}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{milestone.dateRange}</p>
                   
-                  <div className="space-y-2 text-left">
-                    {milestone.achievements.map((achievement, i) => (
-                      <p key={i} className="text-sm text-muted-foreground flex items-start">
-                        <span className="text-primary mr-2 mt-1 flex-shrink-0">•</span>
-                        <span>{achievement}</span>
-                      </p>
-                    ))}
+                  {/* Key Metric Badge */}
+                  <div className={`inline-block px-2 py-1 bg-gradient-to-r ${milestone.gradient} bg-opacity-10 rounded text-xs font-semibold`}>
+                    {milestone.keyMetric}
                   </div>
                 </div>
 
                 {/* Hover Effect Line */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${milestone.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-xl`}></div>
+                <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${milestone.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-lg`}></div>
               </div>
             );
           })}
