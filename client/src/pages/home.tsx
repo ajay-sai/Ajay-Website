@@ -58,7 +58,7 @@ export default function Home() {
         
         <Navigation />
         
-        <main className="relative z-10">
+        <main className="relative z-10 pt-24">
           <HeroSection />
           <AboutSection />
           <JourneyPreview />
