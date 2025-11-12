@@ -43,8 +43,12 @@ replit.md
 *.md
 LICENSE
 
-# Large static assets that should not be in deployment (migrated to Object Storage)
+# Large static assets that should not be in deployment
 attached_assets/
+
+# Replit-specific files
+.replit
+.replitrc
 
 # Build artifacts (will be rebuilt during deployment)
 dist
