@@ -24,14 +24,15 @@ export default function ContactSection() {
     onSuccess: () => {
       toast({
         title: "Message Sent Successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you at sai.ajaysai@gmail.com soon.",
       });
       setFormData({ name: '', email: '', message: '' });
     },
-    onError: (error: Error) => {
+    onError: (error: any) => {
+      const errorMessage = error?.message || "Failed to send message. Please try emailing directly.";
       toast({
-        title: "Error",
-        description: error.message || "Failed to send message. Please try emailing directly.",
+        title: "Error Sending Message",
+        description: errorMessage,
         variant: "destructive",
       });
     },

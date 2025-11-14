@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Miryala - Lead Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0F172A',
+                        'secondary': '#1E293B',
+                        'accent-blue': '#3B82F6',
+                        'accent-green': '#10B981',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .skill-progress {
+            transition: width 1.5s ease-in-out;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .bg-dots {
+            background-image: radial-gradient(circle, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-primary text-slate-50 font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-primary/80 backdrop-blur-md z-50 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold gradient-text">Ajay Miryala</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-accent-blue transition-colors">Home</a>
+                    <a href="#about" class="hover:text-accent-blue transition-colors">About</a>
+                    <a href="#skills" class="hover:text-accent-blue transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-accent-blue transition-colors">Projects</a>
+                    <a href="#demos" class="hover:text-accent-blue transition-colors">Demos</a>
+                    <a href="#contact" class="hover:text-accent-blue transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+                <a href="#home" class="block py-2 hover:text-accent-blue transition-colors">Home</a>
+                <a href="#about" class="block py-2 hover:text-accent-blue transition-colors">About</a>
+                <a href="#skills" class="block py-2 hover:text-accent-blue transition-colors">Skills</a>
+                <a href="#projects" class="block py-2 hover:text-accent-blue transition-colors">Projects</a>
+                <a href="#demos" class="block py-2 hover:text-accent-blue transition-colors">Demos</a>
+                <a href="#contact" class="block py-2 hover:text-accent-blue transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-dots relative overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-accent-green/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <div class="mb-8 animate-fade-in">
+                    <!-- Professional headshot placeholder -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400" 
+                         alt="Ajay Miryala - Professional Headshot" 
+                         class="w-48 h-48 rounded-full mx-auto object-cover border-4 border-accent-blue shadow-2xl animate-float" 
+                         data-mock="true">
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold mb-4 animate-slide-up">
+                    <span class="gradient-text">Ajay Miryala</span>
+                </h1>
+                
+                <h2 class="text-2xl md:text-3xl text-slate-300 mb-6 animate-slide-up" style="animation-delay: 0.2s">
+                    Lead Data Scientist
+                </h2>
+                
+                <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-8 leading-relaxed animate-slide-up" style="animation-delay: 0.4s" data-mock="true">
+                    Transforming complex data into actionable insights through advanced machine learning, AI, and statistical modeling. 
+                    Passionate about leveraging cutting-edge technologies to solve real-world problems and drive data-driven decision making.
+                </p>
+                
+                <div class="flex justify-center space-x-6 mb-12 animate-slide-up" style="animation-delay: 0.6s">
+                    <a href="https://www.linkedin.com/in/ajay-sai/" target="_blank" 
+                       class="bg-accent-blue hover:bg-blue-600 text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/ajay-sai" target="_blank" 
+                       class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                
+                <div class="animate-bounce">
+                    <a href="#about" class="inline-block text-slate-400 hover:text-accent-blue transition-colors">
+                        <i class="fas fa-chevron-down text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-secondary/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-green mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-slate-300 leading-relaxed" data-mock="true">
+                        With over 8 years of experience in data science and machine learning, I specialize in building 
+                        scalable AI solutions that drive business value. My journey began with a fascination for uncovering 
+                        patterns in complex datasets, which has evolved into leading cross-functional teams to implement 
+                        enterprise-level data strategies.
+                    </p>
+                    
+                    <p class="text-lg text-slate-300 leading-relaxed" data-mock="true">
+                        I have successfully deployed predictive models that increased revenue by 40%, developed recommendation 
+                        systems serving millions of users, and led the digital transformation initiatives at Fortune 500 companies. 
+                        My expertise spans the entire data science lifecycle, from problem formulation to model deployment and monitoring.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="text-center p-4 bg-primary/50 rounded-lg">
+                            <div class="text-3xl font-bold text-accent-blue" data-mock="true">150+</div>
+                            <div class="text-slate-400">Projects Completed</div>
+                        </div>
+                        <div class="text-center p-4 bg-primary/50 rounded-lg">
+                            <div class="text-3xl font-bold text-accent-green" data-mock="true">8+</div>
+                            <div class="text-slate-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Quantum computing visualization -->
+                    <img src="https://pixabay.com/get/g6e18e57cf75629c41f89156ecd51b338234f346a82e50a7b25047845f90c0f96defc8f8fc82cb366b41d29bf622d16828883e6ee2be37f5bcd8b86272b5fe00b_1280.jpg" 
+                         alt="Advanced data visualization and quantum computing concepts" 
+                         class="rounded-2xl shadow-2xl w-full h-auto"
+                         data-mock="true">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Technical Skills</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-green mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programming Languages -->
+                <div class="bg-secondary/80 p-6 rounded-xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-accent-blue text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Programming</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fab fa-python text-yellow-500 mr-2"></i>Python</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-chart-line text-blue-500 mr-2"></i>R</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-database text-orange-500 mr-2"></i>SQL</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Libraries -->
+                <div class="bg-secondary/80 p-6 rounded-xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-layer-group text-accent-green text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Frameworks</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-brain text-orange-500 mr-2"></i>TensorFlow</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-fire text-red-500 mr-2"></i>PyTorch</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-atom text-green-500 mr-2"></i>Scikit-learn</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-table text-blue-400 mr-2"></i>Pandas</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Platforms -->
+                <div class="bg-secondary/80 p-6 rounded-xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cloud text-accent-blue text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Cloud</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fab fa-aws text-orange-400 mr-2"></i>AWS</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fab fa-google text-red-500 mr-2"></i>GCP</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fab fa-microsoft text-blue-400 mr-2"></i>Azure</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-blue h-2 rounded-full skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-secondary/80 p-6 rounded-xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tools text-accent-green text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Tools</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fab fa-docker text-blue-400 mr-2"></i>Docker</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fab fa-git-alt text-orange-500 mr-2"></i>Git</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center"><i class="fas fa-book text-orange-400 mr-2"></i>Jupyter</span>
+                            <div class="w-20 bg-slate-700 rounded-full h-2">
+                                <div class="bg-accent-green h-2 rounded-full skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-secondary/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-green mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-primary/80 rounded-xl shadow-lg overflow-hidden card-hover" data-mock="true">
+                    <div class="h-48 bg-gradient-to-br from-accent-blue/20 to-accent-green/20 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-accent-blue"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Predictive Analytics Dashboard</h3>
+                        <p class="text-slate-400 mb-4">Real-time analytics platform for forecasting business metrics using advanced time series models and machine learning algorithms.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded text-sm">Python</span>
+                            <span class="px-2 py-1 bg-accent-green/20 text-accent-green rounded text-sm">TensorFlow</span>
+                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded text-sm">React</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" class="text-accent-blue hover:text-blue-400 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-accent-green hover:text-green-400 transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-primary/80 rounded-xl shadow-lg overflow-hidden card-hover" data-mock="true">
+                    <div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-purple-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Recommendation Engine</h3>
+                        <p class="text-slate-400 mb-4">Collaborative filtering system serving personalized recommendations to 1M+ users with 95% accuracy and sub-100ms response time.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded text-sm">Python</span>
+                            <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded text-sm">PyTorch</span>
+                            <span class="px-2 py-1 bg-orange-500/20 text-orange-400 rounded text-sm">AWS</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" class="text-accent-blue hover:text-blue-400 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-accent-green hover:text-green-400 transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-primary/80 rounded-xl shadow-lg overflow-hidden card-hover" data-mock="true">
+                    <div class="h-48 bg-gradient-to-br from-green-500/20 to-blue-500/20 flex items-center justify-center">
+                        <i class="fas fa-language text-6xl text-green-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">NLP Sentiment Analyzer</h3>
+                        <p class="text-slate-400 mb-4">Multi-language sentiment analysis tool using transformer models for social media monitoring and brand perception analysis.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded text-sm">Python</span>
+                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-sm">BERT</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-sm">FastAPI</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" class="text-accent-blue hover:text-blue-400 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-accent-green hover:text-green-400 transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-primary/80 rounded-xl shadow-lg overflow-hidden card-hover" data-mock="true">
+                    <div class="h-48 bg-gradient-to-br from-red-500/20 to-yellow-500/20 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-6xl text-red-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fraud Detection System</h3>
+                        <p class="text-slate-400 mb-4">Real-time fraud detection using ensemble methods and anomaly detection algorithms, reducing false positives by 60%.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded text-sm">Python</span>
+                            <span class="px-2 py-1 bg-accent-green/20 text-accent-green rounded text-sm">Scikit-learn</span>
+                            <span class="px-2 py-1 bg-gray-500/20 text-gray-400 rounded text-sm">Kafka</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" class="text-accent-blue hover:text-blue-400 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-accent-green hover:text-green-400 transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-primary/80 rounded-xl shadow-lg overflow-hidden card-hover" data-mock="true">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
+                        <i class="fas fa-eye text-6xl text-indigo-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Computer Vision Pipeline</h3>
+                        <p class="text-slate-400 mb-4">Automated image classification and object detection system for quality control in manufacturing using CNNs.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded text-sm">Python</span>
+                            <span class="px-2 py-1 bg-accent-green/20 text-accent-green rounded text-sm">TensorFlow</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-sm">OpenCV</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" class="text-accent-blue hover:text-blue-400 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-accent-green hover:text-green-400 transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-primary/80 rounded-xl shadow-lg overflow-hidden card-hover" data-mock="true">
+                    <div class="h-48 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 flex items-center justify-center">
+                        <i class="fas fa-network-wired text-6xl text-teal-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">MLOps Pipeline</h3>
+                        <p class="text-slate-400 mb-4">End-to-end ML pipeline with automated training, validation, deployment, and monitoring using modern DevOps practices.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue rounded text-sm">Python</span>
+                            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded text-sm">MLflow</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-sm">Kubernetes</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" class="text-accent-blue hover:text-blue-400 transition-colors">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-accent-green hover:text-green-400 transition-colors">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/ajay-sai" target="_blank" 
+                   class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-accent-blue to-accent-green text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <i class="fab fa-github mr-2"></i>
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos & Media Section -->
+    <section id="demos" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Demos & Presentations</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-green mx-auto"></div>
+            </div>
+            
+            <!-- Video Demos -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-center">Project Demonstrations</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-secondary/80 rounded-xl overflow-hidden shadow-lg card-hover" data-mock="true">
+                        <div class="aspect-video bg-gradient-to-br from-accent-blue/20 to-accent-green/20 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-play-circle text-6xl text-accent-blue mb-4"></i>
+                                <p class="text-slate-300">AI Recommendation Engine Demo</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-semibold mb-2">Real-time Recommendation System</h4>
+                            <p class="text-slate-400">Live demonstration of the recommendation engine processing user interactions and delivering personalized suggestions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-secondary/80 rounded-xl overflow-hidden shadow-lg card-hover" data-mock="true">
+                        <div class="aspect-video bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-play-circle text-6xl text-purple-400 mb-4"></i>
+                                <p class="text-slate-300">Computer Vision Pipeline</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="text-lg font-semibold mb-2">Automated Quality Control</h4>
+                            <p class="text-slate-400">Walkthrough of the computer vision system detecting defects in manufacturing processes with 99.7% accuracy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image Gallery -->
+            <div>
+                <h3 class="text-2xl font-bold mb-8 text-center">Project Visualizations</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Holographic data streams visualization -->
+                    <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Holographic data streams and neural network visualizations" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="font-semibold">Data Flow Architecture</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Futuristic neural interfaces -->
+                    <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Futuristic neural network interfaces and AI brain connections" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="font-semibold">Neural Network Design</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced ML visualization -->
+                    <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Advanced machine learning algorithms and data science visualizations" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="font-semibold">Algorithm Performance</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional visualizations -->
+                    <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Real-time analytics dashboard with data visualizations" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="font-semibold">Analytics Dashboard</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Data science charts and statistical analysis visualizations" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="font-semibold">Statistical Analysis</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Machine learning model architecture and deep learning networks" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                             data-mock="true">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h4 class="font-semibold">Model Architecture</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-secondary/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-green mx-auto mb-6"></div>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto" data-mock="true">
+                    Ready to collaborate on your next data science project? Let's discuss how we can turn your data into actionable insights.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-center lg:justify-start space-x-4">
+                                <div class="w-12 h-12 bg-accent-blue/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-accent-blue"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">Email</div>
+                                    <div class="text-slate-400" data-mock="true">ajay.miryala@email.com</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-center lg:justify-start space-x-4">
+                                <div class="w-12 h-12 bg-accent-green/20 rounded-full flex items-center justify-center">
+                                    <i class="fab fa-linkedin text-accent-green"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">LinkedIn</div>
+                                    <a href="https://www.linkedin.com/in/ajay-sai/" class="text-accent-green hover:text-green-400 transition-colors">
+                                        linkedin.com/in/ajay-sai
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-center lg:justify-start space-x-4">
+                                <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center">
+                                    <i class="fab fa-github text-slate-300"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">GitHub</div>
+                                    <a href="https://github.com/ajay-sai" class="text-slate-300 hover:text-white transition-colors">
+                                        github.com/ajay-sai
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-primary/80 p-8 rounded-xl shadow-lg">
+                    <form class="space-y-6" data-implementation="Should integrate with email service">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" 
+                                   class="w-full px-4 py-3 bg-secondary border border-slate-600 rounded-lg focus:ring-2 focus:ring-accent-blue focus:border-transparent transition-colors text-white"
+                                   placeholder="Your Name" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" 
+                                   class="w-full px-4 py-3 bg-secondary border border-slate-600 rounded-lg focus:ring-2 focus:ring-accent-blue focus:border-transparent transition-colors text-white"
+                                   placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" 
+                                      class="w-full px-4 py-3 bg-secondary border border-slate-600 rounded-lg focus:ring-2 focus:ring-accent-blue focus:border-transparent transition-colors text-white resize-none"
+                                      placeholder="Tell me about your project or how we can collaborate..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-r from-accent-blue to-accent-green text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                                data-event="click:handleSubmit">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-primary border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold gradient-text mb-4">Ajay Miryala</div>
+                <p class="text-slate-400 mb-6">Lead Data Scientist | Machine Learning Engineer | AI Innovator</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/ajay-sai/" target="_blank" 
+                       class="text-slate-400 hover:text-accent-blue transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/ajay-sai" target="_blank" 
+                       class="text-slate-400 hover:text-slate-300 transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-accent-green transition-colors" data-mock="true">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+                <div class="text-sm text-slate-500">
+                    © 2024 Ajay Miryala. Built with modern web technologies.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for scroll animations
+            document.querySelectorAll('.card-hover, .animate-slide-up, .animate-fade-in').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Animate skill progress bars when in view
+            const skillObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBars = entry.target.querySelectorAll('.skill-progress');
+                        progressBars.forEach(bar => {
+                            const width = bar.style.width;
+                            bar.style.width = '0%';
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 200);
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('#skills .card-hover').forEach(card => {
+                skillObserver.observe(card);
+            });
+
+            // Form submission handler (placeholder)
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement actual form submission logic
+                const button = this.querySelector('button[type="submit"]');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+                button.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                        this.reset();
+                    }, 2000);
+                }, 1500);
+            });
+
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.classList.add('backdrop-blur-lg');
+                } else {
+                    nav.classList.remove('backdrop-blur-lg');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
