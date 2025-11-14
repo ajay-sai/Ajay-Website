@@ -1,0 +1,1049 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Miryala - Lead Data Scientist Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E293B',
+                        accent: '#10B981',
+                        neutral: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            500: '#64748B',
+                            900: '#0F172A'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite'
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB, #10B981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans bg-neutral-50 text-neutral-900 overflow-x-hidden">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [responsive header with mobile menu] -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-neutral-200">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold gradient-text">Ajay Miryala</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-neutral-600 hover:text-primary transition-colors duration-300">Home</a>
+                        <a href="#about" class="text-neutral-600 hover:text-primary transition-colors duration-300">About</a>
+                        <a href="#skills" class="text-neutral-600 hover:text-primary transition-colors duration-300">Skills</a>
+                        <a href="#projects" class="text-neutral-600 hover:text-primary transition-colors duration-300">Projects</a>
+                        <a href="#media" class="text-neutral-600 hover:text-primary transition-colors duration-300">Media</a>
+                        <a href="#contact" class="text-neutral-600 hover:text-primary transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-neutral-600 hover:text-primary focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-b border-neutral-200">
+            <div class="px-6 pt-2 pb-4 space-y-2">
+                <a href="#home" class="block text-neutral-600 hover:text-primary py-2 transition-colors duration-300">Home</a>
+                <a href="#about" class="block text-neutral-600 hover:text-primary py-2 transition-colors duration-300">About</a>
+                <a href="#skills" class="block text-neutral-600 hover:text-primary py-2 transition-colors duration-300">Skills</a>
+                <a href="#projects" class="block text-neutral-600 hover:text-primary py-2 transition-colors duration-300">Projects</a>
+                <a href="#media" class="block text-neutral-600 hover:text-primary py-2 transition-colors duration-300">Media</a>
+                <a href="#contact" class="block text-neutral-600 hover:text-primary py-2 transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main intro with headshot and bio] -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-white to-accent/5 pt-16">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="text-center lg:text-left space-y-8 animate-fade-in">
+                    <div class="space-y-4">
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                            <span class="gradient-text">Ajay Miryala</span>
+                        </h1>
+                        <p class="text-2xl sm:text-3xl text-neutral-600 font-medium">Lead Data Scientist</p>
+                    </div>
+                    
+                    <p class="text-lg text-neutral-600 max-w-2xl leading-relaxed" data-mock="true">
+                        Passionate about transforming complex data into actionable insights. Specializing in machine learning, 
+                        artificial intelligence, and advanced analytics to drive business innovation and strategic decision-making.
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex justify-center lg:justify-start space-x-6">
+                        <a href="https://www.linkedin.com/in/ajay-sai/" 
+                           class="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/ajay-sai" 
+                           class="flex items-center space-x-2 bg-neutral-900 text-white px-6 py-3 rounded-full hover:bg-neutral-800 transition-all duration-300 hover:scale-105">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Professional Headshot -->
+                <div class="flex justify-center lg:justify-end animate-float">
+                    <div class="relative">
+                        <!-- Professional headshot of a data scientist in business attire -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800" 
+                             alt="Professional headshot of Ajay Miryala" 
+                             class="w-80 h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-8 border-white"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual professional headshot of Ajay Miryala" />
+                        
+                        <!-- Decorative Elements -->
+                        <div class="absolute -z-10 -top-4 -left-4 w-full h-full rounded-full bg-gradient-to-br from-primary/20 to-accent/20"></div>
+                        <div class="absolute -z-20 -top-8 -left-8 w-full h-full rounded-full bg-gradient-to-br from-primary/10 to-accent/10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection [detailed bio with two-column layout] -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6 animate-slide-up">
+                    <p class="text-lg text-neutral-600 leading-relaxed" data-mock="true">
+                        With over 8 years of experience in data science and machine learning, I have developed a deep passion 
+                        for uncovering insights from complex datasets and building intelligent systems that drive business value.
+                    </p>
+                    
+                    <p class="text-lg text-neutral-600 leading-relaxed" data-mock="true">
+                        My journey began with a background in computer science and statistics, which laid the foundation for my 
+                        expertise in predictive modeling, natural language processing, and deep learning. I've had the privilege 
+                        of working with Fortune 500 companies, helping them leverage data to make strategic decisions.
+                    </p>
+                    
+                    <p class="text-lg text-neutral-600 leading-relaxed" data-mock="true">
+                        When I'm not analyzing data or building models, you can find me contributing to open-source projects, 
+                        mentoring aspiring data scientists, or exploring the latest advancements in AI research.
+                    </p>
+                    
+                    <!-- Key Highlights -->
+                    <div class="grid sm:grid-cols-2 gap-6 pt-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="award" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-neutral-900" data-mock="true">8+ Years Experience</p>
+                                <p class="text-neutral-600 text-sm" data-mock="true">Data Science & ML</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="users" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-neutral-900" data-mock="true">50+ Projects</p>
+                                <p class="text-neutral-600 text-sm" data-mock="true">Delivered Successfully</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <!-- Modern data science workspace with multiple monitors showing analytics dashboards -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Data science workspace with analytics dashboards" 
+                         class="rounded-2xl shadow-2xl w-full max-w-lg"
+                         data-mock-image="true"
+                         data-implementation="Replace with relevant professional image or infographic" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Skills Section -->
+    <!-- @COMPONENT: SkillsSection [categorized technical skills with icons] -->
+    <section id="skills" class="py-20 bg-neutral-100">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">Skills & Expertise</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Programming Languages -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="code" class="w-8 h-8 text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900">Programming Languages</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-700" data-mock="true">Python</span>
+                            <div class="w-24 bg-neutral-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-5/6"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-700" data-mock="true">R</span>
+                            <div class="w-24 bg-neutral-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-4/6"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-700" data-mock="true">SQL</span>
+                            <div class="w-24 bg-neutral-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full w-5/6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Libraries -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="layers" class="w-8 h-8 text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900">Frameworks & Libraries</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">TensorFlow</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">PyTorch</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">Scikit-learn</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Platforms -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="cloud" class="w-8 h-8 text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900">Cloud Platforms</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-700" data-mock="true">AWS</span>
+                            <div class="w-24 bg-neutral-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full w-5/6"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-700" data-mock="true">GCP</span>
+                            <div class="w-24 bg-neutral-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full w-4/6"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-700" data-mock="true">Azure</span>
+                            <div class="w-24 bg-neutral-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full w-3/6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="wrench" class="w-8 h-8 text-purple-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-neutral-900">Tools</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">Docker</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">Git</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">Jupyter</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                            <span class="text-neutral-700" data-mock="true">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SkillsSection -->
+
+    <!-- Projects Section -->
+    <!-- @COMPONENT: ProjectsSection [showcase of GitHub projects in card layout] -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                <p class="text-lg text-neutral-600 mt-6 max-w-3xl mx-auto" data-mock="true">
+                    Explore some of my key projects that demonstrate expertise in machine learning, 
+                    data analysis, and AI implementation across various domains.
+                </p>
+            </div>
+            
+            <!-- @MAP: projects.map(project => ( -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1: ML Prediction Model -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-neutral-200">
+                    <!-- Machine learning model visualization with charts and graphs -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Machine learning prediction model dashboard" 
+                         class="w-full h-48 object-cover rounded-t-2xl"
+                         data-mock-image="true"
+                         data-implementation="Replace with actual project screenshot" />
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3" data-mock="true">Customer Churn Prediction</h3>
+                        <p class="text-neutral-600 mb-4 leading-relaxed" data-mock="true">
+                            Advanced machine learning model to predict customer churn using ensemble methods 
+                            and feature engineering techniques. Achieved 92% accuracy with business impact analysis.
+                        </p>
+                        
+                        <!-- Technologies Used -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full" data-mock="true">Python</span>
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full" data-mock="true">Scikit-learn</span>
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-500 text-sm rounded-full" data-mock="true">Pandas</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-primary transition-colors duration-300">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-accent transition-colors duration-300">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: NLP Application -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-neutral-200">
+                    <!-- Natural language processing interface with text analysis -->
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Natural language processing text analysis interface" 
+                         class="w-full h-48 object-cover rounded-t-2xl"
+                         data-mock-image="true"
+                         data-implementation="Replace with actual project screenshot" />
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3" data-mock="true">Sentiment Analysis Platform</h3>
+                        <p class="text-neutral-600 mb-4 leading-relaxed" data-mock="true">
+                            Real-time sentiment analysis system for social media monitoring using transformer models 
+                            and deep learning. Processes 10K+ texts per minute with multi-language support.
+                        </p>
+                        
+                        <!-- Technologies Used -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full" data-mock="true">Python</span>
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full" data-mock="true">TensorFlow</span>
+                            <span class="px-3 py-1 bg-purple-500/10 text-purple-500 text-sm rounded-full" data-mock="true">BERT</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-primary transition-colors duration-300">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-accent transition-colors duration-300">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Computer Vision -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-neutral-200">
+                    <!-- Computer vision application showing image recognition interface -->
+                    <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Computer vision image recognition interface" 
+                         class="w-full h-48 object-cover rounded-t-2xl"
+                         data-mock-image="true"
+                         data-implementation="Replace with actual project screenshot" />
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3" data-mock="true">Object Detection System</h3>
+                        <p class="text-neutral-600 mb-4 leading-relaxed" data-mock="true">
+                            Real-time object detection and tracking system using YOLO and OpenCV. 
+                            Deployed for manufacturing quality control with 95% detection accuracy.
+                        </p>
+                        
+                        <!-- Technologies Used -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full" data-mock="true">Python</span>
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full" data-mock="true">PyTorch</span>
+                            <span class="px-3 py-1 bg-red-500/10 text-red-500 text-sm rounded-full" data-mock="true">OpenCV</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-primary transition-colors duration-300">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-accent transition-colors duration-300">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: Data Pipeline -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-neutral-200">
+                    <!-- Data pipeline architecture diagram showing data flow -->
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Data pipeline architecture visualization" 
+                         class="w-full h-48 object-cover rounded-t-2xl"
+                         data-mock-image="true"
+                         data-implementation="Replace with actual project screenshot" />
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3" data-mock="true">Automated Data Pipeline</h3>
+                        <p class="text-neutral-600 mb-4 leading-relaxed" data-mock="true">
+                            End-to-end data pipeline for ETL processing using Apache Airflow and cloud services. 
+                            Handles 1TB+ daily data with automated monitoring and error handling.
+                        </p>
+                        
+                        <!-- Technologies Used -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full" data-mock="true">Python</span>
+                            <span class="px-3 py-1 bg-orange-500/10 text-orange-500 text-sm rounded-full" data-mock="true">Airflow</span>
+                            <span class="px-3 py-1 bg-blue-500/10 text-blue-500 text-sm rounded-full" data-mock="true">AWS</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-primary transition-colors duration-300">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-accent transition-colors duration-300">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5: Time Series Analysis -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-neutral-200">
+                    <!-- Time series forecasting charts and graphs -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Time series forecasting dashboard with charts" 
+                         class="w-full h-48 object-cover rounded-t-2xl"
+                         data-mock-image="true"
+                         data-implementation="Replace with actual project screenshot" />
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3" data-mock="true">Financial Forecasting Model</h3>
+                        <p class="text-neutral-600 mb-4 leading-relaxed" data-mock="true">
+                            Advanced time series forecasting model for financial markets using LSTM networks 
+                            and statistical methods. Provides accurate short-term and long-term predictions.
+                        </p>
+                        
+                        <!-- Technologies Used -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full" data-mock="true">Python</span>
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full" data-mock="true">TensorFlow</span>
+                            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-500 text-sm rounded-full" data-mock="true">Prophet</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-primary transition-colors duration-300">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-accent transition-colors duration-300">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6: Recommendation System -->
+                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-neutral-200">
+                    <!-- Recommendation system interface showing personalized suggestions -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=300" 
+                         alt="Recommendation system interface with personalized suggestions" 
+                         class="w-full h-48 object-cover rounded-t-2xl"
+                         data-mock-image="true"
+                         data-implementation="Replace with actual project screenshot" />
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3" data-mock="true">AI Recommendation Engine</h3>
+                        <p class="text-neutral-600 mb-4 leading-relaxed" data-mock="true">
+                            Collaborative filtering recommendation system with deep learning integration. 
+                            Improved user engagement by 40% with personalized content delivery.
+                        </p>
+                        
+                        <!-- Technologies Used -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full" data-mock="true">Python</span>
+                            <span class="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full" data-mock="true">PyTorch</span>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-500 text-sm rounded-full" data-mock="true">FastAPI</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ajay-sai" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-primary transition-colors duration-300">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span class="text-sm">Code</span>
+                            </a>
+                            <a href="#" 
+                               class="flex items-center space-x-2 text-neutral-600 hover:text-accent transition-colors duration-300">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                <span class="text-sm">Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+
+            <!-- View More Button -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/ajay-sai" 
+                   class="inline-flex items-center space-x-2 bg-primary text-white px-8 py-4 rounded-full hover:bg-primary/90 transition-all duration-300 hover:scale-105">
+                    <span>View All Projects</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsSection -->
+
+    <!-- Demos & Media Section -->
+    <!-- @COMPONENT: MediaSection [video demos and project gallery] -->
+    <section id="media" class="py-20 bg-neutral-100">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">Demos & Media</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                <p class="text-lg text-neutral-600 mt-6 max-w-3xl mx-auto" data-mock="true">
+                    Watch project demonstrations and explore visual showcases of my work in data science and machine learning.
+                </p>
+            </div>
+            
+            <!-- Video Demos Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-neutral-900 mb-8 text-center">Project Demonstrations</h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Video Demo 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div class="aspect-video bg-neutral-900 flex items-center justify-center relative group cursor-pointer">
+                            <!-- Video thumbnail for ML model demo -->
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450" 
+                                 alt="Machine learning model demonstration video thumbnail" 
+                                 class="w-full h-full object-cover"
+                                 data-mock-image="true"
+                                 data-implementation="Replace with actual video thumbnail or embed" />
+                            
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/40 transition-all duration-300">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="play" class="w-8 h-8 text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-neutral-900 mb-2" data-mock="true">ML Model Training Process</h4>
+                            <p class="text-neutral-600" data-mock="true">
+                                Step-by-step walkthrough of training a deep learning model for image classification, 
+                                including data preprocessing and model evaluation.
+                            </p>
+                            <!-- @FUNCTIONALITY: This should embed YouTube/Vimeo video when clicked -->
+                        </div>
+                    </div>
+
+                    <!-- Video Demo 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div class="aspect-video bg-neutral-900 flex items-center justify-center relative group cursor-pointer">
+                            <!-- Video thumbnail for data visualization demo -->
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450" 
+                                 alt="Data visualization dashboard demonstration video thumbnail" 
+                                 class="w-full h-full object-cover"
+                                 data-mock-image="true"
+                                 data-implementation="Replace with actual video thumbnail or embed" />
+                            
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/40 transition-all duration-300">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                                    <i data-lucide="play" class="w-8 h-8 text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-neutral-900 mb-2" data-mock="true">Interactive Dashboard Demo</h4>
+                            <p class="text-neutral-600" data-mock="true">
+                                Live demonstration of an interactive analytics dashboard built with modern 
+                                data visualization techniques and real-time data processing.
+                            </p>
+                            <!-- @FUNCTIONALITY: This should embed YouTube/Vimeo video when clicked -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Gallery -->
+            <div>
+                <h3 class="text-2xl font-bold text-neutral-900 mb-8 text-center">Project Gallery</h3>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Gallery Item 1 -->
+                    <div class="group cursor-pointer">
+                        <!-- Data science notebook with code and visualizations -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Jupyter notebook with data analysis code and visualizations" 
+                             class="w-full h-64 object-cover rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual project screenshot" />
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div class="group cursor-pointer">
+                        <!-- Neural network architecture diagram -->
+                        <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Neural network architecture visualization diagram" 
+                             class="w-full h-64 object-cover rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual project screenshot" />
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div class="group cursor-pointer">
+                        <!-- Data pipeline monitoring dashboard -->
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Real-time data pipeline monitoring dashboard" 
+                             class="w-full h-64 object-cover rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual project screenshot" />
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div class="group cursor-pointer">
+                        <!-- Machine learning model performance metrics -->
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Model performance metrics and evaluation charts" 
+                             class="w-full h-64 object-cover rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual project screenshot" />
+                    </div>
+
+                    <!-- Gallery Item 5 -->
+                    <div class="group cursor-pointer">
+                        <!-- Data visualization dashboard with multiple charts -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="Comprehensive data visualization dashboard" 
+                             class="w-full h-64 object-cover rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual project screenshot" />
+                    </div>
+
+                    <!-- Gallery Item 6 -->
+                    <div class="group cursor-pointer">
+                        <!-- AI model deployment architecture -->
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
+                             alt="AI model deployment architecture diagram" 
+                             class="w-full h-64 object-cover rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                             data-mock-image="true"
+                             data-implementation="Replace with actual project screenshot" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: MediaSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form and professional information] -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-6">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                <p class="text-lg text-neutral-600 mt-6 max-w-3xl mx-auto" data-mock="true">
+                    Interested in collaborating on data science projects or discussing opportunities? 
+                    I'd love to hear from you. Let's connect and explore how we can work together.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                
+                <!-- Contact Form -->
+                <div class="bg-neutral-50 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold text-neutral-900 mb-6">Send a Message</h3>
+                    
+                    <form class="space-y-6" data-implementation="Add form submission logic and validation">
+                        <!-- @STATE: formData:{name:string, email:string, message:string} -->
+                        <!-- @STATE: errors:{[key:string]:string} -->
+                        <!-- @STATE: isSubmitting:boolean = false -->
+                        
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-neutral-700 mb-2">Name</label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name"
+                                   required
+                                   class="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                                   placeholder="Your full name" />
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-neutral-700 mb-2">Email</label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email"
+                                   required
+                                   class="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                                   placeholder="your.email@example.com" />
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-neutral-700 mb-2">Message</label>
+                            <textarea id="message" 
+                                      name="message"
+                                      rows="5"
+                                      required
+                                      class="w-full px-4 py-3 bg-white border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+                                      placeholder="Tell me about your project or inquiry..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-primary text-white py-4 px-6 rounded-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center space-x-2 font-medium"
+                                data-event="click:handleSubmit">
+                            <span>Send Message</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-neutral-900 mb-6">Let's Connect</h3>
+                        <p class="text-lg text-neutral-600 leading-relaxed mb-8" data-mock="true">
+                            I'm always interested in discussing new opportunities, innovative projects, 
+                            and potential collaborations in the field of data science and machine learning.
+                        </p>
+                    </div>
+                    
+                    <!-- Contact Details -->
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="mail" class="w-6 h-6 text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-900">Email</p>
+                                <p class="text-neutral-600" data-mock="true">ajay.miryala@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="linkedin" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-900">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/ajay-sai/" 
+                                   class="text-accent hover:text-accent/80 transition-colors duration-300">
+                                    linkedin.com/in/ajay-sai
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-neutral-900/10 rounded-full flex items-center justify-center">
+                                <i data-lucide="github" class="w-6 h-6 text-neutral-900"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-900">GitHub</p>
+                                <a href="https://github.com/ajay-sai" 
+                                   class="text-neutral-900 hover:text-neutral-700 transition-colors duration-300">
+                                    github.com/ajay-sai
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Call-to-Action -->
+                    <div class="bg-gradient-to-r from-primary to-accent rounded-2xl p-6 text-white">
+                        <h4 class="text-xl font-bold mb-2">Ready to Collaborate?</h4>
+                        <p class="mb-4 opacity-90" data-mock="true">
+                            Whether you have a specific project in mind or just want to explore possibilities, 
+                            I'm excited to hear from you.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/ajay-sai/" 
+                               class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span class="text-sm">Schedule Call</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8">
+            <div class="text-center">
+                <div class="mb-6">
+                    <span class="text-2xl font-bold gradient-text">Ajay Miryala</span>
+                </div>
+                
+                <p class="text-neutral-400 mb-6" data-mock="true">
+                    Lead Data Scientist passionate about transforming data into actionable insights
+                </p>
+                
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://www.linkedin.com/in/ajay-sai/" 
+                       class="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://github.com/ajay-sai" 
+                       class="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-neutral-700 transition-colors duration-300">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#contact" 
+                       class="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+                
+                <div class="border-t border-neutral-800 pt-6">
+                    <p class="text-neutral-500 text-sm" data-mock="true">
+                        © 2024 Ajay Miryala. All rights reserved. Built with passion for data science.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" 
+            class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:bg-primary/90 transition-all duration-300 hover:scale-110 hidden z-40">
+        <i data-lucide="arrow-up" class="w-6 h-6 mx-auto"></i>
+    </button>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile menu functionality
+        (function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Close mobile menu when clicking on links
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        })();
+        
+        // Scroll to top functionality
+        (function() {
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        scrollToTopBtn.classList.remove('hidden');
+                    } else {
+                        scrollToTopBtn.classList.add('hidden');
+                    }
+                });
+                
+                scrollToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        })();
+        
+        // Form submission handling (placeholder)
+        (function() {
+            const contactForm = document.querySelector('#contact form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // TODO: Implement actual form submission logic
+                    // This would typically involve sending data to a backend service
+                    
+                    const formData = new FormData(contactForm);
+                    const data = {
+                        name: formData.get('name'),
+                        email: formData.get('email'),
+                        message: formData.get('message')
+                    };
+                    
+                    // Placeholder success message
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        })();
+        
+        // Intersection Observer for animations (optional enhancement)
+        (function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements with animation classes
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+        })();
+    </script>
+</body>
+</html>

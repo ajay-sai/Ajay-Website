@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Miryala | Lead Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'electric': '#00D4FF',
+                        'neon-purple': '#8B5CF6',
+                        'cyber-cyan': '#06B6D4',
+                        'neon-pink': '#EC4899',
+                        'deep-space': '#0B0F1A',
+                        'dark-slate': '#1E293B',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'text-reveal': 'textReveal 1.2s ease-out',
+                        'particle': 'particle 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(5deg)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(0, 212, 255, 0.6)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        textReveal: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        particle: {
+                            '0%': { transform: 'translateY(100vh) rotate(0deg)' },
+                            '100%': { transform: 'translateY(-100vh) rotate(360deg)' }
+                        }
+                    },
+                    backdropBlur: {
+                        xs: '2px'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .holographic-border {
+            background: linear-gradient(45deg, #00D4FF, #8B5CF6, #EC4899, #06B6D4);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            padding: 2px;
+            border-radius: 20px;
+        }
+        
+        .holographic-inner {
+            background: rgba(11, 15, 26, 0.95);
+            border-radius: 18px;
+            backdrop-filter: blur(20px);
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #00D4FF, #8B5CF6);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        
+        .magnetic-element {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .magnetic-element:hover {
+            transform: scale(1.05) translateZ(0);
+        }
+        
+        .skill-node {
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-node:hover {
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(11, 15, 26, 0.9) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+        }
+        
+        .contact-form {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2n) {
+            animation-delay: -2s;
+        }
+        
+        .floating-element:nth-child(3n) {
+            animation-delay: -4s;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-deep-space text-white font-inter antialiased">
+    <!-- Animated Background Particles -->
+    <div id="particles-container" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glassmorphism border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="text-2xl font-bold text-glow">AM</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="hover:text-electric transition-colors">Home</a>
+                    <a href="#about" class="hover:text-electric transition-colors">About</a>
+                    <a href="#skills" class="hover:text-electric transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-electric transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-electric transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- 3D Floating Elements -->
+        <div class="absolute inset-0">
+            <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-electric to-neon-purple rounded-full opacity-20 blur-xl"></div>
+            <div class="floating-element absolute top-40 right-20 w-32 h-32 bg-gradient-to-r from-neon-pink to-cyber-cyan rounded-full opacity-15 blur-2xl"></div>
+            <div class="floating-element absolute bottom-40 left-1/4 w-16 h-16 bg-gradient-to-r from-neon-purple to-electric rounded-full opacity-25 blur-lg"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="holographic-border inline-block mb-8 animate-slide-up">
+                <div class="holographic-inner p-2">
+                    <!-- Professional headshot placeholder with futuristic elements -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400" 
+                         alt="Ajay Miryala Professional Headshot" 
+                         class="w-48 h-48 rounded-2xl object-cover mx-auto ring-4 ring-electric/30" 
+                         data-mock="true" />
+                </div>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-black mb-4 text-glow animate-text-reveal">
+                Ajay Miryala
+            </h1>
+            
+            <h2 class="text-2xl md:text-4xl text-cyber-cyan mb-8 font-light animate-text-reveal" style="animation-delay: 0.2s;">
+                Lead Data Scientist
+            </h2>
+            
+            <p class="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed animate-fade-in" style="animation-delay: 0.4s;">
+                <span data-mock="true">Transforming complex data into actionable insights through cutting-edge machine learning and AI solutions. Passionate about building scalable data pipelines and democratizing data science across organizations.</span>
+            </p>
+            
+            <div class="flex justify-center space-x-8 animate-fade-in" style="animation-delay: 0.6s;">
+                <a href="https://www.linkedin.com/in/ajay-sai/" 
+                   class="magnetic-element glassmorphism p-4 rounded-2xl hover:bg-white/10 transition-all group">
+                    <i data-lucide="linkedin" class="w-8 h-8 text-electric group-hover:scale-110 transition-transform"></i>
+                </a>
+                <a href="https://github.com/ajay-sai" 
+                   class="magnetic-element glassmorphism p-4 rounded-2xl hover:bg-white/10 transition-all group">
+                    <i data-lucide="github" class="w-8 h-8 text-electric group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-electric"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-5xl font-bold text-glow mb-8">About Me</h2>
+                    <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <p data-mock="true">
+                            With over 8 years of experience in data science and machine learning, I specialize in building 
+                            end-to-end AI solutions that drive business impact. My expertise spans from statistical modeling 
+                            to deep learning, with a focus on scalable production systems.
+                        </p>
+                        <p data-mock="true">
+                            I've led cross-functional teams in developing recommendation systems, predictive analytics platforms, 
+                            and computer vision applications. My passion lies in translating complex technical concepts into 
+                            strategic business value.
+                        </p>
+                        <p data-mock="true">
+                            Currently, I'm exploring the intersection of AI and quantum computing, working on novel approaches 
+                            to optimize machine learning workflows and enhance model interpretability.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <span class="px-4 py-2 bg-gradient-to-r from-electric to-cyber-cyan rounded-full text-sm font-medium">
+                            Machine Learning
+                        </span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-neon-purple to-neon-pink rounded-full text-sm font-medium">
+                            Deep Learning
+                        </span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-cyber-cyan to-electric rounded-full text-sm font-medium">
+                            Data Engineering
+                        </span>
+                        <span class="px-4 py-2 bg-gradient-to-r from-neon-pink to-neon-purple rounded-full text-sm font-medium">
+                            AI Strategy
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Futuristic data visualization background -->
+                    <img src="https://pixabay.com/get/ga14869324df49326e8ca2bb9140b5dd4c85af3426e671b8fcb3bdad97d24530d6029a4cfe9df249a91e351f70c366850e80d0d5d129d567f9187512502f329a5_1280.jpg" 
+                         alt="Futuristic data visualization with glowing charts and graphs" 
+                         class="rounded-3xl shadow-2xl w-full h-auto" />
+                    <div class="absolute inset-0 bg-gradient-to-tr from-electric/20 to-neon-purple/20 rounded-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center text-glow mb-16">Technical Expertise</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programming Languages -->
+                <div class="skill-category">
+                    <h3 class="text-2xl font-semibold text-electric mb-6 text-center">Programming</h3>
+                    <div class="space-y-4">
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="code" class="w-8 h-8 mx-auto mb-3 text-electric"></i>
+                            <span class="block font-medium" data-mock="true">Python</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="bar-chart" class="w-8 h-8 mx-auto mb-3 text-electric"></i>
+                            <span class="block font-medium" data-mock="true">R</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="database" class="w-8 h-8 mx-auto mb-3 text-electric"></i>
+                            <span class="block font-medium" data-mock="true">SQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Frameworks & Libraries -->
+                <div class="skill-category">
+                    <h3 class="text-2xl font-semibold text-neon-purple mb-6 text-center">Frameworks</h3>
+                    <div class="space-y-4">
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="brain" class="w-8 h-8 mx-auto mb-3 text-neon-purple"></i>
+                            <span class="block font-medium" data-mock="true">TensorFlow</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="zap" class="w-8 h-8 mx-auto mb-3 text-neon-purple"></i>
+                            <span class="block font-medium" data-mock="true">PyTorch</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="activity" class="w-8 h-8 mx-auto mb-3 text-neon-purple"></i>
+                            <span class="block font-medium" data-mock="true">Scikit-learn</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cloud Platforms -->
+                <div class="skill-category">
+                    <h3 class="text-2xl font-semibold text-cyber-cyan mb-6 text-center">Cloud</h3>
+                    <div class="space-y-4">
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="cloud" class="w-8 h-8 mx-auto mb-3 text-cyber-cyan"></i>
+                            <span class="block font-medium" data-mock="true">AWS</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="server" class="w-8 h-8 mx-auto mb-3 text-cyber-cyan"></i>
+                            <span class="block font-medium" data-mock="true">GCP</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="cloud-cog" class="w-8 h-8 mx-auto mb-3 text-cyber-cyan"></i>
+                            <span class="block font-medium" data-mock="true">Azure</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="skill-category">
+                    <h3 class="text-2xl font-semibold text-neon-pink mb-6 text-center">Tools</h3>
+                    <div class="space-y-4">
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="package" class="w-8 h-8 mx-auto mb-3 text-neon-pink"></i>
+                            <span class="block font-medium" data-mock="true">Docker</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="git-branch" class="w-8 h-8 mx-auto mb-3 text-neon-pink"></i>
+                            <span class="block font-medium" data-mock="true">Git</span>
+                        </div>
+                        <div class="skill-node rounded-2xl p-6 text-center magnetic-element">
+                            <i data-lucide="book-open" class="w-8 h-8 mx-auto mb-3 text-neon-pink"></i>
+                            <span class="block font-medium" data-mock="true">Jupyter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center text-glow mb-16">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-3xl p-8 group">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <!-- Neural network visualization -->
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="Neural network visualization with interconnected nodes and data flows" 
+                             class="w-full h-48 object-cover transition-transform group-hover:scale-110" 
+                             data-mock-image="true" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-deep-space/80 to-transparent"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-electric" data-mock="true">AI-Powered Recommendation Engine</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-mock="true">
+                        Built a scalable recommendation system using collaborative filtering and deep learning, 
+                        improving user engagement by 40% across multiple product categories.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-electric/20 text-electric rounded-full text-sm" data-mock="true">Python</span>
+                        <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full text-sm" data-mock="true">TensorFlow</span>
+                        <span class="px-3 py-1 bg-cyber-cyan/20 text-cyber-cyan rounded-full text-sm" data-mock="true">AWS</span>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="flex items-center space-x-2 text-electric hover:text-white transition-colors" data-mock="true">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                            <span>Code</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 text-neon-purple hover:text-white transition-colors" data-mock="true">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                            <span>Demo</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card rounded-3xl p-8 group">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <!-- Data visualization dashboard -->
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="Interactive data dashboard with multiple charts and analytics visualizations" 
+                             class="w-full h-48 object-cover transition-transform group-hover:scale-110" 
+                             data-mock-image="true" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-deep-space/80 to-transparent"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-electric" data-mock="true">Real-time Analytics Platform</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-mock="true">
+                        Developed a comprehensive analytics platform processing 1M+ events per second, 
+                        providing real-time insights with sub-second latency.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-electric/20 text-electric rounded-full text-sm" data-mock="true">Python</span>
+                        <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full text-sm" data-mock="true">Apache Kafka</span>
+                        <span class="px-3 py-1 bg-cyber-cyan/20 text-cyber-cyan rounded-full text-sm" data-mock="true">React</span>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="flex items-center space-x-2 text-electric hover:text-white transition-colors" data-mock="true">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                            <span>Code</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 text-neon-purple hover:text-white transition-colors" data-mock="true">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                            <span>Demo</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card rounded-3xl p-8 group">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <!-- Computer vision application -->
+                        <img src="https://images.unsplash.com/photo-1655635643532-fa9ba2648cbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="Computer vision processing with object detection and recognition algorithms" 
+                             class="w-full h-48 object-cover transition-transform group-hover:scale-110" 
+                             data-mock-image="true" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-deep-space/80 to-transparent"></div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-electric" data-mock="true">Computer Vision Pipeline</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-mock="true">
+                        Created an end-to-end computer vision system for quality control in manufacturing, 
+                        achieving 99.5% accuracy in defect detection.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-electric/20 text-electric rounded-full text-sm" data-mock="true">PyTorch</span>
+                        <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full text-sm" data-mock="true">OpenCV</span>
+                        <span class="px-3 py-1 bg-cyber-cyan/20 text-cyber-cyan rounded-full text-sm" data-mock="true">Docker</span>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="flex items-center space-x-2 text-electric hover:text-white transition-colors" data-mock="true">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                            <span>Code</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 text-neon-purple hover:text-white transition-colors" data-mock="true">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                            <span>Demo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos & Media Section -->
+    <section id="demos" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center text-glow mb-16">Demos & Presentations</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Video Demos -->
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-semibold text-electric mb-6">Project Demos</h3>
+                    
+                    <div class="glassmorphism rounded-3xl p-6">
+                        <div class="aspect-video bg-gradient-to-br from-electric/10 to-neon-purple/10 rounded-2xl flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <i data-lucide="play" class="w-16 h-16 text-electric mx-auto mb-4"></i>
+                                <p class="text-gray-300" data-mock="true">AI Recommendation System Demo</p>
+                                <!-- TODO: Replace with actual YouTube/Vimeo embed -->
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-mock="true">Real-time Recommendation Engine</h4>
+                        <p class="text-gray-400" data-mock="true">Watch how our AI system provides personalized recommendations in real-time.</p>
+                    </div>
+                    
+                    <div class="glassmorphism rounded-3xl p-6">
+                        <div class="aspect-video bg-gradient-to-br from-neon-purple/10 to-cyber-cyan/10 rounded-2xl flex items-center justify-center mb-4">
+                            <div class="text-center">
+                                <i data-lucide="play" class="w-16 h-16 text-neon-purple mx-auto mb-4"></i>
+                                <p class="text-gray-300" data-mock="true">Computer Vision Pipeline Demo</p>
+                                <!-- TODO: Replace with actual YouTube/Vimeo embed -->
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2" data-mock="true">Manufacturing Quality Control</h4>
+                        <p class="text-gray-400" data-mock="true">See our computer vision system in action detecting defects with 99.5% accuracy.</p>
+                    </div>
+                </div>
+                
+                <!-- Image Gallery -->
+                <div class="space-y-8">
+                    <h3 class="text-3xl font-semibold text-neon-purple mb-6">Project Gallery</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Holographic technology visualization -->
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="Holographic data visualization with floating digital elements and AI processing" 
+                             class="rounded-2xl shadow-lg hover:scale-105 transition-transform cursor-pointer" 
+                             data-mock-image="true" />
+                        
+                        <!-- Abstract neural network patterns -->
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="Abstract neural network patterns with interconnected nodes in blue and purple" 
+                             class="rounded-2xl shadow-lg hover:scale-105 transition-transform cursor-pointer" 
+                             data-mock-image="true" />
+                        
+                        <!-- Advanced data analytics dashboard -->
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="Advanced analytics dashboard showing multiple data visualizations and metrics" 
+                             class="rounded-2xl shadow-lg hover:scale-105 transition-transform cursor-pointer" 
+                             data-mock-image="true" />
+                        
+                        <!-- AI processing visualization -->
+                        <img src="https://images.unsplash.com/photo-1527474305487-b87b222841cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=600" 
+                             alt="AI processing visualization with glowing circuits and data streams" 
+                             class="rounded-2xl shadow-lg hover:scale-105 transition-transform cursor-pointer" 
+                             data-mock-image="true" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl font-bold text-center text-glow mb-16">Let's Connect</h2>
+            
+            <div class="contact-form rounded-3xl p-12">
+                <form class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-electric font-medium mb-3">Name</label>
+                            <input type="text" 
+                                   class="w-full px-6 py-4 bg-white/5 border border-white/20 rounded-2xl focus:border-electric focus:ring-2 focus:ring-electric/20 transition-all outline-none" 
+                                   placeholder="Your name" />
+                        </div>
+                        <div>
+                            <label class="block text-electric font-medium mb-3">Email</label>
+                            <input type="email" 
+                                   class="w-full px-6 py-4 bg-white/5 border border-white/20 rounded-2xl focus:border-electric focus:ring-2 focus:ring-electric/20 transition-all outline-none" 
+                                   placeholder="your.email@example.com" />
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-electric font-medium mb-3">Message</label>
+                        <textarea rows="6" 
+                                  class="w-full px-6 py-4 bg-white/5 border border-white/20 rounded-2xl focus:border-electric focus:ring-2 focus:ring-electric/20 transition-all outline-none resize-none" 
+                                  placeholder="Tell me about your project or just say hello..."></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" 
+                                class="magnetic-element px-12 py-4 bg-gradient-to-r from-electric to-cyber-cyan rounded-2xl font-semibold text-white hover:shadow-2xl hover:shadow-electric/25 transition-all">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="text-center mt-12 pt-8 border-t border-white/10">
+                    <p class="text-gray-300 mb-4">Prefer direct contact?</p>
+                    <a href="mailto:ajay@example.com" 
+                       class="text-electric hover:text-white transition-colors font-medium" 
+                       data-mock="true">ajay@example.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">
+                © 2024 Ajay Miryala. Crafted with passion for data science and innovation.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // Create animated particles
+            function createParticles() {
+                const container = document.getElementById('particles-container');
+                const particleCount = 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                    container.appendChild(particle);
+                }
+            }
+            
+            // Smooth scrolling for navigation links
+            function initSmoothScrolling() {
+                const links = document.querySelectorAll('a[href^="#"]');
+                links.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            // Magnetic effect for interactive elements
+            function initMagneticEffects() {
+                const magneticElements = document.querySelectorAll('.magnetic-element');
+                
+                magneticElements.forEach(element => {
+                    element.addEventListener('mousemove', function(e) {
+                        const rect = this.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        
+                        this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+                    });
+                    
+                    element.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translate(0px, 0px) scale(1)';
+                    });
+                });
+            }
+            
+            // Intersection Observer for animations
+            function initScrollAnimations() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-slide-up');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                const animatedElements = document.querySelectorAll('.skill-node, .project-card');
+                animatedElements.forEach(el => observer.observe(el));
+            }
+            
+            // Form submission handler (placeholder)
+            function initContactForm() {
+                const form = document.querySelector('form');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        // TODO: Implement actual form submission logic
+                        alert('Thank you for your message! This is a demo - implement actual form handling.');
+                    });
+                }
+            }
+            
+            // Initialize all features
+            function init() {
+                createParticles();
+                initSmoothScrolling();
+                initMagneticEffects();
+                initScrollAnimations();
+                initContactForm();
+            }
+            
+            // Initialize when DOM is loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>

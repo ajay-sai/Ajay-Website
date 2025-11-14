@@ -44,7 +44,7 @@ replit.md
 LICENSE
 
 # Large static assets that should not be in deployment
-attached_assets/
+# attached_assets/
 
 # Replit-specific files
 .replit

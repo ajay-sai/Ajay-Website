@@ -5,10 +5,32 @@ import { insertProjectSchema, contactFormSchema } from "@shared/schema";
 import { seedProjects } from "./seed";
 import path from "path";
 import { Resend } from "resend";
+import rateLimit from "express-rate-limit";
+
+// Rate limiting for contact form to prevent spam
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 3, // Limit each IP to 3 requests per windowMs
+  message: 'Too many contact form submissions from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// General API rate limiting
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many API requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Seed projects on startup
   await seedProjects();
+  
+  // Apply rate limiting to all API routes
+  app.use('/api', apiLimiter);
   
   // Project Routes
   
@@ -114,7 +136,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Contact form endpoint - send email notification
-  app.post('/api/contact', async (req, res) => {
+  app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
       const validatedData = contactFormSchema.parse(req.body);
       
@@ -128,7 +150,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const resend = new Resend(resendApiKey);
       
-      await resend.emails.send({
+      const emailResult = await resend.emails.send({
         from: 'Portfolio Contact <onboarding@resend.dev>',
         to: 'sai.ajaysai@gmail.com',
         replyTo: validatedData.email,
@@ -151,6 +173,8 @@ ${validatedData.message}
         `
       });
 
+      console.log('✅ Email sent via Resend:', emailResult);
+
       res.status(200).json({ 
         message: 'Message sent successfully' 
       });
@@ -158,14 +182,17 @@ ${validatedData.message}
       console.error('Error sending contact email:', error);
       
       if (error instanceof Error && 'name' in error && error.name === 'ZodError') {
+        const zodError = error as any;
+        const errorMessages = zodError.issues?.map((issue: any) => issue.message).join(', ') || 'Invalid form data';
         return res.status(400).json({ 
-          message: 'Invalid form data',
-          errors: error 
+          message: errorMessages,
+          errors: zodError.issues 
         });
       }
       
+      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again or email directly.';
       res.status(500).json({ 
-        message: 'Failed to send message. Please try again or email directly.' 
+        message: errorMessage
       });
     }
   });
