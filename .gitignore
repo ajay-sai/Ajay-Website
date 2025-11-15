@@ -9,3 +9,9 @@ vite.config.ts.*
 __pycache__
 *.pyc
 uv.lock
+
+# Service account keys (security)
+*-key.json
+github-actions-key.json
+*.json.key
+service-account-*.json
