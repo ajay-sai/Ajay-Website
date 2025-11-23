@@ -12,6 +12,11 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { getImageUrl } from "@/lib/gcs-utils";
+import {
+  getTimelineImageSource,
+  TIMELINE_IMAGE_SIZES,
+  type TimelineImageSource,
+} from "@/lib/timeline-images";
 // Company logos - small files only (<100KB), now stored in client/src/assets for bundling
 // These are part of the repo so they are always available in Cloud Build and Docker builds.
 import harleyDavidsonLogo from "../assets/image_1756790102894.png";
@@ -27,50 +32,52 @@ import homeDepotStoreLogo from "../assets/image_1756791876151.png";
 // All images now served from Cloud Storage with CDN caching
 const stonedSantaLogo = getImageUrl("logos/image_1756792379931.png");
 
-const harleyDavidsonImage1 = getImageUrl("timeline/image_1756765291859.png");
-const harleyDavidsonImage2 = getImageUrl("timeline/image_1756766255322.png");
-const homeDepotImage1 = getImageUrl("timeline/20250515_110951(0) (1)_1756775594777.jpg");
-const homeDepotImage2 = getImageUrl("timeline/IMG_2329-EDIT_1756777352943.jpg");
-const homeDepotImage3 = getImageUrl("timeline/20241023_132525_1756776021189.jpg");
+const timelineImage = (path: string): TimelineImageSource =>
+  getTimelineImageSource(path);
+const harleyDavidsonImage1 = timelineImage("timeline/image_1756765291859.png");
+const harleyDavidsonImage2 = timelineImage("timeline/image_1756766255322.png");
+const homeDepotImage1 = timelineImage("timeline/20250515_110951(0) (1)_1756775594777.jpg");
+const homeDepotImage2 = timelineImage("timeline/IMG_2329-EDIT_1756777352943.jpg");
+const homeDepotImage3 = timelineImage("timeline/20241023_132525_1756776021189.jpg");
 
-const dataScientistImage1 = getImageUrl("timeline/20240427_120651_1756788379977.jpg");
-const dataScientistImage2 = getImageUrl("timeline/IMG_20180811_194748_1756789697281.jpg");
-const dataScientistImage3 = getImageUrl("timeline/IMG-20191110-WA0025_1756789697282.jpg");
-const dataScientistImage4 = getImageUrl("timeline/Screenshot_20180831-101808__01_1756789720602.jpg");
+const dataScientistImage1 = timelineImage("timeline/20240427_120651_1756788379977.jpg");
+const dataScientistImage2 = timelineImage("timeline/IMG_20180811_194748_1756789697281.jpg");
+const dataScientistImage3 = timelineImage("timeline/IMG-20191110-WA0025_1756789697282.jpg");
+const dataScientistImage4 = timelineImage("timeline/Screenshot_20180831-101808__01_1756789720602.jpg");
 
-const marketingAnalystImage1 = getImageUrl("timeline/20210521_131718_1756788953660.jpg");
-const marketingAnalystImage2 = getImageUrl("timeline/IMG_20190509_180536_1756789644236.jpg");
-const marketingAnalystImage3 = getImageUrl("timeline/IMG-20190908-WA0038_1756789644237.jpg");
+const marketingAnalystImage1 = timelineImage("timeline/20210521_131718_1756788953660.jpg");
+const marketingAnalystImage2 = timelineImage("timeline/IMG_20190509_180536_1756789644236.jpg");
+const marketingAnalystImage3 = timelineImage("timeline/IMG-20190908-WA0038_1756789644237.jpg");
 
-const bachelorImage1 = getImageUrl("timeline/IMG_20161106_212705_1756789364617.jpg");
-const bachelorImage2 = getImageUrl("timeline/IMG_20161030_232457_1756789364618.jpg");
-const bachelorImage3 = getImageUrl("timeline/Screenshot_20181124-163448__01_1756789364618.jpg");
+const bachelorImage1 = timelineImage("timeline/IMG_20161106_212705_1756789364617.jpg");
+const bachelorImage2 = timelineImage("timeline/IMG_20161030_232457_1756789364618.jpg");
+const bachelorImage3 = timelineImage("timeline/Screenshot_20181124-163448__01_1756789364618.jpg");
 
-const highSchoolImage1 = getImageUrl("timeline/IMG_20160620_123802_1756789570118.jpg");
+const highSchoolImage1 = timelineImage("timeline/IMG_20160620_123802_1756789570118.jpg");
 
-const genAIEngineerImage1 = getImageUrl("timeline/IMG_2331_1756789866665.JPG");
+const genAIEngineerImage1 = timelineImage("timeline/IMG_2331_1756789866665.JPG");
 
-const seniorDataScientistImage1 = getImageUrl("timeline/20241025_152323_1756776021189.jpg");
-const seniorDataScientistImage2 = getImageUrl("timeline/20240508_203952_1756776021190.jpg");
-const seniorDataScientistImage3 = getImageUrl("timeline/20231215_095639_1756775804398.jpg");
+const seniorDataScientistImage1 = timelineImage("timeline/20241025_152323_1756776021189.jpg");
+const seniorDataScientistImage2 = timelineImage("timeline/20240508_203952_1756776021190.jpg");
+const seniorDataScientistImage3 = timelineImage("timeline/20231215_095639_1756775804398.jpg");
 
-const seniorDataAnalystImage1 = getImageUrl("timeline/IMG-20220807-WA0018_1756776767995.jpg");
-const seniorDataAnalystImage2 = getImageUrl("timeline/20220805_214208_1756776778383.jpg");
-const seniorDataAnalystImage3 = getImageUrl("timeline/IMG_1219_1756777552748.jpg");
+const seniorDataAnalystImage1 = timelineImage("timeline/IMG-20220807-WA0018_1756776767995.jpg");
+const seniorDataAnalystImage2 = timelineImage("timeline/20220805_214208_1756776778383.jpg");
+const seniorDataAnalystImage3 = timelineImage("timeline/IMG_1219_1756777552748.jpg");
 
-const graduateAssistantImage1 = getImageUrl("timeline/20240424_161717_1756780061878.jpg");
-const graduateAssistantImage2 = getImageUrl("timeline/Screenshot_20190129-080233_1756780061880.jpg");
-const graduateAssistantImage3 = getImageUrl("timeline/Generated Image September 01, 2025 - 10_25PM (1)_1756780361828.jpeg");
+const graduateAssistantImage1 = timelineImage("timeline/20240424_161717_1756780061878.jpg");
+const graduateAssistantImage2 = timelineImage("timeline/Screenshot_20190129-080233_1756780061880.jpg");
+const graduateAssistantImage3 = timelineImage("timeline/Generated Image September 01, 2025 - 10_25PM (1)_1756780361828.jpeg");
 
-const mastersImage1 = getImageUrl("timeline/IMG-20191122-WA0013_1756780506778.jpg");
-const mastersImage2 = getImageUrl("timeline/IMG-20181105-WA0008_1756780506780.jpg");
-const mastersImage3 = getImageUrl("timeline/IMG-20200111-WA0007_1756780521102.jpg");
-const mastersImage4 = getImageUrl("timeline/20210521_213843_1756780555219.jpg");
+const mastersImage1 = timelineImage("timeline/IMG-20191122-WA0013_1756780506778.jpg");
+const mastersImage2 = timelineImage("timeline/IMG-20181105-WA0008_1756780506780.jpg");
+const mastersImage3 = timelineImage("timeline/IMG-20200111-WA0007_1756780521102.jpg");
+const mastersImage4 = timelineImage("timeline/20210521_213843_1756780555219.jpg");
 
-const bridgeSolutionsImage1 = getImageUrl("timeline/IMG_20170820_163622_1756780825081.jpg");
-const bridgeSolutionsImage2 = getImageUrl("timeline/IMG-20170814-WA0017_1756780825082.jpg");
-const bridgeSolutionsImage3 = getImageUrl("timeline/IMG-20170814-WA0013_1756780825082.jpg");
-const bridgeSolutionsImage4 = getImageUrl("timeline/IMG-20170811-WA0004_1756789814799.jpg");
+const bridgeSolutionsImage1 = timelineImage("timeline/IMG_20170820_163622_1756780825081.jpg");
+const bridgeSolutionsImage2 = timelineImage("timeline/IMG-20170814-WA0017_1756780825082.jpg");
+const bridgeSolutionsImage3 = timelineImage("timeline/IMG-20170814-WA0013_1756780825082.jpg");
+const bridgeSolutionsImage4 = timelineImage("timeline/IMG-20170811-WA0004_1756789814799.jpg");
 
 interface TimelineEvent {
   year: string;
@@ -85,7 +92,7 @@ interface TimelineEvent {
   companyImages?: string[];
   companyLogo?: string;
   companyColor?: string;
-  workplaceImages?: string[];
+  workplaceImages?: TimelineImageSource[];
 }
 
 const timelineEvents: TimelineEvent[] = [
@@ -633,6 +640,7 @@ export default function ParallaxTimeline() {
                 onClick={startAutoScroll}
                 className="animate-bounce hover:text-primary transition-colors bg-background/50 backdrop-blur-sm border border-border shadow-lg hover:bg-primary/10 rounded-full p-4"
                 data-testid="button-auto-scroll-timeline"
+                aria-label="Start auto-scroll through timeline"
               >
                 <ChevronDown className="h-8 w-8" />
               </button>
@@ -1021,6 +1029,10 @@ export default function ParallaxTimeline() {
 
                               if (!shouldRender) return null;
 
+                              const backgroundImage = image.placeholder
+                                ? `url(${image.placeholder})`
+                                : undefined;
+
                               return (
                                 <div
                                   key={imageIndex}
@@ -1035,15 +1047,28 @@ export default function ParallaxTimeline() {
                                     willChange: isCurrentImage
                                       ? "transform"
                                       : "auto",
+                                    backgroundImage,
+                                    backgroundSize: backgroundImage
+                                      ? "cover"
+                                      : undefined,
+                                    backgroundPosition: backgroundImage
+                                      ? "center"
+                                      : undefined,
+                                    backgroundRepeat: backgroundImage
+                                      ? "no-repeat"
+                                      : undefined,
                                   }}
                                 >
                                   <img
-                                    src={image}
+                                    src={image.defaultSrc}
+                                    srcSet={image.srcSet}
+                                    sizes={TIMELINE_IMAGE_SIZES}
+                                    width={image.width}
+                                    height={image.height}
                                     alt={`${event.title} workplace ${imageIndex + 1}`}
                                     className="w-full h-full object-contain object-center bg-gradient-to-br from-secondary/20 to-muted/20"
                                     loading="lazy"
                                     decoding="async"
-                                    fetchpriority="low"
                                   />
 
                                   {/* Image overlay with parallax effect */}
