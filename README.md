@@ -1,2 +1,2 @@
 # Ajay-Website
-Website for Ajay Miryala
+Professional Portfolio Website for Ajay Miryala - AI/ML Engineer
