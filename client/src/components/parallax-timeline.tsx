@@ -1033,6 +1033,8 @@ export default function ParallaxTimeline() {
                                     src={image}
                                     alt={`${event.title} workplace ${imageIndex + 1}`}
                                     className="w-full h-full object-contain object-center bg-gradient-to-br from-secondary/20 to-muted/20"
+                                    loading="lazy"
+                                    decoding="async"
                                   />
 
                                   {/* Image overlay with parallax effect */}
