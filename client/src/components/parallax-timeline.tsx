@@ -1012,6 +1012,14 @@ export default function ParallaxTimeline() {
 
                               const isCurrentImage =
                                 imageIndex === currentImageIndex;
+                              
+                              // Only render visible images + adjacent ones for smooth transitions
+                              // This drastically reduces initial DOM image count
+                              const shouldRender = 
+                                isCurrentImage || 
+                                Math.abs(imageIndex - currentImageIndex) <= 1;
+
+                              if (!shouldRender) return null;
 
                               return (
                                 <div
@@ -1035,6 +1043,7 @@ export default function ParallaxTimeline() {
                                     className="w-full h-full object-contain object-center bg-gradient-to-br from-secondary/20 to-muted/20"
                                     loading="lazy"
                                     decoding="async"
+                                    fetchpriority="low"
                                   />
 
                                   {/* Image overlay with parallax effect */}
