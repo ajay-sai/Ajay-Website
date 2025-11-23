@@ -11,6 +11,7 @@ import {
   BookOpen,
   ChevronDown,
 } from "lucide-react";
+import { getImageUrl } from "@/lib/gcs-utils";
 // Company logos - small files only (<100KB) as @assets imports for build-time bundling
 import harleyDavidsonLogo from "@assets/image_1756790102894.png";
 import homeDepotLogo from "@assets/images_1756790566987.png";
@@ -22,8 +23,8 @@ import srmUniversityLogo from "@assets/image_1756791288961.png";
 import stJosephsLogo from "@assets/image_1756791337929.png";
 import homeDepotStoreLogo from "@assets/image_1756791876151.png";
 
-// All images now served from static public directory for Cloud Run deployment
-const stonedSantaLogo = "/images/logos/image_1756792379931.png";
+// All images now served from Cloud Storage with CDN caching
+const stonedSantaLogo = getImageUrl("logos/image_1756792379931.png");
 
 const harleyDavidsonImage1 = "/images/timeline/image_1756765291859.png";
 const harleyDavidsonImage2 = "/images/timeline/image_1756766255322.png";

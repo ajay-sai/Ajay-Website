@@ -16,3 +16,6 @@ github-actions-key.json
 *.json.key
 service-account-*.json
 github-secret-formatted.json
+
+# Images now served from Cloud Storage - keep local for reference only
+# public/images/

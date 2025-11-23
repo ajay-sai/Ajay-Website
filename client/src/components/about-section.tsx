@@ -1,5 +1,7 @@
-// Profile photo served from static public directory for Cloud Run deployment
-const ajayPhoto = "/images/profile/20240420_202714_1762722420285.jpg";
+import { getImageUrl } from "@/lib/gcs-utils";
+
+// Profile photo served from Cloud Storage with CDN caching
+const ajayPhoto = getImageUrl("profile/20240420_202714_1762722420285.jpg");
 
 export default function AboutSection() {
   return (
