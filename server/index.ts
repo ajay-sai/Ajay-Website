@@ -36,8 +36,22 @@ app.use(express.urlencoded({ extended: false }));
 // Serve attached assets in development
 app.use('/attached_assets', express.static('attached_assets'));
 
-// Serve static public assets (images, resume, sitemap, robots.txt) in all environments
-app.use(express.static('public'));
+// Serve static public assets (images, resume, sitemap, robots.txt) with caching
+app.use(express.static('public', {
+  maxAge: app.get('env') === 'production' ? '7d' : '0',
+  etag: true,
+  lastModified: true,
+  setHeaders: (res, path) => {
+    // Aggressive caching for images
+    if (path.match(/\.(jpg|jpeg|png|webp|gif|svg|ico)$/i)) {
+      res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
+    }
+    // Cache other assets
+    else if (path.match(/\.(css|js|woff2?|ttf|eot)$/i)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+  }
+}));
 
 app.use((req, res, next) => {
   const start = Date.now();

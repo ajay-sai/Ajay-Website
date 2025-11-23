@@ -16,3 +16,7 @@ github-actions-key.json
 *.json.key
 service-account-*.json
 github-secret-formatted.json
+
+# Image optimization artifacts
+public/images-backup
+public/images-optimized
