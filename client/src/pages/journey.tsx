@@ -17,6 +17,16 @@ export default function Journey() {
   useEffect(() => {
     document.body.classList.add('quantum-reality');
     
+    // Scroll to top on first visit to journey section
+    const hasVisitedJourney = sessionStorage.getItem('journey-visited');
+    
+    if (!hasVisitedJourney) {
+      // First visit - scroll to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      sessionStorage.setItem('journey-visited', 'true');
+    }
+    // On subsequent visits, do nothing - preserve natural scroll position
+    
     return () => {
       document.body.classList.remove('quantum-reality');
     };
