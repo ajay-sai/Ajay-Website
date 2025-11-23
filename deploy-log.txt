@@ -1,0 +1,3 @@
+Building using Dockerfile and deploying container to Cloud Run service [ajay-portfolio] in project [gen-lang-client-0281776478] region [us-central1]
+Building and deploying...
+Uploading sources...................Creating temporary archive of 204 file(s) totalling 63.1 MiB before compression.
