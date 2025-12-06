@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { getImageUrl } from "@/lib/gcs-utils";
 
-const ajayPhoto = getImageUrl("profile/Ajay_1762819033093.png");
+const ajayPhoto = getImageUrl("profile/Ajay-for-website-main.jpeg");
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
