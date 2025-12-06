@@ -1,7 +1,7 @@
 import { getImageUrl } from "@/lib/gcs-utils";
 
 // Profile photo served from Cloud Storage with CDN caching
-const ajayPhoto = getImageUrl("profile/20240420_202714_1762722420285.jpg");
+const ajayPhoto = getImageUrl("profile/Ajay-for-website-main.jpeg");
 
 export default function AboutSection() {
   return (

@@ -6,7 +6,7 @@ const BUCKET_NAME = "replit-objstore-115625ec-c30f-4fba-b127-b0b97d692d24";
 const UPLOAD_DIR = "public/profile";
 
 const images = [
-  { file: "20240420_202714_1762722420285.jpg", contentType: "image/jpeg" },
+  { file: "Ajay-for-website-main.jpeg", contentType: "image/jpeg" },
   { file: "image_1756764365127.png", contentType: "image/png" }
 ];
 
@@ -37,7 +37,7 @@ async function uploadImages() {
   console.log("\n✨ Profile photos uploaded successfully!");
   console.log("\nNew URLs:");
   console.log("  Hero: /public-objects/profile/image_1756764365127.png");
-  console.log("  About: /public-objects/profile/20240420_202714_1762722420285.jpg");
+  console.log("  About: /public-objects/profile/Ajay-for-website-main.jpeg");
 }
 
 uploadImages().catch(console.error);
