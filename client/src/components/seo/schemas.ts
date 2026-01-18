@@ -7,8 +7,8 @@ export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ajay Miryala",
-  "jobTitle": "Generative AI and ML Engineer",
-  "description": "Experienced Generative AI and ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
+  "jobTitle": "Data Science & Generative AI and ML Engineer",
+  "description": "Experienced Data Science & Generative AI and ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
   "url": "https://ajaymiryala.com",
   "sameAs": [
     "https://www.linkedin.com/in/ajay-sai/",
@@ -47,7 +47,7 @@ export const personSchema = {
   ],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Generative AI and ML Engineer",
+    "name": "Data Science & Generative AI and ML Engineer",
     "skills": "GPT-4, Gemini, RAG Systems, Neo4j, Knowledge Graphs, LLM Orchestration, BigQuery, Vertex AI, TensorFlow, Python, GCP, Production ML Infrastructure",
     "occupationLocation": {
       "@type": "City",
@@ -58,7 +58,7 @@ export const personSchema = {
         "addressCountry": "US"
       }
     },
-    "experienceRequirements": "8+ years"
+    "experienceRequirements": "9+ years"
   },
   "award": [
     "$21M+ in cost savings delivered",
@@ -92,7 +92,7 @@ export const personSchema = {
   "worksFor": {
     "@type": "Organization",
     "name": "The Home Depot",
-    "description": "Generative AI and ML Engineer",
+    "description": "Data Science & Generative AI and ML Engineer",
     "sameAs": "https://www.homedepot.com",
     "address": {
       "@type": "PostalAddress",
@@ -120,7 +120,7 @@ export const createProjectSchema = (project: {
   "author": {
     "@type": "Person",
     "name": "Ajay Miryala",
-    "jobTitle": "Generative AI and ML Engineer"
+    "jobTitle": "Data Science & Generative AI and ML Engineer"
   },
   "datePublished": project.datePublished,
 });
@@ -170,7 +170,7 @@ export const webPageSchema = (page: {
   "author": {
     "@type": "Person",
     "name": "Ajay Miryala",
-    "jobTitle": "Generative AI and ML Engineer",
+    "jobTitle": "Data Science & Generative AI and ML Engineer",
     "url": "https://ajaymiryala.com"
   },
   "dateModified": page.dateModified || new Date().toISOString().split('T')[0],
@@ -287,7 +287,7 @@ export const organizationSchemas = [
 export const workExperienceSchemas = [
   {
     "@type": "EmployeeRole",
-    "roleName": "Generative AI and ML Engineer",
+    "roleName": "Data Science & Generative AI and ML Engineer",
     "startDate": "2025-01",
     "employee": {
       "@type": "Person",
@@ -305,7 +305,7 @@ export const workExperienceSchemas = [
         "addressCountry": "US"
       }
     },
-    "description": "Lead Generative AI and ML Engineer architecting LLM orchestration platforms, Knowledge-Graph RAG assistants, and multi-modal pipelines. Delivered 55% reduction in analytics time and targeting $20M in optimization opportunities.",
+    "description": "Lead Data Science & Generative AI and ML Engineer architecting LLM orchestration platforms, Knowledge-Graph RAG assistants, and multi-modal pipelines. Delivered 55% reduction in analytics time and targeting $20M in optimization opportunities.",
     "responsibilities": formatResponsibilities([
       "Designed and developed scalable generative AI systems using transformer-based architectures (GPT-4, BERT, Gemini, Longformer) for text summarization, Q&A bots, and contract parsing.",
       "Led fine-tuning of LLMs with LoRA, QLoRA, and PEFT methods using HuggingFace Transformers to improve model alignment with Home Depot-specific customer and vendor datasets.",
@@ -370,7 +370,7 @@ export const workExperienceSchemas = [
   },
   {
     "@type": "EmployeeRole",
-    "roleName": "Data Analyst and Engineer",
+    "roleName": "Data Engineer",
     "startDate": "2020-02",
     "endDate": "2022-03",
     "employee": {

@@ -99,7 +99,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
     sortOrder: 1,
-    title: "Generative AI and ML Engineer",
+    title: "Data Science & Generative AI and ML Engineer",
     description: "The Home Depot Management Company",
     dateRange: "January 2025 - Present",
     icon: TrendingUp,
@@ -163,7 +163,7 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2020",
     sortOrder: 4,
-    title: "Data Analyst and Engineer",
+    title: "Data Engineer",
     description: "Harley Davidson Motor Company",
     dateRange: "February 2020 - March 2022",
     icon: Calendar,
@@ -630,7 +630,7 @@ export default function ParallaxTimeline() {
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 scroll-animate"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto scroll-animate">
             A comprehensive timeline showcasing my evolution from student to
-            Generative AI and ML Engineer across diverse industries
+            Data Science & Generative AI and ML Engineer across diverse industries
           </p>
 
           {/* Auto-scroll button and indicator */}

@@ -21,38 +21,64 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
           {/* Hidden schema data */}
           <meta itemProp="name" content="Ajay Miryala" />
-          <meta itemProp="jobTitle" content="Generative AI and ML Engineer" />
+          <meta itemProp="jobTitle" content="Data Science & Generative AI and ML Engineer" />
           {/* Content */}
           <div className="space-y-6" itemProp="description">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Most AI demos look impressive. Most AI in production doesn't work. I bridge that gap.
+            <p className="text-lg font-semibold text-foreground leading-relaxed">
+              Data Science & Generative AI Leader | Scalable Agentic/RAG Systems | 9+ Years Exp | 5x GCP certified | 2x AWS AI certified
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              For the past <data value="8">8 years</data>, I've been building the infrastructure that makes Generative AI actually useful—transforming 
-              research papers and prototype models into systems that handle millions of real-world queries, scale across enterprise 
-              environments, and deliver returns measured in millions, not metrics.
+              I build production AI systems that turn messy business problems into measurable outcomes—combining deep Gen AI/ML engineering, strong statistics, and pragmatic platform design.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">The Home Depot</span></span>, I architect the AI systems powering business decisions: LLM orchestration platforms that parse 
-              contracts and generate insights, Knowledge-Graph RAG assistants serving <data value="200">200+ analysts</data>, and multi-modal pipelines 
-              that cut manual work by <data value="60">60%</data> while targeting <data value="20000000">$20M</data> in optimization opportunities. Before that, I built data ecosystems 
-              at <span itemProp="alumniOf" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Harley Davidson</span></span>, predictive models at <span itemProp="alumniOf" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Principal Financial</span></span>, and marketing intelligence systems that turned 
-              <data value="300">$300</data> into <data value="3100">$3,100</data>.
+              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">The Home Depot</span></span>, I lead architecture and delivery of enterprise AI solutions driving <data value="20000000">$20M+</data> projected cost savings and <data value="80">80%+</data> efficiency gains. I've built multimodal pipelines and multi agent systems + RAG applications serving <data value="200">200+</data> daily users, cutting manual work by <data value="60">60%</data> and improving decision velocity for operators and leaders.
             </p>
 
+            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">What I do best</h4>
+            <ul className="list-none space-y-3 text-muted-foreground">
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Generative AI/ML:</strong> Multi-agent and RAG applications; model selection and prompt/tooling; evaluation + guardrails (quality, safety, hallucination); and end-to-end AIOps from ingestion to deployment on Vertex AI (and OpenAI/Gemini/Claude ecosystems).
+              </li>
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Data Science & Engineering:</strong> Lead a team of 4 analysts/engineers delivering predictive models (XGBoost, regression, ResNet, ViT) and modernizing 30+ ETL workflows (BigQuery → Dataform/dbt), integrating 50TB+ data and freeing 180 FTE hours/year.
+              </li>
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Strategy & Execution:</strong> Translate exec goals into an AI roadmap; partner with product/engineering/security to ship reliable systems with clear SLAs, latency targets, and monitoring.
+              </li>
+            </ul>
+
+            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">How I operate</h4>
+            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Build like an owner:</strong> write crisp design docs, define success metrics, and iterate from prototype → hardened service.
+              </li>
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Engineer for scale:</strong> distributed pipelines, event-driven patterns, caching, and cost-aware inference.
+              </li>
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Measure everything:</strong> offline/online evals, A/B tests, causal thinking, and post-launch monitoring.
+              </li>
+              <li className="text-lg leading-relaxed">
+                <strong className="text-foreground">Mentor and raise the bar:</strong> code reviews, hiring support, and enabling teams to move faster safely.
+              </li>
+            </ul>
+
+            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">Selected stack</h4>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              What sets my work apart? I don't just implement models—I engineer end-to-end solutions. From ETL pipelines and data 
-              architecture (BigQuery, GCP) to RAG systems and LLM evaluation frameworks, I build the full stack that makes AI 
-              production-ready. <span itemProp="knowsAbout">GPT-4</span>, <span itemProp="knowsAbout">Gemini</span>, <span itemProp="knowsAbout">Vision Transformers</span>, <span itemProp="knowsAbout">Neo4j</span>—I've deployed them all, not in notebooks, but in systems 
-              serving thousands of users daily.
+              Python, SQL, PySpark, PyTorch/TensorFlow, Hugging Face, FastAPI, dbt; LangChain/LangGraph, Google ADK, LlamaIndex, GraphRAG; Neo4j/Pinecone/GCP vector store; vLLM, Ray Serve, MLflow, Docker, Kubernetes, Terraform, GitHub Actions; observability with Grafana/Prometheus; GCP (BigQuery, Dataflow, Vertex AI) + AWS (Bedrock, Lambda, Glue, Kinesis).
             </p>
 
+            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">Certifications</h4>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Based in <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Atlanta</span></span> with a <span itemProp="alumniOf" itemScope itemType="https://schema.org/EducationalOrganization"><span itemProp="name">Master's in Business Statistics from University of Maryland</span></span>, I've worked across retail, 
-              manufacturing, finance, and education. This cross-industry perspective taught me something critical: the best AI 
-              solutions aren't the most sophisticated—they're the ones that solve real problems for real people, reliably, at scale.
+              <strong className="text-foreground">GCP</strong> – Generative AI Leader | Professional Data Engineer | Professional Machine Learning Engineer | Professional Cloud Database Engineer | Associate Data Practitioner<br />
+              <strong className="text-foreground">AWS</strong> - Certified AI Practitioner | Certified Generative AI Developer – Professional.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed italic mt-6">
+              Based in <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Atlanta</span></span>; Open to relocation.<br />
+              Contact: sai.ajaysai@gmail.com | 240-360-7905
             </p>
           </div>
 
@@ -77,7 +103,7 @@ export default function AboutSection() {
             <div>
               <p className="text-xs text-muted-foreground mb-1">Experience</p>
               <p className="text-sm font-bold">
-                <data value="8">8+</data> Years in AI/ML
+                <data value="9">9+</data> Years in AI/ML
               </p>
             </div>
             <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
@@ -94,7 +120,7 @@ export default function AboutSection() {
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Current Role</p>
-              <p className="text-sm font-bold" itemProp="jobTitle">Gen AI & ML Engineer</p>
+              <p className="text-sm font-bold" itemProp="jobTitle">Data Science & Gen AI & ML Engineer</p>
             </div>
           </div>
           

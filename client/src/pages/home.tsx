@@ -30,15 +30,15 @@ export default function Home() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <SEOHead
-        title="Ajay Miryala - Generative AI and ML Engineer | AI & Machine Learning Expert"
-        description="Experienced Generative AI and ML Engineer specializing in RAG systems, LLM orchestration, knowledge graphs, and production-grade machine learning solutions. 8+ years building scalable AI infrastructure for enterprise applications."
+        title="Ajay Miryala - Data Science & Generative AI and ML Engineer | AI & Machine Learning Expert"
+        description="Experienced Data Science & Generative AI and ML Engineer specializing in RAG systems, LLM orchestration, knowledge graphs, and production-grade machine learning solutions. 9+ years building scalable AI infrastructure for enterprise applications."
         keywords={["Generative AI", "ML Engineer", "LLM", "RAG", "Machine Learning", "AI Systems", "Knowledge Graphs", "Production ML", "Data Science"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
             webPageSchema({
-              name: "Ajay Miryala - Generative AI and ML Engineer",
+              name: "Ajay Miryala - Data Science & Generative AI and ML Engineer",
               description: "Professional portfolio showcasing expertise in Generative AI, LLM systems, RAG architectures, and production machine learning",
               url: window.location.origin,
               dateModified: "2025-11-10"
