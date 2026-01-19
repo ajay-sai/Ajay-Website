@@ -23,62 +23,61 @@ export default function AboutSection() {
           <meta itemProp="name" content="Ajay Miryala" />
           <meta itemProp="jobTitle" content="Data Science & Generative AI and ML Engineer" />
           {/* Content */}
-          <div className="space-y-6" itemProp="description">
-            <p className="text-lg font-semibold text-foreground leading-relaxed">
+          <div className="space-y-4" itemProp="description">
+            <p className="text-base font-semibold text-foreground leading-relaxed">
               Data Science & Generative AI Leader | Scalable Agentic/RAG Systems | 9+ Years Exp | 5x GCP certified | 2x AWS AI certified
             </p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base text-muted-foreground leading-relaxed">
               I build production AI systems that turn messy business problems into measurable outcomes—combining deep Gen AI/ML engineering, strong statistics, and pragmatic platform design.
             </p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">The Home Depot</span></span>, I lead architecture and delivery of enterprise AI solutions driving <data value="20000000">$20M+</data> projected cost savings and <data value="80">80%+</data> efficiency gains. I've built multimodal pipelines and multi agent systems + RAG applications serving <data value="200">200+</data> daily users, cutting manual work by <data value="60">60%</data> and improving decision velocity for operators and leaders.
+            <p className="text-base text-muted-foreground leading-relaxed">
+              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">The Home Depot</span></span>, I lead architecture and delivery of enterprise AI solutions driving <data value="20000000">$20M+</data> projected cost savings and <data value="80">80%+</data> efficiency gains. I've built multimodal pipelines and multi agent systems + RAG applications serving <data value="200">200+</data> daily users, cutting manual work by <data value="60">60%</data> and improving decision velocity.
             </p>
 
-            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">What I do best</h4>
-            <ul className="list-none space-y-3 text-muted-foreground">
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Generative AI/ML:</strong> Multi-agent and RAG applications; model selection and prompt/tooling; evaluation + guardrails (quality, safety, hallucination); and end-to-end AIOps from ingestion to deployment on Vertex AI (and OpenAI/Gemini/Claude ecosystems).
+            <h4 className="text-lg font-bold text-foreground mt-6 mb-3">What I do best</h4>
+            <ul className="list-none space-y-2 text-muted-foreground">
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Generative AI/ML:</strong> Multi-agent and RAG applications; model selection and prompt/tooling; evaluation + guardrails; end-to-end AIOps on Vertex AI, OpenAI/Gemini/Claude.
               </li>
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Data Science & Engineering:</strong> Lead a team of 4 analysts/engineers delivering predictive models (XGBoost, regression, ResNet, ViT) and modernizing 30+ ETL workflows (BigQuery → Dataform/dbt), integrating 50TB+ data and freeing 180 FTE hours/year.
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Data Science & Engineering:</strong> Lead team of 4 analysts/engineers delivering predictive models (XGBoost, ResNet, ViT) and modernizing 30+ ETL workflows, integrating 50TB+ data.
               </li>
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Strategy & Execution:</strong> Translate exec goals into an AI roadmap; partner with product/engineering/security to ship reliable systems with clear SLAs, latency targets, and monitoring.
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Strategy & Execution:</strong> Translate exec goals into AI roadmap; partner with product/engineering/security to ship reliable systems with clear SLAs.
               </li>
             </ul>
 
-            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">How I operate</h4>
-            <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Build like an owner:</strong> write crisp design docs, define success metrics, and iterate from prototype → hardened service.
+            <h4 className="text-lg font-bold text-foreground mt-6 mb-3">How I operate</h4>
+            <ul className="list-disc list-inside space-y-1.5 text-muted-foreground">
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Build like an owner:</strong> crisp design docs, success metrics, prototype → hardened service.
               </li>
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Engineer for scale:</strong> distributed pipelines, event-driven patterns, caching, and cost-aware inference.
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Engineer for scale:</strong> distributed pipelines, event-driven patterns, cost-aware inference.
               </li>
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Measure everything:</strong> offline/online evals, A/B tests, causal thinking, and post-launch monitoring.
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Measure everything:</strong> offline/online evals, A/B tests, post-launch monitoring.
               </li>
-              <li className="text-lg leading-relaxed">
-                <strong className="text-foreground">Mentor and raise the bar:</strong> code reviews, hiring support, and enabling teams to move faster safely.
+              <li className="text-base leading-relaxed">
+                <strong className="text-foreground">Mentor and raise the bar:</strong> code reviews, hiring support, enabling teams safely.
               </li>
             </ul>
 
-            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">Selected stack</h4>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Python, SQL, PySpark, PyTorch/TensorFlow, Hugging Face, FastAPI, dbt; LangChain/LangGraph, Google ADK, LlamaIndex, GraphRAG; Neo4j/Pinecone/GCP vector store; vLLM, Ray Serve, MLflow, Docker, Kubernetes, Terraform, GitHub Actions; observability with Grafana/Prometheus; GCP (BigQuery, Dataflow, Vertex AI) + AWS (Bedrock, Lambda, Glue, Kinesis).
+            <h4 className="text-lg font-bold text-foreground mt-6 mb-3">Selected stack</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Python, SQL, PyTorch/TensorFlow, Hugging Face, FastAPI; LangChain/LangGraph, LlamaIndex, GraphRAG; Neo4j/Pinecone; vLLM, Ray Serve, MLflow, Docker, Kubernetes; GCP (BigQuery, Vertex AI) + AWS (Bedrock, Lambda).
             </p>
 
-            <h4 className="text-xl font-bold text-foreground mt-8 mb-4">Certifications</h4>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">GCP</strong> – Generative AI Leader | Professional Data Engineer | Professional Machine Learning Engineer | Professional Cloud Database Engineer | Associate Data Practitioner<br />
-              <strong className="text-foreground">AWS</strong> - Certified AI Practitioner | Certified Generative AI Developer – Professional.
+            <h4 className="text-lg font-bold text-foreground mt-6 mb-3">Certifications</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">GCP</strong> – Generative AI Leader | Professional Data Engineer | Professional ML Engineer | Professional Cloud Database Engineer<br />
+              <strong className="text-foreground">AWS</strong> - Certified AI Practitioner | Certified Generative AI Developer – Professional
             </p>
 
-            <p className="text-lg text-muted-foreground leading-relaxed italic mt-6">
-              Based in <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Atlanta</span></span>; Open to relocation.<br />
-              Contact: sai.ajaysai@gmail.com | 240-360-7905
+            <p className="text-sm text-muted-foreground leading-relaxed italic mt-4">
+              Based in <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress"><span itemProp="addressLocality">Atlanta</span></span>; Open to relocation | Contact: sai.ajaysai@gmail.com | 240-360-7905
             </p>
           </div>
 
