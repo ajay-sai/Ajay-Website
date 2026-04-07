@@ -19,7 +19,7 @@ export default function SEOHead({
   keywords,
   schema,
 }: SEOProps) {
-  const siteName = "Ajay Miryala - Generative AI and ML Engineer";
+  const siteName = "Ajay Miryala - Data Science & Generative AI and ML Engineer";
   const defaultImage = "https://placehold.co/1200x630/orange/white?text=Ajay+Miryala";
   const currentUrl = canonical || window.location.href;
 

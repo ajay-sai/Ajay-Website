@@ -36,7 +36,7 @@ export default function Contact() {
               name: "Schedule Meeting with Ajay Miryala",
               description: "Schedule a meeting to discuss AI projects, collaboration opportunities, or consulting services",
               url: `${window.location.origin}/contact`,
-              dateModified: "2025-11-10"
+              dateModified: "2026-04-07"
             }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
