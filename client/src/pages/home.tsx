@@ -30,18 +30,18 @@ export default function Home() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <SEOHead
-        title="Ajay Miryala - Data Science & Generative AI and ML Engineer | AI & Machine Learning Expert"
-        description="Experienced Data Science & Generative AI and ML Engineer specializing in RAG systems, LLM orchestration, knowledge graphs, and production-grade machine learning solutions. 9+ years building scalable AI infrastructure for enterprise applications."
-        keywords={["Generative AI", "ML Engineer", "LLM", "RAG", "Machine Learning", "AI Systems", "Knowledge Graphs", "Production ML", "Data Science"]}
+        title="Ajay Miryala - Principal AI/ML Engineer | AT&T AI Foundry | Agentic AI & ML Expert"
+        description="Principal AI/ML Engineer at AT&T AI Foundry Framework Team, responsible for all Agentic applications. 9+ years building scalable AI infrastructure including RAG systems, LLM orchestration, and multi-agent systems for enterprise applications."
+        keywords={["Principal AI Engineer", "AT&T AI Foundry", "Agentic AI", "Generative AI", "ML Engineer", "LLM", "RAG", "Machine Learning", "AI Systems", "Multi-Agent Systems", "Data Science"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
             webPageSchema({
-              name: "Ajay Miryala - Data Science & Generative AI and ML Engineer",
-              description: "Professional portfolio showcasing expertise in Generative AI, LLM systems, RAG architectures, and production machine learning",
+              name: "Ajay Miryala - Principal AI/ML Engineer | AT&T AI Foundry",
+              description: "Professional portfolio showcasing expertise in Agentic AI, LLM systems, RAG architectures, and production machine learning. Currently Principal AI/ML Engineer at AT&T AI Foundry Framework Team.",
               url: window.location.origin,
-              dateModified: "2025-11-10"
+              dateModified: "2025-03-01"
             }),
             ...organizationSchemas,
             ...workExperienceSchemas,

@@ -36,17 +36,17 @@ export default function Journey() {
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <SEOHead
         title="Professional Journey - Ajay Miryala | Career Timeline"
-        description="Explore my professional and educational journey from student to Data Science & Generative AI and ML Engineer, featuring roles at The Home Depot, Harley Davidson, Principal Financial, and degrees from University of Maryland and SRM University."
-        keywords={["Career Journey", "Professional Timeline", "AI Engineer Career", "The Home Depot", "Machine Learning Career", "Data Science Experience"]}
+        description="Explore my professional and educational journey from student to Principal AI/ML Engineer at AT&T AI Foundry, featuring roles at AT&T, The Home Depot, Harley Davidson, Principal Financial, and degrees from University of Maryland and SRM University."
+        keywords={["Career Journey", "Professional Timeline", "AT&T AI Foundry", "Principal AI Engineer", "AI Engineer Career", "The Home Depot", "Machine Learning Career", "Data Science Experience"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [
             personSchema,
             webPageSchema({
               name: "Professional Journey - Ajay Miryala",
-              description: "Career timeline from student to Data Science & Generative AI and ML Engineer, featuring roles at The Home Depot, Harley Davidson, Principal Financial",
+              description: "Career timeline from student to Principal AI/ML Engineer at AT&T AI Foundry Framework Team, featuring roles at AT&T, The Home Depot, Harley Davidson, Principal Financial",
               url: `${window.location.origin}/journey`,
-              dateModified: "2025-11-10"
+              dateModified: "2025-03-01"
             }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
