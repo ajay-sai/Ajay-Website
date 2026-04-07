@@ -65,7 +65,7 @@ export default function Projects() {
               name: "AI Projects & Case Studies - Ajay Miryala",
               description: "Detailed case studies and technical deep-dives into production AI projects including Neo4j RAG systems and LLM orchestration platforms",
               url: `${window.location.origin}/projects`,
-              dateModified: "2025-11-10"
+              dateModified: "2026-04-07"
             }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },

@@ -1,6 +1,6 @@
 # Robots.txt - AI Crawler Optimization
-# Website: Ajay Miryala - Generative AI and ML Engineer
-# Updated: 2024-11-10
+# Website: Ajay Miryala - Data Science & Generative AI and ML Engineer
+# Updated: 2026-04-07
 
 # Allow all AI crawlers and search engines
 User-agent: *

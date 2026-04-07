@@ -41,7 +41,7 @@ export default function Home() {
               name: "Ajay Miryala - Data Science & Generative AI and ML Engineer",
               description: "Professional portfolio showcasing expertise in Generative AI, LLM systems, RAG architectures, and production machine learning",
               url: window.location.origin,
-              dateModified: "2025-11-10"
+              dateModified: "2026-04-07"
             }),
             ...organizationSchemas,
             ...workExperienceSchemas,

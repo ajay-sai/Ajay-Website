@@ -46,7 +46,7 @@ export default function Journey() {
               name: "Professional Journey - Ajay Miryala",
               description: "Career timeline from student to Data Science & Generative AI and ML Engineer, featuring roles at The Home Depot, Harley Davidson, Principal Financial",
               url: `${window.location.origin}/journey`,
-              dateModified: "2025-11-10"
+              dateModified: "2026-04-07"
             }),
             breadcrumbSchema([
               { name: "Home", url: window.location.origin },
