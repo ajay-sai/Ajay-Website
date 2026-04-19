@@ -99,9 +99,26 @@ const timelineEvents: TimelineEvent[] = [
   {
     year: "2025",
     sortOrder: 1,
+    title: "Principal AI/ML Engineer",
+    description: "AT&T – AI Foundry, Framework Team",
+    dateRange: "March 2025 - Present",
+    icon: Zap,
+    color: "from-blue-600 to-indigo-600",
+    companyLogo: "📡",
+    companyColor: "#00a8e0",
+    workplaceImages: [],
+    achievements: [
+      "Lead engineer on the <strong class='text-blue-400'>AI Foundry Framework Team</strong> — the group responsible for all Agentic applications across AT&T's enterprise",
+      "Architect and deliver scalable agentic application frameworks enabling multi-agent orchestration, tool use, and autonomous decision-making at telecom scale",
+      "Technologies: LangGraph, LangChain, OpenAI, Azure AI, Agentic RAG, Multi-Agent Systems, Python, FastAPI, Azure, Kubernetes",
+    ],
+  },
+  {
+    year: "2025",
+    sortOrder: 2,
     title: "Data Science & Generative AI and ML Engineer",
     description: "The Home Depot Management Company",
-    dateRange: "January 2025 - Present",
+    dateRange: "January 2025 - March 2025",
     icon: TrendingUp,
     color: "from-blue-500 to-cyan-500",
     companyLogo: "🏠",
@@ -120,7 +137,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2023",
-    sortOrder: 2,
+    sortOrder: 3,
     title: "Senior Data Scientist - Decision Analytics",
     description: "The Home Depot Management Company",
     dateRange: "June 2023 - January 2025",
@@ -141,7 +158,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2022",
-    sortOrder: 3,
+    sortOrder: 4,
     title: "Senior Data Analyst",
     description: "The Home Depot Management Company",
     dateRange: "March 2022 - June 2023",
@@ -162,7 +179,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2020",
-    sortOrder: 4,
+    sortOrder: 5,
     title: "Data Engineer",
     description: "Harley Davidson Motor Company",
     dateRange: "February 2020 - March 2022",
@@ -178,7 +195,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 5,
+    sortOrder: 6,
     title: "Data Scientist",
     description: "Principal Financial Group",
     dateRange: "August 2019 - December 2019",
@@ -200,7 +217,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 6,
+    sortOrder: 7,
     title: "Marketing Analyst",
     description: "Anahata Art and Design Pvt",
     dateRange: "May 2019 - December 2019",
@@ -221,7 +238,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 7,
+    sortOrder: 8,
     title: "Graduate Assistant",
     description: "University of Maryland",
     dateRange: "May 2019 - December 2019",
@@ -242,7 +259,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2019",
-    sortOrder: 8,
+    sortOrder: 9,
     title: "Master of Science in Business Statistics",
     description:
       "University of Maryland, College Park - Robert H Smith School of Business",
@@ -265,7 +282,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2017",
-    sortOrder: 9,
+    sortOrder: 10,
     title: "Data Analyst",
     description: "Bridge Solutions",
     dateRange: "May 2017 - May 2018",
@@ -287,7 +304,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2017",
-    sortOrder: 10,
+    sortOrder: 11,
     title: "Bachelor of Technology in Computer Science",
     description:
       "SRM University, Kattankulathur - Computer Science Engineering",
@@ -305,7 +322,7 @@ const timelineEvents: TimelineEvent[] = [
   },
   {
     year: "2015",
-    sortOrder: 11,
+    sortOrder: 12,
     title: "High School Education",
     description: "St Joseph's Public School & Sri Chaitanya Junior Kalasa",
     dateRange: "Until 10th: St Joseph's | 11th-12th: Sri Chaitanya",

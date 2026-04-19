@@ -7,8 +7,8 @@ export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ajay Miryala",
-  "jobTitle": "Data Science & Generative AI and ML Engineer",
-  "description": "Experienced Data Science & Generative AI and ML Engineer specializing in building scalable AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
+  "jobTitle": "Principal AI/ML Engineer",
+  "description": "Principal AI/ML Engineer at AT&T AI Foundry Framework Team, specializing in building scalable agentic AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
   "url": "https://ajaymiryala.com",
   "sameAs": [
     "https://www.linkedin.com/in/ajay-sai/",
@@ -26,6 +26,8 @@ export const personSchema = {
     "Generative AI",
     "Large Language Models",
     "RAG (Retrieval-Augmented Generation)",
+    "Agentic AI",
+    "Multi-Agent Systems",
     "Machine Learning",
     "Deep Learning",
     "Natural Language Processing",
@@ -43,12 +45,13 @@ export const personSchema = {
     "TensorFlow",
     "PyTorch",
     "Python",
-    "GCP"
+    "GCP",
+    "Azure AI"
   ],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Data Science & Generative AI and ML Engineer",
-    "skills": "GPT-4, Gemini, RAG Systems, Neo4j, Knowledge Graphs, LLM Orchestration, BigQuery, Vertex AI, TensorFlow, Python, GCP, Production ML Infrastructure",
+    "name": "Principal AI/ML Engineer",
+    "skills": "Agentic AI, Multi-Agent Systems, LangGraph, LangChain, GPT-4, Gemini, RAG Systems, Neo4j, Knowledge Graphs, LLM Orchestration, BigQuery, Vertex AI, TensorFlow, Python, GCP, Azure AI, Production ML Infrastructure",
     "occupationLocation": {
       "@type": "City",
       "name": "Atlanta",
@@ -72,7 +75,7 @@ export const personSchema = {
     "itemOffered": {
       "@type": "Service",
       "name": "AI Engineering & ML Consulting",
-      "serviceType": "Generative AI Development, LLM Architecture, RAG Systems, ML Infrastructure, Production AI Deployment"
+      "serviceType": "Generative AI Development, Agentic AI Systems, LLM Architecture, RAG Systems, ML Infrastructure, Production AI Deployment"
     }
   },
   "alumniOf": [
@@ -91,14 +94,14 @@ export const personSchema = {
   ],
   "worksFor": {
     "@type": "Organization",
-    "name": "The Home Depot",
-    "description": "Data Science & Generative AI and ML Engineer",
-    "sameAs": "https://www.homedepot.com",
+    "name": "AT&T",
+    "description": "Principal AI/ML Engineer – AI Foundry, Framework Team",
+    "sameAs": "https://www.att.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "2455 Paces Ferry Rd",
-      "addressLocality": "Atlanta",
-      "addressRegion": "GA",
+      "streetAddress": "208 S Akard St",
+      "addressLocality": "Dallas",
+      "addressRegion": "TX",
       "addressCountry": "US"
     }
   }
@@ -187,6 +190,23 @@ export const webPageSchema = (page: {
 
 // Organization schemas for employment history
 export const organizationSchemas = [
+  {
+    "@type": "Organization",
+    "@id": "https://ajaymiryala.com/#att",
+    "name": "AT&T",
+    "url": "https://www.att.com",
+    "sameAs": [
+      "https://en.wikipedia.org/wiki/AT%26T",
+      "https://www.linkedin.com/company/att"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "208 S Akard St",
+      "addressLocality": "Dallas",
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    }
+  },
   {
     "@type": "Organization",
     "@id": "https://ajaymiryala.com/#home-depot",
@@ -287,8 +307,38 @@ export const organizationSchemas = [
 export const workExperienceSchemas = [
   {
     "@type": "EmployeeRole",
+    "roleName": "Principal AI/ML Engineer",
+    "startDate": "2025-03",
+    "employee": {
+      "@type": "Person",
+      "name": "Ajay Miryala"
+    },
+    "worksFor": {
+      "@id": "https://ajaymiryala.com/#att"
+    },
+    "workLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Atlanta",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      }
+    },
+    "description": "Principal AI/ML Engineer on the AI Foundry Framework Team — the team responsible for all Agentic applications across AT&T's enterprise. Architect and deliver scalable agentic application frameworks enabling multi-agent orchestration, tool use, and autonomous decision-making at telecom scale.",
+    "responsibilities": formatResponsibilities([
+      "Lead engineer on the AI Foundry Framework Team, responsible for all Agentic AI applications across AT&T's enterprise.",
+      "Architect and deliver scalable agentic application frameworks enabling multi-agent orchestration, tool use, and autonomous decision-making.",
+      "Design and implement agentic RAG systems, multi-agent pipelines, and LLM-powered automation at telecom scale.",
+      "Drive technical strategy and standards for agentic AI across AT&T business units.",
+      "Collaborate with cross-functional teams to align agentic AI capabilities with enterprise business objectives."
+    ])
+  },
+  {
+    "@type": "EmployeeRole",
     "roleName": "Data Science & Generative AI and ML Engineer",
     "startDate": "2025-01",
+    "endDate": "2025-03",
     "employee": {
       "@type": "Person",
       "name": "Ajay Miryala"

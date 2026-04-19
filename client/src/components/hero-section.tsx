@@ -85,7 +85,7 @@ export default function HeroSection() {
           <h2 className={`text-2xl md:text-3xl text-muted-foreground mb-6 transition-all duration-1000 delay-400 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            Data Science & Generative AI and ML Engineer
+            Principal AI/ML Engineer | AT&T AI Foundry
           </h2>
 
           {/* Social Links */}

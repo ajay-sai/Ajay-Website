@@ -21,11 +21,11 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
           {/* Hidden schema data */}
           <meta itemProp="name" content="Ajay Miryala" />
-          <meta itemProp="jobTitle" content="Data Science & Generative AI and ML Engineer" />
+          <meta itemProp="jobTitle" content="Principal AI/ML Engineer" />
           {/* Content */}
           <div className="space-y-4" itemProp="description">
             <p className="text-base font-semibold text-foreground leading-relaxed">
-              Data Science & Generative AI Leader | Scalable Agentic/RAG Systems | 9+ Years Exp | 5x GCP certified | 2x AWS AI certified
+              Principal AI/ML Engineer | AI Foundry – Framework Team, AT&T | 9+ Years Exp | 5x GCP certified | 2x AWS AI certified
             </p>
 
             <p className="text-base text-muted-foreground leading-relaxed">
@@ -33,7 +33,11 @@ export default function AboutSection() {
             </p>
 
             <p className="text-base text-muted-foreground leading-relaxed">
-              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">The Home Depot</span></span>, I lead architecture and delivery of enterprise AI solutions driving <data value="20000000">$20M+</data> projected cost savings and <data value="80">80%+</data> efficiency gains. I've built multimodal pipelines and multi agent systems + RAG applications serving <data value="200">200+</data> daily users, cutting manual work by <data value="60">60%</data> and improving decision velocity.
+              At <span itemProp="worksFor" itemScope itemType="https://schema.org/Organization"><span itemProp="name">AT&T</span></span>, I am a Principal AI/ML Engineer on the <strong className="text-foreground">AI Foundry – Framework Team</strong>, the team responsible for all Agentic applications across AT&T's enterprise. I architect and deliver scalable agentic application frameworks enabling multi-agent orchestration, tool use, and autonomous decision-making at telecom scale.
+            </p>
+
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Previously at <strong className="text-foreground">The Home Depot</strong>, I led architecture and delivery of enterprise AI solutions driving <data value="20000000">$20M+</data> projected cost savings and <data value="80">80%+</data> efficiency gains. I built multimodal pipelines and multi agent systems + RAG applications serving <data value="200">200+</data> daily users, cutting manual work by <data value="60">60%</data> and improving decision velocity.
             </p>
 
             <h4 className="text-lg font-bold text-foreground mt-6 mb-3">What I do best</h4>
@@ -119,7 +123,7 @@ export default function AboutSection() {
             </div>
             <div>
               <p className="text-xs text-muted-foreground mb-1">Current Role</p>
-              <p className="text-sm font-bold" itemProp="jobTitle">Data Science & Gen AI & ML Engineer</p>
+              <p className="text-sm font-bold" itemProp="jobTitle">Principal AI/ML Engineer, AT&T</p>
             </div>
           </div>
           
@@ -143,6 +147,7 @@ export default function AboutSection() {
             <div>
               <p className="text-xs text-muted-foreground mb-3 font-semibold">Industries</p>
               <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Telecom</span>
                 <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Retail</span>
                 <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Manufacturing</span>
                 <span className="px-2 py-1 bg-indigo-500/10 text-indigo-400 text-xs rounded-md font-medium">Finance</span>
@@ -152,6 +157,7 @@ export default function AboutSection() {
             <div>
               <p className="text-xs text-muted-foreground mb-3 font-semibold">Companies</p>
               <div className="flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">AT&T</span>
                 <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Home Depot</span>
                 <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-md font-medium">Harley Davidson</span>
                 <span className="px-2 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-md font-medium">Principal</span>
