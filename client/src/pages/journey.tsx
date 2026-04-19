@@ -37,7 +37,7 @@ export default function Journey() {
       <SEOHead
         title="Professional Journey - Ajay Miryala | Career Timeline"
         description="Explore my professional and educational journey from student to Principal AI/ML Engineer at AT&T AI Foundry, featuring roles at AT&T, The Home Depot, Harley Davidson, Principal Financial, and degrees from University of Maryland and SRM University."
-        keywords={["Career Journey", "Professional Timeline", "AT&T AI Foundry", "Principal AI Engineer", "AI Engineer Career", "The Home Depot", "Machine Learning Career", "Data Science Experience"]}
+        keywords={["Career Journey", "Professional Timeline", "AT&T AI Foundry", "Principal AI Engineer", "AI Engineer Career", "The Home Depot", "Machine Learning Career", "Data Science Experience", "Data Leadership Career", "Head of Data Science Resume", "Chief Data Officer Timeline", "Director of Data Engineering", "Data Analytics Leader"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [

@@ -7,8 +7,14 @@ export const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ajay Miryala",
-  "jobTitle": "Principal AI/ML Engineer",
-  "description": "Principal AI/ML Engineer at AT&T AI Foundry Framework Team, specializing in building scalable agentic AI systems, RAG architectures, LLM orchestration, and production-grade machine learning solutions",
+  "jobTitle": [
+    "Principal AI/ML Engineer",
+    "Lead Data Scientist",
+    "Data Engineering Leader",
+    "Data Analytics Specialist",
+    "Machine Learning Leader"
+  ],
+  "description": "Distinguished Data Science and AI/ML Leader specializing in bridging Data Engineering, Machine Learning, and executive strategy. Expert in building scalable agentic AI systems, RAG architectures, enterprise data platforms, and production-grade generative AI solutions.",
   "url": "https://ajaymiryala.com",
   "sameAs": [
     "https://www.linkedin.com/in/ajay-sai/",
@@ -23,18 +29,23 @@ export const personSchema = {
     "addressCountry": "US"
   },
   "knowsAbout": [
+    "Data Science Leadership",
+    "Data Strategy",
+    "Executive Leadership",
+    "Data Engineering",
+    "Data Analytics",
+    "Machine Learning Architecture",
     "Generative AI",
     "Large Language Models",
     "RAG (Retrieval-Augmented Generation)",
     "Agentic AI",
     "Multi-Agent Systems",
-    "Machine Learning",
     "Deep Learning",
     "Natural Language Processing",
     "Knowledge Graphs",
     "LLM Orchestration",
     "Computer Vision",
-    "Data Science",
+    "Data Warehousing",
     "MLOps",
     "Production ML Systems",
     "GPT-4",
@@ -123,7 +134,7 @@ export const createProjectSchema = (project: {
   "author": {
     "@type": "Person",
     "name": "Ajay Miryala",
-    "jobTitle": "Data Science & Generative AI and ML Engineer"
+    "jobTitle": "Principal AI/ML Engineer"
   },
   "datePublished": project.datePublished,
 });
@@ -173,7 +184,7 @@ export const webPageSchema = (page: {
   "author": {
     "@type": "Person",
     "name": "Ajay Miryala",
-    "jobTitle": "Data Science & Generative AI and ML Engineer",
+    "jobTitle": "Principal AI/ML Engineer",
     "url": "https://ajaymiryala.com"
   },
   "dateModified": page.dateModified || new Date().toISOString().split('T')[0],
@@ -325,18 +336,22 @@ export const workExperienceSchemas = [
         "addressCountry": "US"
       }
     },
-    "description": "Principal AI/ML Engineer on the AI Foundry Framework Team — the team responsible for all Agentic applications across AT&T's enterprise. Architect and deliver scalable agentic application frameworks enabling multi-agent orchestration, tool use, and autonomous decision-making at telecom scale.",
+    "description": "Principal AI/ML Engineer architecting ABS.ai, AT&T's agentic AI platform for automated ticket resolution across 5+ business units, and designing LangGraph orchestration engines with RAG and mainframe integration.",
     "responsibilities": formatResponsibilities([
-      "Lead engineer on the AI Foundry Framework Team, responsible for all Agentic AI applications across AT&T's enterprise.",
-      "Architect and deliver scalable agentic application frameworks enabling multi-agent orchestration, tool use, and autonomous decision-making.",
-      "Design and implement agentic RAG systems, multi-agent pipelines, and LLM-powered automation at telecom scale.",
-      "Drive technical strategy and standards for agentic AI across AT&T business units.",
-      "Collaborate with cross-functional teams to align agentic AI capabilities with enterprise business objectives."
+      "Architected ABS.ai, AT&T's agentic AI platform for automated ticket resolution across 5+ business units, designing a 7-stage LangGraph orchestration engine with RAG and mainframe integration.",
+      "Achieved 92%+ retrieval precision across all agent stages by engineering a pgvector-based RAG pipeline with cross-encoder reranking and memory-plan caching to reduce redundant LLM calls.",
+      "Built 10+ FastAPI microservices with zero cross-service coupling by creating a production monorepo, 4-layer dependency architecture, and dynamic tool discovery at startup.",
+      "Reduced regressions by implementing 15+ evaluators across 7 pipeline stages, combining LLM-as-judge and deterministic checks with LangSmith observability, CI-gated assertions, and dataset-driven eval suites.",
+      "Maintained zero unauthorized mainframe mutations through human-in-the-loop approval workflows covering 100% of sensitive AERO operations.",
+      "Led AT&T agentic AI delivery across 5+ product lines and 6+ engineers, setting architecture standards, driving code reviews, and executing SAFe/Agile PI planning.",
+      "Designed a PostgreSQL + pgvector data layer spanning 24+ tables with audit trails, JSONB, full-text search, staleness protection, and referential integrity.",
+      "Achieved 100% end-to-end trace coverage and enabled zero-downtime schema evolution across 10+ services through centralized LLM invocation, structured logging, versioned state contracts, and backward-compatible migrations.",
+      "Secured multi-tenant operations with 3-tier RBAC, category-level permissions, audit logging, and AT&T SSO integration."
     ])
   },
   {
     "@type": "EmployeeRole",
-    "roleName": "Data Science & Generative AI and ML Engineer",
+    "roleName": "Lead Data Scientist",
     "startDate": "2025-01",
     "endDate": "2025-03",
     "employee": {
@@ -355,7 +370,7 @@ export const workExperienceSchemas = [
         "addressCountry": "US"
       }
     },
-    "description": "Lead Data Science & Generative AI and ML Engineer architecting LLM orchestration platforms, Knowledge-Graph RAG assistants, and multi-modal pipelines. Delivered 55% reduction in analytics time and targeting $20M in optimization opportunities.",
+    "description": "Lead Data Scientist architecting LLM orchestration platforms, Knowledge-Graph RAG assistants, and multi-modal pipelines. Delivered 55% reduction in analytics time and targeting $20M in optimization opportunities.",
     "responsibilities": formatResponsibilities([
       "Designed and developed scalable generative AI systems using transformer-based architectures (GPT-4, BERT, Gemini, Longformer) for text summarization, Q&A bots, and contract parsing.",
       "Led fine-tuning of LLMs with LoRA, QLoRA, and PEFT methods using HuggingFace Transformers to improve model alignment with Home Depot-specific customer and vendor datasets.",

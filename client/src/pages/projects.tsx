@@ -56,7 +56,7 @@ export default function Projects() {
       <SEOHead
         title="AI Projects & Case Studies - Ajay Miryala | Technical Deep-Dives"
         description="Explore detailed case studies and technical deep-dives into production AI projects, including Neo4j RAG systems, LLM orchestration platforms, dynamic image generation pipelines, and enterprise ML deployments."
-        keywords={["AI Projects", "Case Studies", "RAG Systems", "LLM Orchestration", "Knowledge Graphs", "Production ML", "Machine Learning Projects"]}
+        keywords={["AI Projects", "Case Studies", "RAG Systems", "LLM Orchestration", "Knowledge Graphs", "Production ML", "Machine Learning Projects", "Data Engineering Architecture", "Data Science Portfolios", "Generative AI Implementations", "Agentic AI Frameworks"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [

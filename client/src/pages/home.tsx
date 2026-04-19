@@ -30,9 +30,9 @@ export default function Home() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <SEOHead
-        title="Ajay Miryala - Principal AI/ML Engineer | AT&T AI Foundry | Agentic AI & ML Expert"
-        description="Principal AI/ML Engineer at AT&T AI Foundry Framework Team, responsible for all Agentic applications. 9+ years building scalable AI infrastructure including RAG systems, LLM orchestration, and multi-agent systems for enterprise applications."
-        keywords={["Principal AI Engineer", "AT&T AI Foundry", "Agentic AI", "Generative AI", "ML Engineer", "LLM", "RAG", "Machine Learning", "AI Systems", "Multi-Agent Systems", "Data Science"]}
+        title="Ajay Miryala | Principal AI/ML Engineer | Lead Data Scientist | Data Engineering Leader"
+        description="Distinguished Data Science and AI/ML Leader with 9+ years of experience architecting agentic AI systems, enterprise RAG pipelines, data infrastructure, and scalable machine learning solutions across Fortune 500 companies."
+        keywords={["Principal AI Engineer", "Lead Data Scientist", "Data Science Leadership", "Data Engineering Leader", "Data Analytics Expert", "Chief Data Officer profile", "AT&T AI Foundry", "Machine Learning Leader", "Generative AI", "Agentic AI", "LLM Orchestration", "RAG architectures", "Big Data", "Data Infrastructure", "Executive Leadership", "Technical Leadership"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [

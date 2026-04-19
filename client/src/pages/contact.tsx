@@ -27,7 +27,7 @@ export default function Contact() {
       <SEOHead
         title="Schedule Meeting with Ajay Miryala | AI Consulting"
         description="Schedule a meeting with Ajay Miryala to discuss AI projects, collaboration opportunities, or consulting services. Specializing in Generative AI, ML Engineering, and scalable data systems. Email: sai.ajaysai@gmail.com | Phone: (240) 360-7905"
-        keywords={["Schedule Meeting", "AI Consulting", "ML Consulting", "Generative AI Expert", "Hire AI Engineer", "AI Project Collaboration"]}
+        keywords={["Schedule Meeting", "AI Consulting", "ML Consulting", "Generative AI Expert", "Hire AI Engineer", "AI Project Collaboration", "Data Science Consultation", "Hire Data Science Leader", "Data Engineering Consultant", "Analytics Leadership Opportunity", "Executive Data Advisor"]}
         schema={{
           "@context": "https://schema.org",
           "@graph": [

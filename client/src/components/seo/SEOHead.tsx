@@ -63,8 +63,8 @@ export default function SEOHead({
       <meta name="coverage" content="Worldwide" />
       <meta name="distribution" content="Global" />
       <meta name="target" content="all" />
-      <meta name="audience" content="AI Engineers, ML Engineers, Data Scientists, Tech Recruiters, Engineering Managers" />
-      <meta name="subject" content="Generative AI, Machine Learning, LLM Systems, Production AI" />
+      <meta name="audience" content="Executive Recruiters, Technical Recruiters, VP of Engineering, Chief Data Officers, Head of Data Science, Hiring Managers" />
+      <meta name="subject" content="Data Science Leadership, AI/ML Infrastructure, Data Engineering, Agentic AI, Generative AI, Data Analytics" />
       
       {/* Additional Meta Tags for AI/Search Engines */}
       <meta name="author" content="Ajay Miryala" />
